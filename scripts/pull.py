@@ -167,6 +167,8 @@ class API:
                 log(f"  {channel}: {n:,} records read")
             cur = r.get("nextCursor")
             if not cur or not ms:
+                if not contact:
+                    log(f"  {channel}: {n:,} records read in total, {len(out):,} kept")
                 return out
 
 
@@ -733,6 +735,18 @@ def main():
                "promote": {"yesterday": Yd["promote"], "to_date": data["todate"]["promote"]},
                "post_ticket": {"yesterday": Yd["post_ticket"], "to_date": data["todate"]["post_ticket"]},
                "upsells": data["upsells"]}
+
+    # Safety check: sends, deliveries and failures only ever go up. If a total drops compared with the last good
+    # data (e.g. GHL returned an empty export), stop without writing so the page keeps the last good numbers.
+    if prev and prev.get("todate"):
+        for c in ("promote", "post_ticket"):
+            for ch, keys in (("email", ("sent",)), ("sms", ("sent", "delivered", "failed"))):
+                for k in keys:
+                    old = (prev["todate"].get(c, {}).get(ch, {}) or {}).get(k, 0) or 0
+                    new = T[c][ch].get(k, 0) or 0
+                    if new < old - max(5, 0.002 * old):
+                        raise SystemExit(f"Safety check failed: {c} {ch} {k} dropped from {old:,} to {new:,}. "
+                                         "Nothing written; the page keeps the last good numbers.")
 
     # write to temp files first, then swap in, so a failed run never leaves half-written data
     for name, content in (("data.json", json.dumps(data, indent=1, ensure_ascii=False)),

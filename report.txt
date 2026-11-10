@@ -1,9 +1,9 @@
-WarriorCon 6 — numbers as of Nov 10, 5:23pm ET
+WarriorCon 6 — numbers as of Nov 10, 5:26pm ET
 
 SUMMARY
 • 4 new tickets yesterday (137 total, 22 days to go)
 • Win: 69 of 137 ticket holders (50.4%) signed up for the Warrior App (free until Dec 4)
-• Watch: promote text failures 30.3% to date (21,102 of 69,744 texts failed), above 5%
+• Watch: promote text failures 28.4% to date (22,918 of 80,575 texts failed), above 5%
 
 TICKET HOLDERS: 137 (134 paid + 3 comps) · 4 new yesterday
 $28,541 total sales ($26,666 tickets + $1,875 Business Bible)
@@ -13,13 +13,13 @@ PROMOTE (non-ticket holders)
 Yesterday — Email: 22,691 sent · 26.3% open · 0.3% click
 Yesterday — SMS: 3,613 sent · 82.0% delivered
 To date — Email: 387,189 sent · 31.9% open · 0.4% click
-To date — SMS: 69,744 sent · 69.7% delivered
+To date — SMS: 80,575 sent · 71.3% delivered
 
 POST-TICKET SEDUCTION (ticket holders)
 Yesterday — Email: 112 sent · 39.3% open
 Yesterday — SMS: none sent
 To date — Email: 342 sent · 43.6% open
-To date — SMS: none sent
+To date — SMS: 94 sent · 88.3% delivered
 
 UPSELLS
 Warrior App (Power Plan): 69 · 50.4% of ticket holders
