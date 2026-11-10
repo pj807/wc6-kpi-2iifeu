@@ -141,18 +141,22 @@ class API:
                 time.sleep(5 * (attempt + 1))
         return None
 
-    def messages(self, channel, since, matcher, contact=None):
+    def messages(self, channel, since, matcher, contact=None, until=None):
         """Compact records: [id, contact, date, direction, status, key, is_stop]. Outbound kept only if matched.
         With `contact`, reads only that one contact's messages (used to credit new purchases)."""
-        out, cur, n = [], None, 0
+        out, cur, n, total = [], None, 0, None
         while True:
             p = {"locationId": LOC, "channel": channel, "limit": 1000, "startDate": since, "sortOrder": "asc"}
             if contact:
                 p["contactId"] = contact
+            if until:
+                p["endDate"] = until
             if cur:
                 p["cursor"] = cur
             r = self.req("GET", "/conversations/messages/export", p)
             ms = r.get("messages", [])
+            if total is None and isinstance(r.get("total"), int):
+                total = r["total"]
             n += len(ms)
             for m in ms:
                 d = m.get("direction")
@@ -167,9 +171,16 @@ class API:
                 log(f"  {channel}: {n:,} records read")
             cur = r.get("nextCursor")
             if not cur or not ms:
-                if not contact:
+                if not contact and not until:
                     log(f"  {channel}: {n:,} records read in total, {len(out):,} kept")
-                return out
+                # GHL sometimes returns an empty or short export; the count must match the total GHL reports
+                if total is not None and n < total:
+                    raise ShortRead(f"{channel} export returned {n:,} of {total:,} records")
+                return [r for r in out if not until or r[2] < until]
+
+
+class ShortRead(Exception):
+    pass
 
 
 def item_amount(i):
@@ -223,7 +234,15 @@ def fetch_messages(api, channel, since):
     if old:
         frm = max(since, (ts(max(r[2] for r in old)) - timedelta(days=3)).strftime("%Y-%m-%dT%H:%M:%S.000Z"))
     log(f"{channel}: reading since {frm[:10]}" + (" (plus local cache)" if old else ""))
-    new = api.messages(channel, frm, matcher)
+    for attempt in range(5):
+        try:
+            new = api.messages(channel, frm, matcher)
+            break
+        except ShortRead as e:
+            log(f"  {e}; retrying")
+            time.sleep(15 * (attempt + 1))
+    else:
+        raise SystemExit(f"{channel} export never read completely. Nothing written; the page keeps the last good numbers.")
     merged = {r[0]: r for r in old}
     merged.update({r[0]: r for r in new})
     rows = sorted(merged.values(), key=lambda r: r[2])
@@ -231,6 +250,29 @@ def fetch_messages(api, channel, since):
         os.makedirs(RAW, exist_ok=True)
         json.dump(rows, gzip.open(path, "wt"))
     return [r for r in rows if r[2] >= since]
+
+
+def fetch_sms_by_day(api, first_day, last_day):
+    """Quick mode: read texts one Pacific day at a time. GHL's export sometimes skips a page, so each day
+    must return as many records as the total GHL reports, or it's read again (up to 5 tries); otherwise the run
+    stops and nothing is published."""
+    out, d = [], Date.fromisoformat(first_day)
+    while d.isoformat() <= last_day:
+        a, b = pt_midnight_utc(d.isoformat()), pt_midnight_utc((d + timedelta(days=1)).isoformat())
+        rows = None
+        for attempt in range(5):
+            try:
+                rows = api.messages("SMS", a, matcher, until=b)
+                break
+            except ShortRead as e:
+                log(f"  SMS {d.isoformat()}: {e}; retrying")
+                time.sleep(15 * (attempt + 1))
+        if rows is None:
+            raise SystemExit(f"Texts for {d.isoformat()} never read completely. Nothing written; the page keeps the last good numbers.")
+        log(f"  SMS {d.isoformat()}: {len(rows):,} records kept")
+        out += rows
+        d += timedelta(days=1)
+    return out
 
 
 def check_workflows(api):
@@ -281,9 +323,15 @@ def main():
     check_workflows(api)
     res = {}
     since_by = {"Email": email_since, "SMS": sms_since}
-    threads = [threading.Thread(target=lambda c=c: res.__setitem__(c, fetch_messages(api, c, since_by[c]))) for c in ("Email", "SMS")]
-    for t in threads:
-        t.start()
+    def _get(c):
+        if c == "SMS" and incremental:
+            first = (Date.fromisoformat(cutoff) - timedelta(days=1)).isoformat()
+            res[c] = fetch_sms_by_day(api, first, today.isoformat())
+        else:
+            res[c] = fetch_messages(api, c, since_by[c])
+    # One export at a time: GHL returns empty or missing pages when two message exports run at once.
+    for c in ("Email", "SMS"):
+        _get(c)
     log("orders + comps…")
     orders, comps = api.orders(), api.comps()
     log("email step stats…")
@@ -294,8 +342,6 @@ def main():
                 v = api.step_stats(wid, sid)
                 if v is not None:
                     stats[sid] = v
-    for t in threads:
-        t.join()
     if set(res) != {"Email", "SMS"}:
         raise SystemExit("Message pull failed. Nothing written.")
     msgs = res
