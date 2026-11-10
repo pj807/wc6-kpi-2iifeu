@@ -49,8 +49,8 @@
    "sms": {}
   }
  },
- "generated_at": "2026-11-10T20:59+00:00",
- "as_of": "Nov 10, 3:59pm ET",
+ "generated_at": "2026-11-10T21:18+00:00",
+ "as_of": "Nov 10, 4:18pm ET",
  "today": "2026-11-10",
  "yesterday": "2026-11-09",
  "campaign_start": "2026-10-12",
@@ -98,15 +98,15 @@
     "whole": 22,
     "rated": 387183,
     "delivered": 385991,
-    "opened": 122950,
+    "opened": 122979,
     "clicked": 1360,
     "unsub": 477,
     "bounced": 1738,
     "ghl_sent": 387767
    },
    "sms": {
-    "sent": 80576,
-    "delivered": 57490,
+    "sent": 80575,
+    "delivered": 57489,
     "failed": 22918,
     "optouts": 81
    }
@@ -1630,7 +1630,7 @@
    "no_links": false,
    "ghl_sent": 22893,
    "delivered": 22803,
-   "opened": 7548,
+   "opened": 7549,
    "clicked": 60,
    "unsub": 38,
    "bounced": 89,
@@ -3164,7 +3164,7 @@
    "no_links": false,
    "ghl_sent": 22704,
    "delivered": 22587,
-   "opened": 7409,
+   "opened": 7410,
    "clicked": 126,
    "unsub": 36,
    "bounced": 110,
@@ -3420,7 +3420,7 @@
    "no_links": false,
    "ghl_sent": 22622,
    "delivered": 22490,
-   "opened": 6884,
+   "opened": 6885,
    "clicked": 83,
    "unsub": 21,
    "bounced": 126,
@@ -3966,13 +3966,13 @@
     "0.1 SMS 6"
    ],
    "day": "2026-11-08",
-   "sent": 3613,
+   "sent": 3612,
    "wrong_audience": 0,
    "days": {
     "2026-11-08": [
-     3611,
+     3610,
      0,
-     2997,
+     2996,
      601,
      2,
      1
@@ -3998,7 +3998,7 @@
    "tickets": 0,
    "ticket_revenue": 0,
    "no_links": false,
-   "delivered": 2999,
+   "delivered": 2998,
    "failed": 601,
    "optouts": 2,
    "replies": 1
@@ -4040,16 +4040,16 @@
      199.0
     ],
     "2026-11-09": [
-     1,
-     199.0
+     2,
+     398.0
     ]
    },
-   "tickets": 2,
-   "ticket_revenue": 398.0,
+   "tickets": 3,
+   "ticket_revenue": 597.0,
    "no_links": false,
    "ghl_sent": 22582,
    "delivered": 22450,
-   "opened": 5885,
+   "opened": 5895,
    "clicked": 68,
    "unsub": 12,
    "bounced": 130,
@@ -4115,12 +4115,12 @@
    },
    "credit": {
     "2026-11-09": [
-     2,
-     503.0
+     1,
+     304.0
     ]
    },
-   "tickets": 2,
-   "ticket_revenue": 503.0,
+   "tickets": 1,
+   "ticket_revenue": 304.0,
    "no_links": false,
    "delivered": 2958,
    "failed": 607,
@@ -4177,7 +4177,7 @@
    "no_links": false,
    "ghl_sent": 22570,
    "delivered": 22454,
-   "opened": 5563,
+   "opened": 5579,
    "clicked": 60,
    "unsub": 14,
    "bounced": 116,
@@ -4238,7 +4238,7 @@
      2945,
      605,
      3,
-     2
+     3
     ]
    },
    "credit": {},
@@ -4248,7 +4248,7 @@
    "delivered": 2945,
    "failed": 605,
    "optouts": 3,
-   "replies": 2
+   "replies": 3
   },
   {
    "id": "f89f60a0",
