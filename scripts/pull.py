@@ -174,7 +174,8 @@ class API:
                 if not contact and not until:
                     log(f"  {channel}: {n:,} records read in total, {len(out):,} kept")
                 # GHL sometimes returns an empty or short export; the count must match the total GHL reports
-                if total is not None and n < total:
+                # (GHL's total can include a handful of records the export never returns, so allow a small gap)
+                if total is not None and n < total - max(10, 0.005 * total):
                     raise ShortRead(f"{channel} export returned {n:,} of {total:,} records")
                 return [r for r in out if not until or r[2] < until]
 
