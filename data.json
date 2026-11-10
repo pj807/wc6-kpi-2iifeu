@@ -10,7 +10,7 @@
   "date": "2026-11-10",
   "tickets": 3,
   "emails": 22748,
-  "texts": 3698
+  "texts": 0
  },
  "ghl_links": {
   "promote": {
@@ -93,8 +93,8 @@
    "sms": {}
   }
  },
- "generated_at": "2026-11-10T22:19+00:00",
- "as_of": "Nov 10, 5:19pm ET",
+ "generated_at": "2026-11-10T22:23+00:00",
+ "as_of": "Nov 10, 5:23pm ET",
  "today": "2026-11-10",
  "yesterday": "2026-11-09",
  "campaign_start": "2026-10-12",
@@ -144,17 +144,17 @@
     "whole": 22,
     "rated": 387189,
     "delivered": 385997,
-    "opened": 123086,
+    "opened": 123088,
     "clicked": 1362,
     "unsub": 477,
     "bounced": 1738,
     "ghl_sent": 387773
    },
    "sms": {
-    "sent": 80575,
-    "delivered": 57490,
-    "failed": 22918,
-    "optouts": 81
+    "sent": 69744,
+    "delivered": 48581,
+    "failed": 21102,
+    "optouts": 74
    }
   },
   "post_ticket": {
@@ -170,12 +170,7 @@
     "bounced": 0,
     "ghl_sent": 342
    },
-   "sms": {
-    "sent": 94,
-    "delivered": 83,
-    "failed": 11,
-    "optouts": 1
-   }
+   "sms": {}
   }
  },
  "summary": {
@@ -191,13 +186,13 @@
    "line": "69 of 137 ticket holders (50.4%) signed up for the Warrior App (free until Dec 4)"
   },
   "watch": {
-   "big": "Promote text failures: 28.4%",
-   "sub": "Above the 5% limit: 22,918 of 80,575 texts failed to date. Yesterday: 16.8%.",
-   "line": "promote text failures 28.4% to date (22,918 of 80,575 texts failed), above 5%"
+   "big": "Promote text failures: 30.3%",
+   "sub": "Above the 5% limit: 21,102 of 69,744 texts failed to date. Yesterday: 16.8%.",
+   "line": "promote text failures 30.3% to date (21,102 of 69,744 texts failed), above 5%"
   }
  },
- "report": "WarriorCon 6 — numbers as of Nov 10, 5:19pm ET\n\nSUMMARY\n• 4 new tickets yesterday (137 total, 22 days to go)\n• Win: 69 of 137 ticket holders (50.4%) signed up for the Warrior App (free until Dec 4)\n• Watch: promote text failures 28.4% to date (22,918 of 80,575 texts failed), above 5%\n\nTICKET HOLDERS: 137 (134 paid + 3 comps) · 4 new yesterday\n$28,541 total sales ($26,666 tickets + $1,875 Business Bible)\n103 of 134 tickets were bought within 48 hrs of an email/text\n\nPROMOTE (non-ticket holders)\nYesterday — Email: 22,691 sent · 26.3% open · 0.3% click\nYesterday — SMS: 3,613 sent · 82.0% delivered\nTo date — Email: 387,189 sent · 31.9% open · 0.4% click\nTo date — SMS: 80,575 sent · 71.3% delivered\n\nPOST-TICKET SEDUCTION (ticket holders)\nYesterday — Email: 112 sent · 39.3% open\nYesterday — SMS: none sent\nTo date — Email: 342 sent · 43.6% open\nTo date — SMS: 94 sent · 88.3% delivered\n\nUPSELLS\nWarrior App (Power Plan): 69 · 50.4% of ticket holders\nBusiness Bible: 17 sales · $1,875 · bought by 16 of 134 paid buyers (11.9%)\n(Texts have no open rate.)",
- "report_as_of": "Nov 10, 5:19pm ET",
+ "report": "WarriorCon 6 — numbers as of Nov 10, 5:23pm ET\n\nSUMMARY\n• 4 new tickets yesterday (137 total, 22 days to go)\n• Win: 69 of 137 ticket holders (50.4%) signed up for the Warrior App (free until Dec 4)\n• Watch: promote text failures 30.3% to date (21,102 of 69,744 texts failed), above 5%\n\nTICKET HOLDERS: 137 (134 paid + 3 comps) · 4 new yesterday\n$28,541 total sales ($26,666 tickets + $1,875 Business Bible)\n103 of 134 tickets were bought within 48 hrs of an email/text\n\nPROMOTE (non-ticket holders)\nYesterday — Email: 22,691 sent · 26.3% open · 0.3% click\nYesterday — SMS: 3,613 sent · 82.0% delivered\nTo date — Email: 387,189 sent · 31.9% open · 0.4% click\nTo date — SMS: 69,744 sent · 69.7% delivered\n\nPOST-TICKET SEDUCTION (ticket holders)\nYesterday — Email: 112 sent · 39.3% open\nYesterday — SMS: none sent\nTo date — Email: 342 sent · 43.6% open\nTo date — SMS: none sent\n\nUPSELLS\nWarrior App (Power Plan): 69 · 50.4% of ticket holders\nBusiness Bible: 17 sales · $1,875 · bought by 16 of 134 paid buyers (11.9%)\n(Texts have no open rate.)",
+ "report_as_of": "Nov 10, 5:23pm ET",
  "frozen": {
   "yesterday": "2026-11-09",
   "as_of": "Nov 10, 4:34pm ET",
@@ -3666,7 +3661,7 @@
     "0.1 SMS 1"
    ],
    "day": "2026-11-03",
-   "sent": 3639,
+   "sent": 3638,
    "wrong_audience": 0,
    "days": {
     "2026-11-03": [
@@ -3700,14 +3695,6 @@
      1,
      0,
      0
-    ],
-    "2026-11-10": [
-     1,
-     0,
-     1,
-     0,
-     0,
-     0
     ]
    },
    "credit": {
@@ -3723,7 +3710,7 @@
    "tickets": 3,
    "ticket_revenue": 597.0,
    "no_links": false,
-   "delivered": 3027,
+   "delivered": 3026,
    "failed": 609,
    "optouts": 5,
    "replies": 4
@@ -3738,7 +3725,7 @@
     "0.1 SMS 2"
    ],
    "day": "2026-11-04",
-   "sent": 3630,
+   "sent": 3629,
    "wrong_audience": 0,
    "days": {
     "2026-11-04": [
@@ -3764,21 +3751,13 @@
      1,
      0,
      0
-    ],
-    "2026-11-10": [
-     1,
-     0,
-     1,
-     0,
-     0,
-     0
     ]
    },
    "credit": {},
    "tickets": 0,
    "ticket_revenue": 0,
    "no_links": false,
-   "delivered": 3015,
+   "delivered": 3014,
    "failed": 609,
    "optouts": 4,
    "replies": 12
@@ -3793,7 +3772,7 @@
     "0.1 SMS 3"
    ],
    "day": "2026-11-05",
-   "sent": 3627,
+   "sent": 3625,
    "wrong_audience": 0,
    "days": {
     "2026-11-05": [
@@ -3819,14 +3798,6 @@
      0,
      0,
      0
-    ],
-    "2026-11-08": [
-     2,
-     0,
-     1,
-     1,
-     0,
-     0
     ]
    },
    "credit": {
@@ -3838,8 +3809,8 @@
    "tickets": 1,
    "ticket_revenue": 199.0,
    "no_links": false,
-   "delivered": 3007,
-   "failed": 609,
+   "delivered": 3006,
+   "failed": 608,
    "optouts": 2,
    "replies": 18
   },
@@ -3853,7 +3824,7 @@
     "0.1 SMS 4"
    ],
    "day": "2026-11-06",
-   "sent": 3623,
+   "sent": 3620,
    "wrong_audience": 0,
    "days": {
     "2026-11-06": [
@@ -3871,22 +3842,6 @@
      0,
      0,
      0
-    ],
-    "2026-11-08": [
-     1,
-     0,
-     1,
-     0,
-     0,
-     0
-    ],
-    "2026-11-09": [
-     2,
-     0,
-     1,
-     1,
-     0,
-     0
     ]
    },
    "credit": {
@@ -3898,8 +3853,8 @@
    "tickets": 2,
    "ticket_revenue": 398.0,
    "no_links": false,
-   "delivered": 3009,
-   "failed": 609,
+   "delivered": 3007,
+   "failed": 608,
    "optouts": 2,
    "replies": 5
   },
@@ -3956,7 +3911,7 @@
     "0.1 SMS 5"
    ],
    "day": "2026-11-07",
-   "sent": 3618,
+   "sent": 3615,
    "wrong_audience": 0,
    "days": {
     "2026-11-07": [
@@ -3966,87 +3921,16 @@
      610,
      3,
      2
-    ],
-    "2026-11-08": [
-     1,
-     0,
-     1,
-     0,
-     0,
-     0
-    ],
-    "2026-11-09": [
-     1,
-     0,
-     1,
-     0,
-     0,
-     0
-    ],
-    "2026-11-10": [
-     1,
-     0,
-     0,
-     1,
-     0,
-     0
     ]
    },
    "credit": {},
    "tickets": 0,
    "ticket_revenue": 0,
    "no_links": false,
-   "delivered": 3001,
-   "failed": 611,
+   "delivered": 2999,
+   "failed": 610,
    "optouts": 3,
    "replies": 2
-  },
-  {
-   "id": "807265ad",
-   "key": "s:what if the next 12 weeks changed the di",
-   "ch": "sms",
-   "camp": "promote",
-   "text": "What if the next 12 weeks changed the direction of your entire life?",
-   "steps": [
-    "0.1 SMS 6"
-   ],
-   "day": "2026-11-08",
-   "sent": 3612,
-   "wrong_audience": 0,
-   "days": {
-    "2026-11-08": [
-     3610,
-     0,
-     2996,
-     601,
-     2,
-     1
-    ],
-    "2026-11-09": [
-     1,
-     0,
-     1,
-     0,
-     0,
-     0
-    ],
-    "2026-11-10": [
-     1,
-     0,
-     1,
-     0,
-     0,
-     0
-    ]
-   },
-   "credit": {},
-   "tickets": 0,
-   "ticket_revenue": 0,
-   "no_links": false,
-   "delivered": 2998,
-   "failed": 601,
-   "optouts": 2,
-   "replies": 1
   },
   {
    "id": "7fd9e315",
@@ -4137,42 +4021,6 @@
    "share_main": 1.0
   },
   {
-   "id": "1149ad9c",
-   "key": "s:what if the problem isn't that you don't",
-   "ch": "sms",
-   "camp": "promote",
-   "text": "What if the problem isn't that you don't know what to do? Read it:",
-   "steps": [
-    "0.1 SMS 7"
-   ],
-   "day": "2026-11-09",
-   "sent": 3609,
-   "wrong_audience": 0,
-   "days": {
-    "2026-11-09": [
-     3609,
-     0,
-     2958,
-     607,
-     2,
-     3
-    ]
-   },
-   "credit": {
-    "2026-11-09": [
-     2,
-     398.0
-    ]
-   },
-   "tickets": 2,
-   "ticket_revenue": 398.0,
-   "no_links": false,
-   "delivered": 2958,
-   "failed": 607,
-   "optouts": 2,
-   "replies": 3
-  },
-  {
    "id": "f974c974",
    "key": "e:i'm handing you the weapon.",
    "ch": "email",
@@ -4222,7 +4070,7 @@
    "no_links": false,
    "ghl_sent": 22570,
    "delivered": 22454,
-   "opened": 5663,
+   "opened": 5665,
    "clicked": 62,
    "unsub": 14,
    "bounced": 116,
@@ -4263,68 +4111,6 @@
    "bounced": 0,
    "complaints": 0,
    "share_main": 1.0
-  },
-  {
-   "id": "b34d8b15",
-   "key": "s:some men waited. these men moved. read t",
-   "ch": "sms",
-   "camp": "promote",
-   "text": "Some men waited. These men moved. Read their stories:",
-   "steps": [
-    "0.1 SMS 8"
-   ],
-   "day": "2026-11-10",
-   "sent": 3600,
-   "wrong_audience": 0,
-   "days": {
-    "2026-11-10": [
-     3600,
-     0,
-     2946,
-     605,
-     3,
-     4
-    ]
-   },
-   "credit": {},
-   "tickets": 0,
-   "ticket_revenue": 0,
-   "no_links": false,
-   "delivered": 2946,
-   "failed": 605,
-   "optouts": 3,
-   "replies": 4
-  },
-  {
-   "id": "f89f60a0",
-   "key": "s:this is no longer about me. the greatest",
-   "ch": "sms",
-   "camp": "post_ticket",
-   "text": "This is no longer about me. The greatest story was never mine.",
-   "steps": [
-    "1.04 SMS 1 (Nov 10)"
-   ],
-   "day": "2026-11-10",
-   "sent": 94,
-   "wrong_audience": 1,
-   "days": {
-    "2026-11-10": [
-     94,
-     1,
-     83,
-     11,
-     1,
-     0
-    ]
-   },
-   "credit": {},
-   "tickets": 0,
-   "ticket_revenue": 0,
-   "no_links": false,
-   "delivered": 83,
-   "failed": 11,
-   "optouts": 1,
-   "replies": 0
   },
   {
    "id": "5eb6a68b",
@@ -4377,6 +4163,99 @@
    "bounced": 0,
    "complaints": 0,
    "share_main": null
+  },
+  {
+   "id": "807265ad",
+   "key": "s:what if the next 12 weeks changed the di",
+   "ch": "sms",
+   "camp": "promote",
+   "text": "What if the next 12 weeks changed the direction of your entire life?",
+   "steps": [
+    "0.1 SMS 6"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "delivered": 0,
+   "failed": 0,
+   "optouts": 0,
+   "replies": 0
+  },
+  {
+   "id": "1149ad9c",
+   "key": "s:what if the problem isn't that you don't",
+   "ch": "sms",
+   "camp": "promote",
+   "text": "What if the problem isn't that you don't know what to do? Read it:",
+   "steps": [
+    "0.1 SMS 7"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {
+    "2026-11-09": [
+     2,
+     398.0
+    ]
+   },
+   "tickets": 2,
+   "ticket_revenue": 398.0,
+   "no_links": false,
+   "delivered": 0,
+   "failed": 0,
+   "optouts": 0,
+   "replies": 0
+  },
+  {
+   "id": "b34d8b15",
+   "key": "s:some men waited. these men moved. read t",
+   "ch": "sms",
+   "camp": "promote",
+   "text": "Some men waited. These men moved. Read their stories:",
+   "steps": [
+    "0.1 SMS 8"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "delivered": 0,
+   "failed": 0,
+   "optouts": 0,
+   "replies": 0
+  },
+  {
+   "id": "f89f60a0",
+   "key": "s:this is no longer about me. the greatest",
+   "ch": "sms",
+   "camp": "post_ticket",
+   "text": "This is no longer about me. The greatest story was never mine.",
+   "steps": [
+    "1.04 SMS 1 (Nov 10)"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "delivered": 0,
+   "failed": 0,
+   "optouts": 0,
+   "replies": 0
   },
   {
    "id": "b9af4efe",
