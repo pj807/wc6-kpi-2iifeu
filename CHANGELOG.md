@@ -4,6 +4,11 @@ The version only changes when the page itself changes. Daily data refreshes keep
 New features go up a minor number (1.1, 1.2). Fixes go up a patch number (1.0.1).
 The "What's new" panel on the page reads `changelog.json`, so update both files together.
 
+## v1.1.1 · Fixes · Nov 11, 2026
+
+- The **View in GHL** menu now shows as one clean white box.
+- **More reliable updates:** each update now double-checks the texts it reads from GoHighLevel. If anything is missing, it keeps the last good numbers instead of showing low ones.
+
 ## v1.1 · Links into GoHighLevel · Nov 11, 2026
 
 - **Unsubscribed, bounced and failed counts are now clickable.** Hover or tap a count and pick "View in GHL" to open the workflow that lists those contacts.

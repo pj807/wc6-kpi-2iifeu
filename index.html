@@ -147,7 +147,7 @@
   .ghl:hover .ghl-n,.ghl:focus-within .ghl-n,.ghl.show .ghl-n{color:var(--fg);border-bottom-color:var(--red)}
   .ghl-pop{display:none;position:absolute;right:0;top:100%;z-index:31;padding-top:6px;min-width:230px;text-align:left}
   .ghl:hover .ghl-pop,.ghl:focus-within .ghl-pop,.ghl.show .ghl-pop{display:block}
-  .ghl-box{background:var(--fg);color:#000;border-radius:2px;padding:9px 11px;font:500 12px/1.4 var(--body);white-space:normal;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+  .ghl-box{display:block;background:var(--fg);color:#000;border-radius:2px;padding:9px 11px;font:500 12px/1.4 var(--body);white-space:normal;box-shadow:0 10px 30px rgba(0,0,0,.5)}
   .ghl-box a{display:block;color:#000;font-weight:700;text-decoration:none;padding:3px 0}
   .ghl-box a:hover{color:var(--red-dark)}
   .ghl-box em{display:block;font-style:normal;color:#555;margin-top:5px}
@@ -449,7 +449,7 @@
 
 <script>
 // The version of THIS page. Bump it (and changelog.json) whenever the page changes; daily data refreshes never change it.
-const PAGE_VERSION = '1.1';
+const PAGE_VERSION = '1.1.1';
 
 const $ = id => document.getElementById(id);
 const N = n => n == null ? '—' : Math.round(n).toLocaleString('en-US');

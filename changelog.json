@@ -1,5 +1,14 @@
 [
   {
+    "v": "1.1.1",
+    "date": "2026-11-11",
+    "title": "Fixes",
+    "items": [
+      "The <b>View in GHL</b> menu now shows as one clean white box.",
+      "<b>More reliable updates:</b> each update now double-checks the texts it reads from GoHighLevel. If anything is missing, it keeps the last good numbers instead of showing low ones."
+    ]
+  },
+  {
     "v": "1.1",
     "date": "2026-11-11",
     "title": "Links into GoHighLevel",
