@@ -1,0 +1,438 @@
+{
+ "_note": "Settings for the WC6 KPI dashboard. Safe to commit: no secrets or contact data here.",
+ "attribution_window_hours": 48,
+ "campaign_start": "2026-10-12",
+ "event_start": "2026-12-02",
+ "event_end": "2026-12-04",
+ "timezone": "America/Los_Angeles",
+ "location_id": "BDeGaczWUBVqlvyWoI7l",
+ "ticket_holder_rule": {
+  "_how": "Paid (completed/paid) order containing a product whose name starts with ticket_product_name_prefix, order amount >= min_paid_amount (drops $1 tests). Contacts with comp_tag and no paid order count as comps from campaign start.",
+  "ticket_product_id": "6acd596ad55fd4b5c60529ea",
+  "ticket_product_name_prefix": "WarriorCon6 Virtual Ticket",
+  "min_paid_amount": 199,
+  "comp_tag": "wc6 - basic virtual ticket"
+ },
+ "upsells": {
+  "power_plan": {
+   "product_id": "69111e01c5429ee337c0de0e",
+   "name_prefix": "Power Plan $95/m",
+   "price_per_month": 95,
+   "billing_start": "2026-12-04"
+  },
+  "business_bible": {
+   "name_prefix": "Warrior Business Bible"
+  }
+ },
+ "workflow_name_rules": {
+  "_how": "New WC6 workflows: names matching promote/post_ticket are labelled automatically; any other name containing WC6 is flagged in the refresh output, never guessed.",
+  "promote": "^0\\.\\d+\\s*[-–]\\s*WC6\\b",
+  "post_ticket": "^1\\.(0[3-9]|[1-9]\\d)\\s*[-–]\\s*WC6 Ticket Holder",
+  "wc6_any": "WC6|WarriorCon ?6|Warrior Con 6",
+  "excluded": [
+   "b93f198a-648b-4e95-bfef-15fc2d2c0ae4",
+   "16ca2cb5-74d4-4b5b-874f-4a5e1a823ef6",
+   "b9d1e7a0-332d-41dc-90ce-ce2ea3b30a6c",
+   "206ced6c-c300-4abe-9118-27863859a73b",
+   "71e9e9b2-b23e-4585-b907-c25690757864",
+   "e4325cb0-efa7-4787-92c2-059f4c5e0dd6",
+   "14568190-34c3-49de-bc85-b9995d2288ea",
+   "7331b3d4-d55f-4414-b466-8d2d9cb98153",
+   "e59c7206-0d1b-46f5-89c5-259dae579d5a",
+   "d07f0396-4e04-49e2-aff9-b0185944fe43"
+  ]
+ },
+ "display_timezone": "America/New_York",
+ "refresh_days": 3,
+ "thresholds": {
+  "_how": "A number turns red when it goes past these (percent).",
+  "email_unsub_pct": 0.5,
+  "email_bounce_pct": 2,
+  "sms_optout_pct": 1,
+  "sms_failed_pct": 5
+ },
+ "summary_rules": {
+  "_how": "The three summary lines are picked by these fixed rules every refresh (no AI).",
+  "email_whole_send_share": 0.95,
+  "headline": {
+   "_how": "New paid tickets yesterday vs the average of the N days before it. 'In line' = within the tolerance.",
+   "compare_days": 7,
+   "in_line_tolerance_pct": 20
+  },
+  "win": {
+   "_how": "1) a send from yesterday with click rate >= click_multiple x its campaign's average (min_sends+); else 2) the upsell with the highest take rate; else 3) best open rate among sends with min_sends+.",
+   "click_multiple": 1.5,
+   "min_sends": 100
+  },
+  "watch": {
+   "_how": "The metric furthest past its red line in thresholds (to date). If none: 'Nothing needs attention today.'"
+  }
+ },
+ "_refresh_days": "Daily GitHub runs re-read only the last refresh_days days from GHL and keep older days from data.json.",
+ "update_times_et": [
+  "08:00",
+  "13:00",
+  "17:00"
+ ],
+ "_update_times_et": "When fresh numbers land on the page (Eastern). The GitHub Action starts 30 minutes earlier (cron in .github/workflows/daily-refresh.yml).",
+ "workflows": [
+  {
+   "id": "d35a22f3-a8a2-45ad-82bc-e8961172e520",
+   "name": "0.0 - WC6 Pre-Purchase Outbound Emails",
+   "label": "promote",
+   "channel": "email",
+   "steps": [
+    {
+     "id": "2404e446-f72b-48cb-b619-7282f9d09ecc",
+     "name": "Email 1",
+     "text": "Before Warrior Ends, There Is One Final Gathering"
+    },
+    {
+     "id": "37ce80f1-dc92-47d3-8a30-233c51453499",
+     "name": "Email 2",
+     "text": "I'm Not Bringing You Back to Say Goodbye."
+    },
+    {
+     "id": "a777544d-9967-4a67-9814-77b4f400b181",
+     "name": "Email 3",
+     "text": "The Most Powerful Version of Warrior Has Never Been Publicly Taught."
+    },
+    {
+     "id": "85e440ed-83f3-48ec-9d22-b71f88e67cf7",
+     "name": "Email 4",
+     "text": "The Code Was Never the Destination"
+    },
+    {
+     "id": "2ff7b0e7-6c5c-4ffa-b116-bbfb26bd034f",
+     "name": "Email 5",
+     "text": "Why Most Men Never Win Their Impossible Game."
+    },
+    {
+     "id": "4a7b5164-913b-4d63-97bd-440e4621c048",
+     "name": "Email 6",
+     "text": "What I've Been Teaching Men Paying 50K–200K a Year."
+    },
+    {
+     "id": "0c6efeab-3dc4-41fb-8fbe-2bef0603ed37",
+     "name": "Email 7",
+     "text": "You Don't Need Another Breakthrough. You Need a Game."
+    },
+    {
+     "id": "1f99b2db-1f21-4343-a47d-a29da8ed2230",
+     "name": "Email 8",
+     "text": "I Put 14 Years of Warrior Into an AI Weapon"
+    },
+    {
+     "id": "f48ba278-0b90-4d08-a29b-e684b5af5bf7",
+     "name": "Email 9",
+     "text": "What If Your Stack Could Talk Back?"
+    },
+    {
+     "id": "46baed50-211d-42f6-8bdb-02cc0de24aad",
+     "name": "Email 10",
+     "text": "Your WarriorCon Experience Starts the Day You Register"
+    },
+    {
+     "id": "26fbe143-9b15-4ccb-998b-95333b752289",
+     "name": "Email 11",
+     "text": "The Missing Link Between Knowing and Doing."
+    },
+    {
+     "id": "f2ffcc6e-372d-4758-9f99-bb88a91bc426",
+     "name": "Email 12",
+     "text": "What You Will Actually Walk Away With After Three Days."
+    },
+    {
+     "id": "b3780752-f744-4282-b16d-0d8b1f068e6b",
+     "name": "Email 13",
+     "text": "Warrior Is Ending. The Work Isn't."
+    },
+    {
+     "id": "8cc428e0-635e-4151-9c59-4627f42c5765",
+     "name": "Email 14",
+     "text": "My Final Invitation to the Warrior Brotherhood."
+    }
+   ]
+  },
+  {
+   "id": "4e04f391-1840-4708-bd52-8b1e100abd8d",
+   "name": "0.1 - WC6 November Outbound Emails",
+   "label": "promote",
+   "channel": "email",
+   "steps": [
+    {
+     "id": "246ab43a-3b3e-49ff-9c7e-9030ce834ad8",
+     "name": "Email 15",
+     "text": "You already know what you need to do."
+    },
+    {
+     "id": "69bc11f8-95b9-4190-9b6c-809106fab532",
+     "name": "Email 16",
+     "text": "What is waiting costing you?"
+    },
+    {
+     "id": "fcda583c-90a7-4c5f-a3df-792cf59caafd",
+     "name": "Email 17",
+     "text": "The game that made you successful is over."
+    },
+    {
+     "id": "41d658e6-264e-4cf8-916f-f81b23e3b7fc",
+     "name": "Email 18",
+     "text": "You don't need another breakthrough."
+    },
+    {
+     "id": "eb9f328f-1a07-42ed-8f88-a6645876e23a",
+     "name": "Email 19",
+     "text": "The man who built this life cannot build the next one."
+    },
+    {
+     "id": "3a88b55b-472f-475b-9e25-a1a622b6d225",
+     "name": "Email 20",
+     "text": "What could you change in 12 weeks?"
+    },
+    {
+     "id": "43159c26-8735-4674-b664-d36e5a09f0bb",
+     "name": "Email 21",
+     "text": "I'm handing you the weapon."
+    },
+    {
+     "id": "f0c1754e-5702-4c3c-baaa-6369d91ea4a8",
+     "name": "Email 22",
+     "text": "Some men waited. These men moved."
+    }
+   ]
+  },
+  {
+   "id": "6980f421-2814-400d-80ba-b6e9ede3fe1b",
+   "name": "0.2 - WC6 Emails 20-22 One-Off",
+   "label": "promote",
+   "channel": "email",
+   "steps": [
+    {
+     "id": "98f69d28-53e7-4a79-9a74-10c3e6d71636",
+     "name": "Email 20",
+     "text": "What could you change in 12 weeks?"
+    },
+    {
+     "id": "aceeded6-8ae1-45ff-8e78-005f56dd5d97",
+     "name": "Email 21",
+     "text": "I'm handing you the weapon."
+    },
+    {
+     "id": "ece4f1ed-ee89-42ea-8912-8e62c8a1a0a0",
+     "name": "Email 22",
+     "text": "Some men waited. These men moved."
+    }
+   ]
+  },
+  {
+   "id": "87a56fa4-9b20-4e25-82cb-24d353027e89",
+   "name": "1.03 - WC6 Ticket Holder Emails (Nov 7-12)",
+   "label": "post_ticket",
+   "channel": "email",
+   "steps": [
+    {
+     "id": "dca97d82-4621-4362-9870-2bdfe7a7c36b",
+     "name": "Nov 7",
+     "text": "(WC6) - The Men Who Built This..."
+    },
+    {
+     "id": "d574e187-469d-407f-8f41-a05e5166832c",
+     "name": "Nov 9",
+     "text": "(WC6) - You Cannot Prepare for Every Storm…"
+    },
+    {
+     "id": "270a055d-8383-441c-8345-65b65ca41113",
+     "name": "Nov 10",
+     "text": "(WC6) - This Is No Longer About Me…"
+    },
+    {
+     "id": "be1e839e-e727-4850-8369-108075e5d439",
+     "name": "Nov 11",
+     "text": "(WC6) - The Most Dangerous Lie a Man Tells…"
+    },
+    {
+     "id": "e83900b8-dfa2-4aaf-b74d-e948ecb6a493",
+     "name": "Nov 12",
+     "text": "(WC6) - Your Results Are Telling a Story…"
+    }
+   ],
+   "no_links": true,
+   "_no_links": "Only link is unsubscribe, so click rate is shown as 'no links'."
+  },
+  {
+   "id": "cae5e444-b52b-42d7-a46e-bec7eed12866",
+   "name": "0.0 - WC6 Pre-Purchase Outbound Text",
+   "label": "promote",
+   "channel": "sms",
+   "steps": [
+    {
+     "id": "a6652b9c-2e38-43c3-834e-6f09cb3ce902",
+     "name": "Day 1",
+     "link": "wc-day1",
+     "text": "There is one final piece of this story I haven't told you."
+    },
+    {
+     "id": "e0e6d69d-a91b-4205-872f-1ac910e4332f",
+     "name": "Day 2",
+     "link": "wc-day2",
+     "text": "I didn't spend 14 years building Warrior to talk about the good old da"
+    },
+    {
+     "id": "ac76641e-49ae-42c3-af9c-ab7e80cd2188",
+     "name": "Day 3",
+     "link": "wc-day3",
+     "text": "The most powerful version of Warrior has never been taught publicly."
+    },
+    {
+     "id": "4d8707c2-1603-4d59-a50a-5362ce9b8337",
+     "name": "Day 4",
+     "link": "wc-day4",
+     "text": "The Code was never the destination. After 14 years I see what I missed"
+    },
+    {
+     "id": "fb8db4bf-13cf-478f-814f-a71dc7eade96",
+     "name": "Day 5",
+     "link": "wc-day5",
+     "text": "Most men never win their Impossible Game. They never built one they ca"
+    },
+    {
+     "id": "32197364-02c6-4ae7-a7f3-fe3b2144ae94",
+     "name": "Day 6",
+     "link": "wc-day6",
+     "text": "What I've taught in private for 18 months, most of Warrior hasn't seen"
+    },
+    {
+     "id": "25382396-797b-49b8-ae6b-54ecef52017d",
+     "name": "Day 7",
+     "link": "wc-day7",
+     "text": "You don't need another breakthrough. You need a game. Here's the diffe"
+    },
+    {
+     "id": "d45ffb83-b3d8-49af-bc59-0dcc4b1e116e",
+     "name": "Day 8",
+     "link": "wc-day8",
+     "text": "Another AI tool? I get it. Read why this one is different:"
+    },
+    {
+     "id": "452f8e88-b071-45d6-8d64-32887d670b2a",
+     "name": "Day 9",
+     "link": "wc-day9",
+     "text": "What if your Stack could talk back? Read what I built:"
+    },
+    {
+     "id": "cd09bdb4-1612-49a6-9192-e825882a8b15",
+     "name": "Day 10",
+     "link": "wc-day10",
+     "text": "Your WarriorCon experience begins the moment you register. Read how:"
+    },
+    {
+     "id": "b1dacc39-1ca6-43ce-b8fc-a25d446c482d",
+     "name": "Day 11",
+     "link": "wc-day11",
+     "text": "The problem was never a lack of tools. Read what I found:"
+    },
+    {
+     "id": "097d6173-9f93-4e6a-af33-c9bebbeb7025",
+     "name": "Day 12",
+     "link": "wc-day12",
+     "text": "I don't want to give you another experience. I want to help you build"
+    },
+    {
+     "id": "c2871698-6555-4564-bf14-80e058cc9b8a",
+     "name": "Day 13",
+     "link": "wc-day13",
+     "text": "I became a prisoner of the movement I built to set men free."
+    },
+    {
+     "id": "710f1f07-5a6e-4abd-95e2-1b129d9ef3ff",
+     "name": "Day 14",
+     "link": "wc-day14",
+     "text": "Thank you for 14 years. Here's my final invitation to the brotherhood:"
+    }
+   ]
+  },
+  {
+   "id": "9113e15e-11ed-4cc4-913d-641d92cd8d30",
+   "name": "0.1 - WC6 November Outbound Text",
+   "label": "promote",
+   "channel": "sms",
+   "steps": [
+    {
+     "id": "920c8911-530f-4dc0-9abd-d75434325f2c",
+     "name": "SMS 1",
+     "link": "wc-day15",
+     "text": "There's a decision you've been avoiding. And you already know what it"
+    },
+    {
+     "id": "21f9c6f6-be41-49ed-b67f-eac803fae4d8",
+     "name": "SMS 2",
+     "link": "wc-day16",
+     "text": "Most men calculate the cost of deciding. Few calculate the cost of doi"
+    },
+    {
+     "id": "529a5e16-e164-4fe1-9433-92e709a443e7",
+     "name": "SMS 3",
+     "link": "wc-day17",
+     "text": "You keep trying to win a new game with an old strategy. Read why:"
+    },
+    {
+     "id": "f99f96f7-7b02-4dc7-9ff5-ebc7d048c970",
+     "name": "SMS 4",
+     "link": "wc-day18",
+     "text": "Insight without execution becomes another form of avoidance. Read it:"
+    },
+    {
+     "id": "458cf238-f25a-4b6b-94cb-5609fd2a9b7c",
+     "name": "SMS 5",
+     "link": "wc-day19",
+     "text": "Who must you become to live the life you say you want? Read it:"
+    },
+    {
+     "id": "8c08c053-2597-41df-99c5-f8efbc8d6246",
+     "name": "SMS 6",
+     "link": "wc-day20",
+     "text": "What if the next 12 weeks changed the direction of your entire life?"
+    },
+    {
+     "id": "bd3fc94b-e072-4cf7-bd22-95b14739241b",
+     "name": "SMS 7",
+     "link": "wc-day21",
+     "text": "What if the problem isn't that you don't know what to do? Read it:"
+    },
+    {
+     "id": "5a238a32-7fe6-47f0-9b92-53faa49999a0",
+     "name": "SMS 8",
+     "link": "wc-day22",
+     "text": "Some men waited. These men moved. Read their stories:"
+    }
+   ]
+  },
+  {
+   "id": "ab0e73fd-f630-4da6-8678-1c00faa50e54",
+   "name": "1.04 - WC6 Ticket Holder Text (Nov 10-12)",
+   "label": "post_ticket",
+   "channel": "sms",
+   "steps": [
+    {
+     "id": "sms-nov10",
+     "name": "SMS 1 (Nov 10)",
+     "link": "wc-day23",
+     "text": "This is no longer about me. The greatest story was never mine."
+    },
+    {
+     "id": "sms-nov11",
+     "name": "SMS 2 (Nov 11)",
+     "link": "wc-day24",
+     "text": "The most dangerous lie a man tells is the one he tells himself."
+    },
+    {
+     "id": "sms-nov12",
+     "name": "SMS 3 (Nov 12)",
+     "link": "wc-day25",
+     "text": "Your results don't care about your excuses. They are telling a story."
+    }
+   ]
+  }
+ ]
+}

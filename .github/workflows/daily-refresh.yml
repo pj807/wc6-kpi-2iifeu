@@ -1,0 +1,49 @@
+# Refreshes the dashboard numbers 3 times a day (8am, 1pm, 5pm ET), and on demand ("Run workflow" on the Actions tab).
+# GitHub schedules use UTC. EST (through Dec 4) = UTC-5, so each run starts 30 minutes before the update time.
+name: Daily refresh
+
+on:
+  schedule:
+    - cron: "30 12 * * *"   # 7:30am ET -> data by 8am
+    - cron: "30 17 * * *"   # 12:30pm ET -> data by 1pm
+    - cron: "30 21 * * *"   # 4:30pm ET -> data by 5pm
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Read-only GHL key, stored as the repo secret GHL_TOKEN. Never printed.
+      - name: Pull fresh numbers from GHL
+        env:
+          GHL_TOKEN: ${{ secrets.GHL_TOKEN }}
+        run: python3 -I scripts/pull.py
+
+      # If anything private slipped in, the run stops here and nothing is published.
+      - name: Privacy scan
+        run: python3 -I scripts/privacy_scan.py index.html data.json summary.json report.txt config.json changelog.json
+
+      # Only the three data files change. If any step above failed, this never runs, so the last good data stays live.
+      - name: Publish
+        run: |
+          git config user.name "wc6-refresh-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data.json summary.json report.txt
+          git diff --cached --quiet && { echo "No changes."; exit 0; }
+          python3 -I scripts/privacy_scan.py
+          git commit -q -m "Daily numbers $(date -u +%Y-%m-%d)"
+          git push

@@ -1,0 +1,18 @@
+[
+  {
+    "v": "1.0",
+    "date": "2026-11-11",
+    "title": "First release",
+    "items": [
+      "<b>Executive summary</b>: Headline, Win and Watch, three lines at the top.",
+      "<b>Daily report for Garrett</b> with a Copy button, updated every morning.",
+      "<b>Campaign to date</b> tiles with an All / Ticket holders / Non-ticket holders switch.",
+      "<b>Promote and Post-ticket tables</b>: sent, opens or delivered, clicks, unsubscribes or opt-outs, bounces or failed.",
+      "<b>Counts under every %</b>. Hover or tap for the full number.",
+      "<b>App &amp; add-ons</b>: Power Plan and Business Bible, take rate and revenue.",
+      "<b>Date filter</b>: Yesterday, Last 7 days, Last 30 days, Campaign to date, Custom dates.",
+      "<b>Day-by-day chart</b> and a sortable list of every email and text.",
+      "Warning colors when unsubscribes, bounces, opt-outs or failed texts run high."
+    ]
+  }
+]

@@ -1,0 +1,108 @@
+{
+ "date": "2026-11-10",
+ "as_of": "Nov 10, 3:59pm ET",
+ "yesterday": "2026-11-09",
+ "ticket_holders": {
+  "total": 137,
+  "paid": 134,
+  "comps": 3,
+  "new_yesterday": 4
+ },
+ "summary": {
+  "headline": "4 new tickets yesterday, in line with the 7-day average of 3.4/day (137 total, 22 days to go)",
+  "win": "69 of 137 ticket holders (50.4%) signed up for the Warrior App (free until Dec 4)",
+  "watch": "promote text failures 28.4% to date (22,918 texts failed), above 5%"
+ },
+ "promote": {
+  "yesterday": {
+   "email": {
+    "sent": 22691,
+    "emails": 18,
+    "whole": 1,
+    "rated": 22584,
+    "delivered": 22450,
+    "opened": 5885,
+    "clicked": 68,
+    "unsub": 12,
+    "bounced": 130,
+    "ghl_sent": 22582
+   },
+   "sms": {
+    "sent": 3613,
+    "delivered": 2961,
+    "failed": 608,
+    "optouts": 2
+   }
+  },
+  "to_date": {
+   "email": {
+    "sent": 387183,
+    "emails": 22,
+    "whole": 22,
+    "rated": 387183,
+    "delivered": 385991,
+    "opened": 122950,
+    "clicked": 1360,
+    "unsub": 477,
+    "bounced": 1738,
+    "ghl_sent": 387767
+   },
+   "sms": {
+    "sent": 80576,
+    "delivered": 57490,
+    "failed": 22918,
+    "optouts": 81
+   }
+  }
+ },
+ "post_ticket": {
+  "yesterday": {
+   "email": {
+    "sent": 112,
+    "emails": 1,
+    "whole": 1,
+    "rated": 112,
+    "delivered": 112,
+    "opened": 44,
+    "clicked": 0,
+    "unsub": 0,
+    "bounced": 0,
+    "ghl_sent": 112
+   },
+   "sms": {}
+  },
+  "to_date": {
+   "email": {
+    "sent": 342,
+    "emails": 3,
+    "whole": 3,
+    "rated": 342,
+    "delivered": 342,
+    "opened": 146,
+    "clicked": 0,
+    "unsub": 0,
+    "bounced": 0,
+    "ghl_sent": 342
+   },
+   "sms": {
+    "sent": 94,
+    "delivered": 83,
+    "failed": 11,
+    "optouts": 1
+   }
+  }
+ },
+ "upsells": {
+  "power_plan": {
+   "count": 69,
+   "price_per_month": 95,
+   "billing_start": "2026-12-04"
+  },
+  "business_bible": {
+   "count": 17,
+   "bump": 16,
+   "standalone": 1,
+   "revenue": 1875.0
+  }
+ }
+}

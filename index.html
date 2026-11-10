@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>WC6 Campaign KPIs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  @font-face{font-family:"Agency FB";src:url("https://assets.cdn.filesafe.space/BDeGaczWUBVqlvyWoI7l/media/8fcacc15-0187-44d7-819e-0a74e9eedc72.ttf") format("truetype");font-weight:700;font-display:swap}
+  :root{
+    --bg:#000; --panel:#0b0b0b; --panel2:#111; --line:rgba(255,255,255,.12);
+    --fg:#fafafa; --muted:#a3a6a5; --soft:#cfd4d2;
+    --red:#ee2b2b; --red-dark:#b81414; --good:#37ca37;
+    --head:"Agency FB","Saira Condensed",Impact,sans-serif;
+    --body:Inter,system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--fg);font-family:var(--body);-webkit-font-smoothing:antialiased}
+  body{padding-bottom:64px}
+
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+
+  /* new version bar */
+  .newver{position:sticky;top:0;z-index:60;display:flex;gap:12px;align-items:center;justify-content:center;
+      padding:9px 12px;background:#1a1a1a;border-bottom:1px solid var(--red);font-size:13px;color:var(--soft)}
+  .newver button{background:var(--red);border:0;color:#fff;padding:6px 12px;border-radius:2px;
+      font:600 11px var(--body);letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+
+  /* top bar */
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 0;border-bottom:1px solid var(--line)}
+  .logo{width:26px;height:26px}
+  .stamp{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:right}
+  .stamp strong{display:block;color:var(--fg);font-weight:600}
+  .stamp .sched{display:block;margin-top:3px;text-transform:none;letter-spacing:.02em;font-size:11px}
+
+  /* hero */
+  .hero{text-align:center;padding:56px 0 36px}
+  .eyebrow{color:var(--red);font:700 12px var(--body);letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px}
+  h1{font:700 clamp(40px,6vw,64px)/1 var(--head);text-transform:uppercase;letter-spacing:.01em}
+  h1 em{color:var(--red);font-style:normal}
+  .hero p{color:var(--muted);margin-top:14px;font-size:15px}
+
+  /* facts strip */
+  .facts{display:flex;justify-content:center;flex-wrap:wrap;gap:6px 28px;padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+         font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--soft)}
+  .facts span::before{content:"/";color:var(--red);margin-right:10px}
+
+  section{padding:56px 0 8px}
+  h2{font:700 clamp(32px,4.4vw,48px)/1 var(--head);text-transform:uppercase;margin-bottom:8px}
+  h2 em{color:var(--red);font-style:normal}
+  .sub{color:var(--muted);font-size:14px;margin-bottom:26px;max-width:640px}
+
+  /* report */
+  .report{border:1px solid var(--line);background:var(--panel);border-left:3px solid var(--red)}
+  .report pre{font:13px/1.65 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--soft);padding:22px 24px;white-space:pre-wrap;word-break:break-word}
+  .report pre b{color:var(--fg)}
+  .report .row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding:16px 24px;border-top:1px solid var(--line)}
+  .report .hint{font-size:12px;color:var(--muted)}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--red);color:#fff;border:0;border-radius:2px;
+       font:600 12px var(--body);letter-spacing:.1em;text-transform:uppercase;padding:14px 22px;cursor:pointer}
+  .btn:hover{background:var(--red-dark)}
+
+  /* toggle */
+  .seg{display:inline-flex;border:1px solid var(--line);margin-bottom:22px;flex-wrap:wrap}
+  .seg button{background:transparent;color:var(--soft);border:0;padding:11px 16px;font:600 11px var(--body);letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+  .seg button+button{border-left:1px solid var(--line)}
+  .seg button.on{background:var(--red);color:#fff}
+
+  /* headline tiles */
+  .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .tile{background:var(--bg);padding:22px 20px}
+  .tile .k{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .tile .d{font-size:12px;color:var(--muted);margin-top:4px;line-height:1.4}
+  .tile .rows{margin-top:8px}
+  .tile .rows div{display:flex;align-items:baseline;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding:6px 0}
+  .tile .rows div:first-child{border-top:0}
+  .tile .rows span{font-size:12px;color:var(--soft)}
+  .tile .rows b{font:700 30px/1 var(--head)}
+  .tile .v{font:700 44px/1.05 var(--head);margin-top:8px}
+  .tile .n{font-size:12px;color:var(--muted);margin-top:6px}
+  .tile .n.warn{color:var(--red)}
+
+  /* campaign blocks */
+  .camp{border:1px solid var(--line);margin-bottom:18px}
+  .camp header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px;padding:18px 22px;border-bottom:1px solid var(--line);background:var(--panel)}
+  .camp h3{font:700 26px/1 var(--head);text-transform:uppercase}
+  .camp h3 em{color:var(--red);font-style:normal}
+  .camp header span{font-size:12px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+  table.k{width:100%;border-collapse:collapse;font-size:14px}
+  table.k th{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;text-align:right;padding:12px 22px;border-bottom:1px solid var(--line)}
+  table.k th:first-child,table.k td:first-child{text-align:left}
+  table.k td{padding:14px 22px;border-bottom:1px solid var(--line);text-align:right;font-variant-numeric:tabular-nums;color:var(--soft)}
+  table.k tr:last-child td{border-bottom:0}
+  table.k td b{color:var(--fg);font-weight:600}
+  .ch{display:inline-block;font-size:10px;letter-spacing:.12em;font-weight:700;padding:3px 7px;border:1px solid var(--line);margin-right:8px;color:var(--fg)}
+  .per{color:var(--muted);font-size:12px;display:block;margin-top:2px}
+  .dim{color:#5d605f!important}
+  .warn{color:var(--red)!important}
+
+  /* chart */
+  .chart{border:1px solid var(--line);padding:22px;position:relative}
+  .legend{display:flex;gap:18px;flex-wrap:wrap;font-size:12px;color:var(--soft);margin-bottom:14px}
+  .legend i{display:inline-block;width:10px;height:10px;margin-right:6px;vertical-align:-1px}
+  svg text{font-family:var(--body)}
+  .ctip{position:absolute;z-index:5;pointer-events:none;background:var(--fg);color:#000;font:500 12px/1.45 var(--body);padding:8px 10px;border-radius:2px;white-space:nowrap}
+  .ctip b{font-weight:700}
+
+  /* message table */
+  .msgs{border:1px solid var(--line);overflow-x:auto}
+  .msgs table{width:100%;border-collapse:collapse;font-size:13px;min-width:760px}
+  .msgs th{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);white-space:nowrap;cursor:pointer}
+  .msgs th:hover{color:var(--fg)}
+  .msgs th .arr{color:var(--red)}
+  .msgs td{padding:13px 14px;border-bottom:1px solid var(--line);color:var(--soft);white-space:nowrap}
+  .msgs td.s{white-space:normal;color:var(--fg);min-width:220px}
+  .msgs tr.best td{background:rgba(238,43,43,.08)}
+  .tag{font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;margin-left:6px}
+  .tag.best{background:var(--red);color:#fff}
+  .tag.flag{border:1px solid var(--red);color:var(--red)}
+
+  /* date filter */
+  .filter{position:sticky;top:0;z-index:10;background:rgba(0,0,0,.94);backdrop-filter:blur(6px);
+          border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:56px;padding:14px 0}
+  .filter .in{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px}
+  .chips{display:inline-flex;border:1px solid var(--line);flex-wrap:wrap}
+  .chips button{background:transparent;color:var(--soft);border:0;padding:10px 13px;font:600 11px var(--body);letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+  .chips button+button{border-left:1px solid var(--line)}
+  .chips button.on{background:var(--red);color:#fff}
+  .dates{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .dates label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .dates input{background:#0b0b0b;color:var(--fg);border:1px solid var(--line);border-radius:2px;padding:9px 10px;
+               font:500 13px var(--body);color-scheme:dark;min-width:150px}
+  .dates input:focus{outline:1px solid var(--red);border-color:var(--red)}
+  .empty td{color:var(--muted)!important;text-align:center!important;padding:22px!important}
+  .tipc{position:relative;display:inline-block;cursor:help;outline:none}
+  .tipc .per{text-align:inherit}
+  .tipc::after{content:attr(data-tip);position:absolute;right:0;bottom:calc(100% + 8px);z-index:30;width:max-content;max-width:240px;
+    background:var(--fg);color:#000;font:500 12px/1.4 var(--body);letter-spacing:0;text-transform:none;text-align:left;
+    padding:8px 10px;border-radius:2px;opacity:0;transform:translateY(4px);pointer-events:none;transition:.15s;white-space:normal}
+  .tipc:hover::after,.tipc:focus::after,.tipc.show::after{opacity:1;transform:none}
+  /* version + what's new */
+  .barr{display:flex;align-items:center;gap:14px}
+  .ver{position:relative;background:transparent;border:1px solid var(--line);color:var(--soft);border-radius:2px;padding:7px 10px;
+       font:600 11px var(--body);letter-spacing:.08em;cursor:pointer}
+  .ver:hover{border-color:var(--fg);color:var(--fg)}
+  .ver .dot{position:absolute;top:-4px;right:-4px;width:9px;height:9px;border-radius:50%;background:var(--red);display:none}
+  .ver .dot.on{display:block}
+  footer a{color:var(--soft);text-decoration:none;border-bottom:1px solid var(--line)}
+  footer a:hover{color:var(--fg)}
+  .wn{position:fixed;inset:0;z-index:50}
+  .wn-back{position:absolute;inset:0;background:rgba(0,0,0,.7)}
+  .wn-panel{position:absolute;top:0;right:0;bottom:0;width:min(440px,100%);background:#0b0b0b;border-left:1px solid var(--line);
+            padding:28px 26px;overflow-y:auto}
+  .wn-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:22px}
+  .wn-x{background:transparent;border:1px solid var(--line);color:var(--fg);width:34px;height:34px;cursor:pointer;font-size:14px}
+  .rel{border-top:1px solid var(--line);padding:18px 0}
+  .rel h4{font:700 22px/1 var(--head);text-transform:uppercase;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .rel h4 .latest{font:700 10px var(--body);letter-spacing:.12em;background:var(--red);color:#fff;padding:3px 7px}
+  .rel .when{font-size:12px;color:var(--muted);margin:6px 0 10px}
+  .rel ul{list-style:none}
+  .rel li{font-size:14px;color:var(--soft);line-height:1.5;padding:4px 0 4px 18px;position:relative}
+  .rel li::before{content:"/";color:var(--red);position:absolute;left:0}
+  .rel li b{color:var(--fg);font-weight:600}
+  /* update popup */
+  .upd{position:fixed;right:24px;bottom:24px;z-index:45;width:360px;max-width:calc(100% - 32px);background:#0b0b0b;
+       border:1px solid var(--line);border-top:3px solid var(--red);padding:20px 20px 18px;box-shadow:0 20px 60px rgba(0,0,0,.6);
+       animation:updIn .35s ease-out}
+  @keyframes updIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+  .upd-top{display:flex;align-items:center;gap:10px;font:600 11px var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .upd-tag{background:var(--red);color:#fff;padding:3px 7px;font-weight:700}
+  .upd-title{font:700 24px/1.05 var(--head);text-transform:uppercase;margin:10px 0 8px}
+  .upd ul{list-style:none;margin-bottom:16px}
+  .upd li{font-size:13px;color:var(--soft);line-height:1.45;padding:3px 0 3px 16px;position:relative}
+  .upd li::before{content:"/";color:var(--red);position:absolute;left:0}
+  .upd li b{color:var(--fg);font-weight:600}
+  .upd-btns{display:flex;gap:10px;align-items:center}
+  .upd-btns .btn{padding:12px 16px}
+  .upd-ok{background:transparent;border:1px solid var(--line);color:var(--soft);padding:12px 16px;border-radius:2px;
+          font:600 12px var(--body);letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+  .upd-ok:hover{color:var(--fg);border-color:var(--fg)}
+  @media (max-width:600px){.upd{left:16px;right:16px;bottom:16px;width:auto}}
+  /* executive summary */
+  .ex-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .ex{background:var(--bg);padding:24px 22px;border-top:3px solid var(--fg)}
+  .ex.win{border-top-color:var(--good)}
+  .ex.watch{border-top-color:var(--red)}
+  .ex-k{display:flex;align-items:center;gap:8px;font:700 11px var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--soft)}
+  .ex-ic{display:inline-grid;place-items:center;width:20px;height:20px;border:1px solid currentColor;font-size:11px}
+  .win .ex-k{color:var(--good)} .watch .ex-k{color:var(--red)}
+  .ex-big{font:700 30px/1.05 var(--head);text-transform:uppercase;margin:14px 0 10px}
+  .ex-sub{font-size:14px;color:var(--soft);line-height:1.5}
+  .ex-cmp{font-size:12px;color:var(--muted);margin-top:10px}
+  /* collapsible report */
+  .rhead{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 24px}
+  .rtoggle{display:flex;align-items:center;gap:14px;background:transparent;border:0;color:var(--fg);cursor:pointer;text-align:left;padding:4px 0;flex:1}
+  .rtoggle .chev{display:inline-grid;place-items:center;width:30px;height:30px;border:1px solid var(--line);font:500 18px/1 var(--body);
+                 color:var(--soft);transition:transform .2s;flex:none}
+  .rtoggle[aria-expanded="true"] .chev{border-color:var(--red);color:var(--red)}
+  .rt-title{display:block;font:700 20px/1.1 var(--head);text-transform:uppercase}
+  .rt-sub{display:block;font-size:12px;color:var(--muted);margin-top:3px}
+  .rtoggle:hover .rt-title{color:var(--red)}
+  .rbody{border-top:1px solid var(--line)}
+  .note{font-size:12px;color:var(--muted);margin-top:14px;line-height:1.6}
+  footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+  .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);opacity:0;background:var(--fg);color:#000;
+         font:600 12px var(--body);letter-spacing:.08em;text-transform:uppercase;padding:12px 18px;transition:.2s;pointer-events:none}
+  .toast.show{opacity:1;transform:translateX(-50%)}
+  [hidden]{display:none!important}
+
+  /* ---------- phone ---------- */
+  @media (max-width:640px){
+    .wrap{padding:0 18px}
+    h1{font-size:40px}
+    h2{font-size:32px}
+    .rhead .btn{width:100%;justify-content:center}
+    .seg{display:flex}.seg button{flex:1;padding:11px 6px;font-size:10px}
+    .tiles{grid-template-columns:1fr 1fr}
+    .tiles.up .tile:last-child,.tiles .tile.solo{grid-column:1/-1}
+    .tile .v{font-size:34px}
+    table.k thead{display:none}
+    table.k tr{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px 10px;padding:12px 18px;border-bottom:1px solid var(--line)}
+    table.k tr:last-child{border-bottom:0}
+    table.k td{border:0;padding:4px 0;text-align:left}
+    table.k td:first-child{grid-column:1/-1;margin-bottom:4px}
+    table.k td[data-l]::before{content:attr(data-l);display:block;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+    .chart{padding:16px}
+    .filter{position:static}
+    .filter .in{display:block}
+    .chips{display:grid;grid-template-columns:1fr 1fr}.chips button{padding:11px 4px;font-size:10px;border-left:0!important;border-top:1px solid var(--line)}
+    .chips button:nth-child(-n+2){border-top:0}.chips button:nth-child(even){border-left:1px solid var(--line)!important}
+    .chips button:last-child{grid-column:1/-1}
+    .dates{margin-top:12px}
+    .dates input{min-width:0;flex:1}
+    .tipc::after{left:0;right:auto;max-width:190px}
+    .ex-grid{grid-template-columns:1fr}
+    .ex-big{font-size:26px}
+    .rhead{flex-direction:column;align-items:stretch}
+  }
+</style>
+</head>
+<body>
+
+<div class="newver" id="newVer" hidden><span id="newVerMsg"></span> <button id="newVerBtn">Show</button></div>
+
+<div class="wrap">
+
+  <div class="bar">
+    <svg class="logo" viewBox="0 0 26 26" aria-label="WarriorCon 6"><path d="M13 1 3 5v7c0 6.2 4.2 10.9 10 13 5.8-2.1 10-6.8 10-13V5L13 1z" fill="none" stroke="#fafafa" stroke-width="1.8"/><path d="M8 9h10M8 13h10M8 17h10" stroke="#fafafa" stroke-width="1.8"/></svg>
+    <div class="barr">
+      <div class="stamp">Last updated<strong id="stamp">Loading…</strong><span class="sched" id="sched"></span></div>
+      <button class="ver" id="verBtn" aria-label="What's new in this version"><span id="verNum">v1.0</span><i class="dot" id="verDot"></i></button>
+    </div>
+  </div>
+
+  <div class="hero">
+    <div class="eyebrow">WarriorCon 6 · Campaign KPIs</div>
+    <h1>The Numbers. <em>Every Day.</em></h1>
+    <p>Email and text performance for ticket holders and non-ticket holders.</p>
+  </div>
+
+  <div class="facts" id="facts"></div>
+
+  <!-- EXECUTIVE SUMMARY -->
+  <section class="exec">
+    <div class="eyebrow">Executive summary</div>
+    <h2>The <em>so what.</em></h2>
+    <p class="sub">Three lines, written by fixed rules from the latest data. Read this first.</p>
+    <div class="ex-grid">
+      <div class="ex">
+        <div class="ex-k"><span class="ex-ic">↗</span>Headline</div>
+        <div class="ex-big" id="exHB"></div>
+        <div class="ex-sub" id="exHS"></div>
+        <div class="ex-cmp" id="exHC"></div>
+        <div class="ex-cmp" id="exToday"></div>
+      </div>
+      <div class="ex win">
+        <div class="ex-k"><span class="ex-ic">✓</span>Win</div>
+        <div class="ex-big" id="exWB"></div>
+        <div class="ex-sub" id="exWS"></div>
+      </div>
+      <div class="ex watch">
+        <div class="ex-k"><span class="ex-ic">!</span>Watch</div>
+        <div class="ex-big" id="exAB"></div>
+        <div class="ex-sub" id="exAS"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DAILY REPORT -->
+  <section>
+    <div class="eyebrow">Copy &amp; send</div>
+    <h2>Daily report <em>for Garrett.</em></h2>
+    <p class="sub">Updates itself every morning. Tap the button, paste into Slack or text.</p>
+    <div class="report">
+      <div class="rhead">
+        <button class="rtoggle" id="rToggle" aria-expanded="false" aria-controls="rBody">
+          <span class="chev" aria-hidden="true">+</span>
+          <span><span class="rt-title">Today's report</span><span class="rt-sub" id="rSub"></span></span>
+        </button>
+        <button class="btn" id="copyBtn">Copy report <span aria-hidden="true">→</span></button>
+      </div>
+      <div class="rbody" id="rBody" hidden>
+<pre id="reportText"></pre>
+      <div class="row">
+        <span class="hint" id="rHint"></span>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HEADLINE TILES -->
+  <section>
+    <div class="eyebrow">At a glance</div>
+    <h2>Campaign <em>to date.</em></h2>
+    <p class="sub" id="tilesIntro">Switch audience to see each side on its own.</p>
+    <div class="seg" id="seg">
+      <button class="on" data-a="all">All</button>
+      <button data-a="th">Ticket holders</button>
+      <button data-a="nth">Non-ticket holders</button>
+    </div>
+    <div class="tiles" id="tiles"></div>
+  </section>
+
+  <!-- DATE FILTER (sticky) -->
+  <div class="filter" id="filter">
+    <div class="in">
+      <div class="chips" id="chips">
+        <button data-p="yday" class="on">Yesterday</button>
+        <button data-p="7">Last 7 days</button>
+        <button data-p="30">Last 30 days</button>
+        <button data-p="all">Campaign to date</button>
+        <button data-p="custom" id="customBtn">Custom dates</button>
+      </div>
+      <div class="dates" id="dates" hidden>
+        <label for="dFrom">From</label><input type="date" id="dFrom">
+        <label for="dTo">To</label><input type="date" id="dTo">
+      </div>
+    </div>
+  </div>
+
+  <!-- BY CAMPAIGN -->
+  <section>
+    <div class="eyebrow">By campaign</div>
+    <h2><span class="rlh">Yesterday</span> <em>vs. to date.</em></h2>
+    <p class="sub">Opens on yesterday's sends are still coming in, so the most recent days' rates run a little low.</p>
+
+    <div class="camp" data-for="all nth">
+      <header><h3>Promote <em>campaign</em></h3><span>Non-ticket holders</span></header>
+      <table class="k">
+        <thead><tr><th></th><th>Sent</th><th>Open / Delivered</th><th>Click</th><th>Unsub / Opt-out</th><th>Bounce / Failed</th></tr></thead>
+        <tbody id="tPromote"></tbody>
+      </table>
+    </div>
+
+    <div class="camp" data-for="all th">
+      <header><h3>Post-ticket <em>seduction</em></h3><span>Ticket holders</span></header>
+      <table class="k">
+        <thead><tr><th></th><th>Sent</th><th>Open / Delivered</th><th>Click</th><th>Unsub / Opt-out</th><th>Bounce / Failed</th></tr></thead>
+        <tbody id="tPost"></tbody>
+      </table>
+    </div>
+    <p class="note" id="watchNote"></p>
+  </section>
+
+  <!-- UPSELLS -->
+  <section data-for="all th">
+    <div class="eyebrow">Upsells</div>
+    <h2>App &amp; <em>add-ons.</em></h2>
+    <p class="sub">How many ticket buyers also took the Warrior App (Power Plan) or the Business Bible, and what it brought in.</p>
+    <div class="tiles up" id="upTiles"></div>
+    <div class="camp" id="upT" style="margin-top:18px">
+      <table class="k">
+        <thead><tr><th></th><th class="rl">Yesterday</th><th>To date</th><th>Take rate</th><th>Revenue</th></tr></thead>
+        <tbody id="upBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- DAILY CHART -->
+  <section>
+    <div class="eyebrow">Day by day</div>
+    <h2>Sends, clicks <em>&amp; sales.</em></h2>
+    <p class="sub">Each day's email + text sends, clicks and tickets bought.</p>
+    <div class="chart" id="chartBox">
+      <div class="legend"><span><i style="background:#3a3d3c"></i>Sends</span><span><i style="background:#cfd4d2"></i>Email clicks</span><span><i style="background:var(--red)"></i>Tickets bought</span></div>
+      <svg id="chart" viewBox="0 0 1000 260" width="100%" role="img" aria-label="Daily sends, email clicks and tickets bought"></svg>
+      <div class="ctip" id="ctip" hidden></div>
+    </div>
+    <p class="note">Each bar type is scaled to its own busiest day. Hover or tap a day for the numbers.</p>
+  </section>
+
+  <!-- MESSAGE TABLE -->
+  <section>
+    <div class="eyebrow">Every send</div>
+    <h2>Message <em>by message.</em></h2>
+    <p class="sub">Tap a column to sort. Best performer (100+ sends) is highlighted.</p>
+    <div class="msgs">
+      <table id="msgT">
+        <thead><tr id="msgHead"></tr></thead>
+        <tbody id="msgBody"></tbody>
+      </table>
+    </div>
+    <p class="note" id="msgNote">Opens are inflated by Apple Mail privacy, so clicks are the more reliable number. Texts have no open rate.</p>
+  </section>
+
+  <footer><span>WarriorCon 6 · Internal campaign report</span><span><a href="#" id="verLink">Version <span id="verNum2">1.0</span> · What's new</a> · Totals only, no contact details</span></footer>
+</div>
+
+<div class="toast" id="toast">Report copied</div>
+
+<!-- UPDATE POPUP (shows once per new version) -->
+<div class="upd" id="upd" hidden role="status" aria-live="polite">
+  <div class="upd-top"><span class="upd-tag">Updated</span><span id="updVer"></span></div>
+  <div class="upd-title" id="updTitle"></div>
+  <ul id="updItems"></ul>
+  <div class="upd-btns">
+    <button class="btn" id="updMore">See what's new <span aria-hidden="true">→</span></button>
+    <button class="upd-ok" id="updOk">Got it</button>
+  </div>
+</div>
+
+<!-- WHAT'S NEW panel -->
+<div class="wn" id="wn" hidden>
+  <div class="wn-back" data-close></div>
+  <aside class="wn-panel" role="dialog" aria-label="What's new">
+    <div class="wn-head">
+      <div><div class="eyebrow" style="margin:0 0 6px">Change log</div><h2 style="margin:0">What's <em>new.</em></h2></div>
+      <button class="wn-x" data-close aria-label="Close">✕</button>
+    </div>
+    <div id="wnList"></div>
+    <p class="note" style="margin-top:22px">Daily data refreshes don't change the version. The version goes up only when the page itself changes: new features (1.1, 1.2…) or fixes (1.0.1).</p>
+  </aside>
+</div>
+
+<script>
+// The version of THIS page. Bump it (and changelog.json) whenever the page changes; daily data refreshes never change it.
+const PAGE_VERSION = '1.0';
+
+const $ = id => document.getElementById(id);
+const N = n => n == null ? '—' : Math.round(n).toLocaleString('en-US');
+const P = (a, b) => b ? 100 * a / b : null;
+const PF = v => v == null ? '—' : v.toFixed(1) + '%';
+const $$ = n => '$' + Math.round(n).toLocaleString('en-US');
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fmtD = d => new Date(d + 'T12:00:00').toLocaleDateString('en-US', {month: 'short', day: 'numeric'});
+const addDays = (d, n) => { const x = new Date(d + 'T12:00:00Z'); x.setUTCDate(x.getUTCDate() + n); return x.toISOString().slice(0, 10); };
+let D, TH, range;
+
+// ---------- toast / copy / collapsible report ----------
+function flash(t) { const toast = $('toast'); toast.textContent = t; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 1600); }
+$('copyBtn').onclick = async () => {
+  try { await navigator.clipboard.writeText(D.report); flash('Report copied'); }
+  catch (e) {
+    if ($('rBody').hidden) $('rToggle').click();
+    const r = document.createRange(); r.selectNodeContents($('reportText'));
+    const s = getSelection(); s.removeAllRanges(); s.addRange(r); flash('Selected — press Copy');
+  }
+};
+$('rToggle').onclick = () => {
+  const t = $('rToggle'), open = t.getAttribute('aria-expanded') !== 'true';
+  t.setAttribute('aria-expanded', open); $('rBody').hidden = !open; t.querySelector('.chev').textContent = open ? '−' : '+';
+  $('rSub').textContent = 'Numbers as of ' + (D.report_as_of || D.as_of) + ' · ' + (open ? 'tap to hide' : 'tap to show');
+};
+
+// ---------- audience switch ----------
+document.querySelectorAll('#seg button').forEach(b => b.onclick = () => {
+  document.querySelectorAll('#seg button').forEach(x => x.classList.toggle('on', x === b));
+  const a = b.dataset.a;
+  document.querySelectorAll('[data-for]').forEach(el => el.hidden = !el.dataset.for.split(' ').includes(a));
+  fixSolo();
+});
+function fixSolo() {   // phone: a lone last tile spans the full row
+  const vis = [...document.querySelectorAll('#tiles .tile')].filter(t => !t.hidden);
+  vis.forEach((t, i) => t.classList.toggle('solo', vis.length % 2 === 1 && i === vis.length - 1));
+}
+
+// tap a percentage to show its count sentence (phones)
+document.addEventListener('click', e => {
+  const t = e.target.closest('.tipc');
+  document.querySelectorAll('.tipc.show').forEach(x => { if (x !== t) x.classList.remove('show'); });
+  if (t) t.classList.toggle('show');
+});
+
+// ---------- cells ----------
+function tip(big, per, sentence, warn) {
+  return `<span class="tipc" tabindex="0" data-tip="${esc(sentence)}"><b class="${warn ? 'warn' : ''}">${big}</b><span class="per">${per}</span></span>`;
+}
+const dimCell = (l, t) => `<td data-l="${l}" class="dim">${t}</td>`;
+
+// ---------- range totals (same rules as the data script) ----------
+// Email opens/clicks/unsubs/bounces come from GHL per email, not per day, so in a date range
+// they count only for emails sent (95%+) inside it. Sends, texts delivered/failed/opt-outs are true per-day counts.
+function totals(camp, ch, r) {
+  const t = {sent: 0, rated: 0, delivered: 0, opened: 0, clicked: 0, unsub: 0, bounced: 0, ghl_sent: 0, failed: 0, optouts: 0, emails: 0, whole: 0};
+  if (!r || r.preset === 'all') return Object.assign(t, D.todate[camp][ch]);
+  if (r.preset === 'yday' && D.yesterday_totals) return Object.assign(t, D.yesterday_totals[camp][ch]);   // set at the 8am run
+  for (const m of D.messages) {
+    if (m.camp !== camp || m.ch !== ch) continue;
+    let inR = 0, tot = 0;
+    for (const [d, v] of Object.entries(m.days)) { tot += v[0]; if (d >= r.from && d <= r.to) inR += v[0]; }
+    if (!inR) continue;
+    t.sent += inR;
+    if (ch === 'email') {
+      t.emails++;
+      if (inR / tot >= D.email_whole_send_share) { t.whole++; t.rated += inR; ['delivered', 'opened', 'clicked', 'unsub', 'bounced', 'ghl_sent'].forEach(k => t[k] += m[k]); }
+    } else {
+      for (const [d, v] of Object.entries(m.days)) if (d >= r.from && d <= r.to) { t.delivered += v[2]; t.failed += v[3]; t.optouts += v[4]; }
+    }
+  }
+  return t;
+}
+const noLinks = camp => D.messages.filter(m => m.camp === camp && m.ch === 'email' && m.sent).every(m => m.no_links);
+
+function emailCells(t, camp) {
+  if (!t.sent) return `<td data-l="Sent" class="dim">none sent</td>` + ['Open', 'Click', 'Unsub', 'Bounce'].map(l => dimCell(l, '—')).join('');
+  let out = `<td data-l="Sent"><b>${N(t.sent)}</b></td>`;
+  if (!t.rated) {
+    const why = 'GHL reports opens, clicks, unsubscribes and bounces per email, not per day. No email was sent fully inside these dates.';
+    return out + ['Open', 'Click', 'Unsub', 'Bounce'].map(l => `<td data-l="${l}">${tip('<span class="dim">totals only</span>', '', why)}</td>`).join('');
+  }
+  const part = t.rated < t.sent ? ` · Based on the ${t.whole} of ${t.emails} emails sent fully inside these dates (${N(t.rated)} of ${N(t.sent)} sends).` : '';
+  const o = P(t.opened, t.delivered), c = P(t.clicked, t.delivered), u = P(t.unsub, t.delivered), b = P(t.bounced, t.ghl_sent);
+  out += `<td data-l="Open">${tip(PF(o), N(t.opened) + ' opened', `${N(t.opened)} of ${N(t.delivered)} delivered emails opened${part}`)}</td>`;
+  out += noLinks(camp)
+    ? `<td data-l="Click">${tip('<span class="dim">no links</span>', '', 'These emails have no links except unsubscribe, so there is nothing to click.')}</td>`
+    : `<td data-l="Click">${tip(PF(c), N(t.clicked) + ' clicked', `${N(t.clicked)} of ${N(t.delivered)} delivered emails clicked${part}`)}</td>`;
+  out += `<td data-l="Unsub">${tip(PF(u), N(t.unsub) + ' unsubscribed', `${N(t.unsub)} of ${N(t.delivered)} delivered emails unsubscribed${part}`, u > TH.email_unsub_pct)}</td>`;
+  out += `<td data-l="Bounce">${tip(PF(b), N(t.bounced) + ' bounced', `${N(t.bounced)} of ${N(t.ghl_sent)} emails bounced${part}`, b > TH.email_bounce_pct)}</td>`;
+  return out;
+}
+function smsCells(t) {
+  if (!t.sent) return `<td data-l="Sent" class="dim">none sent</td>` + ['Delivered', 'Click', 'Opt-out', 'Failed'].map(l => dimCell(l, '—')).join('');
+  const dl = P(t.delivered, t.sent), fl = P(t.failed, t.sent), op = P(t.optouts, t.delivered), other = t.sent - t.delivered - t.failed;
+  let out = `<td data-l="Sent"><b>${N(t.sent)}</b></td>`;
+  out += `<td data-l="Delivered">${tip(PF(dl), N(t.delivered) + ' delivered', `${N(t.delivered)} of ${N(t.sent)} texts delivered · ${N(t.sent - t.delivered)} not delivered`, fl > TH.sms_failed_pct)}</td>`;
+  out += `<td data-l="Click">${tip('<span class="dim">pending</span>', '', "GHL doesn't share click counts for text links yet.")}</td>`;
+  out += `<td data-l="Opt-out">${tip(PF(op), N(t.optouts) + ' opted out', `${N(t.optouts)} of ${N(t.delivered)} delivered texts got a STOP reply within 24 hours`, op > TH.sms_optout_pct)}</td>`;
+  out += `<td data-l="Failed">${tip(PF(fl), N(t.failed) + ' failed', `${N(t.failed)} of ${N(t.sent)} texts failed or were undelivered` + (other > 0 ? ` · ${N(other)} still waiting for a delivery receipt` : ''), fl > TH.sms_failed_pct)}</td>`;
+  return out;
+}
+function campRows(camp, short) {
+  const rl = short === 'Campaign' ? 'Selected range' : short;
+  const eR = totals(camp, 'email', range), eT = totals(camp, 'email'), sR = totals(camp, 'sms', range), sT = totals(camp, 'sms');
+  return `<tr><td><span class="ch">EMAIL</span><span class="rl">${rl}</span></td>${emailCells(eR, camp)}</tr>`
+       + `<tr><td><span class="ch">EMAIL</span>To date</td>${emailCells(eT, camp)}</tr>`
+       + `<tr><td><span class="ch">SMS</span><span class="rl">${rl}</span></td>${smsCells(sR)}</tr>`
+       + `<tr><td><span class="ch">SMS</span>To date</td>${smsCells(sT)}</tr>`;
+}
+
+// ---------- sections that don't follow the date filter ----------
+const etTime = iso => new Date(iso).toLocaleString('en-US', {timeZone: 'America/New_York', hour: 'numeric', minute: '2-digit'}).replace(':00', '').replace(' AM', 'am').replace(' PM', 'pm') + ' ET';
+function schedule() {   // "Updates 8am, 1pm & 5pm ET · Next: 1pm ET", using the viewer's clock in Eastern time
+  const slots = D.update_times_et || ['08:00', '13:00', '17:00'];
+  const lab = hm => { let [h, m] = hm.split(':').map(Number); const ap = h >= 12 ? 'pm' : 'am'; h = h % 12 || 12; return h + (m ? ':' + String(m).padStart(2, '0') : '') + ap; };
+  const parts = new Intl.DateTimeFormat('en-US', {timeZone: 'America/New_York', hour: '2-digit', minute: '2-digit', hourCycle: 'h23'}).formatToParts(new Date());
+  const now = parts.find(p => p.type === 'hour').value + ':' + parts.find(p => p.type === 'minute').value;
+  const next = slots.find(s => s > now);
+  const list = slots.map(lab);
+  $('sched').textContent = `Updates ${list.slice(0, -1).join(', ')} & ${list[list.length - 1]} ET · Next: ${next ? lab(next) + ' ET' : lab(slots[0]) + ' ET tomorrow'}`;
+}
+function renderStatic() {
+  const gen = new Date(D.generated_at);
+  $('stamp').textContent = gen.toLocaleString('en-US', {timeZone: 'America/New_York', month: 'short', day: 'numeric'})
+    + ' · ' + gen.toLocaleString('en-US', {timeZone: 'America/New_York', hour: 'numeric', minute: '2-digit'}) + ' ET';
+  schedule();
+  const h = D.holders, s = D.sales, up = D.upsells;
+  const bbRev = up.business_bible.revenue;
+  $('facts').innerHTML = `<span>${N(h.total)} ticket holders</span><span>${$$(s.revenue + bbRev)} total sales (${$$(s.revenue)} tickets + ${$$(bbRev)} Business Bible)</span><span>${D.days_to_go} days to go</span>`;
+
+  const S = D.summary;
+  $('exHB').textContent = S.headline.big; $('exHS').textContent = S.headline.sub; $('exHC').textContent = S.headline.cmp;
+  $('exWB').textContent = S.win.big; $('exWS').textContent = S.win.sub;
+  $('exAB').textContent = S.watch.big; $('exAS').textContent = S.watch.sub;
+  const T0 = D.today_so_far;
+  if (T0) $('exToday').textContent = `Today so far (as of ${etTime(D.generated_at)}): ${N(T0.tickets)} ticket${T0.tickets === 1 ? '' : 's'} bought · ${N(T0.emails)} emails · ${N(T0.texts)} texts sent`;
+
+  $('reportText').innerHTML = D.report.split('\n').map(l => {
+    const e = esc(l);
+    if (/^(WarriorCon 6 —|SUMMARY$|PROMOTE |POST-TICKET |UPSELLS$)/.test(l)) return `<b>${e}</b>`;
+    if (l.startsWith('TICKET HOLDERS:')) return '<b>TICKET HOLDERS:</b>' + e.slice('TICKET HOLDERS:'.length);
+    return e;
+  }).join('\n');
+  $('rSub').textContent = 'Numbers as of ' + (D.report_as_of || D.as_of) + ' · tap to show';
+  $('rHint').textContent = `Yesterday = ${fmtD(D.yesterday)}, midnight to midnight Pacific`;
+
+  // tiles
+  const pe = D.todate.promote.email, ps = D.todate.promote.sms, te = D.todate.post_ticket.email;
+  const failed = P(ps.failed, ps.sent), pp = up.power_plan, bb = up.business_bible;
+  $('tilesIntro').textContent = `Everything since the campaign started on ${fmtD(D.campaign_start)}. Switch audience to see each side on its own.`;
+  const upRows = `<div class="rows"><div><span>Warrior App (Power Plan)</span><b>${N(pp.count)}</b></div><div><span>Business Bible</span><b>${N(bb.count)}</b></div></div>`;
+  const tiles = [
+    ['all th', 'Ticket holders', 'Paid tickets plus comps', N(h.total), `${h.paid} paid + ${h.comps} comps · +${h.new_yesterday} yesterday`],
+    ['all nth', 'Tickets from campaigns', `Bought within ${D.attribution_window_hours} hrs of a Promote email or text`, N(s.credited), `${$$(s.credited_revenue)} of ${$$(s.revenue)} in ticket sales`],
+    ['all nth', 'Promote email click', 'Clicks ÷ emails delivered, non-ticket holders', PF(P(pe.clicked, pe.delivered)), `${PF(P(pe.opened, pe.delivered))} open · ${N(pe.sent)} sent`],
+    ['all nth', 'Promote SMS delivered', 'Texts that reached the phone, non-ticket holders', PF(P(ps.delivered, ps.sent)),
+      failed > TH.sms_failed_pct ? `${PF(failed)} failed, above the ${TH.sms_failed_pct}% limit · ${N(ps.sent)} sent` : `${N(ps.sent)} sent`, failed > TH.sms_failed_pct],
+    ['all th', 'Post-ticket email open', 'Opens ÷ emails delivered, ticket holders', te.sent ? PF(P(te.opened, te.delivered)) : '—', te.sent ? `${N(te.sent)} sent` : 'none sent'],
+    ['all th', 'Upsells', 'What ticket holders added, counted separately', null, `${$$(bb.revenue)} Business Bible · app free until ${fmtD(pp.billing_start)}`, false, upRows],
+  ];
+  $('tiles').innerHTML = tiles.map(([f, k, d, v, n, w, rows]) => `<div class="tile" data-for="${f}"><div class="k">${k}</div><div class="d">${d}</div>${rows || `<div class="v">${v}</div>`}<div class="n${w ? ' warn' : ''}">${n}</div></div>`).join('');
+  fixSolo();
+
+  const ppRate = P(pp.count, h.total), bbRate = P(bb.count, h.paid);
+  $('upTiles').innerHTML =
+    `<div class="tile"><div class="k">Warrior App · Power Plan</div><div class="v">${N(pp.count)}</div><div class="n">${PF(ppRate)} of ticket holders signed up for the Warrior App (free until ${fmtD(pp.billing_start)})</div></div>`
+  + `<div class="tile"><div class="k">Business Bible add-on</div><div class="v">${N(bb.count)}</div><div class="n">${bb.count} sales · ${$$(bb.revenue)} (${bb.bump} at checkout + ${bb.standalone} on its own) · ${PF(bbRate)} of paid buyers</div></div>`
+  + `<div class="tile"><div class="k">App billing from ${fmtD(pp.billing_start)}</div><div class="v">${$$(pp.count * pp.price_per_month)}<span style="font-size:.5em;color:var(--muted)">/mo</span></div><div class="n">If all ${pp.count} stay on at $${pp.price_per_month}/month</div></div>`;
+
+  $('watchNote').innerHTML = `Watch list: email unsubscribes above <b style="color:var(--fg)">${TH.email_unsub_pct}%</b>, bounces above <b style="color:var(--fg)">${TH.email_bounce_pct}%</b>, or texts with opt-outs above <b style="color:var(--fg)">${TH.sms_optout_pct}%</b> or failures above <b style="color:var(--fg)">${TH.sms_failed_pct}%</b> turn <span style="color:var(--red)">red</span>. Hover or tap a % for the full count. For a date range, email opens, clicks, unsubscribes and bounces count only emails sent fully inside it, because GHL reports those per email, not per day. When no email fits, they show "totals only".`;
+
+  const other = D.flags.filter(f => !/subject may have changed/.test(f));
+  if (other.length) $('msgNote').innerHTML += '<br>Needs a look: ' + other.map(esc).join(' · ');
+}
+
+// ---------- date filter ----------
+function label() {
+  if (range.preset === 'yday') return 'Yesterday';
+  if (range.preset === 'all') return 'Campaign';
+  return range.from === range.to ? fmtD(range.from) : fmtD(range.from) + ' – ' + fmtD(range.to);
+}
+function apply() {
+  const short = label();
+  $('customBtn').textContent = range.preset === 'custom' ? short : 'Custom dates';
+  document.querySelectorAll('.rlh').forEach(e => e.textContent = short);
+  $('tPromote').innerHTML = campRows('promote', short);
+  $('tPost').innerHTML = campRows('post_ticket', short);
+  upsellRows(short);
+  drawChart();
+  msgTable();
+}
+function setChip(p) { document.querySelectorAll('#chips button').forEach(x => x.classList.toggle('on', x.dataset.p === p)); }
+function initFilter() {
+  const START = D.campaign_start, YDAY = D.yesterday, TODAY = D.today;
+  const dFrom = $('dFrom'), dTo = $('dTo');
+  [dFrom, dTo].forEach(i => { i.min = START; i.max = TODAY; });
+  dFrom.value = dTo.value = YDAY;
+  range = {from: YDAY, to: YDAY, preset: 'yday'};
+  document.querySelectorAll('#chips button').forEach(b => b.onclick = () => {
+    const p = b.dataset.p; setChip(p);
+    if (p === 'custom') { $('dates').hidden = false; dFrom.focus(); onDates(); return; }
+    $('dates').hidden = true;
+    if (p === 'yday') range = {from: YDAY, to: YDAY, preset: p};
+    else if (p === 'all') range = {from: START, to: TODAY, preset: p};
+    else { const f = addDays(YDAY, -(+p - 1)); range = {from: f < START ? START : f, to: YDAY, preset: p}; }
+    dFrom.value = range.from; dTo.value = range.to; apply();
+  });
+  function onDates(e) {
+    let f = dFrom.value || START, t = dTo.value || TODAY;
+    if (f < START) f = START; if (t > TODAY) t = TODAY;
+    if (f > t) { if (e && e.target === dTo) f = t; else t = f; }   // keep the date just picked, move the other one
+    dFrom.value = f; dTo.value = t;
+    range = {from: f, to: t, preset: 'custom'}; apply();
+  }
+  dFrom.onchange = onDates; dTo.onchange = onDates;
+}
+
+// ---------- upsells ----------
+function upsellRows(short) {
+  const h = D.holders, pp = D.upsells.power_plan, bb = D.upsells.business_bible;
+  const inR = k => range.preset === 'all' ? (k === 'pp' ? pp.count : bb.count) : D.days.filter(d => d.d >= range.from && d.d <= range.to).reduce((a, d) => a + d[k], 0);
+  const rl = short === 'Campaign' ? 'Selected range' : short;
+  document.querySelectorAll('#upT th.rl').forEach(e => e.textContent = rl);
+  const ppR = inR('pp'), bbR = inR('bb'), each = bb.count ? bb.revenue / bb.count : 0;
+  $('upBody').innerHTML =
+    `<tr><td><span class="ch">APP</span>Power Plan sign-ups</td><td data-l="${esc(rl)}"${ppR ? '' : ' class="dim"'}>${ppR ? `<b>${N(ppR)}</b>` : '0'}</td><td data-l="To date"><b>${N(pp.count)}</b></td>`
+  + `<td data-l="Take rate">${tip(PF(P(pp.count, h.total)), `${pp.count} of ${h.total}`, `${pp.count} of ${h.total} ticket holders took the Power Plan`)}</td>`
+  + `<td data-l="Revenue">$0 now<span class="per">$${pp.price_per_month}/mo from ${fmtD(pp.billing_start)}</span></td></tr>`
+  + `<tr><td><span class="ch">BUMP</span>Business Bible</td><td data-l="${esc(rl)}"${bbR ? '' : ' class="dim"'}>${bbR ? `<b>${N(bbR)}</b>` : '0'}</td><td data-l="To date"><b>${N(bb.count)}</b></td>`
+  + `<td data-l="Take rate">${tip(PF(P(bb.count, h.paid)), `${bb.count} of ${h.paid}`, `${bb.count} Business Bible sales vs ${h.paid} paid ticket buyers · ${bb.bump} added at ticket checkout, ${bb.standalone} bought on its own`)}</td>`
+  + `<td data-l="Revenue"><b>${$$(bb.revenue)}</b><span class="per">${bb.bump} at checkout + ${bb.standalone} on its own</span></td></tr>`;
+}
+
+// ---------- chart (each series scaled to its own peak; days outside the range dimmed) ----------
+let chartDays = [];
+function drawChart() {
+  const sends = {}, clicks = {};
+  for (const m of D.messages) {
+    for (const [d, v] of Object.entries(m.days)) sends[d] = (sends[d] || 0) + v[0];
+    if (m.ch === 'email' && m.day && m.clicked && !m.no_links) clicks[m.day] = (clicks[m.day] || 0) + m.clicked;
+  }
+  chartDays = D.days.map(x => ({d: x.d, s: sends[x.d] || 0, c: clicks[x.d] || 0, t: x.tk}));
+  const mx = k => Math.max(1, ...chartDays.map(x => x[k]));
+  const ms = mx('s'), mc = mx('c'), mt = mx('t');
+  const svg = $('chart'), W = 1000, H = 260, pl = 10, pb = 30, ch = H - pb - 10, n = chartDays.length, gw = (W - pl * 2) / n, bw = Math.max(2, (gw - 4) / 3 - 1);
+  const every = Math.ceil(n / 8);
+  let g = '';
+  [0.25, 0.5, 0.75, 1].forEach(f => { const y = 10 + ch * (1 - f); g += `<line x1="0" x2="${W}" y1="${y}" y2="${y}" stroke="rgba(255,255,255,.08)"/>`; });
+  chartDays.forEach((x, i) => {
+    const x0 = pl + i * gw + 2, inR = x.d >= range.from && x.d <= range.to, op = inR ? 1 : .18;
+    [[x.s / ms, '#3a3d3c'], [x.c / mc, '#cfd4d2'], [x.t / mt, '#ee2b2b']].forEach(([f, c], j) => {
+      const h = ch * f;
+      if (h > 0) g += `<rect x="${x0 + j * (bw + 1)}" y="${10 + ch - h}" width="${bw}" height="${h}" fill="${c}" opacity="${op}"/>`;
+    });
+    if (i % every === 0) g += `<text x="${x0 + (bw * 3 + 2) / 2}" y="${H - 8}" fill="${inR ? '#fafafa' : '#5d605f'}" font-size="13" text-anchor="middle">${fmtD(x.d)}</text>`;
+    g += `<rect x="${pl + i * gw}" y="0" width="${gw}" height="${H}" fill="transparent" data-i="${i}"/>`;
+  });
+  svg.innerHTML = g;
+}
+function chartTip(e) {
+  const r = e.target.closest('rect[data-i]'), tipEl = $('ctip');
+  if (!r) { tipEl.hidden = true; return; }
+  const x = chartDays[+r.dataset.i], box = $('chartBox').getBoundingClientRect();
+  tipEl.innerHTML = `<b>${fmtD(x.d)}</b><br>${N(x.s)} sends · ${N(x.c)} email clicks · ${N(x.t)} tickets`;
+  tipEl.hidden = false;
+  const cx = e.clientX - box.left;
+  tipEl.style.left = Math.max(8, Math.min(cx - tipEl.offsetWidth / 2, box.width - tipEl.offsetWidth - 8)) + 'px';
+  tipEl.style.top = '44px';
+}
+$('chart').addEventListener('pointermove', chartTip);
+$('chart').addEventListener('click', chartTip);
+$('chart').addEventListener('pointerleave', () => $('ctip').hidden = true);
+
+// ---------- message table ----------
+const COLS = [['day', 'Date'], ['ch', 'Channel'], ['camp', 'Audience'], ['text', 'Subject / preview'], ['sent', 'Sent'], ['open', 'Open / Deliv.'], ['click', 'Click'], ['tickets', 'Tickets']];
+let sortK = 'day', sortDir = 1;
+const mOpen = m => m.ch === 'email' ? P(m.opened, m.delivered) : P(m.delivered, m.sent);
+const mClick = m => m.ch === 'email' && !m.no_links ? P(m.clicked, m.delivered) : null;
+const sortVal = (m, k) => k === 'open' ? mOpen(m) : k === 'click' ? mClick(m) : m[k];
+function msgTable() {
+  $('msgHead').innerHTML = COLS.map(([k, l]) => `<th data-k="${k}">${l} <span class="arr">${sortK === k ? (sortDir > 0 ? '▲' : '▼') : ''}</span></th>`).join('');
+  document.querySelectorAll('#msgHead th').forEach(th => th.onclick = () => {
+    const k = th.dataset.k;
+    if (sortK === k) sortDir = -sortDir; else { sortK = k; sortDir = ['day', 'ch', 'camp', 'text'].includes(k) ? 1 : -1; }
+    msgTable();
+  });
+  const rows = D.messages.filter(m => m.day && m.sent && (range.preset === 'all' || (m.day >= range.from && m.day <= range.to)));
+  rows.sort((a, b) => {
+    const x = sortVal(a, sortK), y = sortVal(b, sortK);
+    if (x == null && y == null) return 0; if (x == null) return 1; if (y == null) return -1;
+    return (x < y ? -1 : x > y ? 1 : 0) * sortDir;
+  });
+  // best performer: highest email click rate with 100+ sends; if no email qualifies, best text delivery rate
+  const big = rows.filter(m => m.sent >= 100);
+  let best = null;
+  big.filter(m => mClick(m) != null).forEach(m => { if (!best || mClick(m) > mClick(best)) best = m; });
+  if (!best) big.filter(m => m.ch === 'sms').forEach(m => { if (!best || mOpen(m) > mOpen(best)) best = m; });
+  $('msgBody').innerHTML = rows.length ? rows.map(m => {
+    const e = m.ch === 'email';
+    const click = e ? (m.no_links ? '<span class="dim">no links</span>' : PF(mClick(m))) : '<span class="dim">pending</span>';
+    return `<tr class="${m === best ? 'best' : ''}"><td>${fmtD(m.day)}</td><td>${e ? 'Email' : 'SMS'}</td><td>${m.camp === 'promote' ? 'Promote' : 'Post-ticket'}</td>`
+      + `<td class="s">${esc(m.text)}${m === best ? ' <span class="tag best">Best</span>' : ''}${m.flag ? ` <span class="tag flag">${esc(m.flag)}</span>` : ''}</td>`
+      + `<td>${N(m.sent)}</td><td>${PF(mOpen(m))}</td><td>${click}</td><td>${m.camp === 'promote' ? N(m.tickets) : '—'}</td></tr>`;
+  }).join('') : `<tr class="empty"><td colspan="8">No emails or texts sent in this date range.</td></tr>`;
+}
+
+// ---------- version + what's new ----------
+let CHANGELOG = [];
+function verSetup() {
+  const latest = CHANGELOG.find(r => r.v === PAGE_VERSION) || {v: PAGE_VERSION, date: D.today, title: '', items: []};
+  $('verNum').textContent = 'v' + PAGE_VERSION; $('verNum2').textContent = PAGE_VERSION;
+  let seen = null; try { seen = localStorage.getItem('wc6-seen-version'); } catch (e) {}
+  const daysOld = (Date.now() - new Date(latest.date + 'T12:00:00')) / 864e5;
+  if (daysOld <= 7 && seen !== latest.v) $('verDot').classList.add('on');
+  const markSeen = () => { try { localStorage.setItem('wc6-seen-version', latest.v); } catch (e) {} $('verDot').classList.remove('on'); $('upd').hidden = true; };
+  function openWN(e) { if (e && e.preventDefault) e.preventDefault(); $('wn').hidden = false; $('verDot').classList.remove('on'); try { localStorage.setItem('wc6-seen-version', latest.v); } catch (err) {} }
+  const showPopup = () => {
+    $('updVer').textContent = 'v' + latest.v + ' · ' + new Date(latest.date + 'T12:00:00').toLocaleDateString('en-US', {month: 'short', day: 'numeric'});
+    $('updTitle').textContent = latest.title;
+    const items = latest.items.slice(0, 3), more = latest.items.length - items.length;
+    $('updItems').innerHTML = items.map(x => `<li>${x}</li>`).join('') + (more > 0 ? `<li>…and ${more} more</li>` : '');
+    $('upd').hidden = false;
+  };
+  if (seen !== latest.v && latest.items.length) setTimeout(showPopup, 1000);   // once per version, per browser
+  $('updOk').onclick = markSeen;
+  $('updMore').onclick = () => { markSeen(); openWN(); };
+  $('wnList').innerHTML = CHANGELOG.map((r, i) => `
+    <div class="rel"><h4>v${r.v} · ${r.title}${i === 0 ? '<span class="latest">Latest</span>' : ''}</h4>
+    <div class="when">${new Date(r.date + 'T12:00:00').toLocaleDateString('en-US', {month: 'long', day: 'numeric', year: 'numeric'})}</div>
+    <ul>${r.items.map(x => `<li>${x}</li>`).join('')}</ul></div>`).join('');
+  $('verBtn').onclick = openWN; $('verLink').onclick = openWN;
+  $('wn').querySelectorAll('[data-close]').forEach(x => x.onclick = () => $('wn').hidden = true);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') $('wn').hidden = true; });
+}
+const vNum = v => v.split('.').map(Number).reduce((a, x, i) => a + (x || 0) * Math.pow(1000, 2 - i), 0);
+function showBar(msg) { $('newVerMsg').textContent = msg; $('newVer').hidden = false; }
+async function checkForNewVersion() {   // every 10 minutes while the page is open
+  try {
+    const cl = await (await fetch('changelog.json?t=' + Date.now(), {cache: 'no-store'})).json();
+    if (cl.length && vNum(cl[0].v) > vNum(PAGE_VERSION)) showBar('New version available ·');
+  } catch (e) {}
+}
+async function checkForNewData() {   // every 2 minutes while the page is open
+  try {
+    const d = await (await fetch('data.json?t=' + Date.now(), {cache: 'no-store'})).json();
+    if (d.generated_at && d.generated_at !== D.generated_at) showBar(`New data in — updated ${etTime(d.generated_at)} ·`);
+  } catch (e) {}
+  schedule();
+}
+$('newVerBtn').onclick = () => location.reload();
+
+// ---------- load ----------
+(async () => {
+  try {
+    const [d, cl] = await Promise.all([
+      fetch('data.json?t=' + Date.now(), {cache: 'no-store'}).then(r => r.json()),
+      fetch('changelog.json?t=' + Date.now(), {cache: 'no-store'}).then(r => r.json()).catch(() => []),
+    ]);
+    D = d; TH = d.thresholds; CHANGELOG = cl;
+    renderStatic(); initFilter(); apply(); verSetup();
+    setInterval(checkForNewVersion, 10 * 60 * 1000);
+    setInterval(checkForNewData, 2 * 60 * 1000);
+  } catch (e) {
+    $('stamp').textContent = 'Data not available';
+    console.error(e);
+  }
+})();
+</script>
+</body>
+</html>

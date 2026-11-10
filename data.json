@@ -1,0 +1,4384 @@
+{
+ "schema": 2,
+ "email_watermark": "2026-11-10T20:57:50.206Z",
+ "update_times_et": [
+  "08:00",
+  "13:00",
+  "17:00"
+ ],
+ "today_so_far": {
+  "date": "2026-11-10",
+  "tickets": 3,
+  "emails": 22742,
+  "texts": 3698
+ },
+ "yesterday_totals": {
+  "promote": {
+   "email": {
+    "sent": 22691,
+    "emails": 18,
+    "whole": 1,
+    "rated": 22584,
+    "delivered": 22450,
+    "opened": 5885,
+    "clicked": 68,
+    "unsub": 12,
+    "bounced": 130,
+    "ghl_sent": 22582
+   },
+   "sms": {
+    "sent": 3613,
+    "delivered": 2961,
+    "failed": 608,
+    "optouts": 2
+   }
+  },
+  "post_ticket": {
+   "email": {
+    "sent": 112,
+    "emails": 1,
+    "whole": 1,
+    "rated": 112,
+    "delivered": 112,
+    "opened": 44,
+    "clicked": 0,
+    "unsub": 0,
+    "bounced": 0,
+    "ghl_sent": 112
+   },
+   "sms": {}
+  }
+ },
+ "generated_at": "2026-11-10T20:59+00:00",
+ "as_of": "Nov 10, 3:59pm ET",
+ "today": "2026-11-10",
+ "yesterday": "2026-11-09",
+ "campaign_start": "2026-10-12",
+ "event_start": "2026-12-02",
+ "days_to_go": 22,
+ "attribution_window_hours": 48,
+ "thresholds": {
+  "_how": "A number turns red when it goes past these (percent).",
+  "email_unsub_pct": 0.5,
+  "email_bounce_pct": 2,
+  "sms_optout_pct": 1,
+  "sms_failed_pct": 5
+ },
+ "email_whole_send_share": 0.95,
+ "holders": {
+  "total": 137,
+  "paid": 134,
+  "comps": 3,
+  "new_yesterday": 4
+ },
+ "sales": {
+  "tickets": 134,
+  "revenue": 28346,
+  "credited": 103,
+  "credited_revenue": 21547.0
+ },
+ "upsells": {
+  "power_plan": {
+   "count": 69,
+   "price_per_month": 95,
+   "billing_start": "2026-12-04"
+  },
+  "business_bible": {
+   "count": 17,
+   "bump": 16,
+   "standalone": 1,
+   "revenue": 1875.0
+  }
+ },
+ "todate": {
+  "promote": {
+   "email": {
+    "sent": 387183,
+    "emails": 22,
+    "whole": 22,
+    "rated": 387183,
+    "delivered": 385991,
+    "opened": 122950,
+    "clicked": 1360,
+    "unsub": 477,
+    "bounced": 1738,
+    "ghl_sent": 387767
+   },
+   "sms": {
+    "sent": 80576,
+    "delivered": 57490,
+    "failed": 22918,
+    "optouts": 81
+   }
+  },
+  "post_ticket": {
+   "email": {
+    "sent": 342,
+    "emails": 3,
+    "whole": 3,
+    "rated": 342,
+    "delivered": 342,
+    "opened": 146,
+    "clicked": 0,
+    "unsub": 0,
+    "bounced": 0,
+    "ghl_sent": 342
+   },
+   "sms": {
+    "sent": 94,
+    "delivered": 83,
+    "failed": 11,
+    "optouts": 1
+   }
+  }
+ },
+ "summary": {
+  "headline": {
+   "big": "4 new tickets yesterday",
+   "sub": "137 ticket holders · $30,221 total sales ($28,346 tickets + $1,875 Business Bible) · 22 days to go",
+   "cmp": "vs 7-day average of 3.4/day: in line",
+   "line": "4 new tickets yesterday, in line with the 7-day average of 3.4/day (137 total, 22 days to go)"
+  },
+  "win": {
+   "big": "Half of ticket holders took the app",
+   "sub": "69 of 137 (50.4%) signed up for the Warrior App (free until Dec 4), worth $6,555/month from then if they stay.",
+   "line": "69 of 137 ticket holders (50.4%) signed up for the Warrior App (free until Dec 4)"
+  },
+  "watch": {
+   "big": "Promote text failures: 28.4%",
+   "sub": "Above the 5% limit: 22,918 of 80,576 texts failed to date. Yesterday: 16.8%.",
+   "line": "promote text failures 28.4% to date (22,918 texts failed), above 5%"
+  }
+ },
+ "report": "WarriorCon 6 — numbers as of Nov 10, 3:59pm ET\n\nSUMMARY\n• 4 new tickets yesterday, in line with the 7-day average of 3.4/day (137 total, 22 days to go)\n• Win: 69 of 137 ticket holders (50.4%) signed up for the Warrior App (free until Dec 4)\n• Watch: promote text failures 28.4% to date (22,918 texts failed), above 5%\n\nTICKET HOLDERS: 137 (134 paid + 3 comps) · 4 new yesterday\n$28,346 in ticket sales · 103 sales came within 48 hrs of an email/text\n\nPROMOTE (non-ticket holders)\nYesterday — Email: 22,691 sent · 26.2% open · 0.3% click\nYesterday — SMS: 3,613 sent · 82.0% delivered\nTo date — Email: 387,183 sent · 31.9% open · 0.4% click\nTo date — SMS: 80,576 sent · 71.3% delivered\n\nPOST-TICKET SEDUCTION (ticket holders)\nYesterday — Email: 112 sent · 39.3% open\nYesterday — SMS: none sent\nTo date — Email: 342 sent · 42.7% open\nTo date — SMS: 94 sent · 88.3% delivered\n\nUPSELLS\nWarrior App (Power Plan): 69 · 50.4% of ticket holders\nBusiness Bible: 17 sales · $1,875 (16 at checkout + 1 on its own) · 12.7% of paid buyers\n(Texts have no open rate.)",
+ "report_as_of": "Nov 10, 3:59pm ET",
+ "frozen": {
+  "yesterday": "2026-11-09",
+  "as_of": "Nov 10, 3:59pm ET",
+  "summary": {
+   "headline": {
+    "big": "4 new tickets yesterday",
+    "sub": "137 ticket holders · $30,221 total sales ($28,346 tickets + $1,875 Business Bible) · 22 days to go",
+    "cmp": "vs 7-day average of 3.4/day: in line",
+    "line": "4 new tickets yesterday, in line with the 7-day average of 3.4/day (137 total, 22 days to go)"
+   },
+   "win": {
+    "big": "Half of ticket holders took the app",
+    "sub": "69 of 137 (50.4%) signed up for the Warrior App (free until Dec 4), worth $6,555/month from then if they stay.",
+    "line": "69 of 137 ticket holders (50.4%) signed up for the Warrior App (free until Dec 4)"
+   },
+   "watch": {
+    "big": "Promote text failures: 28.4%",
+    "sub": "Above the 5% limit: 22,918 of 80,576 texts failed to date. Yesterday: 16.8%.",
+    "line": "promote text failures 28.4% to date (22,918 texts failed), above 5%"
+   }
+  },
+  "report": "WarriorCon 6 — numbers as of Nov 10, 3:59pm ET\n\nSUMMARY\n• 4 new tickets yesterday, in line with the 7-day average of 3.4/day (137 total, 22 days to go)\n• Win: 69 of 137 ticket holders (50.4%) signed up for the Warrior App (free until Dec 4)\n• Watch: promote text failures 28.4% to date (22,918 texts failed), above 5%\n\nTICKET HOLDERS: 137 (134 paid + 3 comps) · 4 new yesterday\n$28,346 in ticket sales · 103 sales came within 48 hrs of an email/text\n\nPROMOTE (non-ticket holders)\nYesterday — Email: 22,691 sent · 26.2% open · 0.3% click\nYesterday — SMS: 3,613 sent · 82.0% delivered\nTo date — Email: 387,183 sent · 31.9% open · 0.4% click\nTo date — SMS: 80,576 sent · 71.3% delivered\n\nPOST-TICKET SEDUCTION (ticket holders)\nYesterday — Email: 112 sent · 39.3% open\nYesterday — SMS: none sent\nTo date — Email: 342 sent · 42.7% open\nTo date — SMS: 94 sent · 88.3% delivered\n\nUPSELLS\nWarrior App (Power Plan): 69 · 50.4% of ticket holders\nBusiness Bible: 17 sales · $1,875 (16 at checkout + 1 on its own) · 12.7% of paid buyers\n(Texts have no open rate.)",
+  "Y": {
+   "promote": {
+    "email": {
+     "sent": 22691,
+     "emails": 18,
+     "whole": 1,
+     "rated": 22584,
+     "delivered": 22450,
+     "opened": 5885,
+     "clicked": 68,
+     "unsub": 12,
+     "bounced": 130,
+     "ghl_sent": 22582
+    },
+    "sms": {
+     "sent": 3613,
+     "delivered": 2961,
+     "failed": 608,
+     "optouts": 2
+    }
+   },
+   "post_ticket": {
+    "email": {
+     "sent": 112,
+     "emails": 1,
+     "whole": 1,
+     "rated": 112,
+     "delivered": 112,
+     "opened": 44,
+     "clicked": 0,
+     "unsub": 0,
+     "bounced": 0,
+     "ghl_sent": 112
+    },
+    "sms": {}
+   }
+  },
+  "rules": {
+   "headline": "Headline: 4 new paid tickets on Nov 9 vs 3.4/day over the 7 days before it (in line with; 'in line' = within 20%).",
+   "win": "Win: rule 2, the upsell with the highest take rate (Power Plan 50.4% vs Business Bible 12.7%). Rule 1 didn't apply: no send from Nov 9 clicked at 1.5× the campaign average.",
+   "watch": "Watch: Promote text failures 28.4% is the furthest past its red line (5%). Also over: Post-ticket text opt-outs 1.2%, Post-ticket text failures 11.7%."
+  }
+ },
+ "days": [
+  {
+   "d": "2026-10-12",
+   "tk": 0,
+   "tkr": 0.0,
+   "pp": 0,
+   "bb": 1,
+   "bbr": 195.0
+  },
+  {
+   "d": "2026-10-13",
+   "tk": 0,
+   "tkr": 0,
+   "pp": 0,
+   "bb": 0,
+   "bbr": 0
+  },
+  {
+   "d": "2026-10-14",
+   "tk": 0,
+   "tkr": 0,
+   "pp": 0,
+   "bb": 0,
+   "bbr": 0
+  },
+  {
+   "d": "2026-10-15",
+   "tk": 1,
+   "tkr": 199.0,
+   "pp": 0,
+   "bb": 0,
+   "bbr": 0.0
+  },
+  {
+   "d": "2026-10-16",
+   "tk": 0,
+   "tkr": 0,
+   "pp": 0,
+   "bb": 0,
+   "bbr": 0
+  },
+  {
+   "d": "2026-10-17",
+   "tk": 1,
+   "tkr": 199.0,
+   "pp": 0,
+   "bb": 0,
+   "bbr": 0.0
+  },
+  {
+   "d": "2026-10-18",
+   "tk": 14,
+   "tkr": 2786.0,
+   "pp": 0,
+   "bb": 0,
+   "bbr": 0.0
+  },
+  {
+   "d": "2026-10-19",
+   "tk": 11,
+   "tkr": 2189.0,
+   "pp": 0,
+   "bb": 0,
+   "bbr": 0.0
+  },
+  {
+   "d": "2026-10-20",
+   "tk": 7,
+   "tkr": 1393.0,
+   "pp": 0,
+   "bb": 0,
+   "bbr": 0.0
+  },
+  {
+   "d": "2026-10-21",
+   "tk": 8,
+   "tkr": 1592.0,
+   "pp": 0,
+   "bb": 0,
+   "bbr": 0.0
+  },
+  {
+   "d": "2026-10-22",
+   "tk": 2,
+   "tkr": 398.0,
+   "pp": 0,
+   "bb": 0,
+   "bbr": 0.0
+  },
+  {
+   "d": "2026-10-23",
+   "tk": 1,
+   "tkr": 199.0,
+   "pp": 1,
+   "bb": 0,
+   "bbr": 0.0
+  },
+  {
+   "d": "2026-10-24",
+   "tk": 2,
+   "tkr": 398.0,
+   "pp": 2,
+   "bb": 0,
+   "bbr": 0.0
+  },
+  {
+   "d": "2026-10-25",
+   "tk": 5,
+   "tkr": 995.0,
+   "pp": 4,
+   "bb": 0,
+   "bbr": 0.0
+  },
+  {
+   "d": "2026-10-26",
+   "tk": 2,
+   "tkr": 398.0,
+   "pp": 2,
+   "bb": 0,
+   "bbr": 0.0
+  },
+  {
+   "d": "2026-10-27",
+   "tk": 7,
+   "tkr": 1393.0,
+   "pp": 5,
+   "bb": 0,
+   "bbr": 0.0
+  },
+  {
+   "d": "2026-10-28",
+   "tk": 8,
+   "tkr": 1697.0,
+   "pp": 6,
+   "bb": 1,
+   "bbr": 105.0
+  },
+  {
+   "d": "2026-10-29",
+   "tk": 3,
+   "tkr": 597.0,
+   "pp": 3,
+   "bb": 0,
+   "bbr": 0.0
+  },
+  {
+   "d": "2026-10-30",
+   "tk": 4,
+   "tkr": 901.0,
+   "pp": 4,
+   "bb": 1,
+   "bbr": 105.0
+  },
+  {
+   "d": "2026-10-31",
+   "tk": 18,
+   "tkr": 4107.0,
+   "pp": 14,
+   "bb": 5,
+   "bbr": 525.0
+  },
+  {
+   "d": "2026-11-01",
+   "tk": 9,
+   "tkr": 1896.0,
+   "pp": 8,
+   "bb": 1,
+   "bbr": 105.0
+  },
+  {
+   "d": "2026-11-02",
+   "tk": 7,
+   "tkr": 1393.0,
+   "pp": 6,
+   "bb": 0,
+   "bbr": 0.0
+  },
+  {
+   "d": "2026-11-03",
+   "tk": 8,
+   "tkr": 1802.0,
+   "pp": 6,
+   "bb": 2,
+   "bbr": 210.0
+  },
+  {
+   "d": "2026-11-04",
+   "tk": 1,
+   "tkr": 199.0,
+   "pp": 1,
+   "bb": 0,
+   "bbr": 0.0
+  },
+  {
+   "d": "2026-11-05",
+   "tk": 2,
+   "tkr": 398.0,
+   "pp": 2,
+   "bb": 0,
+   "bbr": 0.0
+  },
+  {
+   "d": "2026-11-06",
+   "tk": 4,
+   "tkr": 1111.0,
+   "pp": 0,
+   "bb": 3,
+   "bbr": 315.0
+  },
+  {
+   "d": "2026-11-07",
+   "tk": 1,
+   "tkr": 199.0,
+   "pp": 1,
+   "bb": 0,
+   "bbr": 0.0
+  },
+  {
+   "d": "2026-11-08",
+   "tk": 1,
+   "tkr": 304.0,
+   "pp": 1,
+   "bb": 1,
+   "bbr": 105.0
+  },
+  {
+   "d": "2026-11-09",
+   "tk": 4,
+   "tkr": 901.0,
+   "pp": 2,
+   "bb": 1,
+   "bbr": 105.0
+  },
+  {
+   "d": "2026-11-10",
+   "tk": 3,
+   "tkr": 702.0,
+   "pp": 1,
+   "bb": 1,
+   "bbr": 105.0
+  }
+ ],
+ "messages": [
+  {
+   "id": "629a9f1b",
+   "key": "e:before warrior ends, there is one final ",
+   "ch": "email",
+   "camp": "promote",
+   "text": "Before Warrior Ends, There Is One Final Gathering",
+   "steps": [
+    "0.0 Email 1"
+   ],
+   "day": "2026-10-18",
+   "sent": 22992,
+   "wrong_audience": 18,
+   "days": {
+    "2026-10-18": [
+     22724,
+     5,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-19": [
+     27,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-20": [
+     28,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-21": [
+     18,
+     2,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-22": [
+     18,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-23": [
+     17,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-24": [
+     11,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-25": [
+     17,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-26": [
+     13,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-27": [
+     12,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-28": [
+     11,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-29": [
+     12,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-30": [
+     6,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-31": [
+     8,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-01": [
+     8,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-02": [
+     13,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-03": [
+     8,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-04": [
+     8,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-05": [
+     8,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-06": [
+     9,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-07": [
+     3,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-08": [
+     2,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-09": [
+     6,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-10": [
+     5,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "credit": {
+    "2026-11-01": [
+     1,
+     199.0
+    ],
+    "2026-10-19": [
+     3,
+     597.0
+    ],
+    "2026-10-18": [
+     6,
+     1194.0
+    ]
+   },
+   "tickets": 10,
+   "ticket_revenue": 1990.0,
+   "no_links": false,
+   "ghl_sent": 23009,
+   "delivered": 22910,
+   "opened": 7699,
+   "clicked": 144,
+   "unsub": 28,
+   "bounced": 99,
+   "complaints": 2,
+   "share_main": 0.988
+  },
+  {
+   "id": "11ac8d56",
+   "key": "s:there is one final piece of this story i",
+   "ch": "sms",
+   "camp": "promote",
+   "text": "There is one final piece of this story I haven't told you.",
+   "steps": [
+    "0.0 Day 1"
+   ],
+   "day": "2026-10-18",
+   "sent": 3722,
+   "wrong_audience": 5,
+   "days": {
+    "2026-10-18": [
+     3722,
+     5,
+     3115,
+     605,
+     9,
+     4
+    ]
+   },
+   "credit": {
+    "2026-10-19": [
+     1,
+     199.0
+    ],
+    "2026-10-18": [
+     6,
+     1194.0
+    ]
+   },
+   "tickets": 7,
+   "ticket_revenue": 1393.0,
+   "no_links": false,
+   "delivered": 3115,
+   "failed": 605,
+   "optouts": 9,
+   "replies": 4
+  },
+  {
+   "id": "34bcc4f9",
+   "key": "s:i didn't spend 14 years building warrior",
+   "ch": "sms",
+   "camp": "promote",
+   "text": "I didn't spend 14 years building Warrior to talk about the good old da",
+   "steps": [
+    "0.0 Day 2"
+   ],
+   "day": "2026-10-19",
+   "sent": 3706,
+   "wrong_audience": 13,
+   "days": {
+    "2026-10-19": [
+     3706,
+     13,
+     361,
+     3344,
+     1,
+     5
+    ]
+   },
+   "credit": {
+    "2026-10-19": [
+     4,
+     796.0
+    ]
+   },
+   "tickets": 4,
+   "ticket_revenue": 796.0,
+   "no_links": false,
+   "delivered": 361,
+   "failed": 3344,
+   "optouts": 1,
+   "replies": 5
+  },
+  {
+   "id": "712e28f5",
+   "key": "e:the most powerful version of warrior has",
+   "ch": "email",
+   "camp": "promote",
+   "text": "The Most Powerful Version of Warrior Has Never Been Publicly Taught.",
+   "steps": [
+    "0.0 Email 3"
+   ],
+   "day": "2026-10-20",
+   "sent": 22923,
+   "wrong_audience": 35,
+   "days": {
+    "2026-10-20": [
+     22674,
+     23,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-21": [
+     27,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-22": [
+     28,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-23": [
+     18,
+     2,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-24": [
+     17,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-25": [
+     17,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-26": [
+     11,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-27": [
+     18,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-28": [
+     13,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-29": [
+     10,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-30": [
+     10,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-31": [
+     12,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-01": [
+     6,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-02": [
+     7,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-03": [
+     7,
+     2,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-04": [
+     12,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-05": [
+     7,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-06": [
+     8,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-07": [
+     8,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-08": [
+     9,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-09": [
+     3,
+     1,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "credit": {
+    "2026-10-20": [
+     3,
+     597.0
+    ]
+   },
+   "tickets": 3,
+   "ticket_revenue": 597.0,
+   "no_links": false,
+   "ghl_sent": 22958,
+   "delivered": 22864,
+   "opened": 7770,
+   "clicked": 82,
+   "unsub": 25,
+   "bounced": 93,
+   "complaints": 1,
+   "share_main": 0.989
+  },
+  {
+   "id": "2e186b73",
+   "key": "s:the most powerful version of warrior has",
+   "ch": "sms",
+   "camp": "promote",
+   "text": "The most powerful version of Warrior has never been taught publicly.",
+   "steps": [
+    "0.0 Day 3"
+   ],
+   "day": "2026-10-20",
+   "sent": 3704,
+   "wrong_audience": 21,
+   "days": {
+    "2026-10-20": [
+     3704,
+     21,
+     347,
+     3357,
+     0,
+     2
+    ]
+   },
+   "credit": {
+    "2026-10-20": [
+     2,
+     398.0
+    ]
+   },
+   "tickets": 2,
+   "ticket_revenue": 398.0,
+   "no_links": false,
+   "delivered": 347,
+   "failed": 3357,
+   "optouts": 0,
+   "replies": 2
+  },
+  {
+   "id": "51104060",
+   "key": "e:the code was never the destination",
+   "ch": "email",
+   "camp": "promote",
+   "text": "The Code Was Never the Destination",
+   "steps": [
+    "0.0 Email 4"
+   ],
+   "day": "2026-10-21",
+   "sent": 22901,
+   "wrong_audience": 40,
+   "days": {
+    "2026-10-21": [
+     22654,
+     28,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-22": [
+     27,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-23": [
+     28,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-24": [
+     18,
+     2,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-25": [
+     17,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-26": [
+     17,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-27": [
+     12,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-28": [
+     17,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-29": [
+     13,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-30": [
+     10,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-31": [
+     10,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-01": [
+     13,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-02": [
+     4,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-03": [
+     7,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-04": [
+     7,
+     2,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-05": [
+     12,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-06": [
+     7,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-07": [
+     8,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-08": [
+     8,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-09": [
+     9,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-10": [
+     2,
+     1,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "credit": {
+    "2026-10-21": [
+     5,
+     995.0
+    ]
+   },
+   "tickets": 5,
+   "ticket_revenue": 995.0,
+   "no_links": false,
+   "ghl_sent": 22941,
+   "delivered": 22844,
+   "opened": 7511,
+   "clicked": 76,
+   "unsub": 24,
+   "bounced": 94,
+   "complaints": 1,
+   "share_main": 0.989
+  },
+  {
+   "id": "9f05f661",
+   "key": "s:the code was never the destination. afte",
+   "ch": "sms",
+   "camp": "promote",
+   "text": "The Code was never the destination. After 14 years I see what I missed",
+   "steps": [
+    "0.0 Day 4"
+   ],
+   "day": "2026-10-21",
+   "sent": 3702,
+   "wrong_audience": 26,
+   "days": {
+    "2026-10-21": [
+     3702,
+     26,
+     262,
+     3440,
+     2,
+     2
+    ]
+   },
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "delivered": 262,
+   "failed": 3440,
+   "optouts": 2,
+   "replies": 2
+  },
+  {
+   "id": "2ac64712",
+   "key": "e:why most men never win their impossible ",
+   "ch": "email",
+   "camp": "promote",
+   "text": "Why Most Men Never Win Their Impossible Game.",
+   "steps": [
+    "0.0 Email 5"
+   ],
+   "day": "2026-10-22",
+   "sent": 22877,
+   "wrong_audience": 44,
+   "days": {
+    "2026-10-22": [
+     22632,
+     33,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-23": [
+     27,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-24": [
+     28,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-25": [
+     18,
+     2,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-26": [
+     17,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-27": [
+     22,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-28": [
+     11,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-29": [
+     17,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-30": [
+     13,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-31": [
+     10,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-01": [
+     10,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-02": [
+     13,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-03": [
+     4,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-04": [
+     7,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-05": [
+     7,
+     2,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-06": [
+     12,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-07": [
+     7,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-08": [
+     8,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-09": [
+     8,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-10": [
+     5,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "credit": {
+    "2026-10-22": [
+     2,
+     398.0
+    ]
+   },
+   "tickets": 2,
+   "ticket_revenue": 398.0,
+   "no_links": false,
+   "ghl_sent": 22921,
+   "delivered": 22833,
+   "opened": 7595,
+   "clicked": 68,
+   "unsub": 41,
+   "bounced": 89,
+   "complaints": 0,
+   "share_main": 0.989
+  },
+  {
+   "id": "53e81bff",
+   "key": "s:most men never win their impossible game",
+   "ch": "sms",
+   "camp": "promote",
+   "text": "Most men never win their Impossible Game. They never built one they ca",
+   "steps": [
+    "0.0 Day 5"
+   ],
+   "day": "2026-10-22",
+   "sent": 3701,
+   "wrong_audience": 28,
+   "days": {
+    "2026-10-22": [
+     3701,
+     28,
+     1889,
+     1811,
+     6,
+     2
+    ]
+   },
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "delivered": 1889,
+   "failed": 1811,
+   "optouts": 6,
+   "replies": 2
+  },
+  {
+   "id": "24e368f1",
+   "key": "e:what i've been teaching men paying 50k–2",
+   "ch": "email",
+   "camp": "promote",
+   "text": "What I've Been Teaching Men Paying 50K–200K a Year.",
+   "steps": [
+    "0.0 Email 6"
+   ],
+   "day": "2026-10-23",
+   "sent": 22847,
+   "wrong_audience": 46,
+   "days": {
+    "2026-10-23": [
+     22615,
+     35,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-24": [
+     27,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-25": [
+     28,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-26": [
+     18,
+     2,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-27": [
+     18,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-28": [
+     17,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-29": [
+     11,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-30": [
+     17,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-31": [
+     13,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-01": [
+     11,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-02": [
+     9,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-03": [
+     13,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-04": [
+     4,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-05": [
+     7,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-06": [
+     7,
+     2,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-07": [
+     12,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-08": [
+     7,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-09": [
+     7,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-10": [
+     5,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "ghl_sent": 22893,
+   "delivered": 22803,
+   "opened": 7548,
+   "clicked": 60,
+   "unsub": 38,
+   "bounced": 89,
+   "complaints": 0,
+   "share_main": 0.99
+  },
+  {
+   "id": "33e660a3",
+   "key": "s:what i've taught in private for 18 month",
+   "ch": "sms",
+   "camp": "promote",
+   "text": "What I've taught in private for 18 months, most of Warrior hasn't seen",
+   "steps": [
+    "0.0 Day 6"
+   ],
+   "day": "2026-10-23",
+   "sent": 3699,
+   "wrong_audience": 30,
+   "days": {
+    "2026-10-23": [
+     3699,
+     30,
+     3082,
+     614,
+     5,
+     0
+    ]
+   },
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "delivered": 3082,
+   "failed": 614,
+   "optouts": 5,
+   "replies": 0
+  },
+  {
+   "id": "e10a781b",
+   "key": "e:you don't need another breakthrough. you",
+   "ch": "email",
+   "camp": "promote",
+   "text": "You Don't Need Another Breakthrough. You Need a Game.",
+   "steps": [
+    "0.0 Email 7"
+   ],
+   "day": "2026-10-24",
+   "sent": 22827,
+   "wrong_audience": 46,
+   "days": {
+    "2026-10-24": [
+     22602,
+     35,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-25": [
+     27,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-26": [
+     28,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-27": [
+     20,
+     2,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-28": [
+     17,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-29": [
+     17,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-30": [
+     11,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-31": [
+     17,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-01": [
+     13,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-02": [
+     11,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-03": [
+     9,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-04": [
+     13,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-05": [
+     4,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-06": [
+     7,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-07": [
+     7,
+     2,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-08": [
+     12,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-09": [
+     7,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-10": [
+     4,
+     1,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "credit": {
+    "2026-10-25": [
+     1,
+     199.0
+    ],
+    "2026-10-24": [
+     1,
+     199.0
+    ]
+   },
+   "tickets": 2,
+   "ticket_revenue": 398.0,
+   "no_links": false,
+   "ghl_sent": 22873,
+   "delivered": 22787,
+   "opened": 7376,
+   "clicked": 62,
+   "unsub": 37,
+   "bounced": 87,
+   "complaints": 1,
+   "share_main": 0.99
+  },
+  {
+   "id": "77fbc2f6",
+   "key": "s:you don't need another breakthrough. you",
+   "ch": "sms",
+   "camp": "promote",
+   "text": "You don't need another breakthrough. You need a game. Here's the diffe",
+   "steps": [
+    "0.0 Day 7"
+   ],
+   "day": "2026-10-24",
+   "sent": 3693,
+   "wrong_audience": 30,
+   "days": {
+    "2026-10-24": [
+     3693,
+     30,
+     3079,
+     613,
+     5,
+     5
+    ]
+   },
+   "credit": {
+    "2026-10-24": [
+     1,
+     199.0
+    ]
+   },
+   "tickets": 1,
+   "ticket_revenue": 199.0,
+   "no_links": false,
+   "delivered": 3079,
+   "failed": 613,
+   "optouts": 5,
+   "replies": 5
+  },
+  {
+   "id": "e6e15709",
+   "key": "e:i put 14 years of warrior into an ai wea",
+   "ch": "email",
+   "camp": "promote",
+   "text": "I Put 14 Years of Warrior Into an AI Weapon",
+   "steps": [
+    "0.0 Email 8"
+   ],
+   "day": "2026-10-25",
+   "sent": 22799,
+   "wrong_audience": 47,
+   "days": {
+    "2026-10-25": [
+     22584,
+     38,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-26": [
+     27,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-27": [
+     29,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-28": [
+     19,
+     2,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-29": [
+     16,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-30": [
+     17,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-31": [
+     11,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-01": [
+     17,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-02": [
+     13,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-03": [
+     11,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-04": [
+     9,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-05": [
+     13,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-06": [
+     4,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-07": [
+     7,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-08": [
+     7,
+     2,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-09": [
+     11,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-10": [
+     3,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "credit": {
+    "2026-11-02": [
+     1,
+     199.0
+    ],
+    "2026-10-25": [
+     1,
+     199.0
+    ]
+   },
+   "tickets": 2,
+   "ticket_revenue": 398.0,
+   "no_links": false,
+   "ghl_sent": 22846,
+   "delivered": 22747,
+   "opened": 7582,
+   "clicked": 74,
+   "unsub": 30,
+   "bounced": 97,
+   "complaints": 0,
+   "share_main": 0.991
+  },
+  {
+   "id": "e3e58f78",
+   "key": "s:another ai tool? i get it. read why this",
+   "ch": "sms",
+   "camp": "promote",
+   "text": "Another AI tool? I get it. Read why this one is different:",
+   "steps": [
+    "0.0 Day 8"
+   ],
+   "day": "2026-10-25",
+   "sent": 3689,
+   "wrong_audience": 31,
+   "days": {
+    "2026-10-25": [
+     3689,
+     31,
+     3071,
+     612,
+     6,
+     1
+    ]
+   },
+   "credit": {
+    "2026-10-25": [
+     2,
+     398.0
+    ]
+   },
+   "tickets": 2,
+   "ticket_revenue": 398.0,
+   "no_links": false,
+   "delivered": 3071,
+   "failed": 612,
+   "optouts": 6,
+   "replies": 1
+  },
+  {
+   "id": "262a3324",
+   "key": "e:what if your stack could talk back?",
+   "ch": "email",
+   "camp": "promote",
+   "text": "What If Your Stack Could Talk Back?",
+   "steps": [
+    "0.0 Email 9"
+   ],
+   "day": "2026-10-26",
+   "sent": 22778,
+   "wrong_audience": 49,
+   "days": {
+    "2026-10-26": [
+     22568,
+     40,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-27": [
+     28,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-28": [
+     28,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-29": [
+     19,
+     2,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-30": [
+     16,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-31": [
+     17,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-01": [
+     12,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-02": [
+     15,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-03": [
+     13,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-04": [
+     11,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-05": [
+     9,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-06": [
+     13,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-07": [
+     4,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-08": [
+     7,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-09": [
+     7,
+     2,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-10": [
+     10,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "ghl_sent": 22827,
+   "delivered": 22721,
+   "opened": 7472,
+   "clicked": 56,
+   "unsub": 32,
+   "bounced": 106,
+   "complaints": 1,
+   "share_main": 0.991
+  },
+  {
+   "id": "10d6674c",
+   "key": "s:what if your stack could talk back? read",
+   "ch": "sms",
+   "camp": "promote",
+   "text": "What if your Stack could talk back? Read what I built:",
+   "steps": [
+    "0.0 Day 9"
+   ],
+   "day": "2026-10-26",
+   "sent": 3683,
+   "wrong_audience": 33,
+   "days": {
+    "2026-10-26": [
+     3683,
+     33,
+     3073,
+     609,
+     7,
+     13
+    ]
+   },
+   "credit": {
+    "2026-10-26": [
+     2,
+     398.0
+    ]
+   },
+   "tickets": 2,
+   "ticket_revenue": 398.0,
+   "no_links": false,
+   "delivered": 3073,
+   "failed": 609,
+   "optouts": 7,
+   "replies": 13
+  },
+  {
+   "id": "5cae509a",
+   "key": "e:your warriorcon experience starts the da",
+   "ch": "email",
+   "camp": "promote",
+   "text": "Your WarriorCon Experience Starts the Day You Register",
+   "steps": [
+    "0.0 Email 10"
+   ],
+   "day": "2026-10-27",
+   "sent": 22748,
+   "wrong_audience": 51,
+   "days": {
+    "2026-10-27": [
+     22555,
+     42,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-28": [
+     27,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-29": [
+     28,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-30": [
+     19,
+     2,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-31": [
+     16,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-01": [
+     18,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-02": [
+     11,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-03": [
+     14,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-04": [
+     13,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-05": [
+     11,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-06": [
+     9,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-07": [
+     13,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-08": [
+     4,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-09": [
+     7,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-10": [
+     3,
+     2,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "credit": {
+    "2026-10-27": [
+     3,
+     597.0
+    ]
+   },
+   "tickets": 3,
+   "ticket_revenue": 597.0,
+   "no_links": false,
+   "ghl_sent": 22796,
+   "delivered": 22696,
+   "opened": 7118,
+   "clicked": 77,
+   "unsub": 37,
+   "bounced": 98,
+   "complaints": 0,
+   "share_main": 0.992
+  },
+  {
+   "id": "d9cfa275",
+   "key": "s:your warriorcon experience begins the mo",
+   "ch": "sms",
+   "camp": "promote",
+   "text": "Your WarriorCon experience begins the moment you register. Read how:",
+   "steps": [
+    "0.0 Day 10"
+   ],
+   "day": "2026-10-27",
+   "sent": 3676,
+   "wrong_audience": 35,
+   "days": {
+    "2026-10-27": [
+     3676,
+     35,
+     3067,
+     608,
+     3,
+     2
+    ]
+   },
+   "credit": {
+    "2026-10-28": [
+     1,
+     199.0
+    ],
+    "2026-10-27": [
+     4,
+     796.0
+    ]
+   },
+   "tickets": 5,
+   "ticket_revenue": 995.0,
+   "no_links": false,
+   "delivered": 3067,
+   "failed": 608,
+   "optouts": 3,
+   "replies": 2
+  },
+  {
+   "id": "9647d7de",
+   "key": "e:the missing link between knowing and doi",
+   "ch": "email",
+   "camp": "promote",
+   "text": "The Missing Link Between Knowing and Doing.",
+   "steps": [
+    "0.0 Email 11"
+   ],
+   "day": "2026-10-28",
+   "sent": 22715,
+   "wrong_audience": 57,
+   "days": {
+    "2026-10-27": [
+     10,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-28": [
+     22521,
+     49,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-29": [
+     27,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-30": [
+     28,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-31": [
+     19,
+     2,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-01": [
+     17,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-02": [
+     17,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-03": [
+     11,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-04": [
+     14,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-05": [
+     13,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-06": [
+     11,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-07": [
+     9,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-08": [
+     13,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-09": [
+     4,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-10": [
+     1,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "credit": {
+    "2026-10-28": [
+     5,
+     1100.0
+    ]
+   },
+   "tickets": 5,
+   "ticket_revenue": 1100.0,
+   "no_links": false,
+   "ghl_sent": 22764,
+   "delivered": 22659,
+   "opened": 7161,
+   "clicked": 75,
+   "unsub": 26,
+   "bounced": 102,
+   "complaints": 0,
+   "share_main": 0.991
+  },
+  {
+   "id": "207fdaaa",
+   "key": "s:the problem was never a lack of tools. r",
+   "ch": "sms",
+   "camp": "promote",
+   "text": "The problem was never a lack of tools. Read what I found:",
+   "steps": [
+    "0.0 Day 11"
+   ],
+   "day": "2026-10-28",
+   "sent": 3668,
+   "wrong_audience": 42,
+   "days": {
+    "2026-10-28": [
+     3668,
+     42,
+     3050,
+     611,
+     5,
+     6
+    ]
+   },
+   "credit": {
+    "2026-10-28": [
+     2,
+     398.0
+    ]
+   },
+   "tickets": 2,
+   "ticket_revenue": 398.0,
+   "no_links": false,
+   "delivered": 3050,
+   "failed": 611,
+   "optouts": 5,
+   "replies": 6
+  },
+  {
+   "id": "640c8c8c",
+   "key": "e:what you will actually walk away with af",
+   "ch": "email",
+   "camp": "promote",
+   "text": "What You Will Actually Walk Away With After Three Days.",
+   "steps": [
+    "0.0 Email 12"
+   ],
+   "day": "2026-10-29",
+   "sent": 22689,
+   "wrong_audience": 63,
+   "days": {
+    "2026-10-27": [
+     3,
+     2,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-28": [
+     1,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-29": [
+     22504,
+     54,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-30": [
+     27,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-31": [
+     28,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-01": [
+     20,
+     2,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-02": [
+     16,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-03": [
+     17,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-04": [
+     11,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-05": [
+     14,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-06": [
+     13,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-07": [
+     11,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-08": [
+     9,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-09": [
+     13,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-10": [
+     2,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "credit": {
+    "2026-10-29": [
+     1,
+     199.0
+    ]
+   },
+   "tickets": 1,
+   "ticket_revenue": 199.0,
+   "no_links": false,
+   "ghl_sent": 22750,
+   "delivered": 22646,
+   "opened": 7210,
+   "clicked": 65,
+   "unsub": 24,
+   "bounced": 100,
+   "complaints": 0,
+   "share_main": 0.992
+  },
+  {
+   "id": "45f3daf9",
+   "key": "s:i don't want to give you another experie",
+   "ch": "sms",
+   "camp": "promote",
+   "text": "I don't want to give you another experience. I want to help you build",
+   "steps": [
+    "0.0 Day 12"
+   ],
+   "day": "2026-10-29",
+   "sent": 3662,
+   "wrong_audience": 44,
+   "days": {
+    "2026-10-29": [
+     3662,
+     44,
+     3048,
+     613,
+     4,
+     6
+    ]
+   },
+   "credit": {
+    "2026-10-29": [
+     2,
+     398.0
+    ]
+   },
+   "tickets": 2,
+   "ticket_revenue": 398.0,
+   "no_links": false,
+   "delivered": 3048,
+   "failed": 613,
+   "optouts": 4,
+   "replies": 6
+  },
+  {
+   "id": "70f13703",
+   "key": "e:warrior is ending. the work isn't.",
+   "ch": "email",
+   "camp": "promote",
+   "text": "Warrior Is Ending. The Work Isn't.",
+   "steps": [
+    "0.0 Email 13"
+   ],
+   "day": "2026-10-30",
+   "sent": 22671,
+   "wrong_audience": 65,
+   "days": {
+    "2026-10-27": [
+     2,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-28": [
+     1,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-30": [
+     22494,
+     57,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-31": [
+     27,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-01": [
+     28,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-02": [
+     20,
+     2,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-03": [
+     16,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-04": [
+     17,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-05": [
+     11,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-06": [
+     14,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-07": [
+     13,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-08": [
+     11,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-09": [
+     9,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-10": [
+     8,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "credit": {
+    "2026-10-30": [
+     2,
+     398.0
+    ]
+   },
+   "tickets": 2,
+   "ticket_revenue": 398.0,
+   "no_links": false,
+   "ghl_sent": 22734,
+   "delivered": 22619,
+   "opened": 7248,
+   "clicked": 73,
+   "unsub": 30,
+   "bounced": 109,
+   "complaints": 2,
+   "share_main": 0.992
+  },
+  {
+   "id": "282c012f",
+   "key": "s:i became a prisoner of the movement i bu",
+   "ch": "sms",
+   "camp": "promote",
+   "text": "I became a prisoner of the movement I built to set men free.",
+   "steps": [
+    "0.0 Day 13"
+   ],
+   "day": "2026-10-30",
+   "sent": 3661,
+   "wrong_audience": 47,
+   "days": {
+    "2026-10-30": [
+     3661,
+     47,
+     3049,
+     609,
+     4,
+     5
+    ]
+   },
+   "credit": {
+    "2026-10-30": [
+     2,
+     503.0
+    ]
+   },
+   "tickets": 2,
+   "ticket_revenue": 503.0,
+   "no_links": false,
+   "delivered": 3049,
+   "failed": 609,
+   "optouts": 4,
+   "replies": 5
+  },
+  {
+   "id": "6b4076e0",
+   "key": "e:my final invitation to the warrior broth",
+   "ch": "email",
+   "camp": "promote",
+   "text": "My Final Invitation to the Warrior Brotherhood.",
+   "steps": [
+    "0.0 Email 14"
+   ],
+   "day": "2026-10-31",
+   "sent": 22638,
+   "wrong_audience": 68,
+   "days": {
+    "2026-10-27": [
+     2,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-28": [
+     1,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-31": [
+     22473,
+     60,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-01": [
+     29,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-02": [
+     26,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-03": [
+     20,
+     2,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-04": [
+     16,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-05": [
+     17,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-06": [
+     11,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-07": [
+     14,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-08": [
+     13,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-09": [
+     11,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-10": [
+     5,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "credit": {
+    "2026-11-01": [
+     1,
+     199.0
+    ],
+    "2026-10-31": [
+     7,
+     1603.0
+    ]
+   },
+   "tickets": 8,
+   "ticket_revenue": 1802.0,
+   "no_links": false,
+   "ghl_sent": 22704,
+   "delivered": 22587,
+   "opened": 7409,
+   "clicked": 126,
+   "unsub": 36,
+   "bounced": 110,
+   "complaints": 0,
+   "share_main": 0.993
+  },
+  {
+   "id": "5c821217",
+   "key": "s:thank you for 14 years. here's my final ",
+   "ch": "sms",
+   "camp": "promote",
+   "text": "Thank you for 14 years. Here's my final invitation to the brotherhood:",
+   "steps": [
+    "0.0 Day 14"
+   ],
+   "day": "2026-10-31",
+   "sent": 3651,
+   "wrong_audience": 53,
+   "days": {
+    "2026-10-31": [
+     3651,
+     53,
+     3036,
+     612,
+     1,
+     2
+    ]
+   },
+   "credit": {
+    "2026-11-02": [
+     3,
+     597.0
+    ],
+    "2026-11-01": [
+     3,
+     597.0
+    ],
+    "2026-10-31": [
+     11,
+     2504.0
+    ]
+   },
+   "tickets": 17,
+   "ticket_revenue": 3698.0,
+   "no_links": false,
+   "delivered": 3036,
+   "failed": 612,
+   "optouts": 1,
+   "replies": 2
+  },
+  {
+   "id": "d79741a7",
+   "key": "e:i'm not bringing you back to say goodbye",
+   "ch": "email",
+   "camp": "promote",
+   "text": "I'm Not Bringing You Back to Say Goodbye.",
+   "steps": [
+    "0.0 Email 2"
+   ],
+   "day": "2026-11-03",
+   "sent": 22971,
+   "wrong_audience": 6,
+   "days": {
+    "2026-10-27": [
+     9,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-28": [
+     10,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-29": [
+     10,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-30": [
+     12,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-10-31": [
+     6,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-01": [
+     7,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-02": [
+     7,
+     2,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-03": [
+     12,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-04": [
+     8,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-05": [
+     8,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-06": [
+     8,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-07": [
+     9,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-08": [
+     3,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-09": [
+     2,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-10": [
+     4,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "ghl_sent": 22977,
+   "delivered": 22881,
+   "opened": 7919,
+   "clicked": 111,
+   "unsub": 22,
+   "bounced": 93,
+   "complaints": 1,
+   "flag": "Check subject",
+   "share_main": 0.104
+  },
+  {
+   "id": "5bf08ace",
+   "key": "e:you already know what you need to do.",
+   "ch": "email",
+   "camp": "promote",
+   "text": "You already know what you need to do.",
+   "steps": [
+    "0.1 Email 15"
+   ],
+   "day": "2026-11-03",
+   "sent": 22625,
+   "wrong_audience": 0,
+   "days": {
+    "2026-10-28": [
+     1,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-01": [
+     1,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-03": [
+     22622,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-09": [
+     1,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "credit": {
+    "2026-11-03": [
+     3,
+     597.0
+    ]
+   },
+   "tickets": 3,
+   "ticket_revenue": 597.0,
+   "no_links": false,
+   "ghl_sent": 22622,
+   "delivered": 22490,
+   "opened": 6884,
+   "clicked": 83,
+   "unsub": 21,
+   "bounced": 126,
+   "complaints": 2,
+   "share_main": 1.0
+  },
+  {
+   "id": "349c3b58",
+   "key": "e:what is waiting costing you?",
+   "ch": "email",
+   "camp": "promote",
+   "text": "What is waiting costing you?",
+   "steps": [
+    "0.1 Email 16"
+   ],
+   "day": "2026-11-03",
+   "sent": 4,
+   "wrong_audience": 0,
+   "days": {
+    "2026-11-03": [
+     4,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "ghl_sent": 0,
+   "delivered": 0,
+   "opened": 0,
+   "clicked": 0,
+   "unsub": 0,
+   "bounced": 0,
+   "complaints": 0,
+   "share_main": 1.0
+  },
+  {
+   "id": "65c1556f",
+   "key": "e:the game that made you successful is ove",
+   "ch": "email",
+   "camp": "promote",
+   "text": "The game that made you successful is over.",
+   "steps": [
+    "0.1 Email 17"
+   ],
+   "day": "2026-11-03",
+   "sent": 4,
+   "wrong_audience": 0,
+   "days": {
+    "2026-11-03": [
+     4,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "ghl_sent": 0,
+   "delivered": 0,
+   "opened": 0,
+   "clicked": 0,
+   "unsub": 0,
+   "bounced": 0,
+   "complaints": 0,
+   "share_main": 1.0
+  },
+  {
+   "id": "2e9c26e2",
+   "key": "e:you don't need another breakthrough.",
+   "ch": "email",
+   "camp": "promote",
+   "text": "You don't need another breakthrough.",
+   "steps": [
+    "0.1 Email 18"
+   ],
+   "day": "2026-11-03",
+   "sent": 4,
+   "wrong_audience": 0,
+   "days": {
+    "2026-11-03": [
+     4,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "ghl_sent": 0,
+   "delivered": 0,
+   "opened": 0,
+   "clicked": 0,
+   "unsub": 0,
+   "bounced": 0,
+   "complaints": 0,
+   "share_main": 1.0
+  },
+  {
+   "id": "52906b98",
+   "key": "e:the man who built this life cannot build",
+   "ch": "email",
+   "camp": "promote",
+   "text": "The man who built this life cannot build the next one.",
+   "steps": [
+    "0.1 Email 19"
+   ],
+   "day": "2026-11-03",
+   "sent": 4,
+   "wrong_audience": 0,
+   "days": {
+    "2026-11-03": [
+     4,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "ghl_sent": 0,
+   "delivered": 0,
+   "opened": 0,
+   "clicked": 0,
+   "unsub": 0,
+   "bounced": 0,
+   "complaints": 0,
+   "share_main": 1.0
+  },
+  {
+   "id": "30b14ee6",
+   "key": "e:some men waited. these men moved.",
+   "ch": "email",
+   "camp": "promote",
+   "text": "Some men waited. These men moved.",
+   "steps": [
+    "0.1 Email 22",
+    "0.2 Email 22"
+   ],
+   "day": "2026-11-03",
+   "sent": 6,
+   "wrong_audience": 0,
+   "days": {
+    "2026-11-03": [
+     5,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-09": [
+     1,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "ghl_sent": 0,
+   "delivered": 0,
+   "opened": 0,
+   "clicked": 0,
+   "unsub": 0,
+   "bounced": 0,
+   "complaints": 0,
+   "share_main": 0.833
+  },
+  {
+   "id": "43761e66",
+   "key": "s:there's a decision you've been avoiding.",
+   "ch": "sms",
+   "camp": "promote",
+   "text": "There's a decision you've been avoiding. And you already know what it",
+   "steps": [
+    "0.1 SMS 1"
+   ],
+   "day": "2026-11-03",
+   "sent": 3639,
+   "wrong_audience": 0,
+   "days": {
+    "2026-11-03": [
+     3634,
+     0,
+     3023,
+     608,
+     5,
+     4
+    ],
+    "2026-11-05": [
+     1,
+     0,
+     1,
+     0,
+     0,
+     0
+    ],
+    "2026-11-06": [
+     1,
+     0,
+     1,
+     0,
+     0,
+     0
+    ],
+    "2026-11-07": [
+     2,
+     0,
+     1,
+     1,
+     0,
+     0
+    ],
+    "2026-11-10": [
+     1,
+     0,
+     1,
+     0,
+     0,
+     0
+    ]
+   },
+   "credit": {
+    "2026-11-04": [
+     1,
+     199.0
+    ],
+    "2026-11-03": [
+     2,
+     398.0
+    ]
+   },
+   "tickets": 3,
+   "ticket_revenue": 597.0,
+   "no_links": false,
+   "delivered": 3027,
+   "failed": 609,
+   "optouts": 5,
+   "replies": 4
+  },
+  {
+   "id": "b17d0f93",
+   "key": "s:most men calculate the cost of deciding.",
+   "ch": "sms",
+   "camp": "promote",
+   "text": "Most men calculate the cost of deciding. Few calculate the cost of doi",
+   "steps": [
+    "0.1 SMS 2"
+   ],
+   "day": "2026-11-04",
+   "sent": 3630,
+   "wrong_audience": 0,
+   "days": {
+    "2026-11-04": [
+     3626,
+     0,
+     3012,
+     608,
+     4,
+     12
+    ],
+    "2026-11-06": [
+     1,
+     0,
+     1,
+     0,
+     0,
+     0
+    ],
+    "2026-11-07": [
+     2,
+     0,
+     1,
+     1,
+     0,
+     0
+    ],
+    "2026-11-10": [
+     1,
+     0,
+     1,
+     0,
+     0,
+     0
+    ]
+   },
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "delivered": 3015,
+   "failed": 609,
+   "optouts": 4,
+   "replies": 12
+  },
+  {
+   "id": "e9d4629b",
+   "key": "s:you keep trying to win a new game with a",
+   "ch": "sms",
+   "camp": "promote",
+   "text": "You keep trying to win a new game with an old strategy. Read why:",
+   "steps": [
+    "0.1 SMS 3"
+   ],
+   "day": "2026-11-05",
+   "sent": 3627,
+   "wrong_audience": 0,
+   "days": {
+    "2026-11-05": [
+     3623,
+     0,
+     3004,
+     608,
+     2,
+     18
+    ],
+    "2026-11-06": [
+     1,
+     0,
+     1,
+     0,
+     0,
+     0
+    ],
+    "2026-11-07": [
+     1,
+     0,
+     1,
+     0,
+     0,
+     0
+    ],
+    "2026-11-08": [
+     2,
+     0,
+     1,
+     1,
+     0,
+     0
+    ]
+   },
+   "credit": {
+    "2026-11-05": [
+     1,
+     199.0
+    ]
+   },
+   "tickets": 1,
+   "ticket_revenue": 199.0,
+   "no_links": false,
+   "delivered": 3007,
+   "failed": 609,
+   "optouts": 2,
+   "replies": 18
+  },
+  {
+   "id": "483a146b",
+   "key": "s:insight without execution becomes anothe",
+   "ch": "sms",
+   "camp": "promote",
+   "text": "Insight without execution becomes another form of avoidance. Read it:",
+   "steps": [
+    "0.1 SMS 4"
+   ],
+   "day": "2026-11-06",
+   "sent": 3623,
+   "wrong_audience": 0,
+   "days": {
+    "2026-11-06": [
+     3619,
+     0,
+     3006,
+     608,
+     2,
+     5
+    ],
+    "2026-11-07": [
+     1,
+     0,
+     1,
+     0,
+     0,
+     0
+    ],
+    "2026-11-08": [
+     1,
+     0,
+     1,
+     0,
+     0,
+     0
+    ],
+    "2026-11-09": [
+     2,
+     0,
+     1,
+     1,
+     0,
+     0
+    ]
+   },
+   "credit": {
+    "2026-11-06": [
+     2,
+     608.0
+    ]
+   },
+   "tickets": 2,
+   "ticket_revenue": 608.0,
+   "no_links": false,
+   "delivered": 3009,
+   "failed": 609,
+   "optouts": 2,
+   "replies": 5
+  },
+  {
+   "id": "d4490587",
+   "key": "e:(wc6) - the men who built this...",
+   "ch": "email",
+   "camp": "post_ticket",
+   "text": "(WC6) - The Men Who Built This...",
+   "steps": [
+    "1.03 Nov 7"
+   ],
+   "day": "2026-11-07",
+   "sent": 111,
+   "wrong_audience": 1,
+   "days": {
+    "2026-11-06": [
+     0,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-07": [
+     111,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": true,
+   "ghl_sent": 111,
+   "delivered": 111,
+   "opened": 60,
+   "clicked": 0,
+   "unsub": 0,
+   "bounced": 0,
+   "complaints": 0,
+   "share_main": 1.0
+  },
+  {
+   "id": "c323b516",
+   "key": "s:who must you become to live the life you",
+   "ch": "sms",
+   "camp": "promote",
+   "text": "Who must you become to live the life you say you want? Read it:",
+   "steps": [
+    "0.1 SMS 5"
+   ],
+   "day": "2026-11-07",
+   "sent": 3618,
+   "wrong_audience": 0,
+   "days": {
+    "2026-11-07": [
+     3615,
+     0,
+     2999,
+     610,
+     3,
+     2
+    ],
+    "2026-11-08": [
+     1,
+     0,
+     1,
+     0,
+     0,
+     0
+    ],
+    "2026-11-09": [
+     1,
+     0,
+     1,
+     0,
+     0,
+     0
+    ],
+    "2026-11-10": [
+     1,
+     0,
+     0,
+     1,
+     0,
+     0
+    ]
+   },
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "delivered": 3001,
+   "failed": 611,
+   "optouts": 3,
+   "replies": 2
+  },
+  {
+   "id": "807265ad",
+   "key": "s:what if the next 12 weeks changed the di",
+   "ch": "sms",
+   "camp": "promote",
+   "text": "What if the next 12 weeks changed the direction of your entire life?",
+   "steps": [
+    "0.1 SMS 6"
+   ],
+   "day": "2026-11-08",
+   "sent": 3613,
+   "wrong_audience": 0,
+   "days": {
+    "2026-11-08": [
+     3611,
+     0,
+     2997,
+     601,
+     2,
+     1
+    ],
+    "2026-11-09": [
+     1,
+     0,
+     1,
+     0,
+     0,
+     0
+    ],
+    "2026-11-10": [
+     1,
+     0,
+     1,
+     0,
+     0,
+     0
+    ]
+   },
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "delivered": 2999,
+   "failed": 601,
+   "optouts": 2,
+   "replies": 1
+  },
+  {
+   "id": "7fd9e315",
+   "key": "e:what could you change in 12 weeks?",
+   "ch": "email",
+   "camp": "promote",
+   "text": "What could you change in 12 weeks?",
+   "steps": [
+    "0.1 Email 20",
+    "0.2 Email 20"
+   ],
+   "day": "2026-11-09",
+   "sent": 22589,
+   "wrong_audience": 0,
+   "days": {
+    "2026-11-03": [
+     5,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-09": [
+     22584,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "credit": {
+    "2026-11-10": [
+     1,
+     199.0
+    ],
+    "2026-11-09": [
+     1,
+     199.0
+    ]
+   },
+   "tickets": 2,
+   "ticket_revenue": 398.0,
+   "no_links": false,
+   "ghl_sent": 22582,
+   "delivered": 22450,
+   "opened": 5885,
+   "clicked": 68,
+   "unsub": 12,
+   "bounced": 130,
+   "complaints": 0,
+   "share_main": 1.0
+  },
+  {
+   "id": "877d97a7",
+   "key": "e:(wc6) - you cannot prepare for every sto",
+   "ch": "email",
+   "camp": "post_ticket",
+   "text": "(WC6) - You Cannot Prepare for Every Storm…",
+   "steps": [
+    "1.03 Nov 9"
+   ],
+   "day": "2026-11-09",
+   "sent": 112,
+   "wrong_audience": 0,
+   "days": {
+    "2026-11-09": [
+     112,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": true,
+   "ghl_sent": 112,
+   "delivered": 112,
+   "opened": 44,
+   "clicked": 0,
+   "unsub": 0,
+   "bounced": 0,
+   "complaints": 0,
+   "share_main": 1.0
+  },
+  {
+   "id": "1149ad9c",
+   "key": "s:what if the problem isn't that you don't",
+   "ch": "sms",
+   "camp": "promote",
+   "text": "What if the problem isn't that you don't know what to do? Read it:",
+   "steps": [
+    "0.1 SMS 7"
+   ],
+   "day": "2026-11-09",
+   "sent": 3609,
+   "wrong_audience": 0,
+   "days": {
+    "2026-11-09": [
+     3609,
+     0,
+     2958,
+     607,
+     2,
+     3
+    ]
+   },
+   "credit": {
+    "2026-11-09": [
+     2,
+     503.0
+    ]
+   },
+   "tickets": 2,
+   "ticket_revenue": 503.0,
+   "no_links": false,
+   "delivered": 2958,
+   "failed": 607,
+   "optouts": 2,
+   "replies": 3
+  },
+  {
+   "id": "f974c974",
+   "key": "e:i'm handing you the weapon.",
+   "ch": "email",
+   "camp": "promote",
+   "text": "I'm handing you the weapon.",
+   "steps": [
+    "0.1 Email 21",
+    "0.2 Email 21"
+   ],
+   "day": "2026-11-10",
+   "sent": 22571,
+   "wrong_audience": 4,
+   "days": {
+    "2026-11-03": [
+     4,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-09": [
+     1,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-10": [
+     22566,
+     4,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "credit": {
+    "2026-11-10": [
+     1,
+     199.0
+    ]
+   },
+   "tickets": 1,
+   "ticket_revenue": 199.0,
+   "no_links": false,
+   "ghl_sent": 22570,
+   "delivered": 22454,
+   "opened": 5563,
+   "clicked": 60,
+   "unsub": 14,
+   "bounced": 116,
+   "complaints": 0,
+   "share_main": 1.0
+  },
+  {
+   "id": "9dc72dd3",
+   "key": "e:(wc6) - this is no longer about me…",
+   "ch": "email",
+   "camp": "post_ticket",
+   "text": "(WC6) - This Is No Longer About Me…",
+   "steps": [
+    "1.03 Nov 10"
+   ],
+   "day": "2026-11-10",
+   "sent": 119,
+   "wrong_audience": 0,
+   "days": {
+    "2026-11-10": [
+     119,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": true,
+   "ghl_sent": 119,
+   "delivered": 119,
+   "opened": 42,
+   "clicked": 0,
+   "unsub": 0,
+   "bounced": 0,
+   "complaints": 0,
+   "share_main": 1.0
+  },
+  {
+   "id": "b34d8b15",
+   "key": "s:some men waited. these men moved. read t",
+   "ch": "sms",
+   "camp": "promote",
+   "text": "Some men waited. These men moved. Read their stories:",
+   "steps": [
+    "0.1 SMS 8"
+   ],
+   "day": "2026-11-10",
+   "sent": 3600,
+   "wrong_audience": 0,
+   "days": {
+    "2026-11-10": [
+     3600,
+     0,
+     2945,
+     605,
+     3,
+     2
+    ]
+   },
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "delivered": 2945,
+   "failed": 605,
+   "optouts": 3,
+   "replies": 2
+  },
+  {
+   "id": "f89f60a0",
+   "key": "s:this is no longer about me. the greatest",
+   "ch": "sms",
+   "camp": "post_ticket",
+   "text": "This is no longer about me. The greatest story was never mine.",
+   "steps": [
+    "1.04 SMS 1 (Nov 10)"
+   ],
+   "day": "2026-11-10",
+   "sent": 94,
+   "wrong_audience": 1,
+   "days": {
+    "2026-11-10": [
+     94,
+     1,
+     83,
+     11,
+     1,
+     0
+    ]
+   },
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "delivered": 83,
+   "failed": 11,
+   "optouts": 1,
+   "replies": 0
+  },
+  {
+   "id": "5eb6a68b",
+   "key": "e:(wc6) - the most dangerous lie a man tel",
+   "ch": "email",
+   "camp": "post_ticket",
+   "text": "(WC6) - The Most Dangerous Lie a Man Tells…",
+   "steps": [
+    "1.03 Nov 11"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": true,
+   "ghl_sent": 0,
+   "delivered": 0,
+   "opened": 0,
+   "clicked": 0,
+   "unsub": 0,
+   "bounced": 0,
+   "complaints": 0,
+   "share_main": null
+  },
+  {
+   "id": "1b5058c4",
+   "key": "e:(wc6) - your results are telling a story",
+   "ch": "email",
+   "camp": "post_ticket",
+   "text": "(WC6) - Your Results Are Telling a Story…",
+   "steps": [
+    "1.03 Nov 12"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": true,
+   "ghl_sent": 0,
+   "delivered": 0,
+   "opened": 0,
+   "clicked": 0,
+   "unsub": 0,
+   "bounced": 0,
+   "complaints": 0,
+   "share_main": null
+  },
+  {
+   "id": "b9af4efe",
+   "key": "s:the most dangerous lie a man tells is th",
+   "ch": "sms",
+   "camp": "post_ticket",
+   "text": "The most dangerous lie a man tells is the one he tells himself.",
+   "steps": [
+    "1.04 SMS 2 (Nov 11)"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "delivered": 0,
+   "failed": 0,
+   "optouts": 0,
+   "replies": 0
+  },
+  {
+   "id": "a574daf7",
+   "key": "s:your results don't care about your excus",
+   "ch": "sms",
+   "camp": "post_ticket",
+   "text": "Your results don't care about your excuses. They are telling a story.",
+   "steps": [
+    "1.04 SMS 3 (Nov 12)"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "delivered": 0,
+   "failed": 0,
+   "optouts": 0,
+   "replies": 0
+  }
+ ],
+ "flags": [
+  "Email matched only 121 of 22,977 GHL sends (subject may have changed): I'm Not Bringing You Back to Say Goodbye."
+ ]
+}
