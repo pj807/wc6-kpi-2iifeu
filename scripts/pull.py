@@ -682,6 +682,20 @@ def main():
         day_list.append({"d": d.isoformat(), "tk": x["tk"], "tkr": round(x["tkr"], 2), "pp": x["pp"], "bb": x["bb"], "bbr": round(x["bbr"], 2)})
         d += timedelta(days=1)
 
+    # Fixed GHL links (from config.json; never created or changed by this script)
+    GL = CFG.get("ghl_links", {})
+    names = {w["id"]: w["name"].split(" - ")[0] + " " + ("Emails" if w["channel"] == "email" else "Texts") for w in CFG["workflows"]}
+    ghl_links = {}
+    for camp in ("promote", "post_ticket"):
+        g = GL.get(camp, {})
+        wl = lambda ids: [{"label": names.get(i, "Workflow"), "url": f"{GL['base']}/automation/workflow/{i}"} for i in ids]
+        ghl_links[camp] = {"email": wl(g.get("email_workflows", [])), "sms": wl(g.get("sms_workflows", [])),
+                           "optout": [{"label": "Smart List", "url": g["sms_optout_smart_list"]}] if g.get("sms_optout_smart_list") else []}
+    linked = {i for camp in ("promote", "post_ticket") for k in ("email_workflows", "sms_workflows") for i in GL.get(camp, {}).get(k, [])}
+    for w in CFG["workflows"]:
+        if w["id"] not in linked:
+            FLAGS.append(f"No GHL link set up yet for {w['name']} (add it to ghl_links in config.json by hand)")
+
     # Today so far (Pacific day), as of this run
     t_day = today.isoformat()
     today_so_far = {"date": t_day, "tickets": days[t_day]["tk"],
@@ -693,6 +707,7 @@ def main():
         "email_watermark": email_watermark,
         "update_times_et": CFG["update_times_et"],
         "today_so_far": today_so_far,
+        "ghl_links": ghl_links,
         "yesterday_totals": Yd,
         "generated_at": now.isoformat(timespec="minutes"), "as_of": as_of,
         "today": today.isoformat(), "yesterday": yday, "campaign_start": CFG["campaign_start"],

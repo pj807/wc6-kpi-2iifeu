@@ -1,6 +1,6 @@
 {
  "schema": 2,
- "email_watermark": "2026-11-10T21:58:00.810Z",
+ "email_watermark": "2026-11-10T22:11:50.669Z",
  "update_times_et": [
   "08:00",
   "13:00",
@@ -9,8 +9,52 @@
  "today_so_far": {
   "date": "2026-11-10",
   "tickets": 3,
-  "emails": 22747,
+  "emails": 22748,
   "texts": 3698
+ },
+ "ghl_links": {
+  "promote": {
+   "email": [
+    {
+     "label": "0.0 Emails",
+     "url": "https://app.gohighlevel.com/v2/location/BDeGaczWUBVqlvyWoI7l/automation/workflow/d35a22f3-a8a2-45ad-82bc-e8961172e520"
+    },
+    {
+     "label": "0.1 Emails",
+     "url": "https://app.gohighlevel.com/v2/location/BDeGaczWUBVqlvyWoI7l/automation/workflow/4e04f391-1840-4708-bd52-8b1e100abd8d"
+    },
+    {
+     "label": "0.2 Emails",
+     "url": "https://app.gohighlevel.com/v2/location/BDeGaczWUBVqlvyWoI7l/automation/workflow/6980f421-2814-400d-80ba-b6e9ede3fe1b"
+    }
+   ],
+   "sms": [
+    {
+     "label": "0.0 Texts",
+     "url": "https://app.gohighlevel.com/v2/location/BDeGaczWUBVqlvyWoI7l/automation/workflow/cae5e444-b52b-42d7-a46e-bec7eed12866"
+    },
+    {
+     "label": "0.1 Texts",
+     "url": "https://app.gohighlevel.com/v2/location/BDeGaczWUBVqlvyWoI7l/automation/workflow/9113e15e-11ed-4cc4-913d-641d92cd8d30"
+    }
+   ],
+   "optout": []
+  },
+  "post_ticket": {
+   "email": [
+    {
+     "label": "1.03 Emails",
+     "url": "https://app.gohighlevel.com/v2/location/BDeGaczWUBVqlvyWoI7l/automation/workflow/87a56fa4-9b20-4e25-82cb-24d353027e89"
+    }
+   ],
+   "sms": [
+    {
+     "label": "1.04 Texts",
+     "url": "https://app.gohighlevel.com/v2/location/BDeGaczWUBVqlvyWoI7l/automation/workflow/ab0e73fd-f630-4da6-8678-1c00faa50e54"
+    }
+   ],
+   "optout": []
+  }
  },
  "yesterday_totals": {
   "promote": {
@@ -49,8 +93,8 @@
    "sms": {}
   }
  },
- "generated_at": "2026-11-10T22:11+00:00",
- "as_of": "Nov 10, 5:11pm ET",
+ "generated_at": "2026-11-10T22:19+00:00",
+ "as_of": "Nov 10, 5:19pm ET",
  "today": "2026-11-10",
  "yesterday": "2026-11-09",
  "campaign_start": "2026-10-12",
@@ -95,16 +139,16 @@
  "todate": {
   "promote": {
    "email": {
-    "sent": 387188,
+    "sent": 387189,
     "emails": 22,
     "whole": 22,
-    "rated": 387188,
-    "delivered": 385996,
-    "opened": 123067,
+    "rated": 387189,
+    "delivered": 385997,
+    "opened": 123086,
     "clicked": 1362,
     "unsub": 477,
     "bounced": 1738,
-    "ghl_sent": 387772
+    "ghl_sent": 387773
    },
    "sms": {
     "sent": 80575,
@@ -152,8 +196,8 @@
    "line": "promote text failures 28.4% to date (22,918 of 80,575 texts failed), above 5%"
   }
  },
- "report": "WarriorCon 6 — numbers as of Nov 10, 5:11pm ET\n\nSUMMARY\n• 4 new tickets yesterday (137 total, 22 days to go)\n• Win: 69 of 137 ticket holders (50.4%) signed up for the Warrior App (free until Dec 4)\n• Watch: promote text failures 28.4% to date (22,918 of 80,575 texts failed), above 5%\n\nTICKET HOLDERS: 137 (134 paid + 3 comps) · 4 new yesterday\n$28,541 total sales ($26,666 tickets + $1,875 Business Bible)\n103 of 134 tickets were bought within 48 hrs of an email/text\n\nPROMOTE (non-ticket holders)\nYesterday — Email: 22,691 sent · 26.3% open · 0.3% click\nYesterday — SMS: 3,613 sent · 82.0% delivered\nTo date — Email: 387,188 sent · 31.9% open · 0.4% click\nTo date — SMS: 80,575 sent · 71.3% delivered\n\nPOST-TICKET SEDUCTION (ticket holders)\nYesterday — Email: 112 sent · 39.3% open\nYesterday — SMS: none sent\nTo date — Email: 342 sent · 43.6% open\nTo date — SMS: 94 sent · 88.3% delivered\n\nUPSELLS\nWarrior App (Power Plan): 69 · 50.4% of ticket holders\nBusiness Bible: 17 sales · $1,875 · bought by 16 of 134 paid buyers (11.9%)\n(Texts have no open rate.)",
- "report_as_of": "Nov 10, 5:11pm ET",
+ "report": "WarriorCon 6 — numbers as of Nov 10, 5:19pm ET\n\nSUMMARY\n• 4 new tickets yesterday (137 total, 22 days to go)\n• Win: 69 of 137 ticket holders (50.4%) signed up for the Warrior App (free until Dec 4)\n• Watch: promote text failures 28.4% to date (22,918 of 80,575 texts failed), above 5%\n\nTICKET HOLDERS: 137 (134 paid + 3 comps) · 4 new yesterday\n$28,541 total sales ($26,666 tickets + $1,875 Business Bible)\n103 of 134 tickets were bought within 48 hrs of an email/text\n\nPROMOTE (non-ticket holders)\nYesterday — Email: 22,691 sent · 26.3% open · 0.3% click\nYesterday — SMS: 3,613 sent · 82.0% delivered\nTo date — Email: 387,189 sent · 31.9% open · 0.4% click\nTo date — SMS: 80,575 sent · 71.3% delivered\n\nPOST-TICKET SEDUCTION (ticket holders)\nYesterday — Email: 112 sent · 39.3% open\nYesterday — SMS: none sent\nTo date — Email: 342 sent · 43.6% open\nTo date — SMS: 94 sent · 88.3% delivered\n\nUPSELLS\nWarrior App (Power Plan): 69 · 50.4% of ticket holders\nBusiness Bible: 17 sales · $1,875 · bought by 16 of 134 paid buyers (11.9%)\n(Texts have no open rate.)",
+ "report_as_of": "Nov 10, 5:19pm ET",
  "frozen": {
   "yesterday": "2026-11-09",
   "as_of": "Nov 10, 4:34pm ET",
@@ -2486,7 +2530,7 @@
     "0.0 Email 11"
    ],
    "day": "2026-10-28",
-   "sent": 22716,
+   "sent": 22717,
    "wrong_audience": 57,
    "days": {
     "2026-10-27": [
@@ -2602,7 +2646,7 @@
      0
     ],
     "2026-11-10": [
-     2,
+     3,
      0,
      0,
      0,
@@ -2619,8 +2663,8 @@
    "tickets": 5,
    "ticket_revenue": 995.0,
    "no_links": false,
-   "ghl_sent": 22765,
-   "delivered": 22660,
+   "ghl_sent": 22766,
+   "delivered": 22661,
    "opened": 7161,
    "clicked": 75,
    "unsub": 26,
@@ -4050,7 +4094,7 @@
    "no_links": false,
    "ghl_sent": 22582,
    "delivered": 22450,
-   "opened": 5909,
+   "opened": 5911,
    "clicked": 68,
    "unsub": 12,
    "bounced": 130,
@@ -4178,7 +4222,7 @@
    "no_links": false,
    "ghl_sent": 22570,
    "delivered": 22454,
-   "opened": 5646,
+   "opened": 5663,
    "clicked": 62,
    "unsub": 14,
    "bounced": 116,
@@ -4239,7 +4283,7 @@
      2946,
      605,
      3,
-     3
+     4
     ]
    },
    "credit": {},
@@ -4249,7 +4293,7 @@
    "delivered": 2946,
    "failed": 605,
    "optouts": 3,
-   "replies": 3
+   "replies": 4
   },
   {
    "id": "f89f60a0",

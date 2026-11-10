@@ -141,6 +141,16 @@
     background:var(--fg);color:#000;font:500 12px/1.4 var(--body);letter-spacing:0;text-transform:none;text-align:left;
     padding:8px 10px;border-radius:2px;opacity:0;transform:translateY(4px);pointer-events:none;transition:.15s;white-space:normal}
   .tipc:hover::after,.tipc:focus::after,.tipc.show::after{opacity:1;transform:none}
+  /* count that links into GoHighLevel */
+  .ghl{position:relative;display:block;margin-top:2px;cursor:pointer;outline:none}
+  .ghl-n{color:var(--muted);font-size:12px;border-bottom:1px dotted #7d807f}
+  .ghl:hover .ghl-n,.ghl:focus-within .ghl-n,.ghl.show .ghl-n{color:var(--fg);border-bottom-color:var(--red)}
+  .ghl-pop{display:none;position:absolute;right:0;top:100%;z-index:31;padding-top:6px;min-width:230px;text-align:left}
+  .ghl:hover .ghl-pop,.ghl:focus-within .ghl-pop,.ghl.show .ghl-pop{display:block}
+  .ghl-box{background:var(--fg);color:#000;border-radius:2px;padding:9px 11px;font:500 12px/1.4 var(--body);white-space:normal;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+  .ghl-box a{display:block;color:#000;font-weight:700;text-decoration:none;padding:3px 0}
+  .ghl-box a:hover{color:var(--red-dark)}
+  .ghl-box em{display:block;font-style:normal;color:#555;margin-top:5px}
   /* version + what's new */
   .barr{display:flex;align-items:center;gap:14px}
   .ver{position:relative;background:transparent;border:1px solid var(--line);color:var(--soft);border-radius:2px;padding:7px 10px;
@@ -235,6 +245,7 @@
     .dates{margin-top:12px}
     .dates input{min-width:0;flex:1}
     .tipc::after{left:0;right:auto;max-width:190px}
+    .ghl-pop{left:0;right:auto;min-width:210px}
     .ex-grid{grid-template-columns:1fr}
     .ex-big{font-size:26px}
     .rhead{flex-direction:column;align-items:stretch}
@@ -363,6 +374,7 @@
       </table>
     </div>
     <p class="note" id="watchNote"></p>
+    <p class="note" id="ghlNote">Lists open in GoHighLevel (login needed) and show contacts for that campaign, not the selected dates. GoHighLevel's workflow stats only go back 30 days.</p>
   </section>
 
   <!-- UPSELLS -->
@@ -437,7 +449,7 @@
 
 <script>
 // The version of THIS page. Bump it (and changelog.json) whenever the page changes; daily data refreshes never change it.
-const PAGE_VERSION = '1.0.1';
+const PAGE_VERSION = '1.1';
 
 const $ = id => document.getElementById(id);
 const N = n => n == null ? '—' : Math.round(n).toLocaleString('en-US');
@@ -482,12 +494,22 @@ document.addEventListener('click', e => {
   const t = e.target.closest('.tipc');
   document.querySelectorAll('.tipc.show').forEach(x => { if (x !== t) x.classList.remove('show'); });
   if (t) t.classList.toggle('show');
+  const g = e.target.closest('.ghl');
+  if (e.target.closest('.ghl-box a')) return;   // a link inside the menu: let it open
+  document.querySelectorAll('.ghl.show').forEach(x => { if (x !== g) x.classList.remove('show'); });
+  if (g) g.classList.toggle('show');
 });
 
 // ---------- cells ----------
-function tip(big, per, sentence, warn) {
-  return `<span class="tipc" tabindex="0" data-tip="${esc(sentence)}"><b class="${warn ? 'warn' : ''}">${big}</b><span class="per">${per}</span></span>`;
+function tip(big, per, sentence, warn, links, hint) {
+  if (!links || !links.length) return `<span class="tipc" tabindex="0" data-tip="${esc(sentence)}"><b class="${warn ? 'warn' : ''}">${big}</b><span class="per">${per}</span></span>`;
+  // the count opens a small menu of links into GoHighLevel (new tab); the % keeps its hover sentence
+  const menu = links.map(l => `<a href="${esc(l.url)}" target="_blank" rel="noopener">View in GHL → ${esc(l.label)}</a>`).join('');
+  return `<span class="tipc" tabindex="0" data-tip="${esc(sentence)}"><b class="${warn ? 'warn' : ''}">${big}</b></span>`
+    + `<span class="ghl" tabindex="0"><span class="ghl-n">${per}</span><span class="ghl-pop"><span class="ghl-box">${menu}${hint ? `<em>${esc(hint)}</em>` : ''}</span></span></span>`;
 }
+const GL = (camp, k) => (D.ghl_links && D.ghl_links[camp] && D.ghl_links[camp][k]) || [];
+const HINT = w => `In the workflow, turn on Stats view (chart icon, left side), then click ${w} on each step.`;
 const dimCell = (l, t) => `<td data-l="${l}" class="dim">${t}</td>`;
 
 // ---------- range totals (same rules as the data script) ----------
@@ -527,18 +549,18 @@ function emailCells(t, camp) {
   out += noLinks(camp)
     ? `<td data-l="Click">${tip('<span class="dim">no links</span>', '', 'These emails have no links except unsubscribe, so there is nothing to click.')}</td>`
     : `<td data-l="Click">${tip(PF(c), N(t.clicked) + ' clicked', `${N(t.clicked)} of ${N(t.delivered)} delivered emails clicked${part}`)}</td>`;
-  out += `<td data-l="Unsub">${tip(PF(u), N(t.unsub) + ' unsubscribed', `${N(t.unsub)} of ${N(t.delivered)} delivered emails unsubscribed${part}`, u > TH.email_unsub_pct)}</td>`;
-  out += `<td data-l="Bounce">${tip(PF(b), N(t.bounced) + ' bounced', `${N(t.bounced)} of ${N(t.ghl_sent)} emails bounced${part}`, b > TH.email_bounce_pct)}</td>`;
+  out += `<td data-l="Unsub">${tip(PF(u), N(t.unsub) + ' unsubscribed', `${N(t.unsub)} of ${N(t.delivered)} delivered emails unsubscribed${part}`, u > TH.email_unsub_pct, GL(camp, 'email'), HINT('Unsubscribed'))}</td>`;
+  out += `<td data-l="Bounce">${tip(PF(b), N(t.bounced) + ' bounced', `${N(t.bounced)} of ${N(t.ghl_sent)} emails bounced${part}`, b > TH.email_bounce_pct, GL(camp, 'email'), HINT('Bounced'))}</td>`;
   return out;
 }
-function smsCells(t) {
+function smsCells(t, camp) {
   if (!t.sent) return `<td data-l="Sent" class="dim">none sent</td>` + ['Delivered', 'Click', 'Opt-out', 'Failed'].map(l => dimCell(l, '—')).join('');
   const dl = P(t.delivered, t.sent), fl = P(t.failed, t.sent), op = P(t.optouts, t.delivered), other = t.sent - t.delivered - t.failed;
   let out = `<td data-l="Sent"><b>${N(t.sent)}</b></td>`;
   out += `<td data-l="Delivered">${tip(PF(dl), N(t.delivered) + ' delivered', `${N(t.delivered)} of ${N(t.sent)} texts delivered · ${N(t.sent - t.delivered)} not delivered`, fl > TH.sms_failed_pct)}</td>`;
   out += `<td data-l="Click">${tip('<span class="dim">pending</span>', '', "GHL doesn't share click counts for text links yet.")}</td>`;
-  out += `<td data-l="Opt-out">${tip(PF(op), N(t.optouts) + ' opted out', `${N(t.optouts)} of ${N(t.delivered)} delivered texts got a STOP reply within 24 hours`, op > TH.sms_optout_pct)}</td>`;
-  out += `<td data-l="Failed">${tip(PF(fl), N(t.failed) + ' failed', `${N(t.failed)} of ${N(t.sent)} texts failed or were undelivered` + (other > 0 ? ` · ${N(other)} still waiting for a delivery receipt` : ''), fl > TH.sms_failed_pct)}</td>`;
+  out += `<td data-l="Opt-out">${tip(PF(op), N(t.optouts) + ' opted out', `${N(t.optouts)} of ${N(t.delivered)} delivered texts got a STOP reply within 24 hours`, op > TH.sms_optout_pct, GL(camp, 'optout'), 'Saved Smart List of contacts who opted out of texts.')}</td>`;
+  out += `<td data-l="Failed">${tip(PF(fl), N(t.failed) + ' failed', `${N(t.failed)} of ${N(t.sent)} texts failed or were undelivered` + (other > 0 ? ` · ${N(other)} still waiting for a delivery receipt` : ''), fl > TH.sms_failed_pct, GL(camp, 'sms'), HINT('Failed'))}</td>`;
   return out;
 }
 function campRows(camp, short) {
@@ -546,8 +568,8 @@ function campRows(camp, short) {
   const eR = totals(camp, 'email', range), eT = totals(camp, 'email'), sR = totals(camp, 'sms', range), sT = totals(camp, 'sms');
   return `<tr><td><span class="ch">EMAIL</span><span class="rl">${rl}</span></td>${emailCells(eR, camp)}</tr>`
        + `<tr><td><span class="ch">EMAIL</span>To date</td>${emailCells(eT, camp)}</tr>`
-       + `<tr><td><span class="ch">SMS</span><span class="rl">${rl}</span></td>${smsCells(sR)}</tr>`
-       + `<tr><td><span class="ch">SMS</span>To date</td>${smsCells(sT)}</tr>`;
+       + `<tr><td><span class="ch">SMS</span><span class="rl">${rl}</span></td>${smsCells(sR, camp)}</tr>`
+       + `<tr><td><span class="ch">SMS</span>To date</td>${smsCells(sT, camp)}</tr>`;
 }
 
 // ---------- sections that don't follow the date filter ----------

@@ -1,5 +1,16 @@
 [
   {
+    "v": "1.1",
+    "date": "2026-11-11",
+    "title": "Links into GoHighLevel",
+    "items": [
+      "<b>Unsubscribed, bounced and failed counts are now clickable.</b> Hover or tap a count and pick \"View in GHL\" to open the workflow that lists those contacts.",
+      "In the workflow, turn on <b>Stats view</b> (chart icon) and click Unsubscribed, Bounced or Failed on a step to see the contacts.",
+      "Text opt-out counts will link to a saved GoHighLevel list once it's set up.",
+      "No names, emails or phone numbers are on this page. The links only open GoHighLevel, where you need to be logged in."
+    ]
+  },
+  {
     "v": "1.0.1",
     "date": "2026-11-11",
     "title": "Fixes",

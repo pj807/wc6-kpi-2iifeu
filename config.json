@@ -75,6 +75,31 @@
   "17:00"
  ],
  "_update_times_et": "When fresh numbers land on the page (Eastern). The GitHub Action starts 30 minutes earlier (cron in .github/workflows/daily-refresh.yml).",
+ "ghl_links": {
+  "_how": "Fixed links from the Unsub/Opt-out and Bounce/Failed counts into GoHighLevel. Set once by hand; the scheduled run never changes them. Workflow links open the workflow: turn on Stats view (chart icon) and click Unsubscribed, Bounced or Failed on a step to see those contacts. For SMS opt-outs, paste a saved Smart List URL (or leave null).",
+  "base": "https://app.gohighlevel.com/v2/location/BDeGaczWUBVqlvyWoI7l",
+  "promote": {
+   "email_workflows": [
+    "d35a22f3-a8a2-45ad-82bc-e8961172e520",
+    "4e04f391-1840-4708-bd52-8b1e100abd8d",
+    "6980f421-2814-400d-80ba-b6e9ede3fe1b"
+   ],
+   "sms_workflows": [
+    "cae5e444-b52b-42d7-a46e-bec7eed12866",
+    "9113e15e-11ed-4cc4-913d-641d92cd8d30"
+   ],
+   "sms_optout_smart_list": null
+  },
+  "post_ticket": {
+   "email_workflows": [
+    "87a56fa4-9b20-4e25-82cb-24d353027e89"
+   ],
+   "sms_workflows": [
+    "ab0e73fd-f630-4da6-8678-1c00faa50e54"
+   ],
+   "sms_optout_smart_list": null
+  }
+ },
  "workflows": [
   {
    "id": "d35a22f3-a8a2-45ad-82bc-e8961172e520",
