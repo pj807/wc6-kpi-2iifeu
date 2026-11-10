@@ -4,6 +4,14 @@ The version only changes when the page itself changes. Daily data refreshes keep
 New features go up a minor number (1.1, 1.2). Fixes go up a patch number (1.0.1).
 The "What's new" panel on the page reads `changelog.json`, so update both files together.
 
+## v1.0.1 · Fixes · Nov 11, 2026
+
+- **Total sales** now adds ticket and Business Bible sales from each order's line items, so the Business Bible is no longer counted twice.
+- **Business Bible take rate** counts people (16 of 134 paid buyers), not sales. Revenue still shows all 17 sales.
+- **Daily report** is rebuilt on every update, so its time matches "Last updated". Yesterday's numbers still come from the 8am update.
+- **Same number everywhere:** the summary uses the same figures as the tiles.
+- **Tile descriptions** now use plain-English wording.
+
 ## v1.0 · First release · Nov 11, 2026
 
 - **Executive summary**: Headline, Win and Watch, three lines at the top.

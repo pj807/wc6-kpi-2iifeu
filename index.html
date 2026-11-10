@@ -73,13 +73,13 @@
   .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
   .tile{background:var(--bg);padding:22px 20px}
   .tile .k{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-  .tile .d{font-size:12px;color:var(--muted);margin-top:4px;line-height:1.4}
-  .tile .rows{margin-top:8px}
-  .tile .rows div{display:flex;align-items:baseline;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding:6px 0}
-  .tile .rows div:first-child{border-top:0}
-  .tile .rows span{font-size:12px;color:var(--soft)}
-  .tile .rows b{font:700 30px/1 var(--head)}
-  .tile .v{font:700 44px/1.05 var(--head);margin-top:8px}
+  .tile .d{font-size:12px;color:#7d807f;margin-top:4px;line-height:1.4}
+  .ups{margin-top:12px;display:grid;gap:10px}
+  .up1{display:flex;align-items:center;gap:14px}
+  .up1 .un{font:700 38px/1 var(--head);min-width:52px}
+  .up1 .ut{font-size:12px;color:var(--muted);line-height:1.4}
+  .up1 .ut b{display:block;color:var(--fg);font-size:13px;font-weight:600;letter-spacing:.02em}
+  .tile .v{font:700 44px/1.05 var(--head);margin-top:10px}
   .tile .n{font-size:12px;color:var(--muted);margin-top:6px}
   .tile .n.warn{color:var(--red)}
 
@@ -218,7 +218,7 @@
     .rhead .btn{width:100%;justify-content:center}
     .seg{display:flex}.seg button{flex:1;padding:11px 6px;font-size:10px}
     .tiles{grid-template-columns:1fr 1fr}
-    .tiles.up .tile:last-child,.tiles .tile.solo{grid-column:1/-1}
+    .tiles.up .tile:last-child,.tiles .tile.solo,.tile.tup{grid-column:1/-1}
     .tile .v{font-size:34px}
     table.k thead{display:none}
     table.k tr{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px 10px;padding:12px 18px;border-bottom:1px solid var(--line)}
@@ -437,7 +437,7 @@
 
 <script>
 // The version of THIS page. Bump it (and changelog.json) whenever the page changes; daily data refreshes never change it.
-const PAGE_VERSION = '1.0';
+const PAGE_VERSION = '1.0.1';
 
 const $ = id => document.getElementById(id);
 const N = n => n == null ? '—' : Math.round(n).toLocaleString('en-US');
@@ -568,7 +568,7 @@ function renderStatic() {
   schedule();
   const h = D.holders, s = D.sales, up = D.upsells;
   const bbRev = up.business_bible.revenue;
-  $('facts').innerHTML = `<span>${N(h.total)} ticket holders</span><span>${$$(s.revenue + bbRev)} total sales (${$$(s.revenue)} tickets + ${$$(bbRev)} Business Bible)</span><span>${D.days_to_go} days to go</span>`;
+  $('facts').innerHTML = `<span>${N(h.total)} ticket holders</span><span>${$$(s.total)} total sales (${$$(s.revenue)} tickets + ${$$(bbRev)} Business Bible)</span><span>${D.days_to_go} days to go</span>`;
 
   const S = D.summary;
   $('exHB').textContent = S.headline.big; $('exHS').textContent = S.headline.sub; $('exHC').textContent = S.headline.cmp;
@@ -590,23 +590,26 @@ function renderStatic() {
   const pe = D.todate.promote.email, ps = D.todate.promote.sms, te = D.todate.post_ticket.email;
   const failed = P(ps.failed, ps.sent), pp = up.power_plan, bb = up.business_bible;
   $('tilesIntro').textContent = `Everything since the campaign started on ${fmtD(D.campaign_start)}. Switch audience to see each side on its own.`;
-  const upRows = `<div class="rows"><div><span>Warrior App (Power Plan)</span><b>${N(pp.count)}</b></div><div><span>Business Bible</span><b>${N(bb.count)}</b></div></div>`;
+  const bbRate = P(bb.people, h.paid);
+  const ups = `<div class="ups">`
+    + `<div class="up1"><span class="un">${N(pp.count)}</span><span class="ut"><b>Warrior App</b>${PF(P(pp.count, h.total))} of ticket holders · free until ${fmtD(pp.billing_start)}</span></div>`
+    + `<div class="up1"><span class="un">${N(bb.people)}</span><span class="ut"><b>Business Bible</b>${PF(bbRate)} of paid buyers · ${bb.count} sales · ${$$(bb.revenue)}</span></div></div>`;
   const tiles = [
-    ['all th', 'Ticket holders', 'Paid tickets plus comps', N(h.total), `${h.paid} paid + ${h.comps} comps · +${h.new_yesterday} yesterday`],
-    ['all nth', 'Tickets from campaigns', `Bought within ${D.attribution_window_hours} hrs of a Promote email or text`, N(s.credited), `${$$(s.credited_revenue)} of ${$$(s.revenue)} in ticket sales`],
-    ['all nth', 'Promote email click', 'Clicks ÷ emails delivered, non-ticket holders', PF(P(pe.clicked, pe.delivered)), `${PF(P(pe.opened, pe.delivered))} open · ${N(pe.sent)} sent`],
-    ['all nth', 'Promote SMS delivered', 'Texts that reached the phone, non-ticket holders', PF(P(ps.delivered, ps.sent)),
+    ['all th', '', 'Ticket holders', 'Everyone with a WC6 ticket, including comps.', N(h.total), `${h.paid} paid + ${h.comps} comps · +${h.new_yesterday} yesterday`],
+    ['all nth', '', 'Tickets from campaigns', `Tickets bought within ${D.attribution_window_hours} hrs of an email or text.`, N(s.credited), `of ${N(s.tickets)} paid tickets · ${$$(s.credited_revenue)} in sales`],
+    ['all nth', '', 'Promote email click', 'Share of sales emails that got a click.', PF(P(pe.clicked, pe.delivered)), `${PF(P(pe.opened, pe.delivered))} open · ${N(pe.sent)} sent`],
+    ['all nth', '', 'Promote SMS delivered', 'Share of sales texts that reached a phone.', PF(P(ps.delivered, ps.sent)),
       failed > TH.sms_failed_pct ? `${PF(failed)} failed, above the ${TH.sms_failed_pct}% limit · ${N(ps.sent)} sent` : `${N(ps.sent)} sent`, failed > TH.sms_failed_pct],
-    ['all th', 'Post-ticket email open', 'Opens ÷ emails delivered, ticket holders', te.sent ? PF(P(te.opened, te.delivered)) : '—', te.sent ? `${N(te.sent)} sent` : 'none sent'],
-    ['all th', 'Upsells', 'What ticket holders added, counted separately', null, `${$$(bb.revenue)} Business Bible · app free until ${fmtD(pp.billing_start)}`, false, upRows],
+    ['all th', 'tup', 'Post-ticket email open', 'Share of ticket-holder emails that were opened.', te.sent ? PF(P(te.opened, te.delivered)) : '—', te.sent ? `${N(te.sent)} sent` : 'none sent'],
+    ['all th', 'tup', 'Upsells', 'Ticket holders who added each one.', null, '', false, ups],
   ];
-  $('tiles').innerHTML = tiles.map(([f, k, d, v, n, w, rows]) => `<div class="tile" data-for="${f}"><div class="k">${k}</div><div class="d">${d}</div>${rows || `<div class="v">${v}</div>`}<div class="n${w ? ' warn' : ''}">${n}</div></div>`).join('');
+  $('tiles').innerHTML = tiles.map(([f, cls, k, d, v, n, w, inner]) => `<div class="tile ${cls}" data-for="${f}"><div class="k">${k}</div><div class="d">${d}</div>${inner || `<div class="v">${v}</div>`}${n ? `<div class="n${w ? ' warn' : ''}">${n}</div>` : ''}</div>`).join('');
   fixSolo();
 
-  const ppRate = P(pp.count, h.total), bbRate = P(bb.count, h.paid);
+  const ppRate = P(pp.count, h.total);
   $('upTiles').innerHTML =
     `<div class="tile"><div class="k">Warrior App · Power Plan</div><div class="v">${N(pp.count)}</div><div class="n">${PF(ppRate)} of ticket holders signed up for the Warrior App (free until ${fmtD(pp.billing_start)})</div></div>`
-  + `<div class="tile"><div class="k">Business Bible add-on</div><div class="v">${N(bb.count)}</div><div class="n">${bb.count} sales · ${$$(bb.revenue)} (${bb.bump} at checkout + ${bb.standalone} on its own) · ${PF(bbRate)} of paid buyers</div></div>`
+  + `<div class="tile"><div class="k">Business Bible add-on</div><div class="v">${N(bb.people)}</div><div class="n">${PF(bbRate)} of paid buyers · ${bb.count} sales · ${$$(bb.revenue)} (${bb.bump} at checkout + ${bb.standalone} on its own)</div></div>`
   + `<div class="tile"><div class="k">App billing from ${fmtD(pp.billing_start)}</div><div class="v">${$$(pp.count * pp.price_per_month)}<span style="font-size:.5em;color:var(--muted)">/mo</span></div><div class="n">If all ${pp.count} stay on at $${pp.price_per_month}/month</div></div>`;
 
   $('watchNote').innerHTML = `Watch list: email unsubscribes above <b style="color:var(--fg)">${TH.email_unsub_pct}%</b>, bounces above <b style="color:var(--fg)">${TH.email_bounce_pct}%</b>, or texts with opt-outs above <b style="color:var(--fg)">${TH.sms_optout_pct}%</b> or failures above <b style="color:var(--fg)">${TH.sms_failed_pct}%</b> turn <span style="color:var(--red)">red</span>. Hover or tap a % for the full count. For a date range, email opens, clicks, unsubscribes and bounces count only emails sent fully inside it, because GHL reports those per email, not per day. When no email fits, they show "totals only".`;
@@ -669,7 +672,7 @@ function upsellRows(short) {
   + `<td data-l="Take rate">${tip(PF(P(pp.count, h.total)), `${pp.count} of ${h.total}`, `${pp.count} of ${h.total} ticket holders took the Power Plan`)}</td>`
   + `<td data-l="Revenue">$0 now<span class="per">$${pp.price_per_month}/mo from ${fmtD(pp.billing_start)}</span></td></tr>`
   + `<tr><td><span class="ch">BUMP</span>Business Bible</td><td data-l="${esc(rl)}"${bbR ? '' : ' class="dim"'}>${bbR ? `<b>${N(bbR)}</b>` : '0'}</td><td data-l="To date"><b>${N(bb.count)}</b></td>`
-  + `<td data-l="Take rate">${tip(PF(P(bb.count, h.paid)), `${bb.count} of ${h.paid}`, `${bb.count} Business Bible sales vs ${h.paid} paid ticket buyers · ${bb.bump} added at ticket checkout, ${bb.standalone} bought on its own`)}</td>`
+  + `<td data-l="Take rate">${tip(PF(P(bb.people, h.paid)), `${bb.people} of ${h.paid}`, `${bb.people} of ${h.paid} paid ticket buyers bought the Business Bible (${bb.count} sales: ${bb.bump} added at ticket checkout, ${bb.standalone} bought on its own)`)}</td>`
   + `<td data-l="Revenue"><b>${$$(bb.revenue)}</b><span class="per">${bb.bump} at checkout + ${bb.standalone} on its own</span></td></tr>`;
 }
 

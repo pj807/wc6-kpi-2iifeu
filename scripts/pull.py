@@ -317,10 +317,13 @@ def main():
     def is_holder(contact, when):
         return contact in comps_only or (contact in holder_since and holder_since[contact] <= when)
 
+    def tick_amt(o):   # ticket line items only; order totals also include Business Bible bumps
+        return sum(a for n, a in o["items"] if n.startswith(RULE["ticket_product_name_prefix"]))
+
     days = collections.defaultdict(lambda: {"tk": 0, "tkr": 0.0, "pp": 0, "bb": 0, "bbr": 0.0})
     for c, o in first_buy.items():
         d = days[pt_day(o["created"])]
-        d["tk"] += 1; d["tkr"] += o["amount"]
+        d["tk"] += 1; d["tkr"] += tick_amt(o)
 
     # Power Plan: first sign-up per contact, ticket holders only
     pp_first, pp_non_holders = {}, set()
@@ -336,10 +339,12 @@ def main():
 
     # Business Bible: every paid sale, whether added at ticket checkout (bump) or bought on its own
     bb = {"count": 0, "bump": 0, "standalone": 0, "revenue": 0.0}
+    bb_people = set()
     for o in orders:
         if o["paid"] and has(o, UPS["business_bible"]["name_prefix"]):
             amt = sum(a for n, a in o["items"] if n.startswith(UPS["business_bible"]["name_prefix"]))
             bb["count"] += 1; bb["revenue"] += amt
+            bb_people.add(o["contact"])
             bb["bump" if has(o, RULE["ticket_product_name_prefix"]) else "standalone"] += 1
             d = days[pt_day(o["created"])]
             d["bb"] += 1; d["bbr"] += amt
@@ -404,7 +409,7 @@ def main():
                  if right and d < bt and ts(bt) - ts(d) <= WINDOW and STEPS[k]["label"] == "promote"]
         if cands:
             k = max(cands)[1]
-            credit[k][bday][0] += 1; credit[k][bday][1] += o["amount"]
+            credit[k][bday][0] += 1; credit[k][bday][1] += tick_amt(o)
 
     # ---- merge with baseline (older days kept from the previous data.json)
     base_days, base_credit = {}, {}
@@ -487,7 +492,9 @@ def main():
     # ---- headline numbers
     n_paid, n_comps = len(first_buy), len(comps_only)
     n_holders = n_paid + n_comps
-    revenue = sum(o["amount"] for o in ticket_orders)
+    revenue = sum(tick_amt(o) for o in ticket_orders)          # ticket line items only
+    bb["people"] = len(bb_people)
+    total_sales = revenue + bb["revenue"]
     credited_n = sum(m["tickets"] for m in messages)
     credited_rev = sum(m["ticket_revenue"] for m in messages)
     new_y = days[yday]["tk"]
@@ -497,122 +504,146 @@ def main():
     pp_cfg = UPS["power_plan"]
     shown_at = now.astimezone(SHOW_TZ)
     as_of = f"{shown_at.strftime('%b')} {shown_at.day}, {shown_at.strftime('%-I:%M%p').lower()} ET"
+    sales_line = f"{money(total_sales)} total sales ({money(revenue)} tickets + {money(bb['revenue'])} Business Bible)"
+    pp_rate = 100 * pp_n / n_holders if n_holders else 0
+    bb_rate = 100 * bb["people"] / n_paid if n_paid else 0     # people, not sales
 
-    # ---- executive summary (fixed rules from config.json)
-    rules_used = {}
+    # ---- yesterday + summary picks: set by the first run after midnight Pacific (the 8am ET run), kept by later runs.
+    # Numbers in the summary and report are always filled from this run, so every number on the page agrees.
+    frozen = prev.get("frozen") if prev else None
+    keep = bool(frozen and frozen.get("yesterday") == yday and frozen.get("picks") and not os.environ.get("REBUILD_SUMMARY"))
+    Yd = frozen["Y"] if keep else {c: {ch: dict(Y[c][ch]) for ch in Y[c]} for c in Y}
+
+    wr = SR["win"]
+    avg_click = {c: pct(T[c]["email"]["clicked"], T[c]["email"]["delivered"]) for c in T}
+    msg_by_key = {m["key"]: m for m in messages}
+
+    def pick_summary():
+        rules = {}
+        cands = []
+        for m in messages:
+            if m["ch"] != "email" or m["day"] != yday or m["sent"] < wr["min_sends"] or not m["delivered"] or m["no_links"]:
+                continue
+            if (m["share_main"] or 0) < SR["email_whole_send_share"]:
+                continue
+            cr = 100 * m["clicked"] / m["delivered"]
+            a = avg_click[m["camp"]] or 0
+            if a and cr >= wr["click_multiple"] * a:
+                cands.append((cr / a, m["key"]))
+        if cands:
+            win = {"rule": 1, "key": max(cands)[1]}
+            rules["win"] = f"Win: rule 1, a send from {short_day(yday)} clicked at {wr['click_multiple']}x or more its campaign average."
+        elif pp_n or bb["count"]:
+            win = {"rule": 2, "which": "pp" if pp_rate >= bb_rate else "bb"}
+            rules["win"] = (f"Win: rule 2, the upsell with the highest take rate (Power Plan {pp_rate:.1f}% vs Business Bible "
+                            f"{bb_rate:.1f}%). Rule 1 didn't apply: no send from {short_day(yday)} clicked at {wr['click_multiple']}x its campaign average.")
+        else:
+            best = max((m for m in messages if m["ch"] == "email" and m["sent"] >= wr["min_sends"] and m["delivered"]),
+                       key=lambda m: m["opened"] / m["delivered"], default=None)
+            win = {"rule": 3, "key": best["key"]} if best else {"rule": 0}
+            rules["win"] = "Win: rule 3, best open rate among sends with 100+ recipients." if best else "Win: no rule applied."
+        over = [x for x in watch_checks() if x["v"] > x["lim"]]
+        if over:
+            w = max(over, key=lambda x: x["v"] / x["lim"])
+            watch = {"camp": w["camp"], "name": w["name"]}
+            rules["watch"] = (f"Watch: {w['cname']} {w['name']} {w['v']:.1f}% is the furthest past its red line ({w['lim']:g}%). Also over: "
+                              + (", ".join(f"{x['cname']} {x['name']} {x['v']:.1f}%" for x in over if x is not w) or "nothing else") + ".")
+        else:
+            watch = None
+            rules["watch"] = "Watch: no metric is past its red line."
+        return {"win": win, "watch": watch}, rules
+
+    def watch_checks():
+        out = []
+        for c, cname in (("promote", "Promote"), ("post_ticket", "Post-ticket")):
+            e, s_ = T[c]["email"], T[c]["sms"]
+            if e["delivered"]:
+                out.append(dict(camp=c, cname=cname, name="email unsubscribes", v=100 * e["unsub"] / e["delivered"], lim=TH["email_unsub_pct"], n=e["unsub"], what="emails unsubscribed", base=e["delivered"]))
+            if e["ghl_sent"]:
+                out.append(dict(camp=c, cname=cname, name="email bounces", v=100 * e["bounced"] / e["ghl_sent"], lim=TH["email_bounce_pct"], n=e["bounced"], what="emails bounced", base=e["ghl_sent"]))
+            if s_["delivered"]:
+                out.append(dict(camp=c, cname=cname, name="text opt-outs", v=100 * s_["optouts"] / s_["delivered"], lim=TH["sms_optout_pct"], n=s_["optouts"], what="delivered texts got a STOP reply", base=s_["delivered"]))
+            if s_["sent"]:
+                out.append(dict(camp=c, cname=cname, name="text failures", v=100 * s_["failed"] / s_["sent"], lim=TH["sms_failed_pct"], n=s_["failed"], what="texts failed", base=s_["sent"]))
+        return out
+
+    if keep:
+        picks = frozen["picks"]
+        rules_used = {k: v + " (picked at the first run today)" for k, v in frozen["rules"].items()}
+    else:
+        picks, rules_used = pick_summary()
+        frozen = {"yesterday": yday, "as_of": as_of, "Y": Yd, "picks": picks, "rules": rules_used}
+
     hr = SR["headline"]
     prior = [(today - timedelta(days=i)).isoformat() for i in range(2, 2 + hr["compare_days"])]
     avg = sum(days[d]["tk"] for d in prior) / hr["compare_days"]
     tol = hr["in_line_tolerance_pct"] / 100
-    if avg == 0:
-        word = "above" if new_y > 0 else "in line with"
-    elif new_y > avg * (1 + tol):
-        word = "above"
-    elif new_y < avg * (1 - tol):
-        word = "below"
-    else:
-        word = "in line with"
-    headline = {"big": f"{new_y} new ticket{'s' if new_y != 1 else ''} yesterday",
-                "sub": f"{n_holders} ticket holders · {money(revenue + bb['revenue'])} total sales ({money(revenue)} tickets + {money(bb['revenue'])} Business Bible) · {days_to_go} days to go",
-                "cmp": f"vs {hr['compare_days']}-day average of {avg:.1f}/day: {word.replace('in line with', 'in line')}",
-                "line": f"{new_y} new ticket{'s' if new_y != 1 else ''} yesterday, {word} the {hr['compare_days']}-day average of {avg:.1f}/day ({n_holders} total, {days_to_go} days to go)"}
+    word = ("above" if new_y > 0 else "in line") if avg == 0 else \
+        "above" if new_y > avg * (1 + tol) else "below" if new_y < avg * (1 - tol) else "in line"
+    tickets_word = f"{new_y} new ticket{'s' if new_y != 1 else ''} yesterday"
+    headline = {"big": tickets_word,
+                "sub": f"{n_holders} ticket holders · {sales_line} · {days_to_go} days to go",
+                "cmp": f"vs {hr['compare_days']}-day average of {avg:.1f}/day: {word}",
+                "line": f"{tickets_word} ({n_holders} total, {days_to_go} days to go)"}
     rules_used["headline"] = (f"Headline: {new_y} new paid tickets on {short_day(yday)} vs {avg:.1f}/day over the "
                               f"{hr['compare_days']} days before it ({word}; 'in line' = within {hr['in_line_tolerance_pct']}%).")
 
-    wr = SR["win"]
-    win = None
-    avg_click = {c: pct(T[c]["email"]["clicked"], T[c]["email"]["delivered"]) for c in T}
-    cands = []
-    for m in messages:
-        if m["ch"] != "email" or m["day"] != yday or m["sent"] < wr["min_sends"] or not m["delivered"]:
-            continue
-        if (m["share_main"] or 0) < SR["email_whole_send_share"]:
-            continue
-        cr = 100 * m["clicked"] / m["delivered"]
+    wp = picks["win"]
+    billing = short_day(pp_cfg["billing_start"])
+    if wp["rule"] == 1 and wp["key"] in msg_by_key:
+        m = msg_by_key[wp["key"]]
+        cr = 100 * m["clicked"] / m["delivered"] if m["delivered"] else 0
         a = avg_click[m["camp"]] or 0
-        if a and cr >= wr["click_multiple"] * a:
-            cands.append((cr / a, cr, a, m))
-    if cands:
-        r_, cr, a, m = max(cands, key=lambda x: x[0])
-        win = {"big": f"{r_:.1f}× the usual click rate",
-               "sub": f"“{m['text']}” got {cr:.1f}% clicks ({fmt(m['clicked'])} of {fmt(m['delivered'])} delivered) vs the {a:.1f}% campaign average.",
-               "line": f"“{m['text']}” clicked at {cr:.1f}%, {r_:.1f}× the campaign average"}
-        rules_used["win"] = f"Win: rule 1, a send from {short_day(yday)} clicked at {wr['click_multiple']}× or more the campaign average."
+        mult = cr / a if a else 0
+        win = {"big": f"{mult:.1f}x the usual click rate",
+               "sub": f"\u201c{m['text']}\u201d got {cr:.1f}% clicks ({fmt(m['clicked'])} of {fmt(m['delivered'])} delivered) vs the {a:.1f}% campaign average.",
+               "line": f"\u201c{m['text']}\u201d clicked at {cr:.1f}%, {mult:.1f}x the campaign average"}
+    elif wp["rule"] == 2 and wp["which"] == "pp":
+        win = {"big": f"{fraction_word(pp_rate)} of ticket holders signed up for the app",
+               "sub": f"{pp_n} of {n_holders} ({pp_rate:.1f}%) signed up for the Power Plan. It's free until {billing}, then ${pp_cfg['price_per_month']}/month: {money(pp_n * pp_cfg['price_per_month'])}/month if they all stay.",
+               "line": f"{pp_n} of {n_holders} ticket holders ({pp_rate:.1f}%) signed up for the Warrior App (free until {billing})"}
+    elif wp["rule"] == 2:
+        win = {"big": f"{fraction_word(bb_rate)} of paid buyers added the Business Bible",
+               "sub": f"{bb['people']} of {n_paid} paid buyers ({bb_rate:.1f}%) · {bb['count']} sales · {money(bb['revenue'])}.",
+               "line": f"{bb['people']} of {n_paid} paid buyers ({bb_rate:.1f}%) added the Business Bible"}
+    elif wp["rule"] == 3 and wp["key"] in msg_by_key:
+        m = msg_by_key[wp["key"]]
+        o = 100 * m["opened"] / m["delivered"] if m["delivered"] else 0
+        win = {"big": f"Best open rate: {o:.1f}%", "sub": f"\u201c{m['text']}\u201d · {fmt(m['opened'])} of {fmt(m['delivered'])} opened.",
+               "line": f"best open rate {o:.1f}% on \u201c{m['text']}\u201d"}
     else:
-        pp_rate = 100 * pp_n / n_holders if n_holders else 0
-        bb_rate = 100 * bb["count"] / n_paid if n_paid else 0
-        if pp_n or bb["count"]:
-            if pp_rate >= bb_rate:
-                frac = fraction_word(pp_rate)
-                win = {"big": f"{frac} of ticket holders took the app",
-                       "sub": f"{pp_n} of {n_holders} ({pp_rate:.1f}%) signed up for the Warrior App (free until {short_day(pp_cfg['billing_start'])}), worth {money(pp_n * pp_cfg['price_per_month'])}/month from then if they stay.",
-                       "line": f"{pp_n} of {n_holders} ticket holders ({pp_rate:.1f}%) signed up for the Warrior App (free until {short_day(pp_cfg['billing_start'])})"}
-            else:
-                win = {"big": f"{fraction_word(bb_rate)} of buyers added the Business Bible",
-                       "sub": f"{bb['count']} sales · {money(bb['revenue'])} ({bb['bump']} at checkout + {bb['standalone']} on its own) · {bb_rate:.1f}% of {n_paid} paid buyers.",
-                       "line": f"{bb['count']} of {n_paid} paid buyers ({bb_rate:.1f}%) added the Business Bible"}
-            rules_used["win"] = (f"Win: rule 2, the upsell with the highest take rate (Power Plan {pp_rate:.1f}% vs Business Bible "
-                                 f"{bb_rate:.1f}%). Rule 1 didn't apply: no send from {short_day(yday)} clicked at "
-                                 f"{wr['click_multiple']}× the campaign average.")
-        else:
-            best = max((m for m in messages if m["ch"] == "email" and m["sent"] >= wr["min_sends"] and m["delivered"]),
-                       key=lambda m: m["opened"] / m["delivered"], default=None)
-            if best:
-                o = 100 * best["opened"] / best["delivered"]
-                win = {"big": f"Best open rate: {o:.1f}%", "sub": f"“{best['text']}” · {fmt(best['opened'])} of {fmt(best['delivered'])} opened.",
-                       "line": f"best open rate {o:.1f}% on “{best['text']}”"}
-                rules_used["win"] = "Win: rule 3, best open rate among sends with 100+ recipients (rules 1 and 2 didn't apply)."
-    if not win:
         win = {"big": "No standout yet", "sub": "Nothing met a win rule today.", "line": "no standout yet"}
-        rules_used["win"] = "Win: no rule applied."
 
-    # Watch: the metric furthest past its red line (to date, both campaigns)
-    checks = []
-    for c, cname in (("promote", "Promote"), ("post_ticket", "Post-ticket")):
-        e, s = T[c]["email"], T[c]["sms"]
-        if e["delivered"]:
-            checks.append(("email unsubscribes", cname, 100 * e["unsub"] / e["delivered"], TH["email_unsub_pct"], e["unsub"], "emails unsubscribed", e["delivered"], "delivered"))
-        if e["ghl_sent"]:
-            checks.append(("email bounces", cname, 100 * e["bounced"] / e["ghl_sent"], TH["email_bounce_pct"], e["bounced"], "emails bounced", e["ghl_sent"], "sent"))
-        if s["delivered"]:
-            checks.append(("text opt-outs", cname, 100 * s["optouts"] / s["delivered"], TH["sms_optout_pct"], s["optouts"], "STOP replies", s["delivered"], "delivered"))
-        if s["sent"]:
-            checks.append(("text failures", cname, 100 * s["failed"] / s["sent"], TH["sms_failed_pct"], s["failed"], "texts failed", s["sent"], "sent"))
-    over = [x for x in checks if x[2] > x[3]]
-    if over:
-        name, cname, v, lim, n, what, base_n, base_w = max(over, key=lambda x: x[2] / x[3])
+    wpk = picks["watch"]
+    w = next((x for x in watch_checks() if wpk and x["camp"] == wpk["camp"] and x["name"] == wpk["name"]), None)
+    if w:
         extra = ""
-        if name == "text failures":
-            ys = Y["promote" if cname == "Promote" else "post_ticket"]["sms"]
-            if ys["sent"]:
+        if w["name"] == "text failures":
+            ys = Yd[w["camp"]]["sms"]
+            if ys.get("sent"):
                 extra = f" Yesterday: {100 * ys['failed'] / ys['sent']:.1f}%."
-        watch = {"big": f"{cname} {name}: {v:.1f}%",
-                 "sub": f"Above the {lim:g}% limit. {fmt(n)} of {fmt(base_n)} {what.split(' ')[0]} {base_w if base_w != 'sent' else 'sent'} {what.split(' ', 1)[1] if ' ' in what else ''}.".replace("  ", " ") + extra,
-                 "line": f"{cname.lower()} {name} {v:.1f}% to date ({fmt(n)} {what}), above {lim:g}%"}
-        watch["sub"] = f"Above the {lim:g}% limit: {fmt(n)} of {fmt(base_n)} {what} to date.{extra}"
-        rules_used["watch"] = (f"Watch: {cname} {name} {v:.1f}% is the furthest past its red line ({lim:g}%). "
-                               f"Also over: {', '.join(f'{x[1]} {x[0]} {x[2]:.1f}%' for x in over if x[:2] != (name, cname)) or 'nothing else'}.")
+        watch = {"big": f"{w['cname']} {w['name']}: {w['v']:.1f}%",
+                 "sub": f"Above the {w['lim']:g}% limit: {fmt(w['n'])} of {fmt(w['base'])} {w['what']} to date.{extra}",
+                 "line": f"{w['cname'].lower()} {w['name']} {w['v']:.1f}% to date ({fmt(w['n'])} of {fmt(w['base'])} {w['what']}), above {w['lim']:g}%"}
     else:
         watch = {"big": "All clear", "sub": "Nothing needs attention today.", "line": "Nothing needs attention today."}
-        rules_used["watch"] = "Watch: no metric is past its red line."
 
-    # ---- report text (also report.txt)
+    # ---- report text: rebuilt every run (report.txt matches "Last updated"); yesterday lines stay from the 8am run
     def e_line(t, click=True):
-        if not t["sent"]:
+        if not t.get("sent"):
             return "none sent"
         parts = [f"{fmt(t['sent'])} sent"]
-        if t["rated"]:
+        if t.get("rated"):
             parts.append(f"{pct(t['opened'], t['delivered'])}% open")
             if click:
                 parts.append(f"{pct(t['clicked'], t['delivered'])}% click")
         return " · ".join(parts)
 
     def s_line(t):
-        if not t["sent"]:
+        if not t.get("sent"):
             return "none sent"
         return f"{fmt(t['sent'])} sent · {pct(t['delivered'], t['sent'])}% delivered"
 
-    bb_rate = pct(bb["count"], n_paid)
     report = "\n".join([
         f"WarriorCon 6 — numbers as of {as_of}",
         "",
@@ -622,23 +653,24 @@ def main():
         f"• Watch: {watch['line']}",
         "",
         f"TICKET HOLDERS: {n_holders} ({n_paid} paid + {n_comps} comps) · {new_y} new yesterday",
-        f"{money(revenue)} in ticket sales · {credited_n} sales came within {CFG['attribution_window_hours']} hrs of an email/text",
+        sales_line,
+        f"{credited_n} of {n_paid} tickets were bought within {CFG['attribution_window_hours']} hrs of an email/text",
         "",
         "PROMOTE (non-ticket holders)",
-        f"Yesterday — Email: {e_line(Y['promote']['email'])}",
-        f"Yesterday — SMS: {s_line(Y['promote']['sms'])}",
+        f"Yesterday — Email: {e_line(Yd['promote']['email'])}",
+        f"Yesterday — SMS: {s_line(Yd['promote']['sms'])}",
         f"To date — Email: {e_line(T['promote']['email'])}",
         f"To date — SMS: {s_line(T['promote']['sms'])}",
         "",
         "POST-TICKET SEDUCTION (ticket holders)",
-        f"Yesterday — Email: {e_line(Y['post_ticket']['email'], click=False)}",
-        f"Yesterday — SMS: {s_line(Y['post_ticket']['sms'])}",
+        f"Yesterday — Email: {e_line(Yd['post_ticket']['email'], click=False)}",
+        f"Yesterday — SMS: {s_line(Yd['post_ticket']['sms'])}",
         f"To date — Email: {e_line(T['post_ticket']['email'], click=False)}",
         f"To date — SMS: {s_line(T['post_ticket']['sms'])}",
         "",
         "UPSELLS",
-        f"Warrior App (Power Plan): {pp_n} · {pct(pp_n, n_holders)}% of ticket holders",
-        f"Business Bible: {bb['count']} sales · {money(bb['revenue'])} ({bb['bump']} at checkout + {bb['standalone']} on its own) · {bb_rate}% of paid buyers",
+        f"Warrior App (Power Plan): {pp_n} · {pp_rate:.1f}% of ticket holders",
+        f"Business Bible: {bb['count']} sales · {money(bb['revenue'])} · bought by {bb['people']} of {n_paid} paid buyers ({bb_rate:.1f}%)",
         "(Texts have no open rate.)",
     ])
 
@@ -649,18 +681,6 @@ def main():
         x = days.get(d.isoformat(), {"tk": 0, "tkr": 0, "pp": 0, "bb": 0, "bbr": 0})
         day_list.append({"d": d.isoformat(), "tk": x["tk"], "tkr": round(x["tkr"], 2), "pp": x["pp"], "bb": x["bb"], "bbr": round(x["bbr"], 2)})
         d += timedelta(days=1)
-
-    # Yesterday's numbers, the report and the summary are set by the first run after midnight Pacific
-    # (the 8am ET run) and kept as-is by the 1pm and 5pm runs. REBUILD_SUMMARY=1 forces a rebuild.
-    Yd = {c: {ch: dict(Y[c][ch]) for ch in Y[c]} for c in Y}
-    frozen = prev.get("frozen") if prev else None
-    if frozen and frozen.get("yesterday") == yday and not os.environ.get("REBUILD_SUMMARY"):
-        headline, win, watch = frozen["summary"]["headline"], frozen["summary"]["win"], frozen["summary"]["watch"]
-        report, Yd = frozen["report"], frozen["Y"]
-        rules_used = {k: v + " (kept from the first run today)" for k, v in frozen["rules"].items()}
-    else:
-        frozen = {"yesterday": yday, "as_of": as_of, "summary": {"headline": headline, "win": win, "watch": watch},
-                  "report": report, "Y": Yd, "rules": rules_used}
 
     # Today so far (Pacific day), as of this run
     t_day = today.isoformat()
@@ -680,13 +700,14 @@ def main():
         "attribution_window_hours": CFG["attribution_window_hours"],
         "thresholds": TH, "email_whole_send_share": SR["email_whole_send_share"],
         "holders": {"total": n_holders, "paid": n_paid, "comps": n_comps, "new_yesterday": new_y},
-        "sales": {"tickets": n_paid, "revenue": revenue, "credited": credited_n, "credited_revenue": round(credited_rev, 2)},
+        "sales": {"tickets": n_paid, "revenue": round(revenue, 2), "total": round(total_sales, 2),
+                  "credited": credited_n, "credited_revenue": round(credited_rev, 2)},
         "upsells": {"power_plan": {"count": pp_n, "price_per_month": pp_cfg["price_per_month"], "billing_start": pp_cfg["billing_start"]},
-                    "business_bible": {"count": bb["count"], "bump": bb["bump"], "standalone": bb["standalone"],
+                    "business_bible": {"count": bb["count"], "people": bb["people"], "bump": bb["bump"], "standalone": bb["standalone"],
                                        "revenue": round(bb["revenue"], 2)}},
         "todate": {c: {ch: dict(T[c][ch]) for ch in T[c]} for c in T},
         "summary": {"headline": headline, "win": win, "watch": watch},
-        "report": report, "report_as_of": frozen["as_of"],
+        "report": report, "report_as_of": as_of,
         "frozen": frozen,
         "days": day_list,
         "messages": sorted(messages, key=lambda m: (m["day"] or "9", m["ch"])),

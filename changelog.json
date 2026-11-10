@@ -1,5 +1,17 @@
 [
   {
+    "v": "1.0.1",
+    "date": "2026-11-11",
+    "title": "Fixes",
+    "items": [
+      "<b>Total sales</b> now adds ticket and Business Bible sales from each order's line items, so the Business Bible is no longer counted twice.",
+      "<b>Business Bible take rate</b> counts people (16 of 134 paid buyers), not sales. Revenue still shows all 17 sales.",
+      "<b>Daily report</b> is rebuilt on every update, so its time matches \"Last updated\". Yesterday's numbers still come from the 8am update.",
+      "<b>Same number everywhere:</b> the summary uses the same figures as the tiles.",
+      "<b>Tile descriptions</b> now use plain-English wording."
+    ]
+  },
+  {
     "v": "1.0",
     "date": "2026-11-11",
     "title": "First release",

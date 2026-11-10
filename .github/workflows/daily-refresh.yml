@@ -45,5 +45,6 @@ jobs:
           git add data.json summary.json report.txt
           git diff --cached --quiet && { echo "No changes."; exit 0; }
           python3 -I scripts/privacy_scan.py
-          git commit -q -m "Daily numbers $(date -u +%Y-%m-%d)"
+          git commit -q -m "Daily numbers $(date -u '+%Y-%m-%d %H:%M') UTC"
+          git pull -q --rebase -X theirs   # if something else was pushed meanwhile, keep this run's fresh numbers
           git push
