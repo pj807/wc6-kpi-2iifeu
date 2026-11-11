@@ -1,5 +1,18 @@
 [
   {
+    "v": "1.3",
+    "date": "2026-11-11",
+    "title": "Ready to send",
+    "items": [
+      "<b>\"Ready to send\" status</b> at the top of Today's report, so you know at a glance whether to send it.",
+      "<b>Ready to send</b> (green): today's 7am ET update is in. The report covers yesterday.",
+      "<b>Not updated yet</b> (amber): before the 7am ET update lands, you're looking at the previous day's report. The button says \"Copy anyway\" and still copies it.",
+      "<b>Out of date</b> (red outline): the 7am ET update hadn't arrived by 7:45am ET. Check the report before sending.",
+      "Only the 7am ET update changes this status. The 1pm and 5pm updates don't.",
+      "The copied report's first line now says which day it covers and when it was updated, for example \"WarriorCon 6 — report for Nov 10 (updated Nov 11, 7:02am ET)\"."
+    ]
+  },
+  {
     "v": "1.2",
     "date": "2026-11-11",
     "title": "Countdown to the next update",

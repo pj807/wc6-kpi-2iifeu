@@ -13,7 +13,7 @@
   :root{
     --bg:#000; --panel:#0b0b0b; --panel2:#111; --line:rgba(255,255,255,.12);
     --fg:#fafafa; --muted:#a3a6a5; --soft:#cfd4d2;
-    --red:#ee2b2b; --red-dark:#b81414; --good:#37ca37;
+    --red:#ee2b2b; --amber:#f5a524; --red-dark:#b81414; --good:#37ca37;
     --head:"Agency FB","Saira Condensed",Impact,sans-serif;
     --body:Inter,system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
   }
@@ -64,6 +64,13 @@
   .report pre b{color:var(--fg)}
   .report .row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding:16px 24px;border-top:1px solid var(--line)}
   .report .hint{font-size:12px;color:var(--muted)}
+  /* "ready to send" strip */
+  .rstat{display:flex;align-items:center;gap:12px;padding:12px 24px;border-bottom:1px solid var(--line);font-size:13px;color:var(--soft);line-height:1.45}
+  .rtag{flex:none;font:700 11px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;padding:6px 9px;border-radius:2px;border:1px solid transparent}
+  .rtag.ready{background:var(--good);color:#06130a}
+  .rtag.wait{background:var(--amber);color:#1a1200}
+  .rtag.old{border-color:var(--red);color:var(--red)}
+  .btn.grey{background:#3a3d3c;color:var(--fg)} .btn.grey:hover{background:#4a4d4c}
   .btn{display:inline-flex;align-items:center;gap:8px;background:var(--red);color:#fff;border:0;border-radius:2px;
        font:600 12px var(--body);letter-spacing:.1em;text-transform:uppercase;padding:14px 22px;cursor:pointer}
   .btn:hover{background:var(--red-dark)}
@@ -311,12 +318,13 @@
     <h2>Daily report <em>for Garrett.</em></h2>
     <p class="sub">Updates itself every morning. Tap the button, paste into Slack or text.</p>
     <div class="report">
+      <div class="rstat" id="rStat" aria-live="polite"><span class="rtag" id="rTag"></span><span id="rStatTxt"></span></div>
       <div class="rhead">
         <button class="rtoggle" id="rToggle" aria-expanded="false" aria-controls="rBody">
           <span class="chev" aria-hidden="true">+</span>
           <span><span class="rt-title">Today's report</span><span class="rt-sub" id="rSub"></span></span>
         </button>
-        <button class="btn" id="copyBtn">Copy report <span aria-hidden="true">→</span></button>
+        <button class="btn" id="copyBtn"><span id="copyLbl">Copy report</span> <span aria-hidden="true">→</span></button>
       </div>
       <div class="rbody" id="rBody" hidden>
 <pre id="reportText"></pre>
@@ -454,7 +462,7 @@
 
 <script>
 // The version of THIS page. Bump it (and changelog.json) whenever the page changes; daily data refreshes never change it.
-const PAGE_VERSION = '1.2';
+const PAGE_VERSION = '1.3';
 
 const $ = id => document.getElementById(id);
 const N = n => n == null ? '—' : Math.round(n).toLocaleString('en-US');
@@ -624,7 +632,39 @@ function renderNext(now = Date.now()) {
   const day = target && etParts(target.t).day !== etParts(now).day ? ' tomorrow' : '';
   $('sched').textContent = `Next: ${target ? slotLabel(target.hm) + ' ET' + day : '—'} · updates ${all.slice(0, -1).join(', ')} & ${all[all.length - 1]} ET`;
 }
-function schedule() { renderNext(); }
+// ---------- "Ready to send" strip: only the 7am ET run (the one that sets yesterday's report) counts ----------
+const MORNING_CUTOFF = '12:15';   // a run that set the report after this (the 1pm or 5pm run) doesn't count
+const etDay = t => { const p = etParts(t); return `${p.year}-${p.month}-${p.day}`; };
+const etClock = t => { const p = etParts(t); return `${p.hour}:${p.minute}`; };
+function reportStatus(now) {
+  const today = etDay(now), [y, mo, d] = today.split('-').map(Number);
+  const F = D.frozen || {}, at = F.at ? new Date(F.at).getTime() : null;
+  const landed = at && etDay(at) === today && etClock(at) < MORNING_CUTOFF && F.yesterday === addDays(today, -1);
+  if (landed) return {state: 'ready'};
+  const seven = etInstant(y, mo - 1, d, '07:00'), late = seven + 45 * 60000;
+  if (now < late) return {state: 'wait', mins: Math.ceil((seven - now) / 60000)};
+  return {state: 'old'};
+}
+function renderReportStatus(now = Date.now()) {
+  if (!D) return;
+  const st = reportStatus(now), covers = fmtD((D.frozen && D.frozen.yesterday) || D.yesterday);
+  const tag = $('rTag'), txt = $('rStatTxt'), btn = $('copyBtn');
+  tag.className = 'rtag ' + st.state;
+  if (st.state === 'ready') {
+    tag.textContent = 'Ready to send';
+    txt.textContent = `Today's report · covers yesterday, ${covers} · updated ${D.report_as_of || D.as_of}`;
+  } else if (st.state === 'wait') {
+    tag.textContent = 'Not updated yet';
+    const m = st.mins, when = m > 0 ? 'in about ' + (m >= 60 ? `${Math.floor(m / 60)}h ${m % 60}m` : `${m}m`) : 'running now';
+    txt.textContent = `This is yesterday's report (covers ${covers}). Today's update runs at 7:00am ET — ${when}.`;
+  } else {
+    tag.textContent = 'Out of date';
+    txt.textContent = `Today's 7am ET update didn't arrive. This report covers ${covers} — check before sending.`;
+  }
+  btn.classList.toggle('grey', st.state !== 'ready');
+  $('copyLbl').textContent = st.state === 'ready' ? 'Copy report' : 'Copy anyway';
+}
+function schedule() { renderNext(); renderReportStatus(); }
 function renderStatic() {
   const gen = new Date(D.generated_at);
   $('stamp').textContent = gen.toLocaleString('en-US', {timeZone: 'America/New_York', month: 'short', day: 'numeric'})
@@ -873,7 +913,7 @@ $('newVerBtn').onclick = () => location.reload();
     renderStatic(); initFilter(); apply(); verSetup();
     setInterval(checkForNewVersion, 10 * 60 * 1000);
     setInterval(checkForNewData, 2 * 60 * 1000);
-    setTimeout(() => { renderNext(); setInterval(renderNext, 60 * 1000); }, 60000 - Date.now() % 60000);   // refresh on each new minute
+    setTimeout(() => { schedule(); setInterval(schedule, 60 * 1000); }, 60000 - Date.now() % 60000);   // refresh on each new minute
   } catch (e) {
     $('stamp').textContent = 'Data not available';
     console.error(e);

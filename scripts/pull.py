@@ -619,9 +619,18 @@ def main():
     if keep:
         picks = frozen["picks"]
         rules_used = {k: v + " (picked at the first run today)" for k, v in frozen["rules"].items()}
+        if not frozen.get("at"):   # older data: work out the run time from its "Nov 11, 6:31am ET" label
+            try:
+                t = datetime.strptime(f"{frozen['as_of'][:-3]} {today.year}", "%b %d, %I:%M%p %Y").replace(tzinfo=SHOW_TZ)
+                frozen["at"] = t.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+            except (KeyError, ValueError):
+                pass
     else:
         picks, rules_used = pick_summary()
-        frozen = {"yesterday": yday, "as_of": as_of, "Y": Yd, "picks": picks, "rules": rules_used}
+        # "at" = when the morning run set yesterday's report. Later runs keep it, so the page's
+        # "Ready to send" status only ever follows the 7am ET run.
+        frozen = {"yesterday": yday, "as_of": as_of, "at": now.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+                  "Y": Yd, "picks": picks, "rules": rules_used}
 
     hr = SR["headline"]
     prior = [(today - timedelta(days=i)).isoformat() for i in range(2, 2 + hr["compare_days"])]
@@ -694,7 +703,7 @@ def main():
         return f"{fmt(t['sent'])} sent · {pct(t['delivered'], t['sent'])}% delivered"
 
     report = "\n".join([
-        f"WarriorCon 6 — numbers as of {as_of}",
+        f"WarriorCon 6 — report for {short_day(yday)} (updated {as_of})",
         "",
         "SUMMARY",
         f"• {headline['line']}",

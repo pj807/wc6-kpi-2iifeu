@@ -4,6 +4,15 @@ The version only changes when the page itself changes. Daily data refreshes keep
 New features go up a minor number (1.1, 1.2). Fixes go up a patch number (1.0.1).
 The "What's new" panel on the page reads `changelog.json`, so update both files together.
 
+## v1.3 · Ready to send · Nov 11, 2026
+
+- **"Ready to send" status** at the top of Today's report, so you know at a glance whether to send it.
+- **Ready to send** (green): today's 7am ET update is in. The report covers yesterday.
+- **Not updated yet** (amber): before the 7am ET update lands, you're looking at the previous day's report. The button says "Copy anyway" and still copies it.
+- **Out of date** (red outline): the 7am ET update hadn't arrived by 7:45am ET. Check the report before sending.
+- Only the 7am ET update changes this status. The 1pm and 5pm updates don't.
+- The copied report's first line now says which day it covers and when it was updated, for example "WarriorCon 6 — report for Nov 10 (updated Nov 11, 7:02am ET)".
+
 ## v1.2 · Countdown to the next update · Nov 11, 2026
 
 - **Countdown to the next update** under "Last updated", for example "Next update in about 2h 15m". It refreshes every minute.
