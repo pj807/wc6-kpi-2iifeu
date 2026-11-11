@@ -98,8 +98,8 @@
    }
   }
  },
- "generated_at": "2026-11-11T11:44+00:00",
- "as_of": "Nov 11, 6:44am ET",
+ "generated_at": "2026-11-11T11:57+00:00",
+ "as_of": "Nov 11, 6:57am ET",
  "today": "2026-11-11",
  "yesterday": "2026-11-10",
  "campaign_start": "2026-10-12",
@@ -149,9 +149,9 @@
     "whole": 22,
     "rated": 409782,
     "delivered": 408468,
-    "opened": 127935,
-    "clicked": 1402,
-    "unsub": 504,
+    "opened": 128109,
+    "clicked": 1403,
+    "unsub": 506,
     "bounced": 1861,
     "ghl_sent": 410376
    },
@@ -201,8 +201,8 @@
    "line": "promote text failures 28.4% to date (22,918 of 80,573 texts failed), above 5%"
   }
  },
- "report": "WarriorCon 6 — numbers as of Nov 11, 6:44am ET\n\nSUMMARY\n• 3 new tickets yesterday (137 total, 21 days to go)\n• Win: 69 of 137 ticket holders (50.4%) signed up for the Warrior App (free until Dec 4)\n• Watch: promote text failures 28.4% to date (22,918 of 80,573 texts failed), above 5%\n\nTICKET HOLDERS: 137 (134 paid + 3 comps) · 3 new yesterday\n$28,541 total sales ($26,666 tickets + $1,875 Business Bible)\n103 of 134 tickets were bought within 48 hrs of an email/text\n\nPROMOTE (non-ticket holders)\nYesterday — Email: 22,670 sent · 28.1% open · 0.3% click\nYesterday — SMS: 3,605 sent · 82.0% delivered\nTo date — Email: 409,782 sent · 31.3% open · 0.3% click\nTo date — SMS: 80,573 sent · 71.4% delivered\n\nPOST-TICKET SEDUCTION (ticket holders)\nYesterday — Email: 119 sent · 47.1% open\nYesterday — SMS: 94 sent · 88.3% delivered\nTo date — Email: 342 sent · 46.8% open\nTo date — SMS: 94 sent · 88.3% delivered\n\nUPSELLS\nWarrior App (Power Plan): 69 · 50.4% of ticket holders\nBusiness Bible: 17 sales · $1,875 · bought by 16 of 134 paid buyers (11.9%)\n(Texts have no open rate.)",
- "report_as_of": "Nov 11, 6:44am ET",
+ "report": "WarriorCon 6 — report for Nov 10 (updated Nov 11, 6:57am ET)\n\nSUMMARY\n• 3 new tickets yesterday (137 total, 21 days to go)\n• Win: 69 of 137 ticket holders (50.4%) signed up for the Warrior App (free until Dec 4)\n• Watch: promote text failures 28.4% to date (22,918 of 80,573 texts failed), above 5%\n\nTICKET HOLDERS: 137 (134 paid + 3 comps) · 3 new yesterday\n$28,541 total sales ($26,666 tickets + $1,875 Business Bible)\n103 of 134 tickets were bought within 48 hrs of an email/text\n\nPROMOTE (non-ticket holders)\nYesterday — Email: 22,670 sent · 28.1% open · 0.3% click\nYesterday — SMS: 3,605 sent · 82.0% delivered\nTo date — Email: 409,782 sent · 31.4% open · 0.3% click\nTo date — SMS: 80,573 sent · 71.4% delivered\n\nPOST-TICKET SEDUCTION (ticket holders)\nYesterday — Email: 119 sent · 47.1% open\nYesterday — SMS: 94 sent · 88.3% delivered\nTo date — Email: 342 sent · 46.8% open\nTo date — SMS: 94 sent · 88.3% delivered\n\nUPSELLS\nWarrior App (Power Plan): 69 · 50.4% of ticket holders\nBusiness Bible: 17 sales · $1,875 · bought by 16 of 134 paid buyers (11.9%)\n(Texts have no open rate.)",
+ "report_as_of": "Nov 11, 6:57am ET",
  "frozen": {
   "yesterday": "2026-11-10",
   "as_of": "Nov 11, 6:31am ET",
@@ -262,7 +262,8 @@
    "win": "Win: rule 2, the upsell with the highest take rate (Power Plan 50.4% vs Business Bible 11.9%). Rule 1 didn't apply: no send from Nov 10 clicked at 1.5x its campaign average.",
    "watch": "Watch: Promote text failures 28.4% is the furthest past its red line (5%). Also over: Post-ticket text opt-outs 1.2%, Post-ticket text failures 11.7%.",
    "headline": "Headline: 3 new paid tickets on Nov 10 vs 3.0/day over the 7 days before it (in line; 'in line' = within 20%)."
-  }
+  },
+  "at": "2026-11-11T11:31:00Z"
  },
  "days": [
   {
@@ -3723,9 +3724,9 @@
    "no_links": false,
    "ghl_sent": 22551,
    "delivered": 22422,
-   "opened": 3933,
-   "clicked": 37,
-   "unsub": 1,
+   "opened": 4100,
+   "clicked": 38,
+   "unsub": 3,
    "bounced": 120,
    "complaints": 0,
    "flag": "Check subject",
@@ -4169,7 +4170,7 @@
    "no_links": false,
    "ghl_sent": 22582,
    "delivered": 22450,
-   "opened": 6051,
+   "opened": 6053,
    "clicked": 68,
    "unsub": 13,
    "bounced": 130,
@@ -4305,7 +4306,7 @@
    "no_links": false,
    "ghl_sent": 22570,
    "delivered": 22453,
-   "opened": 6306,
+   "opened": 6311,
    "clicked": 65,
    "unsub": 17,
    "bounced": 117,
