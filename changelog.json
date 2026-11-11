@@ -1,5 +1,16 @@
 [
   {
+    "v": "1.2",
+    "date": "2026-11-11",
+    "title": "Countdown to the next update",
+    "items": [
+      "<b>Countdown to the next update</b> under \"Last updated\", for example \"Next update in about 2h 15m\". It refreshes every minute.",
+      "<b>All times are Eastern (ET)</b>, wherever you are. The page uses Eastern time even if your phone or computer is set to Manila or anywhere else.",
+      "When an update is due, it says <b>\"Updating now — usually ready within 15 min\"</b>. When the new numbers are in, the \"New data in · Show\" bar appears and the countdown moves to the next update.",
+      "If an update hasn't arrived 45 minutes after it was due, it says <b>\"Update is late — showing the last numbers\"</b>. The numbers on the page are still the last good ones."
+    ]
+  },
+  {
     "v": "1.1.2",
     "date": "2026-11-11",
     "title": "Daily update now lands at 7am ET",

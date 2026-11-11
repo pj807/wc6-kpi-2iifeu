@@ -34,6 +34,11 @@
   .logo{width:26px;height:26px}
   .stamp{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:right}
   .stamp strong{display:block;color:var(--fg);font-weight:600}
+  .stamp .nxt{display:block;margin-top:5px;text-transform:none;letter-spacing:.01em;font-size:12px;color:var(--soft)}
+  .stamp .nxt.late{color:var(--muted)}
+  .stamp .nxt .pulse{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--red);margin-right:6px;vertical-align:1px;animation:pulse 2s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.2}}
+  @media (prefers-reduced-motion:reduce){.stamp .nxt .pulse{animation:none}}
   .stamp .sched{display:block;margin-top:3px;text-transform:none;letter-spacing:.02em;font-size:11px}
 
   /* hero */
@@ -261,7 +266,7 @@
   <div class="bar">
     <svg class="logo" viewBox="0 0 26 26" aria-label="WarriorCon 6"><path d="M13 1 3 5v7c0 6.2 4.2 10.9 10 13 5.8-2.1 10-6.8 10-13V5L13 1z" fill="none" stroke="#fafafa" stroke-width="1.8"/><path d="M8 9h10M8 13h10M8 17h10" stroke="#fafafa" stroke-width="1.8"/></svg>
     <div class="barr">
-      <div class="stamp">Last updated<strong id="stamp">Loading…</strong><span class="sched" id="sched"></span></div>
+      <div class="stamp">Last updated<strong id="stamp">Loading…</strong><span class="nxt" id="nxt" aria-live="polite"></span><span class="sched" id="sched"></span></div>
       <button class="ver" id="verBtn" aria-label="What's new in this version"><span id="verNum">v1.0</span><i class="dot" id="verDot"></i></button>
     </div>
   </div>
@@ -449,7 +454,7 @@
 
 <script>
 // The version of THIS page. Bump it (and changelog.json) whenever the page changes; daily data refreshes never change it.
-const PAGE_VERSION = '1.1.2';
+const PAGE_VERSION = '1.2';
 
 const $ = id => document.getElementById(id);
 const N = n => n == null ? '—' : Math.round(n).toLocaleString('en-US');
@@ -574,19 +579,57 @@ function campRows(camp, short) {
 
 // ---------- sections that don't follow the date filter ----------
 const etTime = iso => new Date(iso).toLocaleString('en-US', {timeZone: 'America/New_York', hour: 'numeric', minute: '2-digit'}).replace(':00', '').replace(' AM', 'am').replace(' PM', 'pm') + ' ET';
-function schedule() {   // "Updates 7am, 1pm & 5pm ET · Next: 1pm ET", using the viewer's clock in Eastern time
-  const slots = D.update_times_et || ['07:00', '13:00', '17:00'];
-  const lab = hm => { let [h, m] = hm.split(':').map(Number); const ap = h >= 12 ? 'pm' : 'am'; h = h % 12 || 12; return h + (m ? ':' + String(m).padStart(2, '0') : '') + ap; };
-  const parts = new Intl.DateTimeFormat('en-US', {timeZone: 'America/New_York', hour: '2-digit', minute: '2-digit', hourCycle: 'h23'}).formatToParts(new Date());
-  const now = parts.find(p => p.type === 'hour').value + ':' + parts.find(p => p.type === 'minute').value;
-  const next = slots.find(s => s > now);
-  const list = slots.map(lab);
-  $('sched').textContent = `Updates ${list.slice(0, -1).join(', ')} & ${list[list.length - 1]} ET · Next: ${next ? lab(next) + ' ET' : lab(slots[0]) + ' ET tomorrow'}`;
+// ---------- next-update countdown: every time is worked out in Eastern time, never the viewer's clock ----------
+const ET_TZ = 'America/New_York';
+const etParts = t => Object.fromEntries(new Intl.DateTimeFormat('en-US', {timeZone: ET_TZ, year: 'numeric', month: '2-digit', day: '2-digit',
+  hour: '2-digit', minute: '2-digit', hourCycle: 'h23'}).formatToParts(new Date(t)).map(p => [p.type, p.value]));
+const etOffset = t => { const p = etParts(t); return Date.UTC(+p.year, p.month - 1, +p.day, +p.hour, +p.minute) - Math.floor(t / 60000) * 60000; };
+function etInstant(y, mo, d, hm) {   // ET wall-clock time -> real moment (handles the EST/EDT switch)
+  const [h, m] = hm.split(':').map(Number), guess = Date.UTC(y, mo, d, h, m);
+  let t = guess - etOffset(guess); return guess - etOffset(t);
 }
+const slotLabel = hm => { let [h, m] = hm.split(':').map(Number); const ap = h >= 12 ? 'pm' : 'am'; h = h % 12 || 12; return h + (m ? ':' + String(m).padStart(2, '0') : '') + ap; };
+let latestGen = null;            // newest data time seen (from the loaded page or the 2-minute check)
+const LATE_AFTER = 45 * 60000;   // no new data 45 min after an update time -> "late"
+const RUN_LEAD = 45 * 60000;     // a run starts ~30 min before its update time; data newer than this counts for that slot
+function nextState(now) {
+  const slots = D.update_times_et || ['07:00', '13:00', '17:00'];
+  const p = etParts(now), list = [];
+  for (let k = -1; k <= 1; k++) for (const s of slots) list.push({hm: s, t: etInstant(+p.year, p.month - 1, +p.day + k, s)});
+  list.sort((a, b) => a.t - b.t);
+  const gen = latestGen || 0;
+  const covered = x => gen >= x.t - RUN_LEAD;
+  const past = list.filter(x => x.t <= now), last = past[past.length - 1];
+  const upcoming = list.filter(x => x.t > now && !covered(x));
+  if (last && !covered(last)) {
+    if (now - last.t < LATE_AFTER) return {state: 'updating', slot: last, next: upcoming[0]};
+    return {state: 'late', slot: last, next: upcoming[0]};
+  }
+  return {state: 'count', slot: upcoming[0], next: upcoming[0]};
+}
+function renderNext(now = Date.now()) {
+  if (!D) return;
+  const slots = D.update_times_et || ['07:00', '13:00', '17:00'];
+  const all = slots.map(slotLabel), st = nextState(now), el = $('nxt');
+  el.className = 'nxt';
+  if (st.state === 'updating') {
+    el.innerHTML = '<i class="pulse" aria-hidden="true"></i>Updating now — usually ready within 15 min';
+  } else if (st.state === 'late') {
+    el.classList.add('late'); el.textContent = 'Update is late — showing the last numbers';
+  } else {
+    const mins = Math.max(1, Math.ceil((st.slot.t - now) / 60000)), h = Math.floor(mins / 60), m = mins % 60;
+    el.textContent = 'Next update in about ' + (h ? `${h}h ${m}m` : `${m}m`);
+  }
+  const target = st.state === 'updating' ? st.slot : st.next;
+  const day = target && etParts(target.t).day !== etParts(now).day ? ' tomorrow' : '';
+  $('sched').textContent = `Next: ${target ? slotLabel(target.hm) + ' ET' + day : '—'} · updates ${all.slice(0, -1).join(', ')} & ${all[all.length - 1]} ET`;
+}
+function schedule() { renderNext(); }
 function renderStatic() {
   const gen = new Date(D.generated_at);
   $('stamp').textContent = gen.toLocaleString('en-US', {timeZone: 'America/New_York', month: 'short', day: 'numeric'})
     + ' · ' + gen.toLocaleString('en-US', {timeZone: 'America/New_York', hour: 'numeric', minute: '2-digit'}) + ' ET';
+  latestGen = Math.max(latestGen || 0, gen.getTime());
   schedule();
   const h = D.holders, s = D.sales, up = D.upsells;
   const bbRev = up.business_bible.revenue;
@@ -810,7 +853,10 @@ async function checkForNewVersion() {   // every 10 minutes while the page is op
 async function checkForNewData() {   // every 2 minutes while the page is open
   try {
     const d = await (await fetch('data.json?t=' + Date.now(), {cache: 'no-store'})).json();
-    if (d.generated_at && d.generated_at !== D.generated_at) showBar(`New data in — updated ${etTime(d.generated_at)} ·`);
+    if (d.generated_at && d.generated_at !== D.generated_at) {
+      showBar(`New data in — updated ${etTime(d.generated_at)} ·`);
+      latestGen = Math.max(latestGen || 0, new Date(d.generated_at).getTime());   // countdown moves on to the next update
+    }
   } catch (e) {}
   schedule();
 }
@@ -827,6 +873,7 @@ $('newVerBtn').onclick = () => location.reload();
     renderStatic(); initFilter(); apply(); verSetup();
     setInterval(checkForNewVersion, 10 * 60 * 1000);
     setInterval(checkForNewData, 2 * 60 * 1000);
+    setTimeout(() => { renderNext(); setInterval(renderNext, 60 * 1000); }, 60000 - Date.now() % 60000);   // refresh on each new minute
   } catch (e) {
     $('stamp').textContent = 'Data not available';
     console.error(e);

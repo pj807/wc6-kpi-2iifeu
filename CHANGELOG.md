@@ -4,6 +4,13 @@ The version only changes when the page itself changes. Daily data refreshes keep
 New features go up a minor number (1.1, 1.2). Fixes go up a patch number (1.0.1).
 The "What's new" panel on the page reads `changelog.json`, so update both files together.
 
+## v1.2 · Countdown to the next update · Nov 11, 2026
+
+- **Countdown to the next update** under "Last updated", for example "Next update in about 2h 15m". It refreshes every minute.
+- **All times are Eastern (ET)**, wherever you are. The page uses Eastern time even if your phone or computer is set to Manila or anywhere else.
+- When an update is due, it says **"Updating now — usually ready within 15 min"**. When the new numbers are in, the "New data in · Show" bar appears and the countdown moves to the next update.
+- If an update hasn't arrived 45 minutes after it was due, it says **"Update is late — showing the last numbers"**. The numbers on the page are still the last good ones.
+
 ## v1.1.2 · Daily update now lands at 7am ET · Nov 11, 2026
 
 - **The main daily update now lands at 7am ET** (8pm Manila), an hour earlier. It sets yesterday's numbers, the daily report and the executive summary.
