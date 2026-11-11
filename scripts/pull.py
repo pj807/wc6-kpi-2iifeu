@@ -221,6 +221,13 @@ class API:
                     k = matcher(channel, m.get("subject") if channel == "Email" else m.get("body"))
                     if k:
                         out.append([m["id"], m.get("contactId"), m.get("dateAdded"), d, m.get("status"), k, False])
+                    elif not contact and m.get("source") == "workflow":
+                        body = m.get("body") or ""
+                        if channel == "SMS" and "wc-day" in body.lower():
+                            code = (re.search(r"wc-day\d+", body, re.I) or [None])[0]
+                            UNMATCHED[("sms", code or body[:50])] += 1
+                        elif channel == "Email" and re.search(r"warriorcon|\bwc6\b", (m.get("subject") or "") + " " + body, re.I):
+                            UNMATCHED[("email", (m.get("subject") or "")[:80])] += 1
                 elif d == "inbound" and channel == "SMS":
                     out.append([m["id"], m.get("contactId"), m.get("dateAdded"), d, m.get("status"), None,
                                 norm(m.get("body")) in STOP_WORDS])
@@ -237,6 +244,83 @@ class API:
                 return [r for r in out if not until or r[2] < until]
 
 
+def et_label(t):   # "Thu Nov 12, 6:00am ET"
+    t = t.astimezone(SHOW_TZ)
+    return f"{t.strftime('%a %b')} {t.day}, {t.strftime('%-I:%M%p').lower()} ET"
+
+
+def compute_left(plan, messages, now):
+    """What's left to send, from the plan read once from GHL. A step counts as sent once 10+ sends show up.
+    Only steps planned up to plan['until'] count. Returns the data for the page, report lines and plain notes."""
+    by_key = {m["key"]: m for m in messages}
+    until = datetime.fromisoformat(plan["until"] + "T23:59:59").replace(tzinfo=SHOW_TZ)
+    rows, notes = [], []
+    order = collections.OrderedDict()
+    for s in plan["steps"]:
+        order.setdefault((s["workflow"], s["branch"]), []).append(s)
+    for steps in order.values():
+        prev_t = None
+        for s in sorted(steps, key=lambda x: x["num"]):
+            m = by_key.get(STEP_KEY.get(s["step_id"]), {})
+            sends = m.get("sent", 0) or 0
+            sent = sends >= 10
+            actual = datetime.fromisoformat(m["main_at"].replace("Z", "+00:00")) if sent and m.get("main_at") else None
+            w, t, exact = s["when"], None, True
+            if w["type"] == "date":
+                t = datetime.fromisoformat(f"{w['date']}T{w['time_et']}").replace(tzinfo=SHOW_TZ) + timedelta(hours=w.get("plus_hours", 0))
+            elif w["type"] == "after_previous" and prev_t:
+                t, exact = prev_t + timedelta(hours=w["hours"]), False
+            elif w["type"] == "with_previous" and prev_t:
+                t, exact = prev_t, False
+            elif w["type"] == "on_enrollment":
+                t, exact = actual, False
+            rolling = w["type"] == "relative_to_purchase" or (t is None and not sent)
+            prev_t = actual or t
+            day = m.get("day")
+            if t is None and sent and day:
+                t = datetime.fromisoformat(day + "T12:00").replace(tzinfo=SHOW_TZ)
+            rows.append(dict(step=s, sends=sends, sent=sent, t=t, exact=exact, rolling=rolling,
+                             in_window=rolling or (t is not None and t <= until)))
+    out = {"until": plan["until"], "plan_read_at": plan.get("read_at"), "audiences": {}, "workflows": [], "notes": []}
+    for r in rows:   # a planned step whose time passed with no sends: say so, don't guess
+        if r["in_window"] and not r["sent"] and r["t"] and now > r["t"] + timedelta(hours=3 if r["exact"] else 6):
+            notes.append(f"{r['step']['wf']} {r['step']['name']} was due {et_label(r['t'])} but no sends showed up")
+    for (ch, text), n in sorted(UNMATCHED.items(), key=lambda x: -x[1]):
+        if n >= 25:
+            notes.append(f"a WC6 text with link {text} was sent {n:,} times but isn't in the plan" if ch == "sms"
+                         else f"an email \"{text}\" was sent {n:,} times but isn't in the plan")
+    report = []
+    for aud, label in (("promote", "Promote"), ("post_ticket", "Ticket holders")):
+        A = {}
+        for ch in ("email", "sms"):
+            rs = [r for r in rows if r["step"]["audience"] == aud and r["step"]["channel"] == ch and r["in_window"]]
+            done = [r for r in rs if r["sent"]]
+            last = max((r["t"] for r in rs if r["t"]), default=None)
+            A[ch] = {"planned": len(rs), "sent": len(done), "left": len(rs) - len(done),
+                     "rolling": sum(1 for r in rs if r["rolling"]), "last": last.astimezone(SHOW_TZ).date().isoformat() if last else None}
+        up = sorted((r for r in rows if r["step"]["audience"] == aud and r["in_window"] and not r["sent"] and r["t"]
+                     and now <= r["t"] + timedelta(hours=3 if r["exact"] else 6)), key=lambda r: r["t"])
+        up += [r for r in rows if r["step"]["audience"] == aud and r["rolling"] and not r["sent"]]   # relative to purchase
+        item = lambda r: {"at": r["t"].astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ") if r["t"] else None,
+                          "label": et_label(r["t"]) if r["t"] else "rolling",
+                          "approx": not r["exact"], "ch": r["step"]["channel"], "step": f"{r['step']['wf']} · {r['step']['name']}",
+                          "text": r["step"]["text"]}
+        A["next"] = item(up[0]) if up else None
+        A["upcoming_emails"] = [item(r) for r in up if r["step"]["channel"] == "email"][:8]
+        out["audiences"][aud] = A
+        e, t = A["email"]["left"], A["sms"]["left"]
+        nxt = (("about " if A["next"]["approx"] and A["next"]["at"] else "") + A["next"]["label"]) if A["next"] else "nothing planned"
+        report.append(f"{label}: {e} email{'s' if e != 1 else ''} · {t} text{'s' if t != 1 else ''} — next: {nxt}")
+    for wid in dict.fromkeys(s["workflow"] for s in plan["steps"]):
+        rs = [r for r in rows if r["step"]["workflow"] == wid]
+        inw = [r for r in rs if r["in_window"]]
+        out["workflows"].append({"wf": rs[0]["step"]["wf"], "steps": len(rs), "planned": len(inw),
+                                 "sent": sum(r["sent"] for r in inw), "left": sum(not r["sent"] for r in inw),
+                                 "after_until": len(rs) - len(inw)})
+    out["notes"] = notes
+    return out, report, notes
+
+
 class ShortRead(Exception):
     pass
 
@@ -251,18 +335,53 @@ def item_amount(i):
 
 
 # ---------------------------------------------------------------- message matching
-EMAIL_KEYS, SMS_KEYS, STEPS = {}, [], {}
+EMAIL_KEYS, SMS_KEYS, STEPS, STEP_KEY = {}, [], {}, {}   # STEP_KEY: GHL step id -> message key
+
+
+def add_step(wf, s):
+    key = ("e:" if wf["channel"] == "email" else "s:") + norm(s["text"])[:40]
+    STEPS.setdefault(key, {"label": wf["label"], "channel": wf["channel"], "text": s["text"], "names": [], "steps": [],
+                           "no_links": bool(wf.get("no_links"))})
+    short = wf["name"].split(" - ")[0]
+    if not any(n.startswith(short + " ") for n in STEPS[key]["names"]):
+        STEPS[key]["names"].append(f"{short} {s['name']}")
+    STEPS[key]["steps"].append((wf["id"], s["id"]))
+    STEP_KEY[s["id"]] = key
+    add_alias(wf["channel"], s["text"], key)
+
+
+def add_alias(channel, text, key):
+    if channel == "email":
+        EMAIL_KEYS.setdefault(norm(text), key)
+    elif (norm(text)[:40], key) not in SMS_KEYS:
+        SMS_KEYS.append((norm(text)[:40], key))
+
+
 for wf in CFG["workflows"]:
     for s in wf["steps"]:
-        key = ("e:" if wf["channel"] == "email" else "s:") + norm(s["text"])[:40]
-        STEPS.setdefault(key, {"label": wf["label"], "channel": wf["channel"], "text": s["text"], "names": [], "steps": [],
-                               "no_links": bool(wf.get("no_links"))})
-        STEPS[key]["names"].append(f"{wf['name'].split(' - ')[0]} {s['name']}")
-        STEPS[key]["steps"].append((wf["id"], s["id"]))
-        if wf["channel"] == "email":
-            EMAIL_KEYS[norm(s["text"])] = key
+        add_step(wf, s)
+
+# The send plan (plan.json) was read once from GHL. Its steps are tracked too; a step whose wording changed in GHL
+# keeps its message and is matched under both wordings. Runs never change plan.json.
+try:
+    PLAN = json.load(open(os.path.join(ROOT, "plan.json"), encoding="utf-8"))
+except FileNotFoundError:
+    PLAN = None
+if PLAN:
+    _wf_by_id = {w["id"]: w for w in CFG["workflows"]}
+    for ps in PLAN["steps"]:
+        wf = _wf_by_id.get(ps["workflow"])
+        if not wf:
+            continue
+        if ps["step_id"] in STEP_KEY:
+            key = STEP_KEY[ps["step_id"]]
+            if norm(ps["text"])[:40] != norm(STEPS[key]["text"])[:40]:
+                add_alias(wf["channel"], ps["text"], key)
+                if wf["channel"] == "email":      # emails are counted by step, so show the subject GHL has now
+                    STEPS[key]["text"] = ps["text"]
         else:
-            SMS_KEYS.append((norm(s["text"])[:40], key))
+            add_step(wf, {"id": ps["step_id"], "name": ps["name"], "text": ps["text"]})
+UNMATCHED = collections.Counter()   # campaign-looking sends that match no known step (possible new step)
 
 
 def mid(key):
@@ -469,6 +588,7 @@ def main():
     #   email: [sent, wrong_audience, 0, 0, 0, 0]
     #   sms:   [sent, wrong_audience, delivered, failed, optouts, replies]
     sends_by_contact = collections.defaultdict(list)
+    first_at = {}   # (key, day) -> earliest right-audience send time
     for ch in ("Email", "SMS"):
         for _id, contact, when, direction, status, key, stop in msgs[ch]:
             if direction != "outbound" or not key:
@@ -481,6 +601,8 @@ def main():
             if ch == "SMS" and day < cutoff:
                 continue
             c = fresh[key][day]
+            if right and (key, day) not in first_at or (right and when < first_at[(key, day)]):
+                first_at[(key, day)] = when
             if not right:
                 c[1] += 1
                 continue
@@ -537,6 +659,7 @@ def main():
             base_credit[m["key"]] = {d: v for d, v in m.get("credit", {}).items() if d < cutoff}
 
     messages = []
+    prev_msgs = {m["key"]: m for m in (prev or {}).get("messages", [])}
     for key, st in STEPS.items():
         dd = dict(base_days.get(key, {}))
         for d, v in fresh[key].items():
@@ -553,6 +676,8 @@ def main():
         m = {"id": mid(key), "key": key, "ch": st["channel"], "camp": st["label"], "text": st["text"], "steps": st["names"],
              "day": main_day, "sent": sent, "wrong_audience": wrong, "days": dd, "credit": cr,
              "tickets": sum(v[0] for v in cr.values()), "ticket_revenue": round(sum(v[1] for v in cr.values()), 2), "no_links": st["no_links"]}
+        prev_m = prev_msgs.get(key, {})
+        m["main_at"] = first_at.get((key, main_day)) or (prev_m.get("main_at") if prev_m.get("day") == main_day else None)
         if st["channel"] == "email":
             s = collections.Counter()
             for wid, sid in st["steps"]:
@@ -768,6 +893,9 @@ def main():
             return "none sent"
         return f"{fmt(t['sent'])} sent · {pct(t['delivered'], t['sent'])}% delivered"
 
+    left, left_lines, left_notes = compute_left(PLAN, messages, now) if PLAN else (None, [], [])
+    for n in left_notes:
+        FLAGS.append("Plan may be out of date — " + n)
     report = "\n".join([
         f"WarriorCon 6 — report for {short_day(yday)} (updated {as_of})",
         "",
@@ -776,6 +904,7 @@ def main():
         f"• Win: {win['line']}",
         f"• Watch: {watch['line']}",
         "",
+        *([f"LEFT TO SEND (until {short_day(left['until'])})", *left_lines, ""] if left else []),
         f"TICKET HOLDERS: {n_holders} ({n_paid} paid + {n_comps} comps) · {new_y} new yesterday",
         sales_line,
         f"{credited_n} of {n_paid} tickets were bought within {CFG['attribution_window_hours']} hrs of an email/text",
@@ -846,7 +975,7 @@ def main():
                                        "revenue": round(bb["revenue"], 2)}},
         "todate": {c: {ch: dict(T[c][ch]) for ch in T[c]} for c in T},
         "summary": {"headline": headline, "win": win, "watch": watch},
-        "report": report, "report_as_of": as_of,
+        "report": report, "report_as_of": as_of, "left": left,
         "frozen": frozen,
         "days": day_list,
         "messages": sorted(messages, key=lambda m: (m["day"] or "9", m["ch"])),
@@ -884,6 +1013,17 @@ def main():
     if pp_non_holders:
         log(f"Power Plan: {len(pp_non_holders)} sign-up(s) are not ticket holders and were left out.")
     log(f"Business Bible: {bb['count']} paid ({bb['bump']} at ticket checkout, {bb['standalone']} on their own).")
+    if left:
+        log(f"What's left (plan read {left['plan_read_at']}, until {left['until']}):")
+        for w in left["workflows"]:
+            log(f"  {w['wf']}: {w['steps']} steps, {w['sent']} sent, {w['left']} left" + (f", {w['after_until']} planned after {left['until']}" if w["after_until"] else ""))
+        for aud in ("promote", "post_ticket"):
+            n = left["audiences"][aud]["next"]
+            log(f"  Next {aud}: " + (f"{n['label']} · {n['step']} · {n['text'][:60]}" if n else "nothing planned"))
+        for n in left["notes"]:
+            log("  Plan may be out of date — " + n)
+            if ON_ACTIONS:
+                print("::notice title=Plan may be out of date::" + n, flush=True)
     for f in data["flags"]:
         log("FLAG:", f)
 

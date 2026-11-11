@@ -1,5 +1,20 @@
 [
   {
+    "v": "1.5",
+    "date": "2026-11-11",
+    "title": "What's left to send",
+    "items": [
+      "<b>New: \"What's left.\"</b> at the very bottom of the page shows how many emails and texts are still to go for each audience, up to Dec 2.",
+      "Each audience shows <b>\"X left of Y\"</b>, a progress bar, how many have sent and the date of the last one.",
+      "<b>Next send</b> shows the day and time (ET), which workflow step it is, and the subject line. Upcoming email subjects are listed below it.",
+      "This section covers the whole campaign. <b>The date filter doesn't change it</b>, and the date bar stops at the line above it.",
+      "Garrett's report now has a <b>LEFT TO SEND</b> block under SUMMARY.",
+      "The plan was read once from the GoHighLevel workflows, without changing anything there. If a send shows up that isn't in the plan, or a planned send doesn't go out, the section says <b>\"Plan may be out of date\"</b> instead of guessing.",
+      "Sends added in GoHighLevel after launch are now counted on the page as they go out: Promote Emails 23–28, Promote texts 9–14 and the Nov 13–17 ticket-holder emails.",
+      "The message list leaves out test sends (fewer than 10)."
+    ]
+  },
+  {
     "v": "1.4.1",
     "date": "2026-11-11",
     "title": "Fixes",

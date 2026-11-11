@@ -90,3 +90,5 @@ After that:
 
 - The GHL key lives in your Mac's Keychain (`ghl-wuw-kpi`) and, for the daily run, as the GitHub secret `GHL_TOKEN`. It is never in these files.
 - The page tells search engines not to list it, and the web address is hard to guess. Anyone with the link can still open it, so share the link only with people who should see it.
+
+**What's left (v1.5):** `plan.json` is the WC6 send plan, read once from the GoHighLevel workflows (read-only). Each run marks a step sent once 10+ sends show up and counts what's left up to Dec 2. Runs never change `plan.json`. If a send shows up that isn't in the plan, or a planned send doesn't go out, the page and the run log say "Plan may be out of date". Re-read the plan only when PJ asks.

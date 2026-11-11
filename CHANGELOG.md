@@ -4,6 +4,17 @@ The version only changes when the page itself changes. Daily data refreshes keep
 New features go up a minor number (1.1, 1.2). Fixes go up a patch number (1.0.1).
 The "What's new" panel on the page reads `changelog.json`, so update both files together.
 
+## v1.5 · What's left to send · Nov 11, 2026
+
+- **New: "What's left."** at the very bottom of the page shows how many emails and texts are still to go for each audience, up to Dec 2.
+- Each audience shows **"X left of Y"**, a progress bar, how many have sent and the date of the last one.
+- **Next send** shows the day and time (ET), which workflow step it is, and the subject line. Upcoming email subjects are listed below it.
+- This section covers the whole campaign. **The date filter doesn't change it**, and the date bar stops at the line above it.
+- Garrett's report now has a **LEFT TO SEND** block under SUMMARY.
+- The plan was read once from the GoHighLevel workflows, without changing anything there. If a send shows up that isn't in the plan, or a planned send doesn't go out, the section says **"Plan may be out of date"** instead of guessing.
+- Sends added in GoHighLevel after launch are now counted on the page as they go out: Promote Emails 23–28, Promote texts 9–14 and the Nov 13–17 ticket-holder emails.
+- The message list leaves out test sends (fewer than 10).
+
 ## v1.4.1 · Fixes · Nov 11, 2026
 
 - **Fewer false alarms:** the text count from GoHighLevel can shift by a few between updates. A drop of up to 10 texts (or 0.1%, whichever is larger) is now treated as normal and published. A bigger drop still stops the update and keeps the last good numbers.
