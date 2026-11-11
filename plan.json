@@ -1107,10 +1107,8 @@
    "name": "SMS 9 - Nov 12 - 11:30 AM ET (wc-day26)",
    "branch": "Not a buyer",
    "when": {
-    "type": "date",
-    "date": "2026-11-12",
-    "time_et": "11:30",
-    "plus_hours": 0
+    "type": "after_previous",
+    "hours": 24
    },
    "text": "He spent his life building other men's empires. Read his story:"
   },
@@ -1124,10 +1122,8 @@
    "name": "SMS 10 - Nov 13 - 11:30 AM ET (wc-day27)",
    "branch": "Not a buyer",
    "when": {
-    "type": "date",
-    "date": "2026-11-13",
-    "time_et": "11:30",
-    "plus_hours": 0
+    "type": "after_previous",
+    "hours": 24
    },
    "text": "The world celebrates what a man produces. But nobody sees what he's carrying. Read his story:"
   },
@@ -1141,10 +1137,8 @@
    "name": "SMS 11 - Nov 14 - 11:30 AM ET (wc-day28)",
    "branch": "Not a buyer",
    "when": {
-    "type": "date",
-    "date": "2026-11-14",
-    "time_et": "11:30",
-    "plus_hours": 0
+    "type": "after_previous",
+    "hours": 24
    },
    "text": "He had no idea his wife was about to get leukemia. Read his story:"
   },
@@ -1158,10 +1152,8 @@
    "name": "SMS 12 - Nov 15 - 11:30 AM ET (wc-day29)",
    "branch": "Not a buyer",
    "when": {
-    "type": "date",
-    "date": "2026-11-15",
-    "time_et": "11:30",
-    "plus_hours": 0
+    "type": "after_previous",
+    "hours": 24
    },
    "text": "You can insure your house. You can insure your business. You can insure your life. Read it:"
   },
@@ -1175,10 +1167,8 @@
    "name": "SMS 13 - Nov 16 - 11:30 AM ET (wc-day30)",
    "branch": "Not a buyer",
    "when": {
-    "type": "date",
-    "date": "2026-11-16",
-    "time_et": "11:30",
-    "plus_hours": 0
+    "type": "after_previous",
+    "hours": 24
    },
    "text": "You've heard their stories. What about yours? Read it:"
   },
@@ -1192,16 +1182,15 @@
    "name": "SMS 14 - Nov 17 - 11:30 AM ET (wc-day31)",
    "branch": "Not a buyer",
    "when": {
-    "type": "date",
-    "date": "2026-11-17",
-    "time_et": "11:30",
-    "plus_hours": 0
+    "type": "after_previous",
+    "hours": 24
    },
    "text": "Making a decision doesn't change your life. Executing that decision does. Read it:"
   }
  ],
  "_read_log": [
   "2026-11-11 first read (7 workflows, 69 steps)",
-  "2026-11-11 re-read at PJ's request after the SMS fix: 0.1 Texts now ends at SMS 8; new 0.3 Texts sends SMS 8B-14 on Nov 11-17 (8 workflows, 70 steps)"
+  "2026-11-11 re-read at PJ's request after the SMS fix: 0.1 Texts now ends at SMS 8; new 0.3 Texts sends SMS 8B-14 on Nov 11-17 (8 workflows, 70 steps)",
+  "2026-11-11 8:45am ET check: 0.3 Texts SMS 9-14 now 'Wait 24 hours' after the previous text (was fixed dates); 0.0/0.1 Texts end by adding contacts to 0.3; 1.04 Texts still 3 texts (Nov 10-12)"
  ]
 }
