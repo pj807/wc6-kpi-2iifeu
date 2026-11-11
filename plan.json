@@ -48,7 +48,7 @@
   },
   {
    "id": "ab0e73fd-f630-4da6-8678-1c00faa50e54",
-   "name": "1.04 - WC6 Ticket Holder Text (Nov 10-12)",
+   "name": "1.04 - WC6 Ticket Holder Text (Nov 10-17)",
    "wf": "1.04 Texts",
    "audience": "post_ticket",
    "channel": "sms"
@@ -1081,6 +1081,91 @@
    "text": "Your results don't care about your excuses. They are telling a story. Read it:"
   },
   {
+   "workflow": "ab0e73fd-f630-4da6-8678-1c00faa50e54",
+   "wf": "1.04 Texts",
+   "audience": "post_ticket",
+   "channel": "sms",
+   "num": 4,
+   "step_id": "6e872378-4b74-4ef9-8c6f-266277917d4f",
+   "name": "SMS 4 - Nov 13 (wc-day32)",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-11-13",
+    "time_et": "12:30",
+    "plus_hours": 0
+   },
+   "text": "What if the problem you've been trying to solve isn't actually the problem? Read it:"
+  },
+  {
+   "workflow": "ab0e73fd-f630-4da6-8678-1c00faa50e54",
+   "wf": "1.04 Texts",
+   "audience": "post_ticket",
+   "channel": "sms",
+   "num": 5,
+   "step_id": "2f65be69-7ae3-42cb-b2f4-5c4fc9e12fae",
+   "name": "SMS 5 - Nov 14 (wc-day33)",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-11-14",
+    "time_et": "12:30",
+    "plus_hours": 0
+   },
+   "text": "Doing nothing is still a decision. The cost of waiting is real. Read it:"
+  },
+  {
+   "workflow": "ab0e73fd-f630-4da6-8678-1c00faa50e54",
+   "wf": "1.04 Texts",
+   "audience": "post_ticket",
+   "channel": "sms",
+   "num": 6,
+   "step_id": "65df8cd7-4ec3-4b86-927f-77a45871775b",
+   "name": "SMS 6 - Nov 15 (wc-day34)",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-11-15",
+    "time_et": "12:30",
+    "plus_hours": 0
+   },
+   "text": "He looked incredibly successful. But the company was coming apart. Read his story:"
+  },
+  {
+   "workflow": "ab0e73fd-f630-4da6-8678-1c00faa50e54",
+   "wf": "1.04 Texts",
+   "audience": "post_ticket",
+   "channel": "sms",
+   "num": 7,
+   "step_id": "0bd95686-9306-4314-938f-893ae1772dc9",
+   "name": "SMS 7 - Nov 16 (wc-day35)",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-11-16",
+    "time_et": "12:30",
+    "plus_hours": 0
+   },
+   "text": "The man you were cannot build what comes next. Read it:"
+  },
+  {
+   "workflow": "ab0e73fd-f630-4da6-8678-1c00faa50e54",
+   "wf": "1.04 Texts",
+   "audience": "post_ticket",
+   "channel": "sms",
+   "num": 8,
+   "step_id": "dd08419d-0674-4537-a48a-bd4e44023801",
+   "name": "SMS 8 - Nov 17 (wc-day36)",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-11-17",
+    "time_et": "12:30",
+    "plus_hours": 0
+   },
+   "text": "You are not the only person living with the consequences of your decisions. Read it:"
+  },
+  {
    "workflow": "50e67534-dbf1-4628-aff4-1cae09823865",
    "wf": "0.3 Texts",
    "audience": "promote",
@@ -1191,6 +1276,7 @@
  "_read_log": [
   "2026-11-11 first read (7 workflows, 69 steps)",
   "2026-11-11 re-read at PJ's request after the SMS fix: 0.1 Texts now ends at SMS 8; new 0.3 Texts sends SMS 8B-14 on Nov 11-17 (8 workflows, 70 steps)",
-  "2026-11-11 8:45am ET check: 0.3 Texts SMS 9-14 now 'Wait 24 hours' after the previous text (was fixed dates); 0.0/0.1 Texts end by adding contacts to 0.3; 1.04 Texts still 3 texts (Nov 10-12)"
+  "2026-11-11 8:45am ET check: 0.3 Texts SMS 9-14 now 'Wait 24 hours' after the previous text (was fixed dates); 0.0/0.1 Texts end by adding contacts to 0.3; 1.04 Texts still 3 texts (Nov 10-12)",
+  "2026-11-11 re-read 1.04 at PJ's request: now 8 texts, Nov 10-17 at 12:30pm ET (SMS 4-8 added, wc-day32-36)"
  ]
 }
