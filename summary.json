@@ -1,6 +1,6 @@
 {
  "date": "2026-11-11",
- "as_of": "Nov 11, 6:57am ET",
+ "as_of": "Nov 11, 7:06am ET",
  "yesterday": "2026-11-10",
  "ticket_holders": {
   "total": 137,
@@ -41,8 +41,8 @@
     "whole": 22,
     "rated": 409782,
     "delivered": 408468,
-    "opened": 128109,
-    "clicked": 1403,
+    "opened": 128179,
+    "clicked": 1405,
     "unsub": 506,
     "bounced": 1861,
     "ghl_sent": 410376
