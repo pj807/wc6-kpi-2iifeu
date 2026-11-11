@@ -19,6 +19,13 @@
    "channel": "email"
   },
   {
+   "id": "cae5e444-b52b-42d7-a46e-bec7eed12866",
+   "name": "0.0 - WC6 Pre-Purchase Outbound Text",
+   "wf": "0.0 Texts",
+   "audience": "promote",
+   "channel": "sms"
+  },
+  {
    "id": "6980f421-2814-400d-80ba-b6e9ede3fe1b",
    "name": "0.2 - WC6 Emails 20-28 One-Off (Nov 9 11AM, Nov 10-11 6AM ET)",
    "wf": "0.2 Emails",
@@ -33,13 +40,6 @@
    "channel": "email"
   },
   {
-   "id": "cae5e444-b52b-42d7-a46e-bec7eed12866",
-   "name": "0.0 - WC6 Pre-Purchase Outbound Text",
-   "wf": "0.0 Texts",
-   "audience": "promote",
-   "channel": "sms"
-  },
-  {
    "id": "9113e15e-11ed-4cc4-913d-641d92cd8d30",
    "name": "0.1 - WC6 November Outbound Text",
    "wf": "0.1 Texts",
@@ -51,6 +51,13 @@
    "name": "1.04 - WC6 Ticket Holder Text (Nov 10-12)",
    "wf": "1.04 Texts",
    "audience": "post_ticket",
+   "channel": "sms"
+  },
+  {
+   "id": "50e67534-dbf1-4628-aff4-1cae09823865",
+   "name": "0.3 - WC6 SMS 8B-14 One-Off (Nov 11-17)",
+   "wf": "0.3 Texts",
+   "audience": "promote",
    "channel": "sms"
   }
  ],
@@ -342,6 +349,244 @@
     "hours": 24
    },
    "text": "The man who built this life cannot build the next one."
+  },
+  {
+   "workflow": "cae5e444-b52b-42d7-a46e-bec7eed12866",
+   "wf": "0.0 Texts",
+   "audience": "promote",
+   "channel": "sms",
+   "num": 1,
+   "step_id": "a6652b9c-2e38-43c3-834e-6f09cb3ce902",
+   "name": "Day 1",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-10-18",
+    "time_et": "11:30",
+    "plus_hours": 0
+   },
+   "text": "There is one final piece of this story I haven't told you. Read it:"
+  },
+  {
+   "workflow": "cae5e444-b52b-42d7-a46e-bec7eed12866",
+   "wf": "0.0 Texts",
+   "audience": "promote",
+   "channel": "sms",
+   "num": 2,
+   "step_id": "e0e6d69d-a91b-4205-872f-1ac910e4332f",
+   "name": "Day 2",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-10-19",
+    "time_et": "11:30",
+    "plus_hours": 0
+   },
+   "text": "I didn't spend 14 years building Warrior to talk about the good old days. Read this:"
+  },
+  {
+   "workflow": "cae5e444-b52b-42d7-a46e-bec7eed12866",
+   "wf": "0.0 Texts",
+   "audience": "promote",
+   "channel": "sms",
+   "num": 3,
+   "step_id": "ac76641e-49ae-42c3-af9c-ab7e80cd2188",
+   "name": "Day 3",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-10-20",
+    "time_et": "11:30",
+    "plus_hours": 0
+   },
+   "text": "The most powerful version of Warrior has never been taught publicly. Read why:"
+  },
+  {
+   "workflow": "cae5e444-b52b-42d7-a46e-bec7eed12866",
+   "wf": "0.0 Texts",
+   "audience": "promote",
+   "channel": "sms",
+   "num": 4,
+   "step_id": "4d8707c2-1603-4d59-a50a-5362ce9b8337",
+   "name": "Day 4",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-10-21",
+    "time_et": "11:30",
+    "plus_hours": 0
+   },
+   "text": "The Code was never the destination. After 14 years I see what I missed. Read it:"
+  },
+  {
+   "workflow": "cae5e444-b52b-42d7-a46e-bec7eed12866",
+   "wf": "0.0 Texts",
+   "audience": "promote",
+   "channel": "sms",
+   "num": 5,
+   "step_id": "fb8db4bf-13cf-478f-814f-a71dc7eade96",
+   "name": "Day 5",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-10-22",
+    "time_et": "11:30",
+    "plus_hours": 0
+   },
+   "text": "Most men never win their Impossible Game. They never built one they can win. Read why:"
+  },
+  {
+   "workflow": "cae5e444-b52b-42d7-a46e-bec7eed12866",
+   "wf": "0.0 Texts",
+   "audience": "promote",
+   "channel": "sms",
+   "num": 6,
+   "step_id": "32197364-02c6-4ae7-a7f3-fe3b2144ae94",
+   "name": "Day 6",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-10-23",
+    "time_et": "11:30",
+    "plus_hours": 0
+   },
+   "text": "What I've taught in private for 18 months, most of Warrior hasn't seen. Read it:"
+  },
+  {
+   "workflow": "cae5e444-b52b-42d7-a46e-bec7eed12866",
+   "wf": "0.0 Texts",
+   "audience": "promote",
+   "channel": "sms",
+   "num": 7,
+   "step_id": "25382396-797b-49b8-ae6b-54ecef52017d",
+   "name": "Day 7",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-10-24",
+    "time_et": "11:30",
+    "plus_hours": 0
+   },
+   "text": "You don't need another breakthrough. You need a game. Here's the difference:"
+  },
+  {
+   "workflow": "cae5e444-b52b-42d7-a46e-bec7eed12866",
+   "wf": "0.0 Texts",
+   "audience": "promote",
+   "channel": "sms",
+   "num": 8,
+   "step_id": "d45ffb83-b3d8-49af-bc59-0dcc4b1e116e",
+   "name": "Day 8",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-10-25",
+    "time_et": "11:30",
+    "plus_hours": 0
+   },
+   "text": "Another AI tool? I get it. Read why this one is different:"
+  },
+  {
+   "workflow": "cae5e444-b52b-42d7-a46e-bec7eed12866",
+   "wf": "0.0 Texts",
+   "audience": "promote",
+   "channel": "sms",
+   "num": 9,
+   "step_id": "452f8e88-b071-45d6-8d64-32887d670b2a",
+   "name": "Day 9",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-10-26",
+    "time_et": "11:30",
+    "plus_hours": 0
+   },
+   "text": "What if your Stack could talk back? Read what I built:"
+  },
+  {
+   "workflow": "cae5e444-b52b-42d7-a46e-bec7eed12866",
+   "wf": "0.0 Texts",
+   "audience": "promote",
+   "channel": "sms",
+   "num": 10,
+   "step_id": "cd09bdb4-1612-49a6-9192-e825882a8b15",
+   "name": "Day 10",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-10-27",
+    "time_et": "11:30",
+    "plus_hours": 0
+   },
+   "text": "Your WarriorCon experience begins the moment you register. Read how:"
+  },
+  {
+   "workflow": "cae5e444-b52b-42d7-a46e-bec7eed12866",
+   "wf": "0.0 Texts",
+   "audience": "promote",
+   "channel": "sms",
+   "num": 11,
+   "step_id": "b1dacc39-1ca6-43ce-b8fc-a25d446c482d",
+   "name": "Day 11",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-10-28",
+    "time_et": "11:30",
+    "plus_hours": 0
+   },
+   "text": "The problem was never a lack of tools. Read what I found:"
+  },
+  {
+   "workflow": "cae5e444-b52b-42d7-a46e-bec7eed12866",
+   "wf": "0.0 Texts",
+   "audience": "promote",
+   "channel": "sms",
+   "num": 12,
+   "step_id": "097d6173-9f93-4e6a-af33-c9bebbeb7025",
+   "name": "Day 12",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-10-29",
+    "time_et": "11:30",
+    "plus_hours": 0
+   },
+   "text": "I don't want to give you another experience. I want to help you build something:"
+  },
+  {
+   "workflow": "cae5e444-b52b-42d7-a46e-bec7eed12866",
+   "wf": "0.0 Texts",
+   "audience": "promote",
+   "channel": "sms",
+   "num": 13,
+   "step_id": "c2871698-6555-4564-bf14-80e058cc9b8a",
+   "name": "Day 13",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-10-30",
+    "time_et": "11:30",
+    "plus_hours": 0
+   },
+   "text": "I became a prisoner of the movement I built to set men free. Read this:"
+  },
+  {
+   "workflow": "cae5e444-b52b-42d7-a46e-bec7eed12866",
+   "wf": "0.0 Texts",
+   "audience": "promote",
+   "channel": "sms",
+   "num": 14,
+   "step_id": "710f1f07-5a6e-4abd-95e2-1b129d9ef3ff",
+   "name": "Day 14",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-10-31",
+    "time_et": "11:30",
+    "plus_hours": 0
+   },
+   "text": "Thank you for 14 years. Here's my final invitation to the brotherhood:"
   },
   {
    "workflow": "6980f421-2814-400d-80ba-b6e9ede3fe1b",
@@ -667,244 +912,6 @@
    "text": "(WC6) - The People Who Pay for Your Decisions…"
   },
   {
-   "workflow": "cae5e444-b52b-42d7-a46e-bec7eed12866",
-   "wf": "0.0 Texts",
-   "audience": "promote",
-   "channel": "sms",
-   "num": 1,
-   "step_id": "a6652b9c-2e38-43c3-834e-6f09cb3ce902",
-   "name": "Day 1",
-   "branch": "main",
-   "when": {
-    "type": "date",
-    "date": "2026-10-18",
-    "time_et": "11:30",
-    "plus_hours": 0
-   },
-   "text": "There is one final piece of this story I haven't told you. Read it:"
-  },
-  {
-   "workflow": "cae5e444-b52b-42d7-a46e-bec7eed12866",
-   "wf": "0.0 Texts",
-   "audience": "promote",
-   "channel": "sms",
-   "num": 2,
-   "step_id": "e0e6d69d-a91b-4205-872f-1ac910e4332f",
-   "name": "Day 2",
-   "branch": "main",
-   "when": {
-    "type": "date",
-    "date": "2026-10-19",
-    "time_et": "11:30",
-    "plus_hours": 0
-   },
-   "text": "I didn't spend 14 years building Warrior to talk about the good old days. Read this:"
-  },
-  {
-   "workflow": "cae5e444-b52b-42d7-a46e-bec7eed12866",
-   "wf": "0.0 Texts",
-   "audience": "promote",
-   "channel": "sms",
-   "num": 3,
-   "step_id": "ac76641e-49ae-42c3-af9c-ab7e80cd2188",
-   "name": "Day 3",
-   "branch": "main",
-   "when": {
-    "type": "date",
-    "date": "2026-10-20",
-    "time_et": "11:30",
-    "plus_hours": 0
-   },
-   "text": "The most powerful version of Warrior has never been taught publicly. Read why:"
-  },
-  {
-   "workflow": "cae5e444-b52b-42d7-a46e-bec7eed12866",
-   "wf": "0.0 Texts",
-   "audience": "promote",
-   "channel": "sms",
-   "num": 4,
-   "step_id": "4d8707c2-1603-4d59-a50a-5362ce9b8337",
-   "name": "Day 4",
-   "branch": "main",
-   "when": {
-    "type": "date",
-    "date": "2026-10-21",
-    "time_et": "11:30",
-    "plus_hours": 0
-   },
-   "text": "The Code was never the destination. After 14 years I see what I missed. Read it:"
-  },
-  {
-   "workflow": "cae5e444-b52b-42d7-a46e-bec7eed12866",
-   "wf": "0.0 Texts",
-   "audience": "promote",
-   "channel": "sms",
-   "num": 5,
-   "step_id": "fb8db4bf-13cf-478f-814f-a71dc7eade96",
-   "name": "Day 5",
-   "branch": "main",
-   "when": {
-    "type": "date",
-    "date": "2026-10-22",
-    "time_et": "11:30",
-    "plus_hours": 0
-   },
-   "text": "Most men never win their Impossible Game. They never built one they can win. Read why:"
-  },
-  {
-   "workflow": "cae5e444-b52b-42d7-a46e-bec7eed12866",
-   "wf": "0.0 Texts",
-   "audience": "promote",
-   "channel": "sms",
-   "num": 6,
-   "step_id": "32197364-02c6-4ae7-a7f3-fe3b2144ae94",
-   "name": "Day 6",
-   "branch": "main",
-   "when": {
-    "type": "date",
-    "date": "2026-10-23",
-    "time_et": "11:30",
-    "plus_hours": 0
-   },
-   "text": "What I've taught in private for 18 months, most of Warrior hasn't seen. Read it:"
-  },
-  {
-   "workflow": "cae5e444-b52b-42d7-a46e-bec7eed12866",
-   "wf": "0.0 Texts",
-   "audience": "promote",
-   "channel": "sms",
-   "num": 7,
-   "step_id": "25382396-797b-49b8-ae6b-54ecef52017d",
-   "name": "Day 7",
-   "branch": "main",
-   "when": {
-    "type": "date",
-    "date": "2026-10-24",
-    "time_et": "11:30",
-    "plus_hours": 0
-   },
-   "text": "You don't need another breakthrough. You need a game. Here's the difference:"
-  },
-  {
-   "workflow": "cae5e444-b52b-42d7-a46e-bec7eed12866",
-   "wf": "0.0 Texts",
-   "audience": "promote",
-   "channel": "sms",
-   "num": 8,
-   "step_id": "d45ffb83-b3d8-49af-bc59-0dcc4b1e116e",
-   "name": "Day 8",
-   "branch": "main",
-   "when": {
-    "type": "date",
-    "date": "2026-10-25",
-    "time_et": "11:30",
-    "plus_hours": 0
-   },
-   "text": "Another AI tool? I get it. Read why this one is different:"
-  },
-  {
-   "workflow": "cae5e444-b52b-42d7-a46e-bec7eed12866",
-   "wf": "0.0 Texts",
-   "audience": "promote",
-   "channel": "sms",
-   "num": 9,
-   "step_id": "452f8e88-b071-45d6-8d64-32887d670b2a",
-   "name": "Day 9",
-   "branch": "main",
-   "when": {
-    "type": "date",
-    "date": "2026-10-26",
-    "time_et": "11:30",
-    "plus_hours": 0
-   },
-   "text": "What if your Stack could talk back? Read what I built:"
-  },
-  {
-   "workflow": "cae5e444-b52b-42d7-a46e-bec7eed12866",
-   "wf": "0.0 Texts",
-   "audience": "promote",
-   "channel": "sms",
-   "num": 10,
-   "step_id": "cd09bdb4-1612-49a6-9192-e825882a8b15",
-   "name": "Day 10",
-   "branch": "main",
-   "when": {
-    "type": "date",
-    "date": "2026-10-27",
-    "time_et": "11:30",
-    "plus_hours": 0
-   },
-   "text": "Your WarriorCon experience begins the moment you register. Read how:"
-  },
-  {
-   "workflow": "cae5e444-b52b-42d7-a46e-bec7eed12866",
-   "wf": "0.0 Texts",
-   "audience": "promote",
-   "channel": "sms",
-   "num": 11,
-   "step_id": "b1dacc39-1ca6-43ce-b8fc-a25d446c482d",
-   "name": "Day 11",
-   "branch": "main",
-   "when": {
-    "type": "date",
-    "date": "2026-10-28",
-    "time_et": "11:30",
-    "plus_hours": 0
-   },
-   "text": "The problem was never a lack of tools. Read what I found:"
-  },
-  {
-   "workflow": "cae5e444-b52b-42d7-a46e-bec7eed12866",
-   "wf": "0.0 Texts",
-   "audience": "promote",
-   "channel": "sms",
-   "num": 12,
-   "step_id": "097d6173-9f93-4e6a-af33-c9bebbeb7025",
-   "name": "Day 12",
-   "branch": "main",
-   "when": {
-    "type": "date",
-    "date": "2026-10-29",
-    "time_et": "11:30",
-    "plus_hours": 0
-   },
-   "text": "I don't want to give you another experience. I want to help you build something:"
-  },
-  {
-   "workflow": "cae5e444-b52b-42d7-a46e-bec7eed12866",
-   "wf": "0.0 Texts",
-   "audience": "promote",
-   "channel": "sms",
-   "num": 13,
-   "step_id": "c2871698-6555-4564-bf14-80e058cc9b8a",
-   "name": "Day 13",
-   "branch": "main",
-   "when": {
-    "type": "date",
-    "date": "2026-10-30",
-    "time_et": "11:30",
-    "plus_hours": 0
-   },
-   "text": "I became a prisoner of the movement I built to set men free. Read this:"
-  },
-  {
-   "workflow": "cae5e444-b52b-42d7-a46e-bec7eed12866",
-   "wf": "0.0 Texts",
-   "audience": "promote",
-   "channel": "sms",
-   "num": 14,
-   "step_id": "710f1f07-5a6e-4abd-95e2-1b129d9ef3ff",
-   "name": "Day 14",
-   "branch": "main",
-   "when": {
-    "type": "date",
-    "date": "2026-10-31",
-    "time_et": "11:30",
-    "plus_hours": 0
-   },
-   "text": "Thank you for 14 years. Here's my final invitation to the brotherhood:"
-  },
-  {
    "workflow": "9113e15e-11ed-4cc4-913d-641d92cd8d30",
    "wf": "0.1 Texts",
    "audience": "promote",
@@ -1023,96 +1030,6 @@
    "text": "He had enough money to never work again. But he couldn't stop working. Read his story:"
   },
   {
-   "workflow": "9113e15e-11ed-4cc4-913d-641d92cd8d30",
-   "wf": "0.1 Texts",
-   "audience": "promote",
-   "channel": "sms",
-   "num": 9,
-   "step_id": "48e04fd6-5649-4152-9d59-69c0ce507313",
-   "name": "SMS 9 (wc-day26)",
-   "branch": "Not a buyer",
-   "when": {
-    "type": "after_previous",
-    "hours": 24
-   },
-   "text": "He spent his life building other men's empires. Read his story:"
-  },
-  {
-   "workflow": "9113e15e-11ed-4cc4-913d-641d92cd8d30",
-   "wf": "0.1 Texts",
-   "audience": "promote",
-   "channel": "sms",
-   "num": 10,
-   "step_id": "3115c4a0-d883-4ccb-a00e-ad85cc3a9bc0",
-   "name": "SMS 10 (wc-day27)",
-   "branch": "Not a buyer",
-   "when": {
-    "type": "after_previous",
-    "hours": 24
-   },
-   "text": "The world celebrates what a man produces. But nobody sees what he's carrying. Read his story:"
-  },
-  {
-   "workflow": "9113e15e-11ed-4cc4-913d-641d92cd8d30",
-   "wf": "0.1 Texts",
-   "audience": "promote",
-   "channel": "sms",
-   "num": 11,
-   "step_id": "1591a126-6eac-450a-90ae-2e4431faa497",
-   "name": "SMS 11 (wc-day28)",
-   "branch": "Not a buyer",
-   "when": {
-    "type": "after_previous",
-    "hours": 24
-   },
-   "text": "He had no idea his wife was about to get leukemia. Read his story:"
-  },
-  {
-   "workflow": "9113e15e-11ed-4cc4-913d-641d92cd8d30",
-   "wf": "0.1 Texts",
-   "audience": "promote",
-   "channel": "sms",
-   "num": 12,
-   "step_id": "c2604f6e-11ec-4388-89e6-ad0f11a49e3a",
-   "name": "SMS 12 (wc-day29)",
-   "branch": "Not a buyer",
-   "when": {
-    "type": "after_previous",
-    "hours": 24
-   },
-   "text": "You can insure your house. You can insure your business. You can insure your life. Read it:"
-  },
-  {
-   "workflow": "9113e15e-11ed-4cc4-913d-641d92cd8d30",
-   "wf": "0.1 Texts",
-   "audience": "promote",
-   "channel": "sms",
-   "num": 13,
-   "step_id": "1d1a6ecc-0bad-48ed-9e05-1ed85c9c2a45",
-   "name": "SMS 13 (wc-day30)",
-   "branch": "Not a buyer",
-   "when": {
-    "type": "after_previous",
-    "hours": 24
-   },
-   "text": "You've heard their stories. What about yours? Read it:"
-  },
-  {
-   "workflow": "9113e15e-11ed-4cc4-913d-641d92cd8d30",
-   "wf": "0.1 Texts",
-   "audience": "promote",
-   "channel": "sms",
-   "num": 14,
-   "step_id": "413a891e-c526-48ed-a925-b510f70b04e7",
-   "name": "SMS 14 (wc-day31)",
-   "branch": "Not a buyer",
-   "when": {
-    "type": "after_previous",
-    "hours": 24
-   },
-   "text": "Making a decision doesn't change your life. Executing that decision does. Read it:"
-  },
-  {
    "workflow": "ab0e73fd-f630-4da6-8678-1c00faa50e54",
    "wf": "1.04 Texts",
    "audience": "post_ticket",
@@ -1162,6 +1079,129 @@
     "plus_hours": 0
    },
    "text": "Your results don't care about your excuses. They are telling a story. Read it:"
+  },
+  {
+   "workflow": "50e67534-dbf1-4628-aff4-1cae09823865",
+   "wf": "0.3 Texts",
+   "audience": "promote",
+   "channel": "sms",
+   "num": 1,
+   "step_id": "0feb11d7-f243-4dff-858e-60aa69d82c07",
+   "name": "SMS 8B - Nov 11 - 11:30 AM ET (wc-day22)",
+   "branch": "Not a buyer",
+   "when": {
+    "type": "date",
+    "date": "2026-11-11",
+    "time_et": "11:30",
+    "plus_hours": 0
+   },
+   "text": "He was financially free. But he wasn't free. Read his story:"
+  },
+  {
+   "workflow": "50e67534-dbf1-4628-aff4-1cae09823865",
+   "wf": "0.3 Texts",
+   "audience": "promote",
+   "channel": "sms",
+   "num": 2,
+   "step_id": "beae5030-f7f5-4db5-b226-e1a985f132e6",
+   "name": "SMS 9 - Nov 12 - 11:30 AM ET (wc-day26)",
+   "branch": "Not a buyer",
+   "when": {
+    "type": "date",
+    "date": "2026-11-12",
+    "time_et": "11:30",
+    "plus_hours": 0
+   },
+   "text": "He spent his life building other men's empires. Read his story:"
+  },
+  {
+   "workflow": "50e67534-dbf1-4628-aff4-1cae09823865",
+   "wf": "0.3 Texts",
+   "audience": "promote",
+   "channel": "sms",
+   "num": 3,
+   "step_id": "1cad59b0-b8f1-4ae8-a373-1732175b6023",
+   "name": "SMS 10 - Nov 13 - 11:30 AM ET (wc-day27)",
+   "branch": "Not a buyer",
+   "when": {
+    "type": "date",
+    "date": "2026-11-13",
+    "time_et": "11:30",
+    "plus_hours": 0
+   },
+   "text": "The world celebrates what a man produces. But nobody sees what he's carrying. Read his story:"
+  },
+  {
+   "workflow": "50e67534-dbf1-4628-aff4-1cae09823865",
+   "wf": "0.3 Texts",
+   "audience": "promote",
+   "channel": "sms",
+   "num": 4,
+   "step_id": "6e3dfd1f-acf0-4537-9715-5e1c128be647",
+   "name": "SMS 11 - Nov 14 - 11:30 AM ET (wc-day28)",
+   "branch": "Not a buyer",
+   "when": {
+    "type": "date",
+    "date": "2026-11-14",
+    "time_et": "11:30",
+    "plus_hours": 0
+   },
+   "text": "He had no idea his wife was about to get leukemia. Read his story:"
+  },
+  {
+   "workflow": "50e67534-dbf1-4628-aff4-1cae09823865",
+   "wf": "0.3 Texts",
+   "audience": "promote",
+   "channel": "sms",
+   "num": 5,
+   "step_id": "a027c717-3f57-4d83-bcae-e84d958e5bcd",
+   "name": "SMS 12 - Nov 15 - 11:30 AM ET (wc-day29)",
+   "branch": "Not a buyer",
+   "when": {
+    "type": "date",
+    "date": "2026-11-15",
+    "time_et": "11:30",
+    "plus_hours": 0
+   },
+   "text": "You can insure your house. You can insure your business. You can insure your life. Read it:"
+  },
+  {
+   "workflow": "50e67534-dbf1-4628-aff4-1cae09823865",
+   "wf": "0.3 Texts",
+   "audience": "promote",
+   "channel": "sms",
+   "num": 6,
+   "step_id": "45d2f1b9-c7aa-4d64-affe-98fc6850e8ee",
+   "name": "SMS 13 - Nov 16 - 11:30 AM ET (wc-day30)",
+   "branch": "Not a buyer",
+   "when": {
+    "type": "date",
+    "date": "2026-11-16",
+    "time_et": "11:30",
+    "plus_hours": 0
+   },
+   "text": "You've heard their stories. What about yours? Read it:"
+  },
+  {
+   "workflow": "50e67534-dbf1-4628-aff4-1cae09823865",
+   "wf": "0.3 Texts",
+   "audience": "promote",
+   "channel": "sms",
+   "num": 7,
+   "step_id": "fb101d32-bffa-44fb-b97e-d3dc2e59bae6",
+   "name": "SMS 14 - Nov 17 - 11:30 AM ET (wc-day31)",
+   "branch": "Not a buyer",
+   "when": {
+    "type": "date",
+    "date": "2026-11-17",
+    "time_et": "11:30",
+    "plus_hours": 0
+   },
+   "text": "Making a decision doesn't change your life. Executing that decision does. Read it:"
   }
+ ],
+ "_read_log": [
+  "2026-11-11 first read (7 workflows, 69 steps)",
+  "2026-11-11 re-read at PJ's request after the SMS fix: 0.1 Texts now ends at SMS 8; new 0.3 Texts sends SMS 8B-14 on Nov 11-17 (8 workflows, 70 steps)"
  ]
 }

@@ -87,7 +87,8 @@
    ],
    "sms_workflows": [
     "cae5e444-b52b-42d7-a46e-bec7eed12866",
-    "9113e15e-11ed-4cc4-913d-641d92cd8d30"
+    "9113e15e-11ed-4cc4-913d-641d92cd8d30",
+    "50e67534-dbf1-4628-aff4-1cae09823865"
    ],
    "sms_optout_smart_list": null
   },
@@ -431,6 +432,49 @@
      "name": "SMS 8",
      "link": "wc-day22",
      "text": "Some men waited. These men moved. Read their stories:"
+    }
+   ]
+  },
+  {
+   "id": "50e67534-dbf1-4628-aff4-1cae09823865",
+   "name": "0.3 - WC6 SMS 8B-14 One-Off (Nov 11-17)",
+   "label": "promote",
+   "channel": "sms",
+   "steps": [
+    {
+     "id": "0feb11d7-f243-4dff-858e-60aa69d82c07",
+     "name": "SMS 8B - Nov 11 - 11:30 AM ET (wc-day22)",
+     "text": "He was financially free. But he wasn't free. Read his story:"
+    },
+    {
+     "id": "beae5030-f7f5-4db5-b226-e1a985f132e6",
+     "name": "SMS 9 - Nov 12 - 11:30 AM ET (wc-day26)",
+     "text": "He spent his life building other men's empires. Read his story:"
+    },
+    {
+     "id": "1cad59b0-b8f1-4ae8-a373-1732175b6023",
+     "name": "SMS 10 - Nov 13 - 11:30 AM ET (wc-day27)",
+     "text": "The world celebrates what a man produces. But nobody sees what he's carrying. Read his story:"
+    },
+    {
+     "id": "6e3dfd1f-acf0-4537-9715-5e1c128be647",
+     "name": "SMS 11 - Nov 14 - 11:30 AM ET (wc-day28)",
+     "text": "He had no idea his wife was about to get leukemia. Read his story:"
+    },
+    {
+     "id": "a027c717-3f57-4d83-bcae-e84d958e5bcd",
+     "name": "SMS 12 - Nov 15 - 11:30 AM ET (wc-day29)",
+     "text": "You can insure your house. You can insure your business. You can insure your life. Read it:"
+    },
+    {
+     "id": "45d2f1b9-c7aa-4d64-affe-98fc6850e8ee",
+     "name": "SMS 13 - Nov 16 - 11:30 AM ET (wc-day30)",
+     "text": "You've heard their stories. What about yours? Read it:"
+    },
+    {
+     "id": "fb101d32-bffa-44fb-b97e-d3dc2e59bae6",
+     "name": "SMS 14 - Nov 17 - 11:30 AM ET (wc-day31)",
+     "text": "Making a decision doesn't change your life. Executing that decision does. Read it:"
     }
    ]
   },
