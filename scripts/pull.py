@@ -90,14 +90,19 @@ def safety_check(prev, data, Y, yday, morning):
     if not prev or not prev.get("todate"):
         return None, notes
     names = {"promote": "Promote", "post_ticket": "Post-ticket"}
-    # 1. Emails and texts sent to date never go down.
+    # 1. Emails sent to date never go down. Texts sent may shift by a few when GHL re-counts: allow the larger of
+    #    10 texts or 0.1%, note it, and stop on anything bigger.
     for c in ("promote", "post_ticket"):
         for ch, word in (("email", "emails"), ("sms", "texts")):
             old = ((prev["todate"].get(c) or {}).get(ch) or {}).get("sent", 0) or 0
             new = data["todate"][c][ch].get("sent", 0) or 0
-            if new < old:
-                return (f"Stopped: {names[c]} {word} sent dropped from {old:,} to {new:,} — GHL may have returned "
-                        f"partial data. {KEEP}"), notes
+            if new >= old:
+                continue
+            if ch == "sms" and old - new <= max(10, 0.001 * old):
+                notes.append(f"{names[c]} texts count shifted by {old - new:,} ({old:,} → {new:,}, GHL rounding). Published as normal.")
+                continue
+            return (f"Stopped: {names[c]} {word} sent dropped from {old:,} to {new:,} — GHL may have returned "
+                    f"partial data. {KEEP}"), notes
     # 2. Deliveries and failures: allow GHL's small re-count wobble, stop on a real drop.
     for c in ("promote", "post_ticket"):
         for k in ("delivered", "failed"):
@@ -858,7 +863,7 @@ def main():
     for n in notes:
         log("Note: " + n)
         if ON_ACTIONS:
-            print("::notice title=Refunds::" + n, flush=True)
+            print("::notice title=Note::" + n, flush=True)
     if stop:
         if ON_ACTIONS:
             print("::error title=Safety check::" + stop, flush=True)

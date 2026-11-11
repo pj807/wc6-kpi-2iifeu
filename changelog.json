@@ -1,5 +1,14 @@
 [
   {
+    "v": "1.4.1",
+    "date": "2026-11-11",
+    "title": "Fixes",
+    "items": [
+      "<b>Fewer false alarms:</b> the text count from GoHighLevel can shift by a few between updates. A drop of up to 10 texts (or 0.1%, whichever is larger) is now treated as normal and published. A bigger drop still stops the update and keeps the last good numbers.",
+      "Emails sent must still never go down."
+    ]
+  },
+  {
     "v": "1.4",
     "date": "2026-11-11",
     "title": "Updates every 6 hours",

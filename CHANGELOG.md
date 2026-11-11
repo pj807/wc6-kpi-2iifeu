@@ -4,6 +4,11 @@ The version only changes when the page itself changes. Daily data refreshes keep
 New features go up a minor number (1.1, 1.2). Fixes go up a patch number (1.0.1).
 The "What's new" panel on the page reads `changelog.json`, so update both files together.
 
+## v1.4.1 · Fixes · Nov 11, 2026
+
+- **Fewer false alarms:** the text count from GoHighLevel can shift by a few between updates. A drop of up to 10 texts (or 0.1%, whichever is larger) is now treated as normal and published. A bigger drop still stops the update and keeps the last good numbers.
+- Emails sent must still never go down.
+
 ## v1.4 · Updates every 6 hours · Nov 11, 2026
 
 - **Updates every 6 hours:** fresh numbers by 7am, 1pm, 7pm and 1am ET. The countdown follows the new times.
