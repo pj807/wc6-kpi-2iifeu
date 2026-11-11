@@ -264,6 +264,10 @@ def fetch_sms_by_day(api, first_day, last_day):
         for attempt in range(5):
             try:
                 rows = api.messages("SMS", a, matcher, until=b)
+                # GHL sometimes returns an empty export (total 0) for days that had texts. A finished
+                # day with no texts at all is unlikely mid-campaign, so read it again a few times.
+                if not rows and d.isoformat() < last_day and attempt < 4:
+                    raise ShortRead("export came back empty")
                 break
             except ShortRead as e:
                 log(f"  SMS {d.isoformat()}: {e}; retrying")
