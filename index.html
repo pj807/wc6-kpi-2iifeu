@@ -449,7 +449,7 @@
 
 <script>
 // The version of THIS page. Bump it (and changelog.json) whenever the page changes; daily data refreshes never change it.
-const PAGE_VERSION = '1.1.1';
+const PAGE_VERSION = '1.1.2';
 
 const $ = id => document.getElementById(id);
 const N = n => n == null ? '—' : Math.round(n).toLocaleString('en-US');
@@ -518,7 +518,7 @@ const dimCell = (l, t) => `<td data-l="${l}" class="dim">${t}</td>`;
 function totals(camp, ch, r) {
   const t = {sent: 0, rated: 0, delivered: 0, opened: 0, clicked: 0, unsub: 0, bounced: 0, ghl_sent: 0, failed: 0, optouts: 0, emails: 0, whole: 0};
   if (!r || r.preset === 'all') return Object.assign(t, D.todate[camp][ch]);
-  if (r.preset === 'yday' && D.yesterday_totals) return Object.assign(t, D.yesterday_totals[camp][ch]);   // set at the 8am run
+  if (r.preset === 'yday' && D.yesterday_totals) return Object.assign(t, D.yesterday_totals[camp][ch]);   // set at the 7am run
   for (const m of D.messages) {
     if (m.camp !== camp || m.ch !== ch) continue;
     let inR = 0, tot = 0;
@@ -574,8 +574,8 @@ function campRows(camp, short) {
 
 // ---------- sections that don't follow the date filter ----------
 const etTime = iso => new Date(iso).toLocaleString('en-US', {timeZone: 'America/New_York', hour: 'numeric', minute: '2-digit'}).replace(':00', '').replace(' AM', 'am').replace(' PM', 'pm') + ' ET';
-function schedule() {   // "Updates 8am, 1pm & 5pm ET · Next: 1pm ET", using the viewer's clock in Eastern time
-  const slots = D.update_times_et || ['08:00', '13:00', '17:00'];
+function schedule() {   // "Updates 7am, 1pm & 5pm ET · Next: 1pm ET", using the viewer's clock in Eastern time
+  const slots = D.update_times_et || ['07:00', '13:00', '17:00'];
   const lab = hm => { let [h, m] = hm.split(':').map(Number); const ap = h >= 12 ? 'pm' : 'am'; h = h % 12 || 12; return h + (m ? ':' + String(m).padStart(2, '0') : '') + ap; };
   const parts = new Intl.DateTimeFormat('en-US', {timeZone: 'America/New_York', hour: '2-digit', minute: '2-digit', hourCycle: 'h23'}).formatToParts(new Date());
   const now = parts.find(p => p.type === 'hour').value + ':' + parts.find(p => p.type === 'minute').value;

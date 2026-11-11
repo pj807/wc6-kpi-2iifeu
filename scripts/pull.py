@@ -557,7 +557,7 @@ def main():
     pp_rate = 100 * pp_n / n_holders if n_holders else 0
     bb_rate = 100 * bb["people"] / n_paid if n_paid else 0     # people, not sales
 
-    # ---- yesterday + summary picks: set by the first run after midnight Pacific (the 8am ET run), kept by later runs.
+    # ---- yesterday + summary picks: set by the first run after midnight Pacific (the 7am ET run), kept by later runs.
     # Numbers in the summary and report are always filled from this run, so every number on the page agrees.
     frozen = prev.get("frozen") if prev else None
     keep = bool(frozen and frozen.get("yesterday") == yday and frozen.get("picks") and not os.environ.get("REBUILD_SUMMARY"))
@@ -677,7 +677,7 @@ def main():
     else:
         watch = {"big": "All clear", "sub": "Nothing needs attention today.", "line": "Nothing needs attention today."}
 
-    # ---- report text: rebuilt every run (report.txt matches "Last updated"); yesterday lines stay from the 8am run
+    # ---- report text: rebuilt every run (report.txt matches "Last updated"); yesterday lines stay from the 7am run
     def e_line(t, click=True):
         if not t.get("sent"):
             return "none sent"

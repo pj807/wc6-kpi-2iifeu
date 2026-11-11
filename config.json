@@ -70,7 +70,7 @@
  },
  "_refresh_days": "Daily GitHub runs re-read only the last refresh_days days from GHL and keep older days from data.json.",
  "update_times_et": [
-  "08:00",
+  "07:00",
   "13:00",
   "17:00"
  ],

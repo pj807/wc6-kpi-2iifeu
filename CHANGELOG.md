@@ -4,6 +4,11 @@ The version only changes when the page itself changes. Daily data refreshes keep
 New features go up a minor number (1.1, 1.2). Fixes go up a patch number (1.0.1).
 The "What's new" panel on the page reads `changelog.json`, so update both files together.
 
+## v1.1.2 · Daily update now lands at 7am ET · Nov 11, 2026
+
+- **The main daily update now lands at 7am ET** (8pm Manila), an hour earlier. It sets yesterday's numbers, the daily report and the executive summary.
+- The 1pm and 5pm ET updates refresh the to-date numbers and "Today so far".
+
 ## v1.1.1 · Fixes · Nov 11, 2026
 
 - The **View in GHL** menu now shows as one clean white box.

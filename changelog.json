@@ -1,5 +1,14 @@
 [
   {
+    "v": "1.1.2",
+    "date": "2026-11-11",
+    "title": "Daily update now lands at 7am ET",
+    "items": [
+      "<b>The main daily update now lands at 7am ET</b> (8pm Manila), an hour earlier. It sets yesterday's numbers, the daily report and the executive summary.",
+      "The 1pm and 5pm ET updates refresh the to-date numbers and \"Today so far\"."
+    ]
+  },
+  {
     "v": "1.1.1",
     "date": "2026-11-11",
     "title": "Fixes",
