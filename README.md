@@ -5,7 +5,7 @@ A one-page scoreboard of the WC6 email and text campaigns, split into
 
 ## How it updates
 
-- **3 times a day:** a GitHub Action puts fresh numbers on the page by 7am, 1pm and 5pm Eastern (7am ET = 8pm Manila). Each run starts 30 minutes early: 11:30, 17:30 and 21:30 UTC, since all dates through Dec 4 are EST. It runs on GitHub's computers, so your Mac can be off. GitHub sometimes starts scheduled runs a few minutes late.
+- **Every 6 hours:** a GitHub Action puts fresh numbers on the page by 7am, 1pm, 7pm and 1am Eastern (7am ET = 8pm Manila). Each run starts 30 minutes early: 11:30, 17:30, 23:30 and 05:30 UTC, since all dates through Dec 4 are EST. It runs on GitHub's computers, so your Mac can be off. GitHub sometimes starts scheduled runs a few minutes late.
 - **Any time:** on GitHub, open the repo's **Actions** tab, click **Daily refresh** on the left, then **Run workflow** (top right of the list) and the green **Run workflow** button.
 - **From your Mac:** open Terminal and run:
 
@@ -28,7 +28,7 @@ Each GitHub run reads only what's new:
 
 Older numbers come from `data.json`, which holds totals only. Your Mac's `./refresh.sh` re-reads the whole campaign using a private cache in `data/raw/`.
 
-**Yesterday's numbers, the daily report and the executive summary** come from the last full day (midnight to midnight Pacific). They're set by the 7am run and stay the same at 1pm and 5pm. The rest of the page updates each run, including the "Today so far" line.
+**Yesterday's numbers, the daily report and the executive summary** come from the last full day (midnight to midnight Pacific). They're set by the 7am run and stay the same at 1pm, 7pm and 1am. The rest of the page updates each run, including the "Today so far" line.
 
 If the page is open when new numbers arrive, a bar says "New data in" with a Show button. The page checks every 2 minutes.
 

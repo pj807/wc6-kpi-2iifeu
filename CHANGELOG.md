@@ -4,6 +4,12 @@ The version only changes when the page itself changes. Daily data refreshes keep
 New features go up a minor number (1.1, 1.2). Fixes go up a patch number (1.0.1).
 The "What's new" panel on the page reads `changelog.json`, so update both files together.
 
+## v1.4 · Updates every 6 hours · Nov 11, 2026
+
+- **Updates every 6 hours:** fresh numbers by 7am, 1pm, 7pm and 1am ET. The countdown follows the new times.
+- The 7am ET update is still the main one. It sets yesterday's report, the executive summary and the "Ready to send" status. The other three refresh the to-date numbers and "Today so far".
+- The small grey "Next: …" line under the countdown is gone. "Last updated" and "Next update in about …" stay.
+
 ## v1.3 · Ready to send · Nov 11, 2026
 
 - **"Ready to send" status** at the top of Today's report, so you know at a glance whether to send it.

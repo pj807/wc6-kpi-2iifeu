@@ -1,5 +1,15 @@
 [
   {
+    "v": "1.4",
+    "date": "2026-11-11",
+    "title": "Updates every 6 hours",
+    "items": [
+      "<b>Updates every 6 hours:</b> fresh numbers by 7am, 1pm, 7pm and 1am ET. The countdown follows the new times.",
+      "The 7am ET update is still the main one. It sets yesterday's report, the executive summary and the \"Ready to send\" status. The other three refresh the to-date numbers and \"Today so far\".",
+      "The small grey \"Next: …\" line under the countdown is gone. \"Last updated\" and \"Next update in about …\" stay."
+    ]
+  },
+  {
     "v": "1.3",
     "date": "2026-11-11",
     "title": "Ready to send",

@@ -70,9 +70,10 @@
  },
  "_refresh_days": "Daily GitHub runs re-read only the last refresh_days days from GHL and keep older days from data.json.",
  "update_times_et": [
+  "01:00",
   "07:00",
   "13:00",
-  "17:00"
+  "19:00"
  ],
  "_update_times_et": "When fresh numbers land on the page (Eastern). The GitHub Action starts 30 minutes earlier (cron in .github/workflows/daily-refresh.yml).",
  "ghl_links": {

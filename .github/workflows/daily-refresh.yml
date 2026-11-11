@@ -1,4 +1,4 @@
-# Refreshes the dashboard numbers 3 times a day (7am, 1pm, 5pm ET), and on demand ("Run workflow" on the Actions tab).
+# Refreshes the dashboard numbers every 6 hours (data ready by 7am, 1pm, 7pm and 1am ET), and on demand ("Run workflow" on the Actions tab).
 # GitHub schedules use UTC. EST (through Dec 4) = UTC-5, so each run starts 30 minutes before the update time.
 name: Daily refresh
 
@@ -6,7 +6,8 @@ on:
   schedule:
     - cron: "30 11 * * *"   # 6:30am ET -> data by 7am ET (8pm Manila). Main run: sets yesterday + summary
     - cron: "30 17 * * *"   # 12:30pm ET -> data by 1pm (to-date + "Today so far" only)
-    - cron: "30 21 * * *"   # 4:30pm ET -> data by 5pm (to-date + "Today so far" only)
+    - cron: "30 23 * * *"   # 6:30pm ET -> data by 7pm (to-date + "Today so far" only)
+    - cron: "30 5 * * *"    # 12:30am ET -> data by 1am (to-date + "Today so far" only; still the previous day in Pacific time)
   workflow_dispatch:
 
 permissions:
