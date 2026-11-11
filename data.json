@@ -37,6 +37,10 @@
     {
      "label": "0.1 Texts",
      "url": "https://app.gohighlevel.com/v2/location/BDeGaczWUBVqlvyWoI7l/automation/workflow/9113e15e-11ed-4cc4-913d-641d92cd8d30"
+    },
+    {
+     "label": "0.3 Texts",
+     "url": "https://app.gohighlevel.com/v2/location/BDeGaczWUBVqlvyWoI7l/automation/workflow/50e67534-dbf1-4628-aff4-1cae09823865"
     }
    ],
    "optout": []
@@ -99,8 +103,8 @@
    }
   }
  },
- "generated_at": "2026-11-11T12:58+00:00",
- "as_of": "Nov 11, 7:58am ET",
+ "generated_at": "2026-11-11T13:42+00:00",
+ "as_of": "Nov 11, 8:42am ET",
  "today": "2026-11-11",
  "yesterday": "2026-11-10",
  "campaign_start": "2026-10-12",
@@ -149,10 +153,10 @@
     "emails": 28,
     "whole": 28,
     "rated": 409786,
-    "delivered": 408470,
-    "opened": 128479,
-    "clicked": 1406,
-    "unsub": 506,
+    "delivered": 408471,
+    "opened": 128720,
+    "clicked": 1409,
+    "unsub": 507,
     "bounced": 1861,
     "ghl_sent": 410378
    },
@@ -202,8 +206,8 @@
    "line": "promote text failures 28.4% to date (22,918 of 80,573 texts failed), above 5%"
   }
  },
- "report": "WarriorCon 6 — report for Nov 10 (updated Nov 11, 7:58am ET)\n\nSUMMARY\n• 3 new tickets yesterday (138 total, 21 days to go)\n• Win: 69 of 138 ticket holders (50.0%) signed up for the Warrior App (free until Dec 4)\n• Watch: promote text failures 28.4% to date (22,918 of 80,573 texts failed), above 5%\n\nLEFT TO SEND (until Dec 2)\nPromote: 6 emails · 6 texts — next: about Wed Nov 11, 11:31am ET\nTicket holders: 7 emails · 2 texts — next: Wed Nov 11, 11:30am ET\n\nTICKET HOLDERS: 138 (135 paid + 3 comps) · 3 new yesterday\n$28,740 total sales ($26,865 tickets + $1,875 Business Bible)\n104 of 135 tickets were bought within 48 hrs of an email/text\n\nPROMOTE (non-ticket holders)\nYesterday — Email: 22,670 sent · 28.1% open · 0.3% click\nYesterday — SMS: 3,605 sent · 82.0% delivered\nTo date — Email: 409,786 sent · 31.5% open · 0.3% click\nTo date — SMS: 80,573 sent · 71.4% delivered\n\nPOST-TICKET SEDUCTION (ticket holders)\nYesterday — Email: 119 sent · 47.1% open\nYesterday — SMS: 94 sent · 88.3% delivered\nTo date — Email: 342 sent · 46.8% open\nTo date — SMS: 94 sent · 88.3% delivered\n\nUPSELLS\nWarrior App (Power Plan): 69 · 50.0% of ticket holders\nBusiness Bible: 17 sales · $1,875 · bought by 16 of 135 paid buyers (11.9%)\n(Texts have no open rate.)",
- "report_as_of": "Nov 11, 7:58am ET",
+ "report": "WarriorCon 6 — report for Nov 10 (updated Nov 11, 8:42am ET)\n\nSUMMARY\n• 3 new tickets yesterday (138 total, 21 days to go)\n• Win: 69 of 138 ticket holders (50.0%) signed up for the Warrior App (free until Dec 4)\n• Watch: promote text failures 28.4% to date (22,918 of 80,573 texts failed), above 5%\n\nLEFT TO SEND (until Dec 2)\nPromote: 6 emails · 7 texts — next: Wed Nov 11, 11:30am ET\nTicket holders: 7 emails · 2 texts — next: Wed Nov 11, 11:30am ET\n\nTICKET HOLDERS: 138 (135 paid + 3 comps) · 3 new yesterday\n$28,740 total sales ($26,865 tickets + $1,875 Business Bible)\n104 of 135 tickets were bought within 48 hrs of an email/text\n\nPROMOTE (non-ticket holders)\nYesterday — Email: 22,670 sent · 28.1% open · 0.3% click\nYesterday — SMS: 3,605 sent · 82.0% delivered\nTo date — Email: 409,786 sent · 31.5% open · 0.3% click\nTo date — SMS: 80,573 sent · 71.4% delivered\n\nPOST-TICKET SEDUCTION (ticket holders)\nYesterday — Email: 119 sent · 47.1% open\nYesterday — SMS: 94 sent · 88.3% delivered\nTo date — Email: 342 sent · 46.8% open\nTo date — SMS: 94 sent · 88.3% delivered\n\nUPSELLS\nWarrior App (Power Plan): 69 · 50.0% of ticket holders\nBusiness Bible: 17 sales · $1,875 · bought by 16 of 135 paid buyers (11.9%)\n(Texts have no open rate.)",
+ "report_as_of": "Nov 11, 8:42am ET",
  "left": {
   "until": "2026-12-02",
   "plan_read_at": "2026-11-11",
@@ -217,19 +221,19 @@
      "last": "2026-11-17"
     },
     "sms": {
-     "planned": 28,
+     "planned": 29,
      "sent": 22,
-     "left": 6,
+     "left": 7,
      "rolling": 0,
-     "last": "2026-11-16"
+     "last": "2026-11-17"
     },
     "next": {
-     "at": "2026-11-11T16:31:57Z",
-     "label": "Wed Nov 11, 11:31am ET",
-     "approx": true,
+     "at": "2026-11-11T16:30:00Z",
+     "label": "Wed Nov 11, 11:30am ET",
+     "approx": false,
      "ch": "sms",
-     "step": "0.1 Texts · SMS 9 (wc-day26)",
-     "text": "He spent his life building other men's empires. Read his story:"
+     "step": "0.3 Texts · SMS 8B - Nov 11 - 11:30 AM ET (wc-day22)",
+     "text": "He was financially free. But he wasn't free. Read his story:"
     },
     "upcoming_emails": [
      {
@@ -383,6 +387,14 @@
     "after_until": 4
    },
    {
+    "wf": "0.0 Texts",
+    "steps": 14,
+    "planned": 14,
+    "sent": 14,
+    "left": 0,
+    "after_until": 0
+   },
+   {
     "wf": "0.2 Emails",
     "steps": 9,
     "planned": 9,
@@ -399,19 +411,11 @@
     "after_until": 0
    },
    {
-    "wf": "0.0 Texts",
-    "steps": 14,
-    "planned": 14,
-    "sent": 14,
-    "left": 0,
-    "after_until": 0
-   },
-   {
     "wf": "0.1 Texts",
-    "steps": 14,
-    "planned": 14,
+    "steps": 8,
+    "planned": 8,
     "sent": 8,
-    "left": 6,
+    "left": 0,
     "after_until": 0
    },
    {
@@ -420,6 +424,14 @@
     "planned": 3,
     "sent": 1,
     "left": 2,
+    "after_until": 0
+   },
+   {
+    "wf": "0.3 Texts",
+    "steps": 7,
+    "planned": 7,
+    "sent": 0,
+    "left": 7,
     "after_until": 0
    }
   ],
@@ -2171,7 +2183,7 @@
    "main_at": "2026-10-24T10:04:22.930Z",
    "ghl_sent": 22877,
    "delivered": 22791,
-   "opened": 7383,
+   "opened": 7385,
    "clicked": 62,
    "unsub": 38,
    "bounced": 87,
@@ -2582,7 +2594,7 @@
    "main_at": "2026-10-26T10:04:29.333Z",
    "ghl_sent": 22830,
    "delivered": 22724,
-   "opened": 7480,
+   "opened": 7481,
    "clicked": 56,
    "unsub": 35,
    "bounced": 106,
@@ -4396,7 +4408,7 @@
    "main_at": "2026-11-09T14:34:43.011Z",
    "ghl_sent": 22582,
    "delivered": 22450,
-   "opened": 6059,
+   "opened": 6065,
    "clicked": 68,
    "unsub": 13,
    "bounced": 130,
@@ -4535,7 +4547,7 @@
    "main_at": "2026-11-10T11:00:01.545Z",
    "ghl_sent": 22570,
    "delivered": 22453,
-   "opened": 6331,
+   "opened": 6349,
    "clicked": 65,
    "unsub": 17,
    "bounced": 117,
@@ -5096,10 +5108,10 @@
    "no_links": false,
    "main_at": "2026-11-11T11:00:01.583Z",
    "ghl_sent": 22551,
-   "delivered": 22422,
-   "opened": 4432,
-   "clicked": 41,
-   "unsub": 3,
+   "delivered": 22423,
+   "opened": 4646,
+   "clicked": 44,
+   "unsub": 4,
    "bounced": 120,
    "complaints": 0,
    "share_main": 1.0
@@ -5159,6 +5171,167 @@
    "share_main": null
   },
   {
+   "id": "ab7dcb50",
+   "key": "s:he was financially free. but he wasn't f",
+   "ch": "sms",
+   "camp": "promote",
+   "text": "He was financially free. But he wasn't free. Read his story:",
+   "steps": [
+    "0.3 SMS 8B - Nov 11 - 11:30 AM ET (wc-day22)"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "main_at": null,
+   "delivered": 0,
+   "failed": 0,
+   "optouts": 0,
+   "replies": 0
+  },
+  {
+   "id": "02e03924",
+   "key": "s:he spent his life building other men's e",
+   "ch": "sms",
+   "camp": "promote",
+   "text": "He spent his life building other men's empires. Read his story:",
+   "steps": [
+    "0.3 SMS 9 - Nov 12 - 11:30 AM ET (wc-day26)"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "main_at": null,
+   "delivered": 0,
+   "failed": 0,
+   "optouts": 0,
+   "replies": 0
+  },
+  {
+   "id": "d44dd9ec",
+   "key": "s:the world celebrates what a man produces",
+   "ch": "sms",
+   "camp": "promote",
+   "text": "The world celebrates what a man produces. But nobody sees what he's carrying. Read his story:",
+   "steps": [
+    "0.3 SMS 10 - Nov 13 - 11:30 AM ET (wc-day27)"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "main_at": null,
+   "delivered": 0,
+   "failed": 0,
+   "optouts": 0,
+   "replies": 0
+  },
+  {
+   "id": "12f1fe92",
+   "key": "s:he had no idea his wife was about to get",
+   "ch": "sms",
+   "camp": "promote",
+   "text": "He had no idea his wife was about to get leukemia. Read his story:",
+   "steps": [
+    "0.3 SMS 11 - Nov 14 - 11:30 AM ET (wc-day28)"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "main_at": null,
+   "delivered": 0,
+   "failed": 0,
+   "optouts": 0,
+   "replies": 0
+  },
+  {
+   "id": "5e1e65e3",
+   "key": "s:you can insure your house. you can insur",
+   "ch": "sms",
+   "camp": "promote",
+   "text": "You can insure your house. You can insure your business. You can insure your life. Read it:",
+   "steps": [
+    "0.3 SMS 12 - Nov 15 - 11:30 AM ET (wc-day29)"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "main_at": null,
+   "delivered": 0,
+   "failed": 0,
+   "optouts": 0,
+   "replies": 0
+  },
+  {
+   "id": "fbce61ed",
+   "key": "s:you've heard their stories. what about y",
+   "ch": "sms",
+   "camp": "promote",
+   "text": "You've heard their stories. What about yours? Read it:",
+   "steps": [
+    "0.3 SMS 13 - Nov 16 - 11:30 AM ET (wc-day30)"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "main_at": null,
+   "delivered": 0,
+   "failed": 0,
+   "optouts": 0,
+   "replies": 0
+  },
+  {
+   "id": "ecd9677e",
+   "key": "s:making a decision doesn't change your li",
+   "ch": "sms",
+   "camp": "promote",
+   "text": "Making a decision doesn't change your life. Executing that decision does. Read it:",
+   "steps": [
+    "0.3 SMS 14 - Nov 17 - 11:30 AM ET (wc-day31)"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "main_at": null,
+   "delivered": 0,
+   "failed": 0,
+   "optouts": 0,
+   "replies": 0
+  },
+  {
    "id": "b9af4efe",
    "key": "s:the most dangerous lie a man tells is th",
    "ch": "sms",
@@ -5189,144 +5362,6 @@
    "text": "Your results don't care about your excuses. They are telling a story.",
    "steps": [
     "1.04 SMS 3 (Nov 12)"
-   ],
-   "day": null,
-   "sent": 0,
-   "wrong_audience": 0,
-   "days": {},
-   "credit": {},
-   "tickets": 0,
-   "ticket_revenue": 0,
-   "no_links": false,
-   "main_at": null,
-   "delivered": 0,
-   "failed": 0,
-   "optouts": 0,
-   "replies": 0
-  },
-  {
-   "id": "02e03924",
-   "key": "s:he spent his life building other men's e",
-   "ch": "sms",
-   "camp": "promote",
-   "text": "He spent his life building other men's empires. Read his story:",
-   "steps": [
-    "0.1 SMS 9 (wc-day26)"
-   ],
-   "day": null,
-   "sent": 0,
-   "wrong_audience": 0,
-   "days": {},
-   "credit": {},
-   "tickets": 0,
-   "ticket_revenue": 0,
-   "no_links": false,
-   "main_at": null,
-   "delivered": 0,
-   "failed": 0,
-   "optouts": 0,
-   "replies": 0
-  },
-  {
-   "id": "d44dd9ec",
-   "key": "s:the world celebrates what a man produces",
-   "ch": "sms",
-   "camp": "promote",
-   "text": "The world celebrates what a man produces. But nobody sees what he's carrying. Read his story:",
-   "steps": [
-    "0.1 SMS 10 (wc-day27)"
-   ],
-   "day": null,
-   "sent": 0,
-   "wrong_audience": 0,
-   "days": {},
-   "credit": {},
-   "tickets": 0,
-   "ticket_revenue": 0,
-   "no_links": false,
-   "main_at": null,
-   "delivered": 0,
-   "failed": 0,
-   "optouts": 0,
-   "replies": 0
-  },
-  {
-   "id": "12f1fe92",
-   "key": "s:he had no idea his wife was about to get",
-   "ch": "sms",
-   "camp": "promote",
-   "text": "He had no idea his wife was about to get leukemia. Read his story:",
-   "steps": [
-    "0.1 SMS 11 (wc-day28)"
-   ],
-   "day": null,
-   "sent": 0,
-   "wrong_audience": 0,
-   "days": {},
-   "credit": {},
-   "tickets": 0,
-   "ticket_revenue": 0,
-   "no_links": false,
-   "main_at": null,
-   "delivered": 0,
-   "failed": 0,
-   "optouts": 0,
-   "replies": 0
-  },
-  {
-   "id": "5e1e65e3",
-   "key": "s:you can insure your house. you can insur",
-   "ch": "sms",
-   "camp": "promote",
-   "text": "You can insure your house. You can insure your business. You can insure your life. Read it:",
-   "steps": [
-    "0.1 SMS 12 (wc-day29)"
-   ],
-   "day": null,
-   "sent": 0,
-   "wrong_audience": 0,
-   "days": {},
-   "credit": {},
-   "tickets": 0,
-   "ticket_revenue": 0,
-   "no_links": false,
-   "main_at": null,
-   "delivered": 0,
-   "failed": 0,
-   "optouts": 0,
-   "replies": 0
-  },
-  {
-   "id": "fbce61ed",
-   "key": "s:you've heard their stories. what about y",
-   "ch": "sms",
-   "camp": "promote",
-   "text": "You've heard their stories. What about yours? Read it:",
-   "steps": [
-    "0.1 SMS 13 (wc-day30)"
-   ],
-   "day": null,
-   "sent": 0,
-   "wrong_audience": 0,
-   "days": {},
-   "credit": {},
-   "tickets": 0,
-   "ticket_revenue": 0,
-   "no_links": false,
-   "main_at": null,
-   "delivered": 0,
-   "failed": 0,
-   "optouts": 0,
-   "replies": 0
-  },
-  {
-   "id": "ecd9677e",
-   "key": "s:making a decision doesn't change your li",
-   "ch": "sms",
-   "camp": "promote",
-   "text": "Making a decision doesn't change your life. Executing that decision does. Read it:",
-   "steps": [
-    "0.1 SMS 14 (wc-day31)"
    ],
    "day": null,
    "sent": 0,
