@@ -77,6 +77,55 @@ def token():
         return None
 
 
+KEEP = "Nothing published; the page keeps the last good numbers."
+
+
+def where(path):   # "/payments/orders/<id>" -> "/payments/orders/…" (no IDs in the public run log)
+    return re.sub(r"/[A-Za-z0-9]{16,}", "/…", path.split("?")[0])
+
+
+def safety_check(prev, data, Y, yday, morning):
+    """Compare this run with the last good data. Returns (reason to stop or None, notes for the log)."""
+    notes = []
+    if not prev or not prev.get("todate"):
+        return None, notes
+    names = {"promote": "Promote", "post_ticket": "Post-ticket"}
+    # 1. Emails and texts sent to date never go down.
+    for c in ("promote", "post_ticket"):
+        for ch, word in (("email", "emails"), ("sms", "texts")):
+            old = ((prev["todate"].get(c) or {}).get(ch) or {}).get("sent", 0) or 0
+            new = data["todate"][c][ch].get("sent", 0) or 0
+            if new < old:
+                return (f"Stopped: {names[c]} {word} sent dropped from {old:,} to {new:,} — GHL may have returned "
+                        f"partial data. {KEEP}"), notes
+    # 2. Deliveries and failures: allow GHL's small re-count wobble, stop on a real drop.
+    for c in ("promote", "post_ticket"):
+        for k in ("delivered", "failed"):
+            old = ((prev["todate"].get(c) or {}).get("sms") or {}).get(k, 0) or 0
+            new = data["todate"][c]["sms"].get(k, 0) or 0
+            if new < old - max(5, 0.002 * old):
+                return (f"Stopped: {names[c]} texts {k} dropped from {old:,} to {new:,} — GHL may have returned "
+                        f"partial data. {KEEP}"), notes
+    # 3. Ticket holders and total sales: a drop over 5% means broken data; a smaller one is normal refunds.
+    oh, nh = (prev.get("holders") or {}).get("total", 0) or 0, data["holders"]["total"]
+    os_, ns = (prev.get("sales") or {}).get("total", 0) or 0, data["sales"]["total"]
+    for label, old, new, fmt_ in (("Ticket holders", oh, nh, lambda v: f"{v:,}"), ("Total sales", os_, ns, lambda v: f"${v:,.0f}")):
+        if old and new < old * 0.95:
+            return (f"Stopped: {label.lower()} dropped from {fmt_(old)} to {fmt_(new)} (more than 5%) — GHL may have "
+                    f"returned partial order data. {KEEP}"), notes
+    if nh < oh or ns < os_ - 0.5:
+        n = max(oh - nh, 1)
+        notes.append(f"{n} refund{'s' if n != 1 else ''} since last run (ticket holders {oh:,} → {nh:,}, "
+                     f"total sales ${os_:,.0f} → ${ns:,.0f}). Published as normal.")
+    # 4. The 7am run: zero emails and zero texts yesterday while the campaign is running means missing data.
+    if morning and CFG["campaign_start"] <= yday <= CFG["event_end"]:
+        sent = sum(Y[c][ch].get("sent", 0) or 0 for c in Y for ch in ("email", "sms"))
+        if sent == 0:
+            return (f"Stopped: the 7am run found 0 emails and 0 texts sent yesterday ({short_day(yday)}) while the "
+                    f"campaign is running — GHL may have returned partial data. {KEEP}"), notes
+    return None, notes
+
+
 class API:
     def __init__(self, tok):
         self.tok = tok
@@ -94,10 +143,13 @@ class API:
             except urllib.error.HTTPError as e:
                 if e.code == 429 or e.code >= 500:
                     time.sleep(3 * (i + 1)); continue
-                raise SystemExit(f"GHL API error on {path.split('?')[0]}: HTTP {e.code}")
+                if e.code in (401, 403):
+                    raise SystemExit(f"Stopped: GoHighLevel refused the key (HTTP {e.code}) when reading {where(path)}. "
+                                     f"The GHL_TOKEN secret may be expired or invalid. {KEEP}")
+                raise SystemExit(f"Stopped: GoHighLevel returned an error (HTTP {e.code}) when reading {where(path)}. {KEEP}")
             except urllib.error.URLError:
                 time.sleep(3 * (i + 1))
-        raise SystemExit(f"GHL API: gave up on {path.split('?')[0]} after retries")
+        raise SystemExit(f"Stopped: couldn't get an answer from GoHighLevel for {where(path)} after 6 tries. {KEEP}")
 
     def workflows(self):
         return self.req("GET", "/workflows/", {"locationId": LOC}).get("workflows", [])
@@ -284,7 +336,10 @@ def check_workflows(api):
     known = {w["id"] for w in CFG["workflows"]}
     rules = CFG["workflow_name_rules"]
     excluded = set(rules["excluded"])
-    for w in api.workflows():
+    wfs = api.workflows()
+    if not wfs:
+        raise SystemExit(f"Stopped: GoHighLevel returned no workflows at all — the key may be wrong or GHL had a problem. {KEEP}")
+    for w in wfs:
         name = w.get("name", "")
         if w["id"] in known or w["id"] in excluded or not re.search(rules["wc6_any"], name, re.I):
             continue
@@ -302,7 +357,7 @@ def check_workflows(api):
 def main():
     tok = token()
     if not tok:
-        raise SystemExit("No GHL token found (Keychain ghl-wuw-kpi or GHL_TOKEN). Nothing written.")
+        raise SystemExit(f"Stopped: no GoHighLevel key found (the GHL_TOKEN secret is missing or empty). {KEEP}")
     api = API(tok)
     now = datetime.now(timezone.utc)
     today = now.astimezone(TZ).date()
@@ -339,6 +394,8 @@ def main():
         _get(c)
     log("orders + comps…")
     orders, comps = api.orders(), api.comps()
+    if not orders:
+        raise SystemExit(f"Stopped: GoHighLevel returned no orders at all (there were {(prev or {}).get('sales', {}).get('tickets', 0)} paid before). {KEEP}")
     log("email step stats…")
     stats = {}
     for key, st in STEPS.items():
@@ -796,17 +853,16 @@ def main():
                "post_ticket": {"yesterday": Yd["post_ticket"], "to_date": data["todate"]["post_ticket"]},
                "upsells": data["upsells"]}
 
-    # Safety check: sends, deliveries and failures only ever go up. If a total drops compared with the last good
-    # data (e.g. GHL returned an empty export), stop without writing so the page keeps the last good numbers.
-    if prev and prev.get("todate"):
-        for c in ("promote", "post_ticket"):
-            for ch, keys in (("email", ("sent",)), ("sms", ("sent", "delivered", "failed"))):
-                for k in keys:
-                    old = (prev["todate"].get(c, {}).get(ch, {}) or {}).get(k, 0) or 0
-                    new = T[c][ch].get(k, 0) or 0
-                    if new < old - max(5, 0.002 * old):
-                        raise SystemExit(f"Safety check failed: {c} {ch} {k} dropped from {old:,} to {new:,}. "
-                                         "Nothing written; the page keeps the last good numbers.")
+    # Safety check against the last good data (see safety_check). On a stop the run fails (red X + GitHub email).
+    stop, notes = safety_check(prev, data, Y, yday, morning=not keep)
+    for n in notes:
+        log("Note: " + n)
+        if ON_ACTIONS:
+            print("::notice title=Refunds::" + n, flush=True)
+    if stop:
+        if ON_ACTIONS:
+            print("::error title=Safety check::" + stop, flush=True)
+        raise SystemExit(stop)
 
     # write to temp files first, then swap in, so a failed run never leaves half-written data
     for name, content in (("data.json", json.dumps(data, indent=1, ensure_ascii=False)),
