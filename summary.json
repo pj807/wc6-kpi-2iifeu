@@ -1,55 +1,55 @@
 {
- "date": "2026-11-11",
- "as_of": "Nov 12, 1:31am ET",
- "yesterday": "2026-11-10",
+ "date": "2026-11-12",
+ "as_of": "Nov 12, 7:21am ET",
+ "yesterday": "2026-11-11",
  "ticket_holders": {
   "total": 142,
   "paid": 139,
   "comps": 3,
-  "new_yesterday": 3
+  "new_yesterday": 5
  },
  "summary": {
-  "headline": "3 new tickets yesterday (142 total, 21 days to go)",
+  "headline": "5 new tickets yesterday (142 total, 20 days to go)",
   "win": "71 of 142 ticket holders (50.0%) signed up for the Warrior App (free until Dec 4)",
   "watch": "promote text failures 27.9% to date (23,523 of 84,175 texts failed), above 5%"
  },
  "promote": {
   "yesterday": {
    "email": {
-    "sent": 22670,
+    "sent": 22645,
     "emails": 15,
     "whole": 1,
-    "rated": 22566,
-    "delivered": 22453,
-    "opened": 6303,
-    "clicked": 65,
-    "unsub": 17,
-    "bounced": 117,
-    "ghl_sent": 22570
+    "rated": 22540,
+    "delivered": 22423,
+    "opened": 6331,
+    "clicked": 51,
+    "unsub": 11,
+    "bounced": 122,
+    "ghl_sent": 22551
    },
    "sms": {
-    "sent": 3605,
-    "delivered": 2957,
-    "failed": 606,
+    "sent": 3602,
+    "delivered": 2973,
+    "failed": 604,
     "optouts": 3
    }
   },
   "to_date": {
    "email": {
-    "sent": 409880,
+    "sent": 432415,
     "emails": 28,
     "whole": 28,
-    "rated": 409880,
-    "delivered": 408571,
-    "opened": 130797,
-    "clicked": 1417,
-    "unsub": 520,
-    "bounced": 1864,
-    "ghl_sent": 410480
+    "rated": 432415,
+    "delivered": 430989,
+    "opened": 135476,
+    "clicked": 1456,
+    "unsub": 530,
+    "bounced": 1987,
+    "ghl_sent": 433021
    },
    "sms": {
     "sent": 84175,
-    "delivered": 60468,
+    "delivered": 60469,
     "failed": 23523,
     "optouts": 84
    }
@@ -58,22 +58,22 @@
  "post_ticket": {
   "yesterday": {
    "email": {
-    "sent": 119,
+    "sent": 120,
     "emails": 1,
     "whole": 1,
-    "rated": 119,
-    "delivered": 119,
-    "opened": 56,
+    "rated": 120,
+    "delivered": 120,
+    "opened": 49,
     "clicked": 0,
     "unsub": 0,
     "bounced": 0,
-    "ghl_sent": 119
+    "ghl_sent": 120
    },
    "sms": {
     "sent": 94,
-    "delivered": 83,
+    "delivered": 82,
     "failed": 11,
-    "optouts": 1
+    "optouts": 0
    }
   },
   "to_date": {
@@ -83,7 +83,7 @@
     "whole": 4,
     "rated": 462,
     "delivered": 462,
-    "opened": 211,
+    "opened": 213,
     "clicked": 0,
     "unsub": 0,
     "bounced": 0,
