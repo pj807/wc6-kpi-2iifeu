@@ -1,17 +1,17 @@
 {
  "date": "2026-11-11",
- "as_of": "Nov 11, 1:18pm ET",
+ "as_of": "Nov 11, 7:17pm ET",
  "yesterday": "2026-11-10",
  "ticket_holders": {
-  "total": 139,
-  "paid": 136,
+  "total": 141,
+  "paid": 138,
   "comps": 3,
   "new_yesterday": 3
  },
  "summary": {
-  "headline": "3 new tickets yesterday (139 total, 21 days to go)",
-  "win": "69 of 139 ticket holders (49.6%) signed up for the Warrior App (free until Dec 4)",
-  "watch": "promote text failures 27.9% to date (23,522 of 84,175 texts failed), above 5%"
+  "headline": "3 new tickets yesterday (141 total, 21 days to go)",
+  "win": "70 of 141 ticket holders (49.6%) signed up for the Warrior App (free until Dec 4)",
+  "watch": "promote text failures 27.9% to date (23,523 of 84,175 texts failed), above 5%"
  },
  "promote": {
   "yesterday": {
@@ -36,22 +36,22 @@
   },
   "to_date": {
    "email": {
-    "sent": 409817,
+    "sent": 409854,
     "emails": 28,
     "whole": 28,
-    "rated": 409817,
-    "delivered": 408513,
-    "opened": 129606,
-    "clicked": 1413,
-    "unsub": 509,
-    "bounced": 1861,
-    "ghl_sent": 410420
+    "rated": 409854,
+    "delivered": 408543,
+    "opened": 130237,
+    "clicked": 1414,
+    "unsub": 516,
+    "bounced": 1864,
+    "ghl_sent": 410452
    },
    "sms": {
     "sent": 84175,
-    "delivered": 60446,
-    "failed": 23522,
-    "optouts": 83
+    "delivered": 60466,
+    "failed": 23523,
+    "optouts": 84
    }
   }
  },
@@ -83,7 +83,7 @@
     "whole": 4,
     "rated": 462,
     "delivered": 462,
-    "opened": 194,
+    "opened": 208,
     "clicked": 0,
     "unsub": 0,
     "bounced": 0,
@@ -91,7 +91,7 @@
    },
    "sms": {
     "sent": 188,
-    "delivered": 164,
+    "delivered": 165,
     "failed": 22,
     "optouts": 1
    }
@@ -99,16 +99,16 @@
  },
  "upsells": {
   "power_plan": {
-   "count": 69,
+   "count": 70,
    "price_per_month": 95,
    "billing_start": "2026-12-04"
   },
   "business_bible": {
-   "count": 17,
-   "people": 16,
-   "bump": 16,
+   "count": 18,
+   "people": 17,
+   "bump": 17,
    "standalone": 1,
-   "revenue": 1875.0
+   "revenue": 1980.0
   }
  }
 }
