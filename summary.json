@@ -1,17 +1,17 @@
 {
  "date": "2026-11-13",
- "as_of": "Nov 13, 7:22am ET",
+ "as_of": "Nov 13, 1:15pm ET",
  "yesterday": "2026-11-12",
  "ticket_holders": {
-  "total": 144,
-  "paid": 141,
+  "total": 145,
+  "paid": 142,
   "comps": 3,
   "new_yesterday": 2
  },
  "summary": {
-  "headline": "2 new tickets yesterday (144 total, 19 days to go)",
-  "win": "72 of 144 ticket holders (50.0%) signed up for the Warrior App (free until Dec 4)",
-  "watch": "promote text failures 27.5% to date (24,128 of 87,770 texts failed), above 5%"
+  "headline": "2 new tickets yesterday (145 total, 19 days to go)",
+  "win": "73 of 145 ticket holders (50.3%) signed up for the Warrior App (free until Dec 4)",
+  "watch": "promote text failures 27.1% to date (24,730 of 91,350 texts failed), above 5%"
  },
  "promote": {
   "yesterday": {
@@ -36,22 +36,22 @@
   },
   "to_date": {
    "email": {
-    "sent": 455016,
+    "sent": 455050,
     "emails": 28,
     "whole": 28,
-    "rated": 455016,
-    "delivered": 453249,
-    "opened": 142017,
-    "clicked": 1486,
-    "unsub": 554,
-    "bounced": 2112,
-    "ghl_sent": 455635
+    "rated": 455050,
+    "delivered": 453494,
+    "opened": 143445,
+    "clicked": 1516,
+    "unsub": 556,
+    "bounced": 2116,
+    "ghl_sent": 455672
    },
    "sms": {
-    "sent": 87770,
-    "delivered": 63418,
-    "failed": 24128,
-    "optouts": 89
+    "sent": 91350,
+    "delivered": 66359,
+    "failed": 24730,
+    "optouts": 92
    }
   }
  },
@@ -78,37 +78,37 @@
   },
   "to_date": {
    "email": {
-    "sent": 586,
-    "emails": 5,
-    "whole": 5,
-    "rated": 586,
-    "delivered": 586,
-    "opened": 264,
+    "sent": 712,
+    "emails": 6,
+    "whole": 6,
+    "rated": 712,
+    "delivered": 712,
+    "opened": 309,
     "clicked": 0,
     "unsub": 0,
     "bounced": 0,
-    "ghl_sent": 586
+    "ghl_sent": 712
    },
    "sms": {
-    "sent": 285,
-    "delivered": 249,
-    "failed": 34,
+    "sent": 384,
+    "delivered": 335,
+    "failed": 45,
     "optouts": 1
    }
   }
  },
  "upsells": {
   "power_plan": {
-   "count": 72,
+   "count": 73,
    "price_per_month": 95,
    "billing_start": "2026-12-04"
   },
   "business_bible": {
-   "count": 19,
-   "people": 18,
-   "bump": 18,
+   "count": 20,
+   "people": 19,
+   "bump": 19,
    "standalone": 1,
-   "revenue": 2085.0
+   "revenue": 2190.0
   }
  }
 }
