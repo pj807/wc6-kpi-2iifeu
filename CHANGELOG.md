@@ -4,6 +4,14 @@ The version only changes when the page itself changes. Daily data refreshes keep
 New features go up a minor number (1.1, 1.2). Fixes go up a patch number (1.0.1).
 The "What's new" panel on the page reads `changelog.json`, so update both files together.
 
+## v1.5.1 · Plan re-read + out-of-date warning · Nov 16, 2026
+
+- **Ticket holders now run to Nov 24.** The plan was re-read from GoHighLevel (read-only) on Nov 16: 17 emails and 15 texts, the last one on Nov 24. It was 10 emails and 8 texts ending Nov 17.
+- **"! Plan out of date" warning** at the top of "What's left." Every update checks the GoHighLevel workflow list. The warning shows if a new WC6 workflow appears that isn't in the plan, or if a planned workflow was edited after the plan was read.
+- The warning ends with a **⧉ Copy update command** link. It copies the instruction for Claude Code to re-read only the flagged workflows. After you click it, it says "Copied — paste into Claude Code".
+- The note under "What's left." now says **when the plan was last read** (date and time, ET).
+- When the warning comes on, the run log shows it and GitHub opens an issue, which emails you. The update still goes through. Garrett's report doesn't change.
+
 ## v1.5 · What's left to send · Nov 11, 2026
 
 - **New: "What's left."** at the very bottom of the page shows how many emails and texts are still to go for each audience, up to Dec 2.

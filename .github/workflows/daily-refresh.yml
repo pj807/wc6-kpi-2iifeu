@@ -12,6 +12,7 @@ on:
 
 permissions:
   contents: write
+  issues: write   # plan check notice only (opens/updates/closes the "WC6 plan out of date" issue)
 
 concurrency:
   group: daily-refresh
@@ -49,3 +50,12 @@ jobs:
           git commit -q -m "Daily numbers $(date -u '+%Y-%m-%d %H:%M') UTC"
           git pull -q --rebase -X theirs   # if something else was pushed meanwhile, keep this run's fresh numbers
           git push
+
+      # Plan check notice: a new WC6 workflow, or a planned one edited after the plan was read, opens a
+      # "WC6 plan out of date" issue so GitHub emails PJ. Closed again once the plan is re-read. Never fails the update.
+      - name: Plan check notice
+        if: success()
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 -I scripts/plan_notice.py

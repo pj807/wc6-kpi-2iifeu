@@ -456,25 +456,54 @@ def fetch_sms_by_day(api, first_day, last_day):
     return out
 
 
+def et_day_time(iso):   # "Nov 16, 10:32am ET"
+    t = ts(iso).astimezone(SHOW_TZ)
+    return f"{t.strftime('%b')} {t.day}, {t.strftime('%-I:%M%p').lower()} ET"
+
+
 def check_workflows(api):
+    """Every run: list workflows (official API: id, name, status, version, createdAt, updatedAt) and compare with
+    the plan. Returns plan_check for the page: a WC6 workflow not in config.json, or a planned workflow whose
+    version / last-updated time is newer than when the plan was read. Never fails the run."""
     known = {w["id"] for w in CFG["workflows"]}
     rules = CFG["workflow_name_rules"]
     excluded = set(rules["excluded"])
     wfs = api.workflows()
     if not wfs:
         raise SystemExit(f"Stopped: GoHighLevel returned no workflows at all — the key may be wrong or GHL had a problem. {KEEP}")
+    items = []
     for w in wfs:
         name = w.get("name", "")
         if w["id"] in known or w["id"] in excluded or not re.search(rules["wc6_any"], name, re.I):
             continue
         if re.search(r"^(TEST|BACKUP|Copy)\b", name, re.I):
             continue
+        items.append({"kind": "new", "id": w["id"], "name": name, "status": w.get("status"),
+                      "text": f"Found a new WC6 workflow not in the plan: {name}"})
         if re.search(rules["promote"], name, re.I):
             FLAGS.append(f"New Promote workflow not in config yet (needs step IDs): {name}")
         elif re.search(rules["post_ticket"], name, re.I):
             FLAGS.append(f"New Post-ticket workflow not in config yet (needs step IDs): {name}")
         else:
             FLAGS.append(f"WC6 workflow that doesn't fit the naming rules, not counted: {name}")
+    by_id = {w["id"]: w for w in wfs}
+    for pw in (PLAN or {}).get("workflows", []):
+        w = by_id.get(pw["id"])
+        if not w:
+            items.append({"kind": "missing", "id": pw["id"], "name": pw["name"],
+                          "text": f"{pw['name']} is no longer in GoHighLevel (deleted or moved)"})
+            continue
+        base_v, base_u = pw.get("version"), pw.get("updated_at")
+        newer_v = isinstance(w.get("version"), int) and isinstance(base_v, int) and w["version"] > base_v
+        newer_u = bool(w.get("updatedAt") and base_u and ts(w["updatedAt"]) > ts(base_u))
+        if newer_v or newer_u:
+            items.append({"kind": "edited", "id": pw["id"], "name": w.get("name") or pw["name"],
+                          "version": w.get("version"), "updated_at": w.get("updatedAt"),
+                          "text": f"{w.get('name') or pw['name']} was edited on {et_day_time(w['updatedAt'])} after the plan was read"})
+    read_utc = (PLAN or {}).get("read_at_utc")
+    return {"stale": bool(items), "items": items, "read_at_utc": read_utc,
+            "read_label": et_day_time(read_utc) if read_utc else None,
+            "fields": sorted(set().union(*(set(w) for w in wfs)))}
 
 
 # ---------------------------------------------------------------- main
@@ -504,7 +533,7 @@ def main():
     log(f"Quick refresh: emails since the last run ({email_since[:16]}Z), texts from {cutoff}" if incremental
         else "Full pull from campaign start")
 
-    check_workflows(api)
+    plan_check = check_workflows(api)
     res = {}
     since_by = {"Email": email_since, "SMS": sms_since}
     def _get(c):
@@ -975,7 +1004,7 @@ def main():
                                        "revenue": round(bb["revenue"], 2)}},
         "todate": {c: {ch: dict(T[c][ch]) for ch in T[c]} for c in T},
         "summary": {"headline": headline, "win": win, "watch": watch},
-        "report": report, "report_as_of": as_of, "left": left,
+        "report": report, "report_as_of": as_of, "left": left, "plan_check": plan_check,
         "frozen": frozen,
         "days": day_list,
         "messages": sorted(messages, key=lambda m: (m["day"] or "9", m["ch"])),
@@ -1024,6 +1053,16 @@ def main():
             log("  Plan may be out of date — " + n)
             if ON_ACTIONS:
                 print("::notice title=Plan may be out of date::" + n, flush=True)
+    # Plan check (every run): a new WC6 workflow, or a planned one edited after the plan was read. Shown on the page
+    # and here; the GitHub step "Plan check notice" emails PJ. Not part of Garrett's report. Never fails the run.
+    log(f"Plan check: workflows API returns {', '.join(plan_check['fields'])}. Plan last read {plan_check['read_label']}.")
+    if plan_check["stale"]:
+        for it in plan_check["items"]:
+            log("  ! Plan out of date — " + it["text"])
+            if ON_ACTIONS:
+                print("::warning title=Plan out of date::" + it["text"], flush=True)
+    else:
+        log("  Plan is up to date (no new WC6 workflows, none edited since the read).")
     for f in data["flags"]:
         log("FLAG:", f)
 

@@ -161,6 +161,12 @@
   .lup li{list-style:none;display:grid;grid-template-columns:168px 1fr;gap:10px;padding:5px 0;border-top:1px dashed var(--line)}
   .lup li span:last-child{color:var(--soft)}
   .lplan{color:var(--muted)}
+  .pwarn{border:1px solid var(--amber);border-left:4px solid var(--amber);background:rgba(245,165,36,.08);padding:14px 18px;margin:0 0 20px;
+         font-size:14px;line-height:1.55;color:var(--soft)}
+  .pwarn .pk{display:inline-block;font:700 11px var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-right:8px}
+  .pwarn b{color:var(--fg);font-weight:600}
+  .pwarn .pcopy{background:none;border:0;padding:0;font:inherit;color:var(--amber);text-decoration:underline;text-underline-offset:3px;cursor:pointer;white-space:nowrap}
+  .pwarn .pcopy:hover,.pwarn .pcopy:focus-visible{color:#ffc35c;outline:none}
   @media (max-width:760px){.lgrid{grid-template-columns:1fr}.lbig b{font-size:56px}.lup li{grid-template-columns:1fr;gap:2px}}
 
   /* date filter */
@@ -469,6 +475,7 @@
     <div class="eyebrow">Still to send</div>
     <div class="lhead"><h2>What's <em>left.</em></h2><span class="ltag" id="leftTag"></span></div>
     <p class="sub">Emails and texts still planned in GoHighLevel for each audience.</p>
+    <div class="pwarn" id="planWarn" role="status" hidden></div>
     <div class="lgrid" id="leftGrid"></div>
     <p class="note lplan" id="leftPlan" hidden></p>
     <p class="note" id="leftNote"></p>
@@ -505,7 +512,7 @@
 
 <script>
 // The version of THIS page. Bump it (and changelog.json) whenever the page changes; daily data refreshes never change it.
-const PAGE_VERSION = '1.5';
+const PAGE_VERSION = '1.5.1';
 
 const $ = id => document.getElementById(id);
 const N = n => n == null ? '—' : Math.round(n).toLocaleString('en-US');
@@ -731,9 +738,30 @@ function renderLeft() {
   $('leftGrid').innerHTML = card('promote', 'Promote', 'non-ticket holders') + card('post_ticket', 'Ticket holders', 'post-ticket seduction');
   $('leftPlan').hidden = !L.notes.length;
   $('leftPlan').textContent = L.notes.map(t => 'Plan may be out of date — ' + t + '.').join(' ');
+  const PC = D.plan_check, readAt = (PC && PC.read_label) || fmtD(L.plan_read_at);
   $('leftNote').textContent = `Counts each planned email or text once, up to ${fmtD(L.until)}. A step counts as sent once its sends show up in GoHighLevel. `
-    + `The plan was read from the GoHighLevel workflows on ${fmtD(L.plan_read_at)}. Times are ET; "about" means the time follows the previous send.`;
+    + `Times are ET; "about" means the time follows the previous send. Plan last read ${readAt}.`;
+  // Plan check (every run): new WC6 workflow, or a planned one edited after the plan was read
+  const w = $('planWarn');
+  w.hidden = !(PC && PC.stale);
+  if (w.hidden) return;
+  w.innerHTML = `<span class="pk">! Plan out of date</span>${PC.items.map(i => esc(i.text) + '.').join(' ')} `
+    + `Counts below may be too low until the plan is re-read. Plan last read ${esc(readAt)} · `
+    + `<button type="button" class="pcopy" id="planCopy">⧉ Copy update command</button>`;
+  $('planCopy').onclick = async () => {
+    const b = $('planCopy');
+    let ok = false;
+    try { await navigator.clipboard.writeText(UPDATE_CMD); ok = true; }
+    catch (e) {   // older browsers / no clipboard permission
+      const t = document.createElement('textarea'); t.value = UPDATE_CMD; t.setAttribute('readonly', '');
+      t.style.position = 'fixed'; t.style.opacity = '0'; document.body.appendChild(t); t.select();
+      try { ok = document.execCommand('copy'); } catch (e2) {} t.remove();
+    }
+    b.textContent = ok ? 'Copied — paste into Claude Code' : 'Copy failed — try again';
+    clearTimeout(b._t); b._t = setTimeout(() => { b.textContent = '⧉ Copy update command'; }, 2500);
+  };
 }
+const UPDATE_CMD = 'Re-read the WC6 plan: re-read only the flagged workflows read-only in Chrome, update plan.json, run the privacy scan, push, run the workflow once, and report back with the new counts.';
 function renderStatic() {
   const gen = new Date(D.generated_at);
   $('stamp').textContent = gen.toLocaleString('en-US', {timeZone: 'America/New_York', month: 'short', day: 'numeric'})

@@ -1,6 +1,6 @@
 {
  "_how": "WC6 send plan, read once from GoHighLevel (read-only GET of each workflow in Chrome). Each run marks a step sent when its sends show up; it never changes this file. Re-read only when PJ asks. when.type: date = GHL 'wait until' date/time (ET) plus plus_hours; after_previous = N hours after the previous step; with_previous = right after it; on_enrollment = when the contact enters the workflow; relative_to_purchase = shown as 'rolling'.",
- "read_at": "2026-11-11",
+ "read_at": "2026-11-16",
  "timezone": "America/New_York",
  "until": "2026-12-02",
  "workflows": [
@@ -9,56 +9,72 @@
    "name": "0.0 - WC6 Pre-Purchase Outbound Emails",
    "wf": "0.0 Emails",
    "audience": "promote",
-   "channel": "email"
+   "channel": "email",
+   "version": 61,
+   "updated_at": "2026-11-03T21:33:16.131Z"
   },
   {
    "id": "4e04f391-1840-4708-bd52-8b1e100abd8d",
    "name": "0.1 - WC6 November Outbound Emails",
    "wf": "0.1 Emails",
    "audience": "promote",
-   "channel": "email"
+   "channel": "email",
+   "version": 14,
+   "updated_at": "2026-11-11T11:51:26.207Z"
   },
   {
    "id": "cae5e444-b52b-42d7-a46e-bec7eed12866",
    "name": "0.0 - WC6 Pre-Purchase Outbound Text",
    "wf": "0.0 Texts",
    "audience": "promote",
-   "channel": "sms"
+   "channel": "sms",
+   "version": 20,
+   "updated_at": "2026-11-11T13:45:34.650Z"
   },
   {
    "id": "6980f421-2814-400d-80ba-b6e9ede3fe1b",
    "name": "0.2 - WC6 Emails 20-28 One-Off (Nov 9 11AM, Nov 10-11 6AM ET)",
    "wf": "0.2 Emails",
    "audience": "promote",
-   "channel": "email"
+   "channel": "email",
+   "version": 8,
+   "updated_at": "2026-11-10T22:14:37.772Z"
   },
   {
    "id": "87a56fa4-9b20-4e25-82cb-24d353027e89",
-   "name": "1.03 - WC6 Ticket Holder Emails (Nov 7-12)",
+   "name": "1.03 - WC6 Ticket Holder Emails (Nov 7-24)",
    "wf": "1.03 Emails",
    "audience": "post_ticket",
-   "channel": "email"
+   "channel": "email",
+   "version": 8,
+   "updated_at": "2026-11-16T13:18:09.853Z"
   },
   {
    "id": "9113e15e-11ed-4cc4-913d-641d92cd8d30",
    "name": "0.1 - WC6 November Outbound Text",
    "wf": "0.1 Texts",
    "audience": "promote",
-   "channel": "sms"
+   "channel": "sms",
+   "version": 11,
+   "updated_at": "2026-11-11T13:25:26.159Z"
   },
   {
    "id": "ab0e73fd-f630-4da6-8678-1c00faa50e54",
-   "name": "1.04 - WC6 Ticket Holder Text (Nov 10-17)",
+   "name": "1.04 - WC6 Ticket Holder Text (Nov 10-24)",
    "wf": "1.04 Texts",
    "audience": "post_ticket",
-   "channel": "sms"
+   "channel": "sms",
+   "version": 6,
+   "updated_at": "2026-11-16T15:32:47.114Z"
   },
   {
    "id": "50e67534-dbf1-4628-aff4-1cae09823865",
    "name": "0.3 - WC6 SMS 8B-14 One-Off (Nov 11-17)",
    "wf": "0.3 Texts",
    "audience": "promote",
-   "channel": "sms"
+   "channel": "sms",
+   "version": 9,
+   "updated_at": "2026-11-11T13:45:06.343Z"
   }
  ],
  "steps": [
@@ -912,6 +928,125 @@
    "text": "(WC6) - The People Who Pay for Your Decisions…"
   },
   {
+   "workflow": "87a56fa4-9b20-4e25-82cb-24d353027e89",
+   "wf": "1.03 Emails",
+   "audience": "post_ticket",
+   "channel": "email",
+   "num": 11,
+   "step_id": "a291398f-1255-4433-83f8-b27a33f3c3f1",
+   "name": "Email - Nov 18 Ticket Holder",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-11-18",
+    "time_et": "11:30",
+    "plus_hours": 0
+   },
+   "text": "(WC6) - Stop Trying to Fix Everything…"
+  },
+  {
+   "workflow": "87a56fa4-9b20-4e25-82cb-24d353027e89",
+   "wf": "1.03 Emails",
+   "audience": "post_ticket",
+   "channel": "email",
+   "num": 12,
+   "step_id": "50cb0d33-891c-4364-9f42-9b00a213597e",
+   "name": "Email - Nov 19 Ticket Holder",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-11-19",
+    "time_et": "11:30",
+    "plus_hours": 0
+   },
+   "text": "(WC6) - What Becomes Possible When a Man Decides?..."
+  },
+  {
+   "workflow": "87a56fa4-9b20-4e25-82cb-24d353027e89",
+   "wf": "1.03 Emails",
+   "audience": "post_ticket",
+   "channel": "email",
+   "num": 13,
+   "step_id": "c58cd202-2eff-426c-a2d4-170e94f7e502",
+   "name": "Email - Nov 20 Ticket Holder",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-11-20",
+    "time_et": "11:30",
+    "plus_hours": 0
+   },
+   "text": "(WC6) - Your Next 12 Weeks…"
+  },
+  {
+   "workflow": "87a56fa4-9b20-4e25-82cb-24d353027e89",
+   "wf": "1.03 Emails",
+   "audience": "post_ticket",
+   "channel": "email",
+   "num": 14,
+   "step_id": "698e6f7e-d805-4e85-bd9c-6e4bc9b5332a",
+   "name": "Email - Nov 21 Ticket Holder",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-11-21",
+    "time_et": "11:30",
+    "plus_hours": 0
+   },
+   "text": "(WC6) - The Future Is Built Before It Arrives…"
+  },
+  {
+   "workflow": "87a56fa4-9b20-4e25-82cb-24d353027e89",
+   "wf": "1.03 Emails",
+   "audience": "post_ticket",
+   "channel": "email",
+   "num": 15,
+   "step_id": "67c80af7-d4fc-4890-986e-877acf1ee7b4",
+   "name": "Email - Nov 22 Ticket Holder",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-11-22",
+    "time_et": "11:30",
+    "plus_hours": 0
+   },
+   "text": "(WC6) - The Tool That Changed Everything…"
+  },
+  {
+   "workflow": "87a56fa4-9b20-4e25-82cb-24d353027e89",
+   "wf": "1.03 Emails",
+   "audience": "post_ticket",
+   "channel": "email",
+   "num": 16,
+   "step_id": "cae62a9d-84fe-4a3c-9511-35748b0687d3",
+   "name": "Email - Nov 23 Ticket Holder",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-11-23",
+    "time_et": "11:30",
+    "plus_hours": 0
+   },
+   "text": "(WC6) - AI Cannot Make the Decision for You..."
+  },
+  {
+   "workflow": "87a56fa4-9b20-4e25-82cb-24d353027e89",
+   "wf": "1.03 Emails",
+   "audience": "post_ticket",
+   "channel": "email",
+   "num": 17,
+   "step_id": "8afbc2d0-5674-42da-b9d3-de21da3736bc",
+   "name": "Email - Nov 24 Ticket Holder",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-11-24",
+    "time_et": "11:30",
+    "plus_hours": 0
+   },
+   "text": "(WC6) - The System Is Going Into Your Hands…"
+  },
+  {
    "workflow": "9113e15e-11ed-4cc4-913d-641d92cd8d30",
    "wf": "0.1 Texts",
    "audience": "promote",
@@ -1166,6 +1301,132 @@
    "text": "You are not the only person living with the consequences of your decisions. Read it:"
   },
   {
+   "workflow": "ab0e73fd-f630-4da6-8678-1c00faa50e54",
+   "wf": "1.04 Texts",
+   "audience": "post_ticket",
+   "channel": "sms",
+   "num": 9,
+   "step_id": "78deb9ba-d51e-4526-9a00-16db1fd1e4dd",
+   "name": "SMS 9 - Nov 18 (wc-day37)",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-11-18",
+    "time_et": "12:30",
+    "plus_hours": 0
+   },
+   "text": "You don't have to fix everything to change everything. Read it:",
+   "link": "wc-day37"
+  },
+  {
+   "workflow": "ab0e73fd-f630-4da6-8678-1c00faa50e54",
+   "wf": "1.04 Texts",
+   "audience": "post_ticket",
+   "channel": "sms",
+   "num": 10,
+   "step_id": "dcca83e7-5800-42b4-8c02-21a237766a7c",
+   "name": "SMS 10 - Nov 19 (wc-day38)",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-11-19",
+    "time_et": "12:30",
+    "plus_hours": 0
+   },
+   "text": "His business was growing. His marriage was breaking. Read his story:",
+   "link": "wc-day38"
+  },
+  {
+   "workflow": "ab0e73fd-f630-4da6-8678-1c00faa50e54",
+   "wf": "1.04 Texts",
+   "audience": "post_ticket",
+   "channel": "sms",
+   "num": 11,
+   "step_id": "4e77d35f-200b-41a7-a23b-28bf451e47dc",
+   "name": "SMS 11 - Nov 20 (wc-day39)",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-11-20",
+    "time_et": "12:30",
+    "plus_hours": 0
+   },
+   "text": "What exactly are you building over the next twelve weeks? Read it:",
+   "link": "wc-day39"
+  },
+  {
+   "workflow": "ab0e73fd-f630-4da6-8678-1c00faa50e54",
+   "wf": "1.04 Texts",
+   "audience": "post_ticket",
+   "channel": "sms",
+   "num": 12,
+   "step_id": "0f26b168-9e2b-4436-a88c-351a7a9b15e9",
+   "name": "SMS 12 - Nov 21 (wc-day40)",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-11-21",
+    "time_et": "12:30",
+    "plus_hours": 0
+   },
+   "text": "Most men are waiting for a future they haven't started building. Read it:",
+   "link": "wc-day40"
+  },
+  {
+   "workflow": "ab0e73fd-f630-4da6-8678-1c00faa50e54",
+   "wf": "1.04 Texts",
+   "audience": "post_ticket",
+   "channel": "sms",
+   "num": 13,
+   "step_id": "1b146fa4-0af0-4af5-a6c6-8ea19d655da4",
+   "name": "SMS 13 - Nov 22 (wc-day41)",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-11-22",
+    "time_et": "12:30",
+    "plus_hours": 0
+   },
+   "text": "A man cannot make clear decisions while he's trapped inside an unclear story. Read it:",
+   "link": "wc-day41"
+  },
+  {
+   "workflow": "ab0e73fd-f630-4da6-8678-1c00faa50e54",
+   "wf": "1.04 Texts",
+   "audience": "post_ticket",
+   "channel": "sms",
+   "num": 14,
+   "step_id": "a7136c70-7225-4cf7-a4e8-edbafc388542",
+   "name": "SMS 14 - Nov 23 (wc-day42)",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-11-23",
+    "time_et": "12:30",
+    "plus_hours": 0
+   },
+   "text": "Information doesn't create transformation. Decisions followed by action do. Read it:",
+   "link": "wc-day42"
+  },
+  {
+   "workflow": "ab0e73fd-f630-4da6-8678-1c00faa50e54",
+   "wf": "1.04 Texts",
+   "audience": "post_ticket",
+   "channel": "sms",
+   "num": 15,
+   "step_id": "bf9dac8b-d2b4-49df-9a92-67ffce3a28ee",
+   "name": "SMS 15 - Nov 24 (wc-day43)",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-11-24",
+    "time_et": "12:30",
+    "plus_hours": 0
+   },
+   "text": "You don't have to wait for the next breakthrough. Read why:",
+   "link": "wc-day43"
+  },
+  {
    "workflow": "50e67534-dbf1-4628-aff4-1cae09823865",
    "wf": "0.3 Texts",
    "audience": "promote",
@@ -1277,6 +1538,8 @@
   "2026-11-11 first read (7 workflows, 69 steps)",
   "2026-11-11 re-read at PJ's request after the SMS fix: 0.1 Texts now ends at SMS 8; new 0.3 Texts sends SMS 8B-14 on Nov 11-17 (8 workflows, 70 steps)",
   "2026-11-11 8:45am ET check: 0.3 Texts SMS 9-14 now 'Wait 24 hours' after the previous text (was fixed dates); 0.0/0.1 Texts end by adding contacts to 0.3; 1.04 Texts still 3 texts (Nov 10-12)",
-  "2026-11-11 re-read 1.04 at PJ's request: now 8 texts, Nov 10-17 at 12:30pm ET (SMS 4-8 added, wc-day32-36)"
- ]
+  "2026-11-11 re-read 1.04 at PJ's request: now 8 texts, Nov 10-17 at 12:30pm ET (SMS 4-8 added, wc-day32-36)",
+  "2026-11-16 2:16pm ET re-read 0.0 Emails, 0.1 Emails, 0.0 Texts, 0.2 Emails, 1.03 Emails, 0.1 Texts, 1.04 Texts, 0.3 Texts: 1.03 Emails + Email - Nov 18 Ticket Holder · (WC6) - Stop Trying to Fix Everything… · {'type': 'date', 'date': '2026-11-18', 'time_et': '11:30', 'plus_hours': 0}; 1.03 Emails + Email - Nov 19 Ticket Holder · (WC6) - What Becomes Possible When a Man Decides?... · {'type': 'date', 'date': '2026-11-19', 'time_et': '11:30', 'plus_hours': 0}; 1.03 Emails + Email - Nov 20 Ticket Holder · (WC6) - Your Next 12 Weeks… · {'type': 'date', 'date': '2026-11-20', 'time_et': '11:30', 'plus_hours': 0}; 1.03 Emails + Email - Nov 21 Ticket Holder · (WC6) - The Future Is Built Before It Arrives… · {'type': 'date"
+ ],
+ "read_at_utc": "2026-11-16T19:16:06Z"
 }

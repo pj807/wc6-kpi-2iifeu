@@ -92,3 +92,20 @@ After that:
 - The page tells search engines not to list it, and the web address is hard to guess. Anyone with the link can still open it, so share the link only with people who should see it.
 
 **What's left (v1.5):** `plan.json` is the WC6 send plan, read once from the GoHighLevel workflows (read-only). Each run marks a step sent once 10+ sends show up and counts what's left up to Dec 2. Runs never change `plan.json`. If a send shows up that isn't in the plan, or a planned send doesn't go out, the page and the run log say "Plan may be out of date". Re-read the plan only when PJ asks.
+
+**Plan check (v1.5.1):** every run lists the GHL workflows through the official API. It returns `id, name, status, version, createdAt, updatedAt, locationId`. The page shows the amber **"! Plan out of date"** warning at the top of "What's left." when either of these is true:
+- a WC6-named workflow exists that isn't in `config.json` and isn't excluded;
+- a planned workflow's `version` or `updatedAt` is newer than the baseline that `plan.json` stored at the last re-read.
+
+When the warning comes on, the run log says so and the "Plan check notice" step opens a "WC6 plan out of date" issue, which emails PJ. That step never fails the update. Garrett's report is unchanged. Note that any save in GHL counts as an edit, including a rename or a setting change.
+
+### Re-read the WC6 plan (what Claude Code does for "Re-read the WC6 plan: …")
+
+Read-only in GHL. Never create or change anything there.
+
+1. `git pull`. In `data.json` → `plan_check.items`, find the flagged workflow IDs. If the page data is old, list them fresh with the API, as `check_workflows` does.
+2. **New workflow?** Tell PJ its name and ask whether it's **Promote** or **Post-ticket seduction**, or whether to exclude it (add its ID to `workflow_name_rules.excluded`). Don't guess.
+3. Start `python3 -I scripts/plan_receive.py data/raw/<YYYY-MM-DD>_plan-read.json` in the background. In Chrome (WUW profile), open `https://app.gohighlevel.com/v2/location/BDeGaczWUBVqlvyWoI7l/automation/workflows`. Check the domain, the location ID and the sub-account name "Wake Up Warrior". Then run `scripts/plan_read_chrome.js` in the javascript tool with `IDS` set to the flagged IDs.
+4. `python3 -I scripts/plan_merge.py data/raw/<read>.json`. This is a dry run, so check the changes first. Then add `--write`, plus `--new <id>=<promote|post_ticket>:"<x.xx Emails|Texts>"` for a workflow PJ labelled. If anything prints CHECK BY HAND, fix those steps by hand.
+5. `python3 -I scripts/privacy_scan.py plan.json config.json`, then commit and push.
+6. `gh workflow run "Daily refresh" -R pj807/wc6-kpi-2iifeu`. When it's done, confirm that the warning has cleared (`plan_check.stale` is false) and the notice issue has closed. Report the new "X left of Y" per audience, the last date and the next send.

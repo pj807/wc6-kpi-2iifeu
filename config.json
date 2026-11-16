@@ -39,7 +39,8 @@
    "14568190-34c3-49de-bc85-b9995d2288ea",
    "7331b3d4-d55f-4414-b466-8d2d9cb98153",
    "e59c7206-0d1b-46f5-89c5-259dae579d5a",
-   "d07f0396-4e04-49e2-aff9-b0185944fe43"
+   "d07f0396-4e04-49e2-aff9-b0185944fe43",
+   "900a7934-907f-405e-81be-5b5c3442d5dd"
   ]
  },
  "display_timezone": "America/New_York",
@@ -254,7 +255,7 @@
   },
   {
    "id": "87a56fa4-9b20-4e25-82cb-24d353027e89",
-   "name": "1.03 - WC6 Ticket Holder Emails (Nov 7-12)",
+   "name": "1.03 - WC6 Ticket Holder Emails (Nov 7-24)",
    "label": "post_ticket",
    "channel": "email",
    "steps": [
@@ -480,7 +481,7 @@
   },
   {
    "id": "ab0e73fd-f630-4da6-8678-1c00faa50e54",
-   "name": "1.04 - WC6 Ticket Holder Text (Nov 10-17)",
+   "name": "1.04 - WC6 Ticket Holder Text (Nov 10-24)",
    "label": "post_ticket",
    "channel": "sms",
    "steps": [

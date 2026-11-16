@@ -1,5 +1,17 @@
 [
   {
+    "v": "1.5.1",
+    "date": "2026-11-16",
+    "title": "Plan re-read + out-of-date warning",
+    "items": [
+      "<b>Ticket holders now run to Nov 24.</b> The plan was re-read from GoHighLevel (read-only) on Nov 16: 17 emails and 15 texts, the last one on Nov 24. It was 10 emails and 8 texts ending Nov 17.",
+      "<b>\"! Plan out of date\" warning</b> at the top of \"What's left.\" Every update checks the GoHighLevel workflow list. The warning shows if a new WC6 workflow appears that isn't in the plan, or if a planned workflow was edited after the plan was read.",
+      "The warning ends with a <b>⧉ Copy update command</b> link. It copies the instruction for Claude Code to re-read only the flagged workflows. After you click it, it says \"Copied — paste into Claude Code\".",
+      "The note under \"What's left.\" now says <b>when the plan was last read</b> (date and time, ET).",
+      "When the warning comes on, the run log shows it and GitHub opens an issue, which emails you. The update still goes through. Garrett's report doesn't change."
+    ]
+  },
+  {
     "v": "1.5",
     "date": "2026-11-11",
     "title": "What's left to send",
