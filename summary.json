@@ -1,17 +1,17 @@
 {
  "date": "2026-11-15",
- "as_of": "Nov 15, 1:01pm ET",
+ "as_of": "Nov 15, 7:14pm ET",
  "yesterday": "2026-11-14",
  "ticket_holders": {
-  "total": 147,
-  "paid": 144,
+  "total": 149,
+  "paid": 146,
   "comps": 3,
   "new_yesterday": 2
  },
  "summary": {
-  "headline": "2 new tickets yesterday (147 total, 17 days to go)",
-  "win": "74 of 147 ticket holders (50.3%) signed up for the Warrior App (free until Dec 4)",
-  "watch": "promote text failures 26.3% to date (25,938 of 98,502 texts failed), above 5%"
+  "headline": "2 new tickets yesterday (149 total, 17 days to go)",
+  "win": "74 of 149 ticket holders (49.7%) signed up for the Warrior App (free until Dec 4)",
+  "watch": "promote text failures 26.3% to date (25,941 of 98,504 texts failed), above 5%"
  },
  "promote": {
   "yesterday": {
@@ -36,21 +36,21 @@
   },
   "to_date": {
    "email": {
-    "sent": 500218,
+    "sent": 500247,
     "emails": 28,
     "whole": 28,
-    "rated": 500218,
-    "delivered": 498431,
-    "opened": 156891,
-    "clicked": 1603,
-    "unsub": 607,
-    "bounced": 2388,
-    "ghl_sent": 500866
+    "rated": 500247,
+    "delivered": 498458,
+    "opened": 157585,
+    "clicked": 1604,
+    "unsub": 610,
+    "bounced": 2392,
+    "ghl_sent": 500896
    },
    "sms": {
-    "sent": 98502,
-    "delivered": 72273,
-    "failed": 25938,
+    "sent": 98504,
+    "delivered": 72302,
+    "failed": 25941,
     "optouts": 99
    }
   }
@@ -83,7 +83,7 @@
     "whole": 8,
     "rated": 967,
     "delivered": 967,
-    "opened": 418,
+    "opened": 437,
     "clicked": 0,
     "unsub": 0,
     "bounced": 0,
@@ -91,8 +91,8 @@
    },
    "sms": {
     "sent": 583,
-    "delivered": 508,
-    "failed": 69,
+    "delivered": 511,
+    "failed": 70,
     "optouts": 1
    }
   }
@@ -104,11 +104,11 @@
    "billing_start": "2026-12-04"
   },
   "business_bible": {
-   "count": 20,
-   "people": 19,
-   "bump": 19,
+   "count": 21,
+   "people": 20,
+   "bump": 20,
    "standalone": 1,
-   "revenue": 2190.0
+   "revenue": 2295.0
   }
  }
 }
