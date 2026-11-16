@@ -1,17 +1,17 @@
 {
  "date": "2026-11-16",
- "as_of": "Nov 16, 8:08am ET",
+ "as_of": "Nov 16, 1:20pm ET",
  "yesterday": "2026-11-15",
  "ticket_holders": {
-  "total": 149,
-  "paid": 146,
+  "total": 150,
+  "paid": 147,
   "comps": 3,
   "new_yesterday": 2
  },
  "summary": {
-  "headline": "2 new tickets yesterday (149 total, 16 days to go)",
-  "win": "74 of 149 ticket holders (49.7%) signed up for the Warrior App (free until Dec 4)",
-  "watch": "promote text failures 26.3% to date (25,942 of 98,505 texts failed), above 5%"
+  "headline": "2 new tickets yesterday (150 total, 16 days to go)",
+  "win": "74 of 150 ticket holders (49.3%) signed up for the Warrior App (free until Dec 4)",
+  "watch": "promote text failures 26.0% to date (26,546 of 102,074 texts failed), above 5%"
  },
  "promote": {
   "yesterday": {
@@ -36,22 +36,22 @@
   },
   "to_date": {
    "email": {
-    "sent": 522745,
+    "sent": 522772,
     "emails": 28,
     "whole": 28,
-    "rated": 522745,
-    "delivered": 520823,
-    "opened": 163024,
-    "clicked": 1643,
-    "unsub": 629,
+    "rated": 522772,
+    "delivered": 520851,
+    "opened": 164236,
+    "clicked": 1644,
+    "unsub": 636,
     "bounced": 2532,
-    "ghl_sent": 523403
+    "ghl_sent": 523431
    },
    "sms": {
-    "sent": 98505,
-    "delivered": 72310,
-    "failed": 25942,
-    "optouts": 99
+    "sent": 102074,
+    "delivered": 75232,
+    "failed": 26546,
+    "optouts": 102
    }
   }
  },
@@ -78,21 +78,21 @@
   },
   "to_date": {
    "email": {
-    "sent": 967,
-    "emails": 8,
-    "whole": 8,
-    "rated": 967,
-    "delivered": 967,
-    "opened": 443,
+    "sent": 1098,
+    "emails": 9,
+    "whole": 9,
+    "rated": 1098,
+    "delivered": 1098,
+    "opened": 482,
     "clicked": 0,
     "unsub": 0,
     "bounced": 0,
-    "ghl_sent": 967
+    "ghl_sent": 1098
    },
    "sms": {
-    "sent": 583,
-    "delivered": 511,
-    "failed": 70,
+    "sent": 684,
+    "delivered": 598,
+    "failed": 81,
     "optouts": 1
    }
   }
