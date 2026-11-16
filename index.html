@@ -293,6 +293,7 @@
     .dates{margin-top:12px}
     .dates input{min-width:0;flex:1}
     .tipc::after{left:0;right:auto;max-width:190px}
+    table.k td:nth-child(3n+4) .tipc::after{left:auto;right:0}   /* 3rd column: open leftwards so the hidden tooltip doesn't widen the page */
     .ghl-pop{left:0;right:auto;min-width:210px}
     .ex-grid{grid-template-columns:1fr}
     .ex-big{font-size:26px}
@@ -512,7 +513,7 @@
 
 <script>
 // The version of THIS page. Bump it (and changelog.json) whenever the page changes; daily data refreshes never change it.
-const PAGE_VERSION = '1.5.1';
+const PAGE_VERSION = '1.5.2';
 
 const $ = id => document.getElementById(id);
 const N = n => n == null ? '—' : Math.round(n).toLocaleString('en-US');

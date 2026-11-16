@@ -22,6 +22,7 @@ LOC = CFG["location_id"]
 BASE = "https://services.leadconnectorhq.com"
 WINDOW = timedelta(hours=CFG["attribution_window_hours"])
 RULE, UPS, TH, SR = CFG["ticket_holder_rule"], CFG["upsells"], CFG["thresholds"], CFG["summary_rules"]
+SAFE = CFG.get("safety") or {"texts_drop_ok_count": 10, "texts_drop_ok_pct": 0.1}   # texts-sent margin (v1.4.1)
 STOP_WORDS = {"stop", "stopall", "stop all", "unsubscribe", "cancel", "end", "quit", "optout", "opt out", "revoke"}
 ON_ACTIONS = bool(os.environ.get("GITHUB_ACTIONS"))
 FLAGS = []
@@ -98,7 +99,7 @@ def safety_check(prev, data, Y, yday, morning):
             new = data["todate"][c][ch].get("sent", 0) or 0
             if new >= old:
                 continue
-            if ch == "sms" and old - new <= max(10, 0.001 * old):
+            if ch == "sms" and old - new <= max(SAFE["texts_drop_ok_count"], SAFE["texts_drop_ok_pct"] / 100 * old):
                 notes.append(f"{names[c]} texts count shifted by {old - new:,} ({old:,} → {new:,}, GHL rounding). Published as normal.")
                 continue
             return (f"Stopped: {names[c]} {word} sent dropped from {old:,} to {new:,} — GHL may have returned "
@@ -926,7 +927,8 @@ def main():
     for n in left_notes:
         FLAGS.append("Plan may be out of date — " + n)
     report = "\n".join([
-        f"WarriorCon 6 — report for {short_day(yday)} (updated {as_of})",
+        # first line = the 7am ET run that built this report; later runs keep it until the next 7am run
+        f"WarriorCon 6 — report for {short_day(yday)} (updated {frozen['as_of']})",
         "",
         "SUMMARY",
         f"• {headline['line']}",

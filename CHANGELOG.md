@@ -4,6 +4,12 @@ The version only changes when the page itself changes. Daily data refreshes keep
 New features go up a minor number (1.1, 1.2). Fixes go up a patch number (1.0.1).
 The "What's new" panel on the page reads `changelog.json`, so update both files together.
 
+## v1.5.2 · Fixes · Nov 16, 2026
+
+- **Phone fix:** on narrow phones (390px and 375px) the page no longer slides sideways. The hidden pop-up notes on the right-hand numbers in the campaign tables were pushing the page wider. They now open toward the left, inside the screen.
+- **Garrett's report keeps the 7am time.** The first line now shows when the 7am ET update built the report, for example "report for Nov 15 (updated Nov 16, 8:08am ET)". The 1pm, 7pm and 1am updates no longer change it.
+- **Texts margin is now a setting.** A small drop in texts sent (up to 10 texts, or 0.1%, whichever is larger) still publishes with a note in the log. The two numbers now live in config.json under "safety", so they're easy to see and change. Nothing else about it changed.
+
 ## v1.5.1 · Plan re-read + out-of-date warning · Nov 16, 2026
 
 - **Ticket holders now run to Nov 24.** The plan was re-read from GoHighLevel (read-only) on Nov 16: 17 emails and 15 texts, the last one on Nov 24. It was 10 emails and 8 texts ending Nov 17.

@@ -505,5 +505,10 @@
     }
    ]
   }
- ]
+ ],
+ "safety": {
+  "_how": "Texts sent to date may shift down a little when GHL re-counts. A drop up to the larger of texts_drop_ok_count or texts_drop_ok_pct (percent of texts sent to date) publishes with a note; a bigger drop stops the run. Emails sent may never go down.",
+  "texts_drop_ok_count": 10,
+  "texts_drop_ok_pct": 0.1
+ }
 }
