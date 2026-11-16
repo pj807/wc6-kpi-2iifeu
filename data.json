@@ -1,6 +1,6 @@
 {
  "schema": 2,
- "email_watermark": "2026-11-16T21:43:19.561Z",
+ "email_watermark": "2026-11-16T22:32:51.729Z",
  "update_times_et": [
   "01:00",
   "07:00",
@@ -10,8 +10,8 @@
  "today_so_far": {
   "date": "2026-11-16",
   "tickets": 1,
-  "emails": 22634,
-  "texts": 3668
+  "emails": 22637,
+  "texts": 3672
  },
  "ghl_links": {
   "promote": {
@@ -103,8 +103,8 @@
    }
   }
  },
- "generated_at": "2026-11-16T21:55+00:00",
- "as_of": "Nov 16, 4:55pm ET",
+ "generated_at": "2026-11-16T22:37+00:00",
+ "as_of": "Nov 16, 5:37pm ET",
  "today": "2026-11-16",
  "yesterday": "2026-11-15",
  "campaign_start": "2026-10-12",
@@ -139,8 +139,8 @@
   "tickets": 145,
   "revenue": 28855.0,
   "total": 31150.0,
-  "credited": 111,
-  "credited_revenue": 22089.0
+  "credited": 110,
+  "credited_revenue": 21890.0
  },
  "upsells": {
   "power_plan": {
@@ -164,15 +164,15 @@
     "whole": 28,
     "rated": 522789,
     "delivered": 520862,
-    "opened": 164803,
+    "opened": 164812,
     "clicked": 1644,
     "unsub": 638,
     "bounced": 2533,
     "ghl_sent": 523442
    },
    "sms": {
-    "sent": 102075,
-    "delivered": 75259,
+    "sent": 102081,
+    "delivered": 75265,
     "failed": 26593,
     "optouts": 102
    }
@@ -212,12 +212,12 @@
   },
   "watch": {
    "big": "Promote text failures: 26.1%",
-   "sub": "Above the 5% limit: 26,593 of 102,075 texts failed to date. Yesterday: 16.8%.",
-   "line": "promote text failures 26.1% to date (26,593 of 102,075 texts failed), above 5%"
+   "sub": "Above the 5% limit: 26,593 of 102,081 texts failed to date. Yesterday: 16.8%.",
+   "line": "promote text failures 26.1% to date (26,593 of 102,081 texts failed), above 5%"
   }
  },
- "report": "WarriorCon 6 — report for Nov 15 (updated Nov 16, 8:08am ET)\n\nSUMMARY\n• 2 new tickets yesterday (148 total, 16 days to go)\n• Win: 73 of 148 ticket holders (49.3%) signed up for the Warrior App (free until Dec 4)\n• Watch: promote text failures 26.1% to date (26,593 of 102,075 texts failed), above 5%\n\nLEFT TO SEND (until Dec 2)\nPromote: 1 email · 1 text — next: Tue Nov 17, 6:00am ET\nTicket holders: 8 emails · 8 texts — next: Tue Nov 17, 11:30am ET\n\nTICKET HOLDERS: 148 (145 paid + 3 comps) · 2 new yesterday\nRefunds: 2 ($398) to date · 0 yesterday\n$31,150 total sales ($28,855 tickets + $2,295 Business Bible)\n111 of 145 tickets were bought within 48 hrs of an email/text\n\nPROMOTE (non-ticket holders)\nYesterday — Email: 22,573 sent · 27.8% open · 0.2% click\nYesterday — SMS: 3,577 sent · 82.8% delivered\nTo date — Email: 522,789 sent · 31.6% open · 0.3% click\nTo date — SMS: 102,075 sent · 73.7% delivered\n\nPOST-TICKET SEDUCTION (ticket holders)\nYesterday — Email: 128 sent · 39.8% open\nYesterday — SMS: 100 sent · 88.0% delivered\nTo date — Email: 1,098 sent · 45.2% open\nTo date — SMS: 684 sent · 87.7% delivered\n\nUPSELLS\nWarrior App (Power Plan): 73 · 49.3% of ticket holders\nBusiness Bible: 21 sales · $2,295 · bought by 20 of 145 paid buyers (13.8%)\n(Texts have no open rate.)",
- "report_as_of": "Nov 16, 4:55pm ET",
+ "report": "WarriorCon 6 — report for Nov 15 (updated Nov 16, 8:08am ET)\n\nSUMMARY\n• 2 new tickets yesterday (148 total, 16 days to go)\n• Win: 73 of 148 ticket holders (49.3%) signed up for the Warrior App (free until Dec 4)\n• Watch: promote text failures 26.1% to date (26,593 of 102,081 texts failed), above 5%\n\nLEFT TO SEND (until Dec 2)\nPromote: 1 email · 1 text — next: Tue Nov 17, 6:00am ET\nTicket holders: 8 emails · 8 texts — next: Tue Nov 17, 11:30am ET\n\nTICKET HOLDERS: 148 (145 paid + 3 comps) · 2 new yesterday\nRefunds: 2 ($398) to date · 0 yesterday\n$31,150 total sales ($28,855 tickets + $2,295 Business Bible)\n110 of 145 tickets were bought within 48 hrs of an email/text\n\nPROMOTE (non-ticket holders)\nYesterday — Email: 22,573 sent · 27.8% open · 0.2% click\nYesterday — SMS: 3,577 sent · 82.8% delivered\nTo date — Email: 522,789 sent · 31.6% open · 0.3% click\nTo date — SMS: 102,081 sent · 73.7% delivered\n\nPOST-TICKET SEDUCTION (ticket holders)\nYesterday — Email: 128 sent · 39.8% open\nYesterday — SMS: 100 sent · 88.0% delivered\nTo date — Email: 1,098 sent · 45.2% open\nTo date — SMS: 684 sent · 87.7% delivered\n\nUPSELLS\nWarrior App (Power Plan): 73 · 49.3% of ticket holders\nBusiness Bible: 21 sales · $2,295 · bought by 20 of 145 paid buyers (13.8%)\n(Texts have no open rate.)",
+ "report_as_of": "Nov 16, 5:37pm ET",
  "left": {
   "until": "2026-12-02",
   "plan_read_at": "2026-11-16",
@@ -1695,7 +1695,7 @@
    "main_at": "2026-10-21T10:04:14.763Z",
    "ghl_sent": 22977,
    "delivered": 22879,
-   "opened": 7579,
+   "opened": 7580,
    "clicked": 76,
    "unsub": 25,
    "bounced": 95,
@@ -1968,7 +1968,7 @@
    "main_at": "2026-10-22T10:04:17.365Z",
    "ghl_sent": 22959,
    "delivered": 22870,
-   "opened": 7653,
+   "opened": 7654,
    "clicked": 68,
    "unsub": 43,
    "bounced": 90,
@@ -2017,8 +2017,8 @@
     "0.0 Email 6"
    ],
    "day": "2026-10-23",
-   "sent": 22886,
-   "wrong_audience": 48,
+   "sent": 22885,
+   "wrong_audience": 49,
    "days": {
     "2026-10-23": [
      22615,
@@ -2213,8 +2213,8 @@
      0
     ],
     "2026-11-16": [
-     4,
-     0,
+     5,
+     1,
      0,
      0,
      0,
@@ -2747,7 +2747,7 @@
    "main_at": "2026-10-25T10:04:26.584Z",
    "ghl_sent": 22886,
    "delivered": 22787,
-   "opened": 7654,
+   "opened": 7655,
    "clicked": 74,
    "unsub": 34,
    "bounced": 97,
@@ -3522,7 +3522,7 @@
     "0.0 Email 12"
    ],
    "day": "2026-10-29",
-   "sent": 22735,
+   "sent": 22736,
    "wrong_audience": 68,
    "days": {
     "2026-10-27": [
@@ -3686,7 +3686,7 @@
      0
     ],
     "2026-11-16": [
-     5,
+     6,
      0,
      0,
      0,
@@ -4388,7 +4388,7 @@
      0
     ],
     "2026-11-16": [
-     3,
+     4,
      0,
      0,
      0,
@@ -5935,7 +5935,7 @@
    "main_at": "2026-11-14T11:00:01.696Z",
    "ghl_sent": 22503,
    "delivered": 22368,
-   "opened": 6512,
+   "opened": 6515,
    "clicked": 39,
    "unsub": 18,
    "bounced": 133,
@@ -5996,13 +5996,13 @@
     "0.3 SMS 11 - Nov 14 - 11:30 AM ET (wc-day28)"
    ],
    "day": "2026-11-14",
-   "sent": 3575,
+   "sent": 3577,
    "wrong_audience": 0,
    "days": {
     "2026-11-14": [
-     3573,
+     3575,
      0,
-     2956,
+     2958,
      604,
      3,
      1
@@ -6021,7 +6021,7 @@
    "ticket_revenue": 0,
    "no_links": false,
    "main_at": "2026-11-14T16:31:51.714Z",
-   "delivered": 2957,
+   "delivered": 2959,
    "failed": 605,
    "optouts": 3,
    "replies": 1
@@ -6088,19 +6088,14 @@
      0
     ]
    },
-   "credit": {
-    "2026-11-15": [
-     1,
-     199.0
-    ]
-   },
-   "tickets": 1,
-   "ticket_revenue": 199.0,
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
    "no_links": false,
    "main_at": "2026-11-15T11:00:01.615Z",
    "ghl_sent": 22488,
    "delivered": 22354,
-   "opened": 6439,
+   "opened": 6440,
    "clicked": 43,
    "unsub": 9,
    "bounced": 134,
@@ -6270,7 +6265,7 @@
    "main_at": "2026-11-16T11:00:01.618Z",
    "ghl_sent": 22472,
    "delivered": 22331,
-   "opened": 5741,
+   "opened": 5743,
    "clicked": 38,
    "unsub": 13,
    "bounced": 140,
@@ -6583,13 +6578,13 @@
     "0.3 SMS 13 - Nov 16 - 11:30 AM ET (wc-day30)"
    ],
    "day": "2026-11-16",
-   "sent": 3563,
+   "sent": 3567,
    "wrong_audience": 0,
    "days": {
     "2026-11-16": [
-     3563,
+     3567,
      0,
-     2939,
+     2943,
      602,
      3,
      0
@@ -6600,7 +6595,7 @@
    "ticket_revenue": 0,
    "no_links": false,
    "main_at": "2026-11-16T16:32:03.964Z",
-   "delivered": 2939,
+   "delivered": 2943,
    "failed": 602,
    "optouts": 3,
    "replies": 0
@@ -6846,6 +6841,6 @@
   }
  ],
  "flags": [
-  "Email matched only 160 of 23,017 GHL sends (subject may have changed): I'm Not Bringing You Back to Say Goodbye."
+  "Email matched only 161 of 23,017 GHL sends (subject may have changed): I'm Not Bringing You Back to Say Goodbye."
  ]
 }
