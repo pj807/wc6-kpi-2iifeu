@@ -93,6 +93,7 @@
   .tile .v{font:700 44px/1.05 var(--head);margin-top:10px}
   .tile .n{font-size:12px;color:var(--muted);margin-top:6px}
   .tile .n.warn{color:var(--red)}
+  .tile .n.rf{margin-top:2px}
 
   /* campaign blocks */
   .camp{border:1px solid var(--line);margin-bottom:18px}
@@ -513,7 +514,7 @@
 
 <script>
 // The version of THIS page. Bump it (and changelog.json) whenever the page changes; daily data refreshes never change it.
-const PAGE_VERSION = '1.5.2';
+const PAGE_VERSION = '1.5.3';
 
 const $ = id => document.getElementById(id);
 const N = n => n == null ? '—' : Math.round(n).toLocaleString('en-US');
@@ -793,13 +794,15 @@ function renderStatic() {
   // tiles
   const pe = D.todate.promote.email, ps = D.todate.promote.sms, te = D.todate.post_ticket.email;
   const failed = P(ps.failed, ps.sent), pp = up.power_plan, bb = up.business_bible;
+  const rf = D.refunds || {count: 0, amount: 0};
   $('tilesIntro').textContent = `Everything since the campaign started on ${fmtD(D.campaign_start)}. Switch audience to see each side on its own.`;
   const bbRate = P(bb.people, h.paid);
   const ups = `<div class="ups">`
     + `<div class="up1"><span class="un">${N(pp.count)}</span><span class="ut"><b>Warrior App</b>${PF(P(pp.count, h.total))} of ticket holders · free until ${fmtD(pp.billing_start)}</span></div>`
     + `<div class="up1"><span class="un">${N(bb.people)}</span><span class="ut"><b>Business Bible</b>${PF(bbRate)} of paid buyers · ${bb.count} sales · ${$$(bb.revenue)}</span></div></div>`;
   const tiles = [
-    ['all th', '', 'Ticket holders', 'Everyone with a WC6 ticket, including comps.', N(h.total), `${h.paid} paid + ${h.comps} comps · +${h.new_yesterday} yesterday`],
+    ['all th', '', 'Ticket holders', 'Everyone with a WC6 ticket, including comps.', N(h.total), `${h.paid} paid + ${h.comps} comps · +${h.new_yesterday} yesterday`, false, null,
+      rf.count ? `${N(rf.count)} refunded (${$$(rf.amount)}) · not counted` : ''],
     ['all nth', '', 'Tickets from campaigns', `Tickets bought within ${D.attribution_window_hours} hrs of an email or text.`, N(s.credited), `of ${N(s.tickets)} paid tickets · ${$$(s.credited_revenue)} in sales`],
     ['all nth', '', 'Promote email click', 'Share of sales emails that got a click.', PF(P(pe.clicked, pe.delivered)), `${PF(P(pe.opened, pe.delivered))} open · ${N(pe.sent)} sent`],
     ['all nth', '', 'Promote SMS delivered', 'Share of sales texts that reached a phone.', PF(P(ps.delivered, ps.sent)),
@@ -807,7 +810,7 @@ function renderStatic() {
     ['all th', 'tup', 'Post-ticket email open', 'Share of ticket-holder emails that were opened.', te.sent ? PF(P(te.opened, te.delivered)) : '—', te.sent ? `${N(te.sent)} sent` : 'none sent'],
     ['all th', 'tup', 'Upsells', 'Ticket holders who added each one.', null, '', false, ups],
   ];
-  $('tiles').innerHTML = tiles.map(([f, cls, k, d, v, n, w, inner]) => `<div class="tile ${cls}" data-for="${f}"><div class="k">${k}</div><div class="d">${d}</div>${inner || `<div class="v">${v}</div>`}${n ? `<div class="n${w ? ' warn' : ''}">${n}</div>` : ''}</div>`).join('');
+  $('tiles').innerHTML = tiles.map(([f, cls, k, d, v, n, w, inner, x]) => `<div class="tile ${cls}" data-for="${f}"><div class="k">${k}</div><div class="d">${d}</div>${inner || `<div class="v">${v}</div>`}${n ? `<div class="n${w ? ' warn' : ''}">${n}</div>` : ''}${x ? `<div class="n rf">${x}</div>` : ''}</div>`).join('');
   fixSolo();
 
   const ppRate = P(pp.count, h.total);

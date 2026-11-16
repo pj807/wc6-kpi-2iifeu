@@ -169,9 +169,15 @@ class API:
             for o in rows:
                 if o.get("createdAt", "") < start:
                     continue
-                items = self.req("GET", f"/payments/orders/{o['_id']}", {"altId": LOC, "altType": "location"}).get("items", [])
+                det = self.req("GET", f"/payments/orders/{o['_id']}", {"altId": LOC, "altType": "location"})
+                items = det.get("items", [])
+                # GHL keeps a refunded order "completed/paid"; the refund only shows in paymentSummary.refundedAmount.
+                # GHL gives no refund date, so the order's last update stands in for it (set once, when first seen).
                 out.append({"contact": o.get("contactId"), "created": o.get("createdAt"), "amount": o.get("amount") or 0,
                             "paid": o.get("status") == "completed" and o.get("paymentStatus") == "paid",
+                            "refunded": float((det.get("paymentSummary") or {}).get("refundedAmount") or 0),
+                            "updated": det.get("updatedAt") or o.get("updatedAt") or o.get("createdAt"),
+                            "ref": hashlib.sha256(o["_id"].encode()).hexdigest()[:12],   # order key for refund dates; not contact data
                             "items": [(i.get("name") or "", item_amount(i)) for i in items]})
             if rows[-1].get("createdAt", "") < start:
                 break
@@ -568,31 +574,51 @@ def main():
 
     # ---- ticket holders, upsells (orders are always read in full: they're small)
     has = lambda o, prefix: any(n.startswith(prefix) for n, _ in o["items"])
-    first_buy, ticket_orders = {}, []
+
+    def tick_amt(o):   # ticket line items only; order totals also include Business Bible bumps
+        return sum(a for n, a in o["items"] if n.startswith(RULE["ticket_product_name_prefix"]))
+
+    # Refunded ticket = refund covers the ticket line. Refunded buyers drop out of ticket holders, sales, credit and
+    # upsells, but stay ticket holders for messages sent before (they held a ticket then), so sent counts don't move.
+    is_refunded = lambda o: o.get("refunded", 0) > 0 and o["refunded"] >= tick_amt(o) - 0.005
+    first_buy, ticket_orders, ever_buy, refund_orders = {}, [], {}, []
     for o in orders:
         if o["paid"] and has(o, RULE["ticket_product_name_prefix"]) and o["amount"] >= RULE["min_paid_amount"]:
+            if o["contact"] not in ever_buy or o["created"] < ever_buy[o["contact"]]["created"]:
+                ever_buy[o["contact"]] = o
+            if is_refunded(o):
+                refund_orders.append(o)
+                continue
             ticket_orders.append(o)
             if o["contact"] not in first_buy or o["created"] < first_buy[o["contact"]]["created"]:
                 first_buy[o["contact"]] = o
     comps_only = comps - set(first_buy)
-    holder_since = {c: o["created"] for c, o in first_buy.items()}
+    holder_since = {c: o["created"] for c, o in ever_buy.items()}
     all_holders = set(first_buy) | comps_only
 
     def is_holder(contact, when):
         return contact in comps_only or (contact in holder_since and holder_since[contact] <= when)
 
-    def tick_amt(o):   # ticket line items only; order totals also include Business Bible bumps
-        return sum(a for n, a in o["items"] if n.startswith(RULE["ticket_product_name_prefix"]))
+    # Refunds: counts and amounts only. The refund day is fixed the first time a refund is seen (order's last update).
+    seen_before = ((prev or {}).get("refunds") or {}).get("seen") or {}
+    ref_seen = {o["ref"]: seen_before.get(o["ref"]) or pt_day(o["updated"]) for o in refund_orders}
+    ref_amt = {o["ref"]: min(o["refunded"], o["amount"]) for o in refund_orders}
+    refunds = {"count": len(refund_orders), "amount": round(sum(ref_amt.values()), 2),
+               "yesterday": sum(1 for r, d in ref_seen.items() if d == yday),
+               "yesterday_amount": round(sum(ref_amt[r] for r, d in ref_seen.items() if d == yday), 2),
+               "seen": ref_seen}
 
     days = collections.defaultdict(lambda: {"tk": 0, "tkr": 0.0, "pp": 0, "bb": 0, "bbr": 0.0})
     for c, o in first_buy.items():
         d = days[pt_day(o["created"])]
         d["tk"] += 1; d["tkr"] += tick_amt(o)
 
+    full_refund = lambda o: o.get("refunded", 0) > 0 and o["refunded"] >= (o["amount"] or 0) - 0.005   # whole order refunded
+
     # Power Plan: first sign-up per contact, ticket holders only
     pp_first, pp_non_holders = {}, set()
     for o in orders:
-        if o["paid"] and has(o, UPS["power_plan"]["name_prefix"]):
+        if o["paid"] and not full_refund(o) and has(o, UPS["power_plan"]["name_prefix"]):
             if o["contact"] in all_holders:
                 if o["contact"] not in pp_first or o["created"] < pp_first[o["contact"]]:
                     pp_first[o["contact"]] = o["created"]
@@ -605,7 +631,7 @@ def main():
     bb = {"count": 0, "bump": 0, "standalone": 0, "revenue": 0.0}
     bb_people = set()
     for o in orders:
-        if o["paid"] and has(o, UPS["business_bible"]["name_prefix"]):
+        if o["paid"] and not full_refund(o) and has(o, UPS["business_bible"]["name_prefix"]):
             amt = sum(a for n, a in o["items"] if n.startswith(UPS["business_bible"]["name_prefix"]))
             bb["count"] += 1; bb["revenue"] += amt
             bb_people.add(o["contact"])
@@ -937,6 +963,7 @@ def main():
         "",
         *([f"LEFT TO SEND (until {short_day(left['until'])})", *left_lines, ""] if left else []),
         f"TICKET HOLDERS: {n_holders} ({n_paid} paid + {n_comps} comps) · {new_y} new yesterday",
+        *([f"Refunds: {refunds['count']} ({money(refunds['amount'])}) to date · {refunds['yesterday']} yesterday"] if refunds["count"] else []),
         sales_line,
         f"{credited_n} of {n_paid} tickets were bought within {CFG['attribution_window_hours']} hrs of an email/text",
         "",
@@ -999,6 +1026,7 @@ def main():
         "attribution_window_hours": CFG["attribution_window_hours"],
         "thresholds": TH, "email_whole_send_share": SR["email_whole_send_share"],
         "holders": {"total": n_holders, "paid": n_paid, "comps": n_comps, "new_yesterday": new_y},
+        "refunds": refunds,
         "sales": {"tickets": n_paid, "revenue": round(revenue, 2), "total": round(total_sales, 2),
                   "credited": credited_n, "credited_revenue": round(credited_rev, 2)},
         "upsells": {"power_plan": {"count": pp_n, "price_per_month": pp_cfg["price_per_month"], "billing_start": pp_cfg["billing_start"]},
@@ -1038,6 +1066,8 @@ def main():
         os.replace(tmp, os.path.join(ROOT, name))
 
     log(f"Wrote data.json, summary.json, report.txt. Ticket holders {n_holders}.")
+    if refunds["count"]:
+        log(f"Refunds: {refunds['count']} ticket(s), {money(refunds['amount'])}, not counted ({refunds['yesterday']} yesterday).")
     log("Which rule picked each summary line:")
     for k in ("headline", "win", "watch"):
         log("  " + rules_used[k])

@@ -4,6 +4,15 @@ The version only changes when the page itself changes. Daily data refreshes keep
 New features go up a minor number (1.1, 1.2). Fixes go up a patch number (1.0.1).
 The "What's new" panel on the page reads `changelog.json`, so update both files together.
 
+## v1.5.3 · Refunds · Nov 17, 2026
+
+- **Refunded tickets no longer count.** GoHighLevel leaves a refunded order marked "Completed", so 2 refunded tickets were still counted as paid. Ticket holders, ticket sales, total sales, campaign credit, Warrior App and Business Bible now leave refunded orders out.
+- **New small line under the Ticket holders tile:** "X refunded ($Y) · not counted".
+- **Garrett's report** has a new line under TICKET HOLDERS: "Refunds: X ($Y) to date · Z yesterday".
+- GoHighLevel doesn't give a refund date. The page uses the day the order was last updated, fixed the first time the refund is seen.
+- Message numbers don't change. Someone who bought and was later refunded still counts as a ticket holder for messages sent before the refund.
+- Counts and amounts only. No names or emails.
+
 ## v1.5.2 · Fixes · Nov 16, 2026
 
 - **Phone fix:** on narrow phones (390px and 375px) the page no longer slides sideways. The hidden pop-up notes on the right-hand numbers in the campaign tables were pushing the page wider. They now open toward the left, inside the screen.

@@ -1,5 +1,18 @@
 [
   {
+    "v": "1.5.3",
+    "date": "2026-11-17",
+    "title": "Refunds",
+    "items": [
+      "<b>Refunded tickets no longer count.</b> GoHighLevel leaves a refunded order marked \"Completed\", so 2 refunded tickets were still counted as paid. Ticket holders, ticket sales, total sales, campaign credit, Warrior App and Business Bible now leave refunded orders out.",
+      "<b>New small line under the Ticket holders tile:</b> \"X refunded ($Y) · not counted\".",
+      "<b>Garrett's report</b> has a new line under TICKET HOLDERS: \"Refunds: X ($Y) to date · Z yesterday\".",
+      "GoHighLevel doesn't give a refund date. The page uses the day the order was last updated, fixed the first time the refund is seen.",
+      "Message numbers don't change. Someone who bought and was later refunded still counts as a ticket holder for messages sent before the refund.",
+      "Counts and amounts only. No names or emails."
+    ]
+  },
+  {
     "v": "1.5.2",
     "date": "2026-11-16",
     "title": "Fixes",
