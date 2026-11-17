@@ -1,5 +1,14 @@
 [
   {
+    "v": "1.5.5",
+    "date": "2026-11-17",
+    "title": "Yesterday Texas split",
+    "items": [
+      "<b>Texas split fixed on the \"Yesterday\" row.</b> The Yesterday numbers are fixed by the 7am update. Today's was made before v1.5.4, so it had no Texas count, and the row showed \"0 blocked · Texas SMS safeguard\". The count is now filled in from each text's failure reason for that day, so the two lines add up to \"not delivered\". From tomorrow's 7am update it's saved with the rest.",
+      "Last 7 days, Last 30 days, Custom dates and To date already used each text's reason. They're unchanged."
+    ]
+  },
+  {
     "v": "1.5.4",
     "date": "2026-11-17",
     "title": "Not delivered split + team tests",

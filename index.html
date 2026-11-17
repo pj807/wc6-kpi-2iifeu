@@ -516,7 +516,7 @@
 
 <script>
 // The version of THIS page. Bump it (and changelog.json) whenever the page changes; daily data refreshes never change it.
-const PAGE_VERSION = '1.5.4';
+const PAGE_VERSION = '1.5.5';
 
 const $ = id => document.getElementById(id);
 const N = n => n == null ? '—' : Math.round(n).toLocaleString('en-US');
@@ -585,7 +585,16 @@ const dimCell = (l, t) => `<td data-l="${l}" class="dim">${t}</td>`;
 function totals(camp, ch, r) {
   const t = {sent: 0, rated: 0, delivered: 0, opened: 0, clicked: 0, unsub: 0, bounced: 0, ghl_sent: 0, failed: 0, blocked_tx: 0, optouts: 0, emails: 0, whole: 0};
   if (!r || r.preset === 'all') return Object.assign(t, D.todate[camp][ch]);
-  if (r.preset === 'yday' && D.yesterday_totals) return Object.assign(t, D.yesterday_totals[camp][ch]);   // set at the 7am run
+  if (r.preset === 'yday' && D.yesterday_totals) {   // set at the 7am run
+    const y = D.yesterday_totals[camp][ch];
+    Object.assign(t, y);
+    if (ch === 'sms' && y.blocked_tx == null) {   // older snapshot without the Texas count: take it from the per-text reasons for that day
+      let b = 0;
+      for (const m of D.messages) if (m.camp === camp && m.ch === 'sms') { const v = m.days[D.yesterday]; if (v) b += v[6] || 0; }
+      t.blocked_tx = Math.min(b, t.failed);
+    }
+    return t;
+  }
   for (const m of D.messages) {
     if (m.camp !== camp || m.ch !== ch) continue;
     let inR = 0, tot = 0;

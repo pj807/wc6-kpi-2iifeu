@@ -825,6 +825,12 @@ def main():
     frozen = prev.get("frozen") if prev else None
     keep = bool(frozen and frozen.get("yesterday") == yday and frozen.get("picks") and not os.environ.get("REBUILD_SUMMARY"))
     Yd = frozen["Y"] if keep else {c: {ch: dict(Y[c][ch]) for ch in Y[c]} for c in Y}
+    # Yesterday frozen by a 7am run that predates v1.5.4 has no Texas count: fill it in from the per-text reasons
+    # for that day (never more than the frozen "not delivered"), so the Yesterday split always adds up.
+    for c in Yd:
+        ys = Yd[c].get("sms") or {}
+        if ys and "blocked_tx" not in ys:
+            ys["blocked_tx"] = min(Y[c]["sms"].get("blocked_tx", 0), ys.get("failed", 0))
 
     wr = SR["win"]
     avg_click = {c: pct(T[c]["email"]["clicked"], T[c]["email"]["delivered"]) for c in T}

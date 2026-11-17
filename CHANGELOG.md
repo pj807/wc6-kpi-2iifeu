@@ -4,6 +4,11 @@ The version only changes when the page itself changes. Daily data refreshes keep
 New features go up a minor number (1.1, 1.2). Fixes go up a patch number (1.0.1).
 The "What's new" panel on the page reads `changelog.json`, so update both files together.
 
+## v1.5.5 · Yesterday Texas split · Nov 17, 2026
+
+- **Texas split fixed on the "Yesterday" row.** The Yesterday numbers are fixed by the 7am update. Today's was made before v1.5.4, so it had no Texas count, and the row showed "0 blocked · Texas SMS safeguard". The count is now filled in from each text's failure reason for that day, so the two lines add up to "not delivered". From tomorrow's 7am update it's saved with the rest.
+- Last 7 days, Last 30 days, Custom dates and To date already used each text's reason. They're unchanged.
+
 ## v1.5.4 · Not delivered split + team tests · Nov 17, 2026
 
 - **Refunds are now real customer refunds only.** The 2 refunded orders (Oct 21 and Oct 30) were team test buys, so they're now left out like the $0 and $1 test orders. The report says "Refunds: 0 to date" and the line under the Ticket holders tile is hidden while there are none. Totals stay 148 ticket holders, $31,150 sales, 73 Warrior App.
