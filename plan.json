@@ -33,12 +33,12 @@
   },
   {
    "id": "6980f421-2814-400d-80ba-b6e9ede3fe1b",
-   "name": "0.2 - WC6 Emails 20-28 One-Off (Nov 9 11AM, Nov 10-11 6AM ET)",
+   "name": "0.2 - WC6 Emails Nov 9 - 22",
    "wf": "0.2 Emails",
    "audience": "promote",
    "channel": "email",
-   "version": 8,
-   "updated_at": "2026-11-10T22:14:37.772Z"
+   "version": 10,
+   "updated_at": "2026-11-16T21:37:59.354Z"
   },
   {
    "id": "87a56fa4-9b20-4e25-82cb-24d353027e89",
@@ -69,12 +69,12 @@
   },
   {
    "id": "50e67534-dbf1-4628-aff4-1cae09823865",
-   "name": "0.3 - WC6 SMS 8B-14 One-Off (Nov 11-17)",
+   "name": "0.3 - WC6 SMS 8B-19 One-Off (Nov 11-22)",
    "wf": "0.3 Texts",
    "audience": "promote",
    "channel": "sms",
-   "version": 9,
-   "updated_at": "2026-11-11T13:45:06.343Z"
+   "version": 10,
+   "updated_at": "2026-11-16T21:50:49.254Z"
   }
  ],
  "steps": [
@@ -756,6 +756,91 @@
     "plus_hours": 0
    },
    "text": "Your decision means nothing without this."
+  },
+  {
+   "workflow": "6980f421-2814-400d-80ba-b6e9ede3fe1b",
+   "wf": "0.2 Emails",
+   "audience": "promote",
+   "channel": "email",
+   "num": 10,
+   "step_id": "c0f94697-7ae6-4a82-b02f-dc846f08a440",
+   "name": "Email 29",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-11-18",
+    "time_et": "06:00",
+    "plus_hours": 0
+   },
+   "text": "Your calendar is exposing you."
+  },
+  {
+   "workflow": "6980f421-2814-400d-80ba-b6e9ede3fe1b",
+   "wf": "0.2 Emails",
+   "audience": "promote",
+   "channel": "email",
+   "num": 11,
+   "step_id": "6ac6261a-df76-4d5e-a869-92054527f9c7",
+   "name": "Email 30",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-11-19",
+    "time_et": "06:00",
+    "plus_hours": 0
+   },
+   "text": "Your goals are not your game."
+  },
+  {
+   "workflow": "6980f421-2814-400d-80ba-b6e9ede3fe1b",
+   "wf": "0.2 Emails",
+   "audience": "promote",
+   "channel": "email",
+   "num": 12,
+   "step_id": "ff009245-b98c-44a2-b712-3b782778960b",
+   "name": "Email 31",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-11-20",
+    "time_et": "06:00",
+    "plus_hours": 0
+   },
+   "text": "You're already playing a game."
+  },
+  {
+   "workflow": "6980f421-2814-400d-80ba-b6e9ede3fe1b",
+   "wf": "0.2 Emails",
+   "audience": "promote",
+   "channel": "email",
+   "num": 13,
+   "step_id": "96acaf3d-ac95-4350-992f-bb7d6b0550af",
+   "name": "Email 32",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-11-21",
+    "time_et": "06:00",
+    "plus_hours": 0
+   },
+   "text": "You can't take your old life into your new one."
+  },
+  {
+   "workflow": "6980f421-2814-400d-80ba-b6e9ede3fe1b",
+   "wf": "0.2 Emails",
+   "audience": "promote",
+   "channel": "email",
+   "num": 14,
+   "step_id": "b59edcef-a580-4eef-8832-f329d0a213ed",
+   "name": "Email 33",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-11-22",
+    "time_et": "06:00",
+    "plus_hours": 0
+   },
+   "text": "The man who got you here may be holding you back."
   },
   {
    "workflow": "87a56fa4-9b20-4e25-82cb-24d353027e89",
@@ -1532,6 +1617,81 @@
     "hours": 24
    },
    "text": "Making a decision doesn't change your life. Executing that decision does. Read it:"
+  },
+  {
+   "workflow": "50e67534-dbf1-4628-aff4-1cae09823865",
+   "wf": "0.3 Texts",
+   "audience": "promote",
+   "channel": "sms",
+   "num": 8,
+   "step_id": "68ff4bfb-ed0d-4caa-be5a-1287f4f85ad9",
+   "name": "SMS 15 - Nov 18 - 11:30 AM ET (wc-pm18)",
+   "branch": "Not a buyer",
+   "when": {
+    "type": "after_previous",
+    "hours": 24
+   },
+   "text": "Your calendar is telling the truth about your life. Even when your mouth isn't. Read it:"
+  },
+  {
+   "workflow": "50e67534-dbf1-4628-aff4-1cae09823865",
+   "wf": "0.3 Texts",
+   "audience": "promote",
+   "channel": "sms",
+   "num": 9,
+   "step_id": "87911e8b-cdb9-40fa-ba1c-5f60bcf802ad",
+   "name": "SMS 16 - Nov 19 - 11:30 AM ET (wc-pm19)",
+   "branch": "Not a buyer",
+   "when": {
+    "type": "after_previous",
+    "hours": 24
+   },
+   "text": "You don't have a goal problem. You have a game problem. Read why:"
+  },
+  {
+   "workflow": "50e67534-dbf1-4628-aff4-1cae09823865",
+   "wf": "0.3 Texts",
+   "audience": "promote",
+   "channel": "sms",
+   "num": 10,
+   "step_id": "78c6d4e4-d7b0-4707-bfaf-a5561a0e2788",
+   "name": "SMS 17 - Nov 20 - 11:30 AM ET (wc-pm20)",
+   "branch": "Not a buyer",
+   "when": {
+    "type": "after_previous",
+    "hours": 24
+   },
+   "text": "You're already playing a game. Whether you realize it or not. Read it:"
+  },
+  {
+   "workflow": "50e67534-dbf1-4628-aff4-1cae09823865",
+   "wf": "0.3 Texts",
+   "audience": "promote",
+   "channel": "sms",
+   "num": 11,
+   "step_id": "2b1025ca-fa29-46fc-b14b-9c88631afbf7",
+   "name": "SMS 18 - Nov 21 - 11:30 AM ET (wc-pm21)",
+   "branch": "Not a buyer",
+   "when": {
+    "type": "after_previous",
+    "hours": 24
+   },
+   "text": "You cannot build a new life while defending the old one. Read why:"
+  },
+  {
+   "workflow": "50e67534-dbf1-4628-aff4-1cae09823865",
+   "wf": "0.3 Texts",
+   "audience": "promote",
+   "channel": "sms",
+   "num": 12,
+   "step_id": "e96b6d7c-e883-4154-bf37-53c61edd6f7a",
+   "name": "SMS 19 - Nov 22 - 11:30 AM ET (wc-pm22)",
+   "branch": "Not a buyer",
+   "when": {
+    "type": "after_previous",
+    "hours": 24
+   },
+   "text": "The man who built your life may not be the man who can build your future. Read it:"
   }
  ],
  "_read_log": [
@@ -1539,7 +1699,8 @@
   "2026-11-11 re-read at PJ's request after the SMS fix: 0.1 Texts now ends at SMS 8; new 0.3 Texts sends SMS 8B-14 on Nov 11-17 (8 workflows, 70 steps)",
   "2026-11-11 8:45am ET check: 0.3 Texts SMS 9-14 now 'Wait 24 hours' after the previous text (was fixed dates); 0.0/0.1 Texts end by adding contacts to 0.3; 1.04 Texts still 3 texts (Nov 10-12)",
   "2026-11-11 re-read 1.04 at PJ's request: now 8 texts, Nov 10-17 at 12:30pm ET (SMS 4-8 added, wc-day32-36)",
-  "2026-11-16 2:16pm ET re-read 0.0 Emails, 0.1 Emails, 0.0 Texts, 0.2 Emails, 1.03 Emails, 0.1 Texts, 1.04 Texts, 0.3 Texts: 1.03 Emails + Email - Nov 18 Ticket Holder · (WC6) - Stop Trying to Fix Everything… · {'type': 'date', 'date': '2026-11-18', 'time_et': '11:30', 'plus_hours': 0}; 1.03 Emails + Email - Nov 19 Ticket Holder · (WC6) - What Becomes Possible When a Man Decides?... · {'type': 'date', 'date': '2026-11-19', 'time_et': '11:30', 'plus_hours': 0}; 1.03 Emails + Email - Nov 20 Ticket Holder · (WC6) - Your Next 12 Weeks… · {'type': 'date', 'date': '2026-11-20', 'time_et': '11:30', 'plus_hours': 0}; 1.03 Emails + Email - Nov 21 Ticket Holder · (WC6) - The Future Is Built Before It Arrives… · {'type': 'date"
+  "2026-11-16 2:16pm ET re-read 0.0 Emails, 0.1 Emails, 0.0 Texts, 0.2 Emails, 1.03 Emails, 0.1 Texts, 1.04 Texts, 0.3 Texts: 1.03 Emails + Email - Nov 18 Ticket Holder · (WC6) - Stop Trying to Fix Everything… · {'type': 'date', 'date': '2026-11-18', 'time_et': '11:30', 'plus_hours': 0}; 1.03 Emails + Email - Nov 19 Ticket Holder · (WC6) - What Becomes Possible When a Man Decides?... · {'type': 'date', 'date': '2026-11-19', 'time_et': '11:30', 'plus_hours': 0}; 1.03 Emails + Email - Nov 20 Ticket Holder · (WC6) - Your Next 12 Weeks… · {'type': 'date', 'date': '2026-11-20', 'time_et': '11:30', 'plus_hours': 0}; 1.03 Emails + Email - Nov 21 Ticket Holder · (WC6) - The Future Is Built Before It Arrives… · {'type': 'date",
+  "2026-11-16 10:58pm ET re-read 0.2 Emails, 0.3 Texts: 0.2 Emails + Email 29 · Your calendar is exposing you. · {'type': 'date', 'date': '2026-11-18', 'time_et': '06:00', 'plus_hours': 0}; 0.2 Emails + Email 30 · Your goals are not your game. · {'type': 'date', 'date': '2026-11-19', 'time_et': '06:00', 'plus_hours': 0}; 0.2 Emails + Email 31 · You're already playing a game. · {'type': 'date', 'date': '2026-11-20', 'time_et': '06:00', 'plus_hours': 0}; 0.2 Emails + Email 32 · You can't take your old life into your new one. · {'type': 'date', 'date': '2026-11-21', 'time_et': '06:00', 'plus_hours': 0}; 0.2 Emails + Email 33 · The man who got you here"
  ],
- "read_at_utc": "2026-11-16T19:16:06Z"
+ "read_at_utc": "2026-11-17T03:58:14Z"
 }

@@ -232,7 +232,7 @@
   },
   {
    "id": "6980f421-2814-400d-80ba-b6e9ede3fe1b",
-   "name": "0.2 - WC6 Emails 20-22 One-Off",
+   "name": "0.2 - WC6 Emails Nov 9 - 22",
    "label": "promote",
    "channel": "email",
    "steps": [
@@ -438,7 +438,7 @@
   },
   {
    "id": "50e67534-dbf1-4628-aff4-1cae09823865",
-   "name": "0.3 - WC6 SMS 8B-14 One-Off (Nov 11-17)",
+   "name": "0.3 - WC6 SMS 8B-19 One-Off (Nov 11-22)",
    "label": "promote",
    "channel": "sms",
    "steps": [
