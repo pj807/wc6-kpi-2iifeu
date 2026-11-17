@@ -3,7 +3,7 @@ WarriorCon 6 — report for Nov 15 (updated Nov 16, 8:08am ET)
 SUMMARY
 • 2 new tickets yesterday (148 total, 16 days to go)
 • Win: 73 of 148 ticket holders (49.3%) signed up for the Warrior App (free until Dec 4)
-• Watch: promote texts not delivered 26.1% to date (26,593 of 102,075 texts not delivered), above 5%. Main cause: 14,870 of 26,593 (56%) blocked by GHL's Texas SMS safeguard.
+• Watch: promote texts not delivered 26.1% to date (26,593 of 102,079 texts not delivered), above 5%. Main cause: 14,870 of 26,593 (56%) blocked by GHL's Texas SMS safeguard.
 
 LEFT TO SEND (until Dec 2)
 Promote: 6 emails · 6 texts — next: Tue Nov 17, 6:00am ET
@@ -18,7 +18,7 @@ PROMOTE (non-ticket holders)
 Yesterday — Email: 22,573 sent · 27.8% open · 0.2% click
 Yesterday — SMS: 3,577 sent · 82.8% delivered
 To date — Email: 522,828 sent · 31.8% open · 0.3% click
-To date — SMS: 102,075 sent · 73.7% delivered
+To date — SMS: 102,079 sent · 73.7% delivered
 
 POST-TICKET SEDUCTION (ticket holders)
 Yesterday — Email: 128 sent · 39.8% open
