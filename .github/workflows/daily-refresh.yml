@@ -1,13 +1,14 @@
 # Refreshes the dashboard numbers every 6 hours (data ready by 7am, 1pm, 7pm and 1am ET), and on demand ("Run workflow" on the Actions tab).
-# GitHub schedules use UTC. EST (through Dec 4) = UTC-5, so each run starts 30 minutes before the update time.
+# GitHub schedules use UTC. EST (through Dec 4) = UTC-5, so each run starts 45 minutes before the update time
+# (GitHub often starts scheduled runs late: the Nov 16 7pm run started 42 minutes late).
 name: Daily refresh
 
 on:
   schedule:
-    - cron: "30 11 * * *"   # 6:30am ET -> data by 7am ET (8pm Manila). Main run: sets yesterday + summary
-    - cron: "30 17 * * *"   # 12:30pm ET -> data by 1pm (to-date + "Today so far" only)
-    - cron: "30 23 * * *"   # 6:30pm ET -> data by 7pm (to-date + "Today so far" only)
-    - cron: "30 5 * * *"    # 12:30am ET -> data by 1am (to-date + "Today so far" only; still the previous day in Pacific time)
+    - cron: "15 11 * * *"   # 6:15am ET -> data by 7am ET (8pm Manila). Main run: sets yesterday + summary
+    - cron: "15 17 * * *"   # 12:15pm ET -> data by 1pm (to-date + "Today so far" only)
+    - cron: "15 23 * * *"   # 6:15pm ET -> data by 7pm (to-date + "Today so far" only)
+    - cron: "15 5 * * *"    # 12:15am ET -> data by 1am (to-date + "Today so far" only; still the previous day in Pacific time)
   workflow_dispatch:
 
 permissions:
@@ -33,7 +34,9 @@ jobs:
       - name: Pull fresh numbers from GHL
         env:
           GHL_TOKEN: ${{ secrets.GHL_TOKEN }}
-        run: python3 -I scripts/pull.py
+        # GHL sometimes hands back short or empty data. If the pull stops, wait 3 minutes and try once more
+        # (the same safety checks apply to the second try).
+        run: python3 -I scripts/pull.py || { echo "First try stopped; trying again in 3 minutes."; sleep 180; python3 -I scripts/pull.py; }
 
       # If anything private slipped in, the run stops here and nothing is published.
       - name: Privacy scan

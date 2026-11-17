@@ -7,11 +7,23 @@
  "timezone": "America/Los_Angeles",
  "location_id": "BDeGaczWUBVqlvyWoI7l",
  "ticket_holder_rule": {
-  "_how": "Paid (completed/paid) order containing a product whose name starts with ticket_product_name_prefix, order amount >= min_paid_amount (drops $1 tests). Contacts with comp_tag and no paid order count as comps from campaign start.",
+  "_how": "Paid (completed/paid) order containing a product whose name starts with ticket_product_name_prefix, order amount >= min_paid_amount (drops $1 tests). Contacts with comp_tag and no paid order count as comps from campaign start. Orders in team_test_orders (team test buys, refunded) are left out the same way, never counted as refunds.",
   "ticket_product_id": "6acd596ad55fd4b5c60529ea",
   "ticket_product_name_prefix": "WarriorCon6 Virtual Ticket",
   "min_paid_amount": 199,
-  "comp_tag": "wc6 - basic virtual ticket"
+  "comp_tag": "wc6 - basic virtual ticket",
+  "team_test_orders": [
+   {
+    "order_id": "6ad8d9e6144aa72e81bbfff9",
+    "date": "2026-10-21",
+    "amount": 199
+   },
+   {
+    "order_id": "6ae4ec38565ec8275736b9c8",
+    "date": "2026-10-30",
+    "amount": 199
+   }
+  ]
  },
  "upsells": {
   "power_plan": {
@@ -76,7 +88,7 @@
   "13:00",
   "19:00"
  ],
- "_update_times_et": "When fresh numbers land on the page (Eastern). The GitHub Action starts 30 minutes earlier (cron in .github/workflows/daily-refresh.yml).",
+ "_update_times_et": "When fresh numbers land on the page (Eastern). The GitHub Action starts 45 minutes earlier (cron in .github/workflows/daily-refresh.yml).",
  "ghl_links": {
   "_how": "Fixed links from the Unsub/Opt-out and Bounce/Failed counts into GoHighLevel. Set once by hand; the scheduled run never changes them. Workflow links open the workflow: turn on Stats view (chart icon) and click Unsubscribed, Bounced or Failed on a step to see those contacts. For SMS opt-outs, paste a saved Smart List URL (or leave null).",
   "base": "https://app.gohighlevel.com/v2/location/BDeGaczWUBVqlvyWoI7l",

@@ -173,7 +173,7 @@ class API:
                 items = det.get("items", [])
                 # GHL keeps a refunded order "completed/paid"; the refund only shows in paymentSummary.refundedAmount.
                 # GHL gives no refund date, so the order's last update stands in for it (set once, when first seen).
-                out.append({"contact": o.get("contactId"), "created": o.get("createdAt"), "amount": o.get("amount") or 0,
+                out.append({"id": o["_id"], "contact": o.get("contactId"), "created": o.get("createdAt"), "amount": o.get("amount") or 0,
                             "paid": o.get("status") == "completed" and o.get("paymentStatus") == "paid",
                             "refunded": float((det.get("paymentSummary") or {}).get("refundedAmount") or 0),
                             "updated": det.get("updatedAt") or o.get("updatedAt") or o.get("createdAt"),
@@ -227,7 +227,10 @@ class API:
                 if d == "outbound":
                     k = matcher(channel, m.get("subject") if channel == "Email" else m.get("body"))
                     if k:
-                        out.append([m["id"], m.get("contactId"), m.get("dateAdded"), d, m.get("status"), k, False])
+                        st_ = m.get("status")
+                        if st_ in ("failed", "undelivered") and "texas" in (m.get("error") or "").lower():
+                            st_ += "|tx"   # blocked by GHL's Texas SMS safeguard (kept apart from carrier failures)
+                        out.append([m["id"], m.get("contactId"), m.get("dateAdded"), d, st_, k, False])
                     elif not contact and m.get("source") == "workflow":
                         body = m.get("body") or ""
                         if channel == "SMS" and "wc-day" in body.lower():
@@ -436,7 +439,7 @@ def fetch_messages(api, channel, since):
     return [r for r in rows if r[2] >= since]
 
 
-def fetch_sms_by_day(api, first_day, last_day):
+def fetch_sms_by_day(api, first_day, last_day, known=None):
     """Quick mode: read texts one Pacific day at a time. GHL's export sometimes skips a page, so each day
     must return as many records as the total GHL reports, or it's read again (up to 5 tries); otherwise the run
     stops and nothing is published."""
@@ -447,9 +450,11 @@ def fetch_sms_by_day(api, first_day, last_day):
         for attempt in range(5):
             try:
                 rows = api.messages("SMS", a, matcher, until=b)
-                # GHL sometimes returns an empty export (total 0) for days that had texts. A finished
-                # day with no texts at all is unlikely mid-campaign, so read it again a few times.
-                if not rows and d.isoformat() < last_day and attempt < 4:
+                # GHL sometimes returns an empty export (total 0) for days that had texts. Read it again a few
+                # times if it's a finished day, a day the last run already saw texts on, or today after 9am Pacific
+                # during the campaign (texts go out at 8:30am PT or later). Nov 16's 7pm run failed on exactly this.
+                late = d.isoformat() == last_day and datetime.now(TZ).hour >= 9 and CFG["campaign_start"] <= last_day <= CFG["event_end"]
+                if not rows and (d.isoformat() < last_day or d.isoformat() in (known or ()) or late) and attempt < 4:
                     raise ShortRead("export came back empty")
                 break
             except ShortRead as e:
@@ -546,7 +551,10 @@ def main():
     def _get(c):
         if c == "SMS" and incremental:
             first = (Date.fromisoformat(cutoff) - timedelta(days=1)).isoformat()
-            res[c] = fetch_sms_by_day(api, first, today.isoformat())
+            known = {d for m in prev.get("messages", []) if m["ch"] == "sms" for d, v in m["days"].items() if v[0] + v[1] > 0}
+            if (prev.get("today_so_far") or {}).get("texts"):
+                known.add(prev["today_so_far"]["date"])
+            res[c] = fetch_sms_by_day(api, first, today.isoformat(), known)
         else:
             res[c] = fetch_messages(api, c, since_by[c])
     # One export at a time: GHL returns empty or missing pages when two message exports run at once.
@@ -581,11 +589,14 @@ def main():
     # Refunded ticket = refund covers the ticket line. Refunded buyers drop out of ticket holders, sales, credit and
     # upsells, but stay ticket holders for messages sent before (they held a ticket then), so sent counts don't move.
     is_refunded = lambda o: o.get("refunded", 0) > 0 and o["refunded"] >= tick_amt(o) - 0.005
+    team_tests = {t["order_id"] for t in RULE.get("team_test_orders", [])}   # team test buys (config.json): never counted
     first_buy, ticket_orders, ever_buy, refund_orders = {}, [], {}, []
     for o in orders:
         if o["paid"] and has(o, RULE["ticket_product_name_prefix"]) and o["amount"] >= RULE["min_paid_amount"]:
             if o["contact"] not in ever_buy or o["created"] < ever_buy[o["contact"]]["created"]:
                 ever_buy[o["contact"]] = o
+            if o["id"] in team_tests:
+                continue
             if is_refunded(o):
                 refund_orders.append(o)
                 continue
@@ -613,7 +624,7 @@ def main():
         d = days[pt_day(o["created"])]
         d["tk"] += 1; d["tkr"] += tick_amt(o)
 
-    full_refund = lambda o: o.get("refunded", 0) > 0 and o["refunded"] >= (o["amount"] or 0) - 0.005   # whole order refunded
+    full_refund = lambda o: (o.get("refunded", 0) > 0 and o["refunded"] >= (o["amount"] or 0) - 0.005) or o["id"] in team_tests
 
     # Power Plan: first sign-up per contact, ticket holders only
     pp_first, pp_non_holders = {}, set()
@@ -640,9 +651,9 @@ def main():
             d["bb"] += 1; d["bbr"] += amt
 
     # ---- per-message, per-day counts (right audience only; wrong-audience sends counted separately)
-    fresh = collections.defaultdict(lambda: collections.defaultdict(lambda: [0] * 6))   # key -> day -> counts
+    fresh = collections.defaultdict(lambda: collections.defaultdict(lambda: [0] * 7))   # key -> day -> counts
     #   email: [sent, wrong_audience, 0, 0, 0, 0]
-    #   sms:   [sent, wrong_audience, delivered, failed, optouts, replies]
+    #   sms:   [sent, wrong_audience, delivered, not delivered (failed + undelivered), optouts, replies, Texas-blocked]
     sends_by_contact = collections.defaultdict(list)
     first_at = {}   # (key, day) -> earliest right-audience send time
     for ch in ("Email", "SMS"):
@@ -664,10 +675,13 @@ def main():
                 continue
             c[0] += 1
             if ch == "SMS":
-                if status == "delivered":
+                base_st = (status or "").split("|")[0]
+                if base_st == "delivered":
                     c[2] += 1
-                elif status in ("failed", "undelivered"):
+                elif base_st in ("failed", "undelivered"):
                     c[3] += 1
+                    if (status or "").endswith("|tx"):
+                        c[6] += 1
 
     # SMS replies / STOP: inbound within 24h after the contact's latest campaign text; counted on that text's day
     for _id, contact, when, direction, status, key, stop in msgs["SMS"]:
@@ -751,6 +765,7 @@ def main():
             m["share_main"] = round((dd[main_day][0] / sent), 3) if main_day and sent else None
         else:
             m.update(delivered=sum(v[2] for v in dd.values()), failed=sum(v[3] for v in dd.values()),
+                     blocked_tx=sum(v[6] if len(v) > 6 else 0 for v in dd.values()),
                      optouts=sum(v[4] for v in dd.values()), replies=sum(v[5] for v in dd.values()))
         messages.append(m)
 
@@ -780,6 +795,7 @@ def main():
                 for d, v in m["days"].items():
                     if frm is None or frm <= d <= to:
                         t["delivered"] += v[2]; t["failed"] += v[3]; t["optouts"] += v[4]
+                        t["blocked_tx"] += v[6] if len(v) > 6 else 0
         return t
 
     T = {c: {ch: totals(c, ch) for ch in ("email", "sms")} for c in ("promote", "post_ticket")}
@@ -860,7 +876,8 @@ def main():
             if s_["delivered"]:
                 out.append(dict(camp=c, cname=cname, name="text opt-outs", v=100 * s_["optouts"] / s_["delivered"], lim=TH["sms_optout_pct"], n=s_["optouts"], what="delivered texts got a STOP reply", base=s_["delivered"]))
             if s_["sent"]:
-                out.append(dict(camp=c, cname=cname, name="text failures", v=100 * s_["failed"] / s_["sent"], lim=TH["sms_failed_pct"], n=s_["failed"], what="texts failed", base=s_["sent"]))
+                out.append(dict(camp=c, cname=cname, name="text failures", v=100 * s_["failed"] / s_["sent"], lim=TH["sms_failed_pct"], n=s_["failed"], what="texts not delivered", base=s_["sent"],
+                                tx=s_.get("blocked_tx", 0)))
         return out
 
     if keep:
@@ -922,14 +939,21 @@ def main():
     wpk = picks["watch"]
     w = next((x for x in watch_checks() if wpk and x["camp"] == wpk["camp"] and x["name"] == wpk["name"]), None)
     if w:
-        extra = ""
+        extra, cause, label = "", "", w["name"]
         if w["name"] == "text failures":
+            label = "texts not delivered"
             ys = Yd[w["camp"]]["sms"]
             if ys.get("sent"):
                 extra = f" Yesterday: {100 * ys['failed'] / ys['sent']:.1f}%."
-        watch = {"big": f"{w['cname']} {w['name']}: {w['v']:.1f}%",
-                 "sub": f"Above the {w['lim']:g}% limit: {fmt(w['n'])} of {fmt(w['base'])} {w['what']} to date.{extra}",
-                 "line": f"{w['cname'].lower()} {w['name']} {w['v']:.1f}% to date ({fmt(w['n'])} of {fmt(w['base'])} {w['what']}), above {w['lim']:g}%"}
+            tx = w.get("tx", 0)
+            if w["n"] and tx / w["n"] >= SAFE.get("main_cause_share", 0.5):   # one reason is most of them: name it
+                cause = f"Main cause: {fmt(tx)} of {fmt(w['n'])} ({100 * tx / w['n']:.0f}%) blocked by GHL's Texas SMS safeguard."
+            elif w["n"] and (w["n"] - tx) / w["n"] >= SAFE.get("main_cause_share", 0.5):
+                cause = f"Main cause: carrier / other ({fmt(w['n'] - tx)} of {fmt(w['n'])})."
+        watch = {"big": f"{w['cname']} {label}: {w['v']:.1f}%",
+                 "sub": f"Above the {w['lim']:g}% limit: {fmt(w['n'])} of {fmt(w['base'])} {w['what']} to date.{extra}" + (f" {cause}" if cause else ""),
+                 "line": f"{w['cname'].lower()} {label} {w['v']:.1f}% to date ({fmt(w['n'])} of {fmt(w['base'])} {w['what']}), above {w['lim']:g}%"
+                         + (f". {cause}" if cause else "")}
     else:
         watch = {"big": "All clear", "sub": "Nothing needs attention today.", "line": "Nothing needs attention today."}
 
@@ -963,7 +987,7 @@ def main():
         "",
         *([f"LEFT TO SEND (until {short_day(left['until'])})", *left_lines, ""] if left else []),
         f"TICKET HOLDERS: {n_holders} ({n_paid} paid + {n_comps} comps) · {new_y} new yesterday",
-        *([f"Refunds: {refunds['count']} ({money(refunds['amount'])}) to date · {refunds['yesterday']} yesterday"] if refunds["count"] else []),
+        (f"Refunds: {refunds['count']} ({money(refunds['amount'])}) to date · {refunds['yesterday']} yesterday" if refunds["count"] else "Refunds: 0 to date"),
         sales_line,
         f"{credited_n} of {n_paid} tickets were bought within {CFG['attribution_window_hours']} hrs of an email/text",
         "",
@@ -1066,8 +1090,8 @@ def main():
         os.replace(tmp, os.path.join(ROOT, name))
 
     log(f"Wrote data.json, summary.json, report.txt. Ticket holders {n_holders}.")
-    if refunds["count"]:
-        log(f"Refunds: {refunds['count']} ticket(s), {money(refunds['amount'])}, not counted ({refunds['yesterday']} yesterday).")
+    log(f"Refunds: {refunds['count']} customer ticket(s), {money(refunds['amount'])}, not counted ({refunds['yesterday']} yesterday). "
+        f"Team test orders left out: {len(team_tests)}.")
     log("Which rule picked each summary line:")
     for k in ("headline", "win", "watch"):
         log("  " + rules_used[k])

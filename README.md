@@ -5,7 +5,7 @@ A one-page scoreboard of the WC6 email and text campaigns, split into
 
 ## How it updates
 
-- **Every 6 hours:** a GitHub Action puts fresh numbers on the page by 7am, 1pm, 7pm and 1am Eastern (7am ET = 8pm Manila). Each run starts 30 minutes early: 11:30, 17:30, 23:30 and 05:30 UTC, since all dates through Dec 4 are EST. It runs on GitHub's computers, so your Mac can be off. GitHub sometimes starts scheduled runs a few minutes late.
+- **Every 6 hours:** a GitHub Action puts fresh numbers on the page by 7am, 1pm, 7pm and 1am Eastern (7am ET = 8pm Manila). Each run starts 45 minutes early: 11:15, 17:15, 23:15 and 05:15 UTC, since all dates through Dec 4 are EST. If a pull stops (GHL sometimes returns short or empty data), the run waits 3 minutes and tries once more. It runs on GitHub's computers, so your Mac can be off. GitHub sometimes starts scheduled runs a few minutes late.
 - **Any time:** on GitHub, open the repo's **Actions** tab, click **Daily refresh** on the left, then **Run workflow** (top right of the list) and the green **Run workflow** button.
 - **From your Mac:** open Terminal and run:
 
@@ -58,11 +58,14 @@ If the page is open when new numbers arrive, a bar says "New data in" with a Sho
 - **Yesterday:** the previous full day, midnight to midnight Pacific. "Last updated" is shown in Eastern time.
 - **Ticket holder:** a paid WC6 ticket order of $199 or more, or the comp tag. A person counts as a ticket holder for a message only if they bought before it was sent. $0 and $1 test orders don't count.
 - **Refunds (v1.5.3):** GHL keeps a refunded order "Completed" and shows the refund only as `paymentSummary.refundedAmount` on the order. A ticket whose refund covers the ticket line is left out of ticket holders, sales, credit, Power Plan and Business Bible. It's shown as "X refunded ($Y) · not counted" on the page and as a "Refunds:" line in Garrett's report. GHL gives no refund date, so the order's last update is used, fixed the first time the refund is seen (`data.json` → `refunds.seen`, keyed by a hash of the order ID). Refunded buyers still count as ticket holders for messages sent before the refund, so sent counts don't move.
+- **Team test orders (v1.5.4):** team test buys are listed in `config.json` → `ticket_holder_rule.team_test_orders`, by order ID, date and amount only. They're left out like the $0/$1 tests and never count as refunds. Right now there are 2: Oct 21 and Oct 30, $199 each, both refunded. The refund line counts real customer refunds only. When there are none, the report says "Refunds: 0 to date" and the tile hides the line.
 - **Credited sale:** a ticket purchase is credited to the last Promote email or text the buyer got in the 48 hours before buying. To change the window, edit `attribution_window_hours` in `config.json`.
 - **Email rates:** opens, clicks, unsubscribes and bounces come from GHL **per email, not per day**. For a date range, they count only the emails sent (95%+) inside it. If none fit, the page shows "totals only". Sends, text deliveries, failures and opt-outs are true per-day counts.
 - **Click rates** are out of emails delivered, the same way GHL calculates them. Apple Mail opens emails automatically, which inflates open rates, so clicks are the more reliable signal.
 - **Ticket holder emails** have no links except unsubscribe, so their click rate shows as "no links".
 - **Text clicks:** GHL doesn't provide click counts for text links through the API, so they show as "pending".
+- **Not delivered (v1.5.4):** a text counts as "Not delivered" when GHL marks it **failed** or **undelivered** in the conversation history (the message export). Each one is split by GHL's error text into **blocked · Texas SMS safeguard** (GHL's own block on texts to or from Texas numbers) and **carrier / other** (for example unreachable numbers, UK numbers, carrier errors). The Watch card names the main cause when one reason is half or more of them.
+  - **Why GHL's workflow panel shows fewer:** the Failed tile in a workflow's Stats view counts only some of these. On Nov 15, Promote SMS 12 showed 430 failed in the panel, while the message history had 580 failed + 23 undelivered (603). GHL doesn't say which ones the panel leaves out. Sent and delivered match the panel exactly. The page uses the message history because it covers every text and gives the reason.
 - **Power Plan:** paid sign-ups by ticket holders. **Business Bible:** every paid sale, whether added at ticket checkout or bought on its own.
 
 ## Executive summary rules (set in `config.json` → `summary_rules`)

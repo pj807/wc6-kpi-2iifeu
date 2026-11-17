@@ -109,6 +109,7 @@
   table.k td b{color:var(--fg);font-weight:600}
   .ch{display:inline-block;font-size:10px;letter-spacing:.12em;font-weight:700;padding:3px 7px;border:1px solid var(--line);margin-right:8px;color:var(--fg)}
   .per{color:var(--muted);font-size:12px;display:block;margin-top:2px}
+  .nd{color:var(--muted);font-size:11px;display:block;margin-top:2px;white-space:nowrap}
   .dim{color:#5d605f!important}
   .warn{color:var(--red)!important}
 
@@ -413,7 +414,7 @@
     <div class="camp" data-for="all nth">
       <header><h3>Promote <em>campaign</em></h3><span>Non-ticket holders</span></header>
       <table class="k">
-        <thead><tr><th></th><th>Sent</th><th>Open / Delivered</th><th>Click</th><th>Unsub / Opt-out</th><th>Bounce / Failed</th></tr></thead>
+        <thead><tr><th></th><th>Sent</th><th>Open / Delivered</th><th>Click</th><th>Unsub / Opt-out</th><th>Bounce / Not delivered</th></tr></thead>
         <tbody id="tPromote"></tbody>
       </table>
     </div>
@@ -421,7 +422,7 @@
     <div class="camp" data-for="all th">
       <header><h3>Post-ticket <em>seduction</em></h3><span>Ticket holders</span></header>
       <table class="k">
-        <thead><tr><th></th><th>Sent</th><th>Open / Delivered</th><th>Click</th><th>Unsub / Opt-out</th><th>Bounce / Failed</th></tr></thead>
+        <thead><tr><th></th><th>Sent</th><th>Open / Delivered</th><th>Click</th><th>Unsub / Opt-out</th><th>Bounce / Not delivered</th></tr></thead>
         <tbody id="tPost"></tbody>
       </table>
     </div>
@@ -514,7 +515,7 @@
 
 <script>
 // The version of THIS page. Bump it (and changelog.json) whenever the page changes; daily data refreshes never change it.
-const PAGE_VERSION = '1.5.3';
+const PAGE_VERSION = '1.5.4';
 
 const $ = id => document.getElementById(id);
 const N = n => n == null ? '—' : Math.round(n).toLocaleString('en-US');
@@ -581,7 +582,7 @@ const dimCell = (l, t) => `<td data-l="${l}" class="dim">${t}</td>`;
 // Email opens/clicks/unsubs/bounces come from GHL per email, not per day, so in a date range
 // they count only for emails sent (95%+) inside it. Sends, texts delivered/failed/opt-outs are true per-day counts.
 function totals(camp, ch, r) {
-  const t = {sent: 0, rated: 0, delivered: 0, opened: 0, clicked: 0, unsub: 0, bounced: 0, ghl_sent: 0, failed: 0, optouts: 0, emails: 0, whole: 0};
+  const t = {sent: 0, rated: 0, delivered: 0, opened: 0, clicked: 0, unsub: 0, bounced: 0, ghl_sent: 0, failed: 0, blocked_tx: 0, optouts: 0, emails: 0, whole: 0};
   if (!r || r.preset === 'all') return Object.assign(t, D.todate[camp][ch]);
   if (r.preset === 'yday' && D.yesterday_totals) return Object.assign(t, D.yesterday_totals[camp][ch]);   // set at the 7am run
   for (const m of D.messages) {
@@ -594,7 +595,7 @@ function totals(camp, ch, r) {
       t.emails++;
       if (inR / tot >= D.email_whole_send_share) { t.whole++; t.rated += inR; ['delivered', 'opened', 'clicked', 'unsub', 'bounced', 'ghl_sent'].forEach(k => t[k] += m[k]); }
     } else {
-      for (const [d, v] of Object.entries(m.days)) if (d >= r.from && d <= r.to) { t.delivered += v[2]; t.failed += v[3]; t.optouts += v[4]; }
+      for (const [d, v] of Object.entries(m.days)) if (d >= r.from && d <= r.to) { t.delivered += v[2]; t.failed += v[3]; t.optouts += v[4]; t.blocked_tx += v[6] || 0; }
     }
   }
   return t;
@@ -618,14 +619,17 @@ function emailCells(t, camp) {
   out += `<td data-l="Bounce">${tip(PF(b), N(t.bounced) + ' bounced', `${N(t.bounced)} of ${N(t.ghl_sent)} emails bounced${part}`, b > TH.email_bounce_pct, GL(camp, 'email'), HINT('Bounced'))}</td>`;
   return out;
 }
+// "Not delivered" = GHL failed + undelivered, split into GHL's Texas SMS safeguard blocks and carrier / other
+const splitTxt = t => `${N(t.blocked_tx || 0)} blocked by GHL's Texas SMS safeguard · ${N(t.failed - (t.blocked_tx || 0))} carrier / other`;
+const splitHtml = t => t.failed ? `<span class="nd">↳ ${N(t.blocked_tx || 0)} blocked · Texas SMS safeguard</span><span class="nd">↳ ${N(t.failed - (t.blocked_tx || 0))} carrier / other</span>` : '';
 function smsCells(t, camp) {
-  if (!t.sent) return `<td data-l="Sent" class="dim">none sent</td>` + ['Delivered', 'Click', 'Opt-out', 'Failed'].map(l => dimCell(l, '—')).join('');
+  if (!t.sent) return `<td data-l="Sent" class="dim">none sent</td>` + ['Delivered', 'Click', 'Opt-out', 'Not delivered'].map(l => dimCell(l, '—')).join('');
   const dl = P(t.delivered, t.sent), fl = P(t.failed, t.sent), op = P(t.optouts, t.delivered), other = t.sent - t.delivered - t.failed;
   let out = `<td data-l="Sent"><b>${N(t.sent)}</b></td>`;
   out += `<td data-l="Delivered">${tip(PF(dl), N(t.delivered) + ' delivered', `${N(t.delivered)} of ${N(t.sent)} texts delivered · ${N(t.sent - t.delivered)} not delivered`, fl > TH.sms_failed_pct)}</td>`;
   out += `<td data-l="Click">${tip('<span class="dim">pending</span>', '', "GHL doesn't share click counts for text links yet.")}</td>`;
   out += `<td data-l="Opt-out">${tip(PF(op), N(t.optouts) + ' opted out', `${N(t.optouts)} of ${N(t.delivered)} delivered texts got a STOP reply within 24 hours`, op > TH.sms_optout_pct, GL(camp, 'optout'), 'Saved Smart List of contacts who opted out of texts.')}</td>`;
-  out += `<td data-l="Failed">${tip(PF(fl), N(t.failed) + ' failed', `${N(t.failed)} of ${N(t.sent)} texts failed or were undelivered` + (other > 0 ? ` · ${N(other)} still waiting for a delivery receipt` : ''), fl > TH.sms_failed_pct, GL(camp, 'sms'), HINT('Failed'))}</td>`;
+  out += `<td data-l="Not delivered">${tip(PF(fl), N(t.failed) + ' not delivered', `${N(t.failed)} of ${N(t.sent)} texts not delivered (GHL "failed" + "undelivered"): ${splitTxt(t)}` + (other > 0 ? ` · ${N(other)} still waiting for a delivery receipt` : ''), fl > TH.sms_failed_pct, GL(camp, 'sms'), HINT('Failed'))}${splitHtml(t)}</td>`;
   return out;
 }
 function campRows(camp, short) {
@@ -806,7 +810,7 @@ function renderStatic() {
     ['all nth', '', 'Tickets from campaigns', `Tickets bought within ${D.attribution_window_hours} hrs of an email or text.`, N(s.credited), `of ${N(s.tickets)} paid tickets · ${$$(s.credited_revenue)} in sales`],
     ['all nth', '', 'Promote email click', 'Share of sales emails that got a click.', PF(P(pe.clicked, pe.delivered)), `${PF(P(pe.opened, pe.delivered))} open · ${N(pe.sent)} sent`],
     ['all nth', '', 'Promote SMS delivered', 'Share of sales texts that reached a phone.', PF(P(ps.delivered, ps.sent)),
-      failed > TH.sms_failed_pct ? `${PF(failed)} failed, above the ${TH.sms_failed_pct}% limit · ${N(ps.sent)} sent` : `${N(ps.sent)} sent`, failed > TH.sms_failed_pct],
+      failed > TH.sms_failed_pct ? `${PF(failed)} not delivered, above the ${TH.sms_failed_pct}% limit · ${N(ps.sent)} sent` : `${N(ps.sent)} sent`, failed > TH.sms_failed_pct],
     ['all th', 'tup', 'Post-ticket email open', 'Share of ticket-holder emails that were opened.', te.sent ? PF(P(te.opened, te.delivered)) : '—', te.sent ? `${N(te.sent)} sent` : 'none sent'],
     ['all th', 'tup', 'Upsells', 'Ticket holders who added each one.', null, '', false, ups],
   ];
@@ -819,7 +823,7 @@ function renderStatic() {
   + `<div class="tile"><div class="k">Business Bible add-on</div><div class="v">${N(bb.people)}</div><div class="n">${PF(bbRate)} of paid buyers · ${bb.count} sales · ${$$(bb.revenue)} (${bb.bump} at checkout + ${bb.standalone} on its own)</div></div>`
   + `<div class="tile"><div class="k">App billing from ${fmtD(pp.billing_start)}</div><div class="v">${$$(pp.count * pp.price_per_month)}<span style="font-size:.5em;color:var(--muted)">/mo</span></div><div class="n">If all ${pp.count} stay on at $${pp.price_per_month}/month</div></div>`;
 
-  $('watchNote').innerHTML = `Watch list: email unsubscribes above <b style="color:var(--fg)">${TH.email_unsub_pct}%</b>, bounces above <b style="color:var(--fg)">${TH.email_bounce_pct}%</b>, or texts with opt-outs above <b style="color:var(--fg)">${TH.sms_optout_pct}%</b> or failures above <b style="color:var(--fg)">${TH.sms_failed_pct}%</b> turn <span style="color:var(--red)">red</span>. Hover or tap a % for the full count. For a date range, email opens, clicks, unsubscribes and bounces count only emails sent fully inside it, because GHL reports those per email, not per day. When no email fits, they show "totals only".`;
+  $('watchNote').innerHTML = `Watch list: email unsubscribes above <b style="color:var(--fg)">${TH.email_unsub_pct}%</b>, bounces above <b style="color:var(--fg)">${TH.email_bounce_pct}%</b>, or texts with opt-outs above <b style="color:var(--fg)">${TH.sms_optout_pct}%</b> or not delivered above <b style="color:var(--fg)">${TH.sms_failed_pct}%</b> turn <span style="color:var(--red)">red</span>. Hover or tap a % for the full count. For a date range, email opens, clicks, unsubscribes and bounces count only emails sent fully inside it, because GHL reports those per email, not per day. When no email fits, they show "totals only".`;
 
   const other = D.flags.filter(f => !/subject may have changed/.test(f));
   if (other.length) $('msgNote').innerHTML += '<br>Needs a look: ' + other.map(esc).join(' · ');
@@ -952,7 +956,7 @@ function msgTable() {
     const click = e ? (m.no_links ? '<span class="dim">no links</span>' : PF(mClick(m))) : '<span class="dim">pending</span>';
     return `<tr class="${m === best ? 'best' : ''}"><td>${fmtD(m.day)}</td><td>${e ? 'Email' : 'SMS'}</td><td>${m.camp === 'promote' ? 'Promote' : 'Post-ticket'}</td>`
       + `<td class="s">${esc(m.text)}${m === best ? ' <span class="tag best">Best</span>' : ''}${m.flag ? ` <span class="tag flag">${esc(m.flag)}</span>` : ''}</td>`
-      + `<td>${N(m.sent)}</td><td>${PF(mOpen(m))}</td><td>${click}</td><td>${m.camp === 'promote' ? N(m.tickets) : '—'}</td></tr>`;
+      + `<td>${N(m.sent)}</td><td>${e ? PF(mOpen(m)) : tip(PF(mOpen(m)), '', `${N(m.delivered)} of ${N(m.sent)} delivered · ${N(m.failed)} not delivered: ${splitTxt(m)}`)}</td><td>${click}</td><td>${m.camp === 'promote' ? N(m.tickets) : '—'}</td></tr>`;
   }).join('') : `<tr class="empty"><td colspan="8">No emails or texts sent in this date range.</td></tr>`;
 }
 

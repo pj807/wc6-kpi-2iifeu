@@ -4,6 +4,14 @@ The version only changes when the page itself changes. Daily data refreshes keep
 New features go up a minor number (1.1, 1.2). Fixes go up a patch number (1.0.1).
 The "What's new" panel on the page reads `changelog.json`, so update both files together.
 
+## v1.5.4 · Not delivered split + team tests · Nov 17, 2026
+
+- **Refunds are now real customer refunds only.** The 2 refunded orders (Oct 21 and Oct 30) were team test buys, so they're now left out like the $0 and $1 test orders. The report says "Refunds: 0 to date" and the line under the Ticket holders tile is hidden while there are none. Totals stay 148 ticket holders, $31,150 sales, 73 Warrior App.
+- **"Failed" is now "Not delivered"** in the campaign tables, and it's split under the %: "↳ X blocked · Texas SMS safeguard" and "↳ Y carrier / other". The same split shows when you hover a text's delivered % in the message list.
+- **The Watch card names the main cause** when one reason is most of the texts that didn't get through. Right now that's GoHighLevel's Texas SMS safeguard.
+- **Fewer late updates.** The 7pm update on Nov 16 didn't publish because GoHighLevel briefly returned no texts for that day, and the safety check stopped it. Now an empty day is read again, a stopped update tries once more 3 minutes later, and each update starts 45 minutes early (was 30), because GitHub sometimes starts runs late.
+- README explains what "Not delivered" counts and why GoHighLevel's workflow panel shows a lower number. Workflow names in the settings match GoHighLevel.
+
 ## v1.5.3 · Refunds · Nov 17, 2026
 
 - **Refunded tickets no longer count.** GoHighLevel leaves a refunded order marked "Completed", so 2 refunded tickets were still counted as paid. Ticket holders, ticket sales, total sales, campaign credit, Warrior App and Business Bible now leave refunded orders out.
