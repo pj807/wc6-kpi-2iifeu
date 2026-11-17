@@ -109,7 +109,8 @@
   table.k td b{color:var(--fg);font-weight:600}
   .ch{display:inline-block;font-size:10px;letter-spacing:.12em;font-weight:700;padding:3px 7px;border:1px solid var(--line);margin-right:8px;color:var(--fg)}
   .per{color:var(--muted);font-size:12px;display:block;margin-top:2px}
-  .nd{color:var(--muted);font-size:11px;display:block;margin-top:2px;white-space:nowrap}
+  .nd{color:var(--muted);font-size:11px;display:block;margin-top:2px}
+  @media (min-width:701px){.nd{white-space:nowrap}}   /* one line on desktop; wraps on phones so the page never slides sideways */
   .dim{color:#5d605f!important}
   .warn{color:var(--red)!important}
 
