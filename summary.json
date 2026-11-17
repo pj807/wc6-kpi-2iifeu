@@ -1,17 +1,17 @@
 {
  "date": "2026-11-17",
- "as_of": "Nov 17, 7:02am ET",
+ "as_of": "Nov 17, 1:04pm ET",
  "yesterday": "2026-11-16",
  "ticket_holders": {
-  "total": 148,
-  "paid": 145,
+  "total": 149,
+  "paid": 146,
   "comps": 3,
   "new_yesterday": 1
  },
  "summary": {
-  "headline": "1 new ticket yesterday (148 total, 15 days to go)",
-  "win": "73 of 148 ticket holders (49.3%) signed up for the Warrior App (free until Dec 4)",
-  "watch": "promote texts not delivered 26.1% to date (26,593 of 102,079 texts not delivered), above 5%. Main cause: 14,870 of 26,593 (56%) blocked by GHL's Texas SMS safeguard."
+  "headline": "1 new ticket yesterday (149 total, 15 days to go)",
+  "win": "73 of 149 ticket holders (49.0%) signed up for the Warrior App (free until Dec 4)",
+  "watch": "promote texts not delivered 25.7% to date (27,200 of 105,643 texts not delivered), above 5%. Main cause: 15,399 of 27,200 (57%) blocked by GHL's Texas SMS safeguard."
  },
  "promote": {
   "yesterday": {
@@ -37,23 +37,23 @@
   },
   "to_date": {
    "email": {
-    "sent": 545294,
+    "sent": 545320,
     "emails": 33,
     "whole": 33,
-    "rated": 545294,
-    "delivered": 543232,
-    "opened": 169843,
-    "clicked": 1685,
-    "unsub": 648,
-    "bounced": 2662,
-    "ghl_sent": 545948
+    "rated": 545320,
+    "delivered": 543258,
+    "opened": 171341,
+    "clicked": 1696,
+    "unsub": 652,
+    "bounced": 2663,
+    "ghl_sent": 545975
    },
    "sms": {
-    "sent": 102079,
-    "delivered": 75265,
-    "failed": 26593,
-    "optouts": 103,
-    "blocked_tx": 14870
+    "sent": 105643,
+    "delivered": 78168,
+    "failed": 27200,
+    "optouts": 105,
+    "blocked_tx": 15399
    }
   }
  },
@@ -81,23 +81,23 @@
   },
   "to_date": {
    "email": {
-    "sent": 1098,
-    "emails": 9,
-    "whole": 9,
-    "rated": 1098,
-    "delivered": 1098,
-    "opened": 498,
+    "sent": 1230,
+    "emails": 10,
+    "whole": 10,
+    "rated": 1230,
+    "delivered": 1230,
+    "opened": 535,
     "clicked": 0,
     "unsub": 0,
     "bounced": 0,
-    "ghl_sent": 1098
+    "ghl_sent": 1230
    },
    "sms": {
-    "sent": 684,
-    "delivered": 600,
-    "failed": 82,
+    "sent": 786,
+    "delivered": 687,
+    "failed": 93,
     "optouts": 1,
-    "blocked_tx": 56
+    "blocked_tx": 64
    }
   }
  },
@@ -108,11 +108,11 @@
    "billing_start": "2026-12-04"
   },
   "business_bible": {
-   "count": 21,
-   "people": 20,
-   "bump": 20,
+   "count": 22,
+   "people": 21,
+   "bump": 21,
    "standalone": 1,
-   "revenue": 2295.0
+   "revenue": 2400.0
   }
  }
 }
