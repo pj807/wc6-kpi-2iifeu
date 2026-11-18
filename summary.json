@@ -1,7 +1,7 @@
 {
- "date": "2026-11-17",
- "as_of": "Nov 18, 1:19am ET",
- "yesterday": "2026-11-16",
+ "date": "2026-11-18",
+ "as_of": "Nov 18, 7:12am ET",
+ "yesterday": "2026-11-17",
  "ticket_holders": {
   "total": 149,
   "paid": 146,
@@ -9,48 +9,48 @@
   "new_yesterday": 1
  },
  "summary": {
-  "headline": "1 new ticket yesterday (149 total, 15 days to go)",
+  "headline": "1 new ticket yesterday (149 total, 14 days to go)",
   "win": "73 of 149 ticket holders (49.0%) signed up for the Warrior App (free until Dec 4)",
-  "watch": "promote texts not delivered 25.7% to date (27,201 of 105,647 texts not delivered), above 5%. Main cause: 15,399 of 27,201 (57%) blocked by GHL's Texas SMS safeguard."
+  "watch": "promote texts not delivered 25.7% to date (27,201 of 105,648 texts not delivered), above 5%. Main cause: 15,399 of 27,201 (57%) blocked by GHL's Texas SMS safeguard."
  },
  "promote": {
   "yesterday": {
    "email": {
-    "sent": 22558,
-    "emails": 20,
-    "whole": 6,
-    "rated": 22473,
-    "delivered": 22330,
-    "opened": 6368,
-    "clicked": 40,
-    "unsub": 13,
-    "bounced": 141,
-    "ghl_sent": 22472
+    "sent": 22523,
+    "emails": 16,
+    "whole": 1,
+    "rated": 22447,
+    "delivered": 22322,
+    "opened": 6295,
+    "clicked": 49,
+    "unsub": 10,
+    "bounced": 133,
+    "ghl_sent": 22456
    },
    "sms": {
-    "sent": 3572,
-    "delivered": 2949,
-    "failed": 603,
-    "optouts": 4,
+    "sent": 3568,
+    "delivered": 2934,
+    "failed": 604,
+    "optouts": 2,
     "blocked_tx": 529
    }
   },
   "to_date": {
    "email": {
-    "sent": 545365,
+    "sent": 567812,
     "emails": 33,
     "whole": 33,
-    "rated": 545365,
-    "delivered": 543306,
-    "opened": 172703,
-    "clicked": 1699,
-    "unsub": 665,
-    "bounced": 2668,
-    "ghl_sent": 546025
+    "rated": 567812,
+    "delivered": 565584,
+    "opened": 176977,
+    "clicked": 1714,
+    "unsub": 669,
+    "bounced": 2803,
+    "ghl_sent": 568478
    },
    "sms": {
-    "sent": 105647,
-    "delivered": 78200,
+    "sent": 105648,
+    "delivered": 78204,
     "failed": 27201,
     "optouts": 105,
     "blocked_tx": 15399
@@ -60,20 +60,20 @@
  "post_ticket": {
   "yesterday": {
    "email": {
-    "sent": 131,
+    "sent": 132,
     "emails": 1,
     "whole": 1,
-    "rated": 131,
-    "delivered": 131,
-    "opened": 49,
+    "rated": 132,
+    "delivered": 132,
+    "opened": 58,
     "clicked": 0,
     "unsub": 0,
     "bounced": 0,
-    "ghl_sent": 131
+    "ghl_sent": 132
    },
    "sms": {
-    "sent": 101,
-    "delivered": 89,
+    "sent": 102,
+    "delivered": 90,
     "failed": 12,
     "optouts": 0,
     "blocked_tx": 8
