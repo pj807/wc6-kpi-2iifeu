@@ -1,6 +1,6 @@
 {
  "date": "2026-11-18",
- "as_of": "Nov 18, 7:12am ET",
+ "as_of": "Nov 18, 1:04pm ET",
  "yesterday": "2026-11-17",
  "ticket_holders": {
   "total": 149,
@@ -11,7 +11,7 @@
  "summary": {
   "headline": "1 new ticket yesterday (149 total, 14 days to go)",
   "win": "73 of 149 ticket holders (49.0%) signed up for the Warrior App (free until Dec 4)",
-  "watch": "promote texts not delivered 25.7% to date (27,201 of 105,648 texts not delivered), above 5%. Main cause: 15,399 of 27,201 (57%) blocked by GHL's Texas SMS safeguard."
+  "watch": "promote texts not delivered 25.5% to date (27,804 of 109,211 texts not delivered), above 5%. Main cause: 15,928 of 27,804 (57%) blocked by GHL's Texas SMS safeguard."
  },
  "promote": {
   "yesterday": {
@@ -37,23 +37,23 @@
   },
   "to_date": {
    "email": {
-    "sent": 567812,
+    "sent": 567838,
     "emails": 33,
     "whole": 33,
-    "rated": 567812,
-    "delivered": 565584,
-    "opened": 176977,
-    "clicked": 1714,
-    "unsub": 669,
+    "rated": 567838,
+    "delivered": 565612,
+    "opened": 178371,
+    "clicked": 1720,
+    "unsub": 677,
     "bounced": 2803,
-    "ghl_sent": 568478
+    "ghl_sent": 568504
    },
    "sms": {
-    "sent": 105648,
-    "delivered": 78204,
-    "failed": 27201,
-    "optouts": 105,
-    "blocked_tx": 15399
+    "sent": 109211,
+    "delivered": 81108,
+    "failed": 27804,
+    "optouts": 136,
+    "blocked_tx": 15928
    }
   }
  },
@@ -81,23 +81,23 @@
   },
   "to_date": {
    "email": {
-    "sent": 1230,
-    "emails": 10,
-    "whole": 10,
-    "rated": 1230,
-    "delivered": 1230,
-    "opened": 564,
+    "sent": 1362,
+    "emails": 11,
+    "whole": 11,
+    "rated": 1362,
+    "delivered": 1362,
+    "opened": 603,
     "clicked": 0,
     "unsub": 0,
     "bounced": 0,
-    "ghl_sent": 1230
+    "ghl_sent": 1362
    },
    "sms": {
-    "sent": 786,
-    "delivered": 690,
-    "failed": 94,
+    "sent": 888,
+    "delivered": 778,
+    "failed": 105,
     "optouts": 1,
-    "blocked_tx": 64
+    "blocked_tx": 72
    }
   }
  },
