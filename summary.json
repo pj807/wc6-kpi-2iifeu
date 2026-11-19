@@ -1,6 +1,6 @@
 {
  "date": "2026-11-19",
- "as_of": "Nov 19, 7:12am ET",
+ "as_of": "Nov 19, 12:58pm ET",
  "yesterday": "2026-11-18",
  "ticket_holders": {
   "total": 149,
@@ -11,7 +11,7 @@
  "summary": {
   "headline": "0 new tickets yesterday (149 total, 13 days to go)",
   "win": "73 of 149 ticket holders (49.0%) signed up for the Warrior App (free until Dec 4)",
-  "watch": "promote texts not delivered 25.5% to date (27,805 of 109,217 texts not delivered), above 5%. Main cause: 15,928 of 27,805 (57%) blocked by GHL's Texas SMS safeguard."
+  "watch": "promote texts not delivered 25.2% to date (28,410 of 112,761 texts not delivered), above 5%. Main cause: 16,457 of 28,410 (58%) blocked by GHL's Texas SMS safeguard."
  },
  "promote": {
   "yesterday": {
@@ -37,23 +37,23 @@
   },
   "to_date": {
    "email": {
-    "sent": 590324,
+    "sent": 590348,
     "emails": 33,
     "whole": 33,
-    "rated": 590324,
-    "delivered": 587964,
-    "opened": 183873,
-    "clicked": 1763,
-    "unsub": 710,
+    "rated": 590348,
+    "delivered": 587989,
+    "opened": 185231,
+    "clicked": 1769,
+    "unsub": 717,
     "bounced": 2968,
-    "ghl_sent": 590999
+    "ghl_sent": 591023
    },
    "sms": {
-    "sent": 109217,
-    "delivered": 81141,
-    "failed": 27805,
-    "optouts": 138,
-    "blocked_tx": 15928
+    "sent": 112761,
+    "delivered": 84010,
+    "failed": 28410,
+    "optouts": 151,
+    "blocked_tx": 16457
    }
   }
  },
@@ -81,23 +81,23 @@
   },
   "to_date": {
    "email": {
-    "sent": 1362,
-    "emails": 11,
-    "whole": 11,
-    "rated": 1362,
-    "delivered": 1362,
-    "opened": 621,
+    "sent": 1494,
+    "emails": 12,
+    "whole": 12,
+    "rated": 1494,
+    "delivered": 1493,
+    "opened": 660,
     "clicked": 0,
     "unsub": 0,
     "bounced": 0,
-    "ghl_sent": 1362
+    "ghl_sent": 1494
    },
    "sms": {
-    "sent": 888,
-    "delivered": 780,
-    "failed": 106,
+    "sent": 990,
+    "delivered": 865,
+    "failed": 117,
     "optouts": 1,
-    "blocked_tx": 72
+    "blocked_tx": 80
    }
   }
  },
