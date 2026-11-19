@@ -1,56 +1,56 @@
 {
- "date": "2026-11-18",
- "as_of": "Nov 19, 1:16am ET",
- "yesterday": "2026-11-17",
+ "date": "2026-11-19",
+ "as_of": "Nov 19, 7:12am ET",
+ "yesterday": "2026-11-18",
  "ticket_holders": {
   "total": 149,
   "paid": 146,
   "comps": 3,
-  "new_yesterday": 1
+  "new_yesterday": 0
  },
  "summary": {
-  "headline": "1 new ticket yesterday (149 total, 14 days to go)",
+  "headline": "0 new tickets yesterday (149 total, 13 days to go)",
   "win": "73 of 149 ticket holders (49.0%) signed up for the Warrior App (free until Dec 4)",
-  "watch": "promote texts not delivered 25.5% to date (27,805 of 109,216 texts not delivered), above 5%. Main cause: 15,928 of 27,805 (57%) blocked by GHL's Texas SMS safeguard."
+  "watch": "promote texts not delivered 25.5% to date (27,805 of 109,217 texts not delivered), above 5%. Main cause: 15,928 of 27,805 (57%) blocked by GHL's Texas SMS safeguard."
  },
  "promote": {
   "yesterday": {
    "email": {
-    "sent": 22523,
+    "sent": 22518,
     "emails": 16,
     "whole": 1,
-    "rated": 22447,
-    "delivered": 22322,
-    "opened": 6295,
-    "clicked": 49,
-    "unsub": 10,
-    "bounced": 133,
-    "ghl_sent": 22456
+    "rated": 22431,
+    "delivered": 22268,
+    "opened": 6263,
+    "clicked": 25,
+    "unsub": 13,
+    "bounced": 169,
+    "ghl_sent": 22442
    },
    "sms": {
-    "sent": 3568,
+    "sent": 3569,
     "delivered": 2934,
-    "failed": 604,
-    "optouts": 2,
+    "failed": 602,
+    "optouts": 33,
     "blocked_tx": 529
    }
   },
   "to_date": {
    "email": {
-    "sent": 567889,
+    "sent": 590324,
     "emails": 33,
     "whole": 33,
-    "rated": 567889,
-    "delivered": 565662,
-    "opened": 179681,
-    "clicked": 1724,
-    "unsub": 705,
-    "bounced": 2838,
-    "ghl_sent": 568558
+    "rated": 590324,
+    "delivered": 587964,
+    "opened": 183873,
+    "clicked": 1763,
+    "unsub": 710,
+    "bounced": 2968,
+    "ghl_sent": 590999
    },
    "sms": {
-    "sent": 109216,
-    "delivered": 81140,
+    "sent": 109217,
+    "delivered": 81141,
     "failed": 27805,
     "optouts": 138,
     "blocked_tx": 15928
@@ -65,7 +65,7 @@
     "whole": 1,
     "rated": 132,
     "delivered": 132,
-    "opened": 58,
+    "opened": 56,
     "clicked": 0,
     "unsub": 0,
     "bounced": 0,
@@ -86,7 +86,7 @@
     "whole": 11,
     "rated": 1362,
     "delivered": 1362,
-    "opened": 620,
+    "opened": 621,
     "clicked": 0,
     "unsub": 0,
     "bounced": 0,
