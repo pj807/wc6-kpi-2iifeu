@@ -106,8 +106,8 @@
    }
   }
  },
- "generated_at": "2026-11-20T18:56+00:00",
- "as_of": "Nov 20, 1:56pm ET",
+ "generated_at": "2026-11-20T19:03+00:00",
+ "as_of": "Nov 20, 2:03pm ET",
  "today": "2026-11-20",
  "yesterday": "2026-11-19",
  "campaign_start": "2026-10-12",
@@ -172,20 +172,20 @@
  "todate": {
   "promote": {
    "email": {
-    "sent": 612841,
+    "sent": 612842,
     "emails": 33,
     "whole": 33,
-    "rated": 612841,
-    "delivered": 610340,
-    "opened": 192124,
+    "rated": 612842,
+    "delivered": 610341,
+    "opened": 192129,
     "clicked": 1812,
     "unsub": 745,
     "bounced": 3111,
-    "ghl_sent": 613526
+    "ghl_sent": 613527
    },
    "sms": {
     "sent": 116297,
-    "delivered": 86933,
+    "delivered": 86934,
     "failed": 29012,
     "optouts": 161,
     "blocked_tx": 16987
@@ -231,8 +231,8 @@
    "line": "promote texts not delivered 24.9% to date (29,012 of 116,297 texts not delivered), above 5%. Main cause: 16,987 of 29,012 (59%) blocked by GHL's Texas SMS safeguard."
   }
  },
- "report": "WarriorCon 6 — report for Nov 19 (updated Nov 20, 7:12am ET)\n\nSUMMARY\n• 1 new ticket yesterday (150 total, 12 days to go)\n• Win: 73 of 150 paid + comp ticket holders (48.7%) signed up for the Warrior App (free until Dec 4)\n• Watch: promote texts not delivered 24.9% to date (29,012 of 116,297 texts not delivered), above 5%. Main cause: 16,987 of 29,012 (59%) blocked by GHL's Texas SMS safeguard.\n\nLEFT TO SEND (until Dec 2)\nPromote: 11 emails · 10 texts — next: Sat Nov 21, 6:00am ET\nTicket holders: 10 emails · 10 texts — next: Sat Nov 21, 11:30am ET\n\nTICKET HOLDERS: 150 (147 paid + 3 comps) · 1 new yesterday\nRefunds: 0 to date\n$31,653 total sales ($29,253 tickets + $2,400 Business Bible)\n113 of 147 tickets were bought within 48 hrs of an email/text\n\nBRING YOUR BROTHER (free friend tickets)\nYesterday: none yet\nTo date: none yet\n\nPROMOTE (non-ticket holders)\nYesterday — Email: 22,495 sent · 27.3% open · 0.2% click\nYesterday — SMS: 3,550 sent · 81.9% delivered\nTo date — Email: 612,841 sent · 31.5% open · 0.3% click\nTo date — SMS: 116,297 sent · 74.8% delivered\n\nPOST-TICKET SEDUCTION (ticket holders)\nYesterday — Email: 132 sent · 42.0% open\nYesterday — SMS: 102 sent · 85.3% delivered\nTo date — Email: 1,627 sent · 44.8% open\nTo date — SMS: 1,094 sent · 87.4% delivered\n\nUPSELLS\nWarrior App (Power Plan): 73 · 48.7% of paid + comp ticket holders\nBusiness Bible: 22 sales · $2,400 · bought by 21 of 147 paid buyers (14.3%)\n(Texts have no open rate.)",
- "report_as_of": "Nov 20, 1:56pm ET",
+ "report": "WarriorCon 6 — report for Nov 19 (updated Nov 20, 7:12am ET)\n\nSUMMARY\n• 1 new ticket yesterday (150 total, 12 days to go)\n• Win: 73 of 150 paid + comp ticket holders (48.7%) signed up for the Warrior App (free until Dec 4)\n• Watch: promote texts not delivered 24.9% to date (29,012 of 116,297 texts not delivered), above 5%. Main cause: 16,987 of 29,012 (59%) blocked by GHL's Texas SMS safeguard.\n\nLEFT TO SEND (until Dec 2)\nPromote: 11 emails · 11 texts — next: Sat Nov 21, 6:00am ET\nTicket holders: 10 emails · 10 texts — next: Sat Nov 21, 11:30am ET\n\nTICKET HOLDERS: 150 (147 paid + 3 comps) · 1 new yesterday\nRefunds: 0 to date\n$31,653 total sales ($29,253 tickets + $2,400 Business Bible)\n113 of 147 tickets were bought within 48 hrs of an email/text\n\nBRING YOUR BROTHER (free friend tickets)\nYesterday: none yet\nTo date: none yet\n\nPROMOTE (non-ticket holders)\nYesterday — Email: 22,495 sent · 27.3% open · 0.2% click\nYesterday — SMS: 3,550 sent · 81.9% delivered\nTo date — Email: 612,842 sent · 31.5% open · 0.3% click\nTo date — SMS: 116,297 sent · 74.8% delivered\n\nPOST-TICKET SEDUCTION (ticket holders)\nYesterday — Email: 132 sent · 42.0% open\nYesterday — SMS: 102 sent · 85.3% delivered\nTo date — Email: 1,627 sent · 44.8% open\nTo date — SMS: 1,094 sent · 87.4% delivered\n\nUPSELLS\nWarrior App (Power Plan): 73 · 48.7% of paid + comp ticket holders\nBusiness Bible: 22 sales · $2,400 · bought by 21 of 147 paid buyers (14.3%)\n(Texts have no open rate.)",
+ "report_as_of": "Nov 20, 2:03pm ET",
  "left": {
   "until": "2026-12-02",
   "plan_read_at": "2026-11-20",
@@ -247,10 +247,10 @@
     },
     "sms": {
      "planned": 43,
-     "sent": 33,
-     "left": 10,
+     "sent": 32,
+     "left": 11,
      "rolling": 0,
-     "last": "2026-11-23"
+     "last": "2026-12-01"
     },
     "next": {
      "at": "2026-11-21T11:00:00Z",
@@ -479,21 +479,12 @@
     "wf": "0.3 Texts",
     "steps": 21,
     "planned": 21,
-    "sent": 11,
-    "left": 10,
+    "sent": 10,
+    "left": 11,
     "after_until": 0
    }
   ],
-  "notes": [
-   "0.3 Texts SMS 21 - Nov 24 - 11:30 AM ET (wc-pm24) was due Sun Oct 25, 11:30am ET but no sends showed up",
-   "0.3 Texts SMS 22 - Nov 25 - 11:30 AM ET (wc-pm25) was due Mon Oct 26, 11:30am ET but no sends showed up",
-   "0.3 Texts SMS 23 - Nov 26 - 11:30 AM ET (wc-pm26) was due Tue Oct 27, 11:30am ET but no sends showed up",
-   "0.3 Texts SMS 24 - Nov 27 - 11:30 AM ET (wc-pm27) was due Wed Oct 28, 11:30am ET but no sends showed up",
-   "0.3 Texts SMS 25 - Nov 28 - 11:30 AM ET (wc-pm28) was due Thu Oct 29, 11:30am ET but no sends showed up",
-   "0.3 Texts SMS 26 - Nov 29 - 11:30 AM ET (wc-pm29) was due Fri Oct 30, 11:30am ET but no sends showed up",
-   "0.3 Texts SMS 27 - Nov 30 - 11:30 AM ET (wc-pm30) was due Sat Oct 31, 11:30am ET but no sends showed up",
-   "0.3 Texts SMS 28 - Dec 1 - 11:30 AM ET (wc-pm01) was due Sun Nov 1, 10:30am ET but no sends showed up"
-  ]
+  "notes": []
  },
  "plan_check": {
   "stale": false,
@@ -2128,7 +2119,7 @@
     "0.0 Email 5"
    ],
    "day": "2026-10-22",
-   "sent": 22929,
+   "sent": 22930,
    "wrong_audience": 48,
    "days": {
     "2026-10-22": [
@@ -2403,9 +2394,9 @@
    "ticket_revenue": 398.0,
    "no_links": false,
    "main_at": "2026-10-22T10:04:17.365Z",
-   "ghl_sent": 22977,
-   "delivered": 22887,
-   "opened": 7670,
+   "ghl_sent": 22978,
+   "delivered": 22888,
+   "opened": 7671,
    "clicked": 68,
    "unsub": 43,
    "bounced": 91,
@@ -3065,8 +3056,7 @@
    "camp": "promote",
    "text": "You don't need another breakthrough. You need a game. Here's the diffe",
    "steps": [
-    "0.0 Day 7",
-    "0.3 SMS 20 - Nov 23 - 11:30 AM ET (wc-pm23)"
+    "0.0 Day 7"
    ],
    "day": "2026-10-24",
    "sent": 3693,
@@ -8044,7 +8034,7 @@
    "main_at": "2026-11-18T11:00:01.505Z",
    "ghl_sent": 22442,
    "delivered": 22268,
-   "opened": 6547,
+   "opened": 6548,
    "clicked": 26,
    "unsub": 16,
    "bounced": 169,
@@ -8387,7 +8377,7 @@
    "main_at": "2026-11-20T11:00:01.982Z",
    "ghl_sent": 22414,
    "delivered": 22269,
-   "opened": 5145,
+   "opened": 5148,
    "clicked": 40,
    "unsub": 5,
    "bounced": 136,
@@ -8527,7 +8517,7 @@
     "2026-11-20": [
      3525,
      0,
-     2877,
+     2878,
      600,
      7,
      5,
@@ -8539,7 +8529,7 @@
    "ticket_revenue": 0,
    "no_links": false,
    "main_at": "2026-11-20T16:32:39.466Z",
-   "delivered": 2877,
+   "delivered": 2878,
    "failed": 600,
    "blocked_tx": 528,
    "optouts": 7,
@@ -9212,6 +9202,30 @@
    "replies": 0
   },
   {
+   "id": "ff25dc5e",
+   "key": "s:you don't need another breakthrough. you#wc-pm23",
+   "ch": "sms",
+   "camp": "promote",
+   "text": "You don't need another breakthrough. You need a new standard. Read it:",
+   "steps": [
+    "0.3 SMS 20 - Nov 23 - 11:30 AM ET (wc-pm23)"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "main_at": null,
+   "delivered": 0,
+   "failed": 0,
+   "blocked_tx": 0,
+   "optouts": 0,
+   "replies": 0
+  },
+  {
    "id": "f003d8bb",
    "key": "s:the day after is where most men lose. no",
    "ch": "sms",
@@ -9405,14 +9419,6 @@
   }
  ],
  "flags": [
-  "Email matched only 181 of 23,039 GHL sends (subject may have changed): I'm Not Bringing You Back to Say Goodbye.",
-  "Plan may be out of date — 0.3 Texts SMS 21 - Nov 24 - 11:30 AM ET (wc-pm24) was due Sun Oct 25, 11:30am ET but no sends showed up",
-  "Plan may be out of date — 0.3 Texts SMS 22 - Nov 25 - 11:30 AM ET (wc-pm25) was due Mon Oct 26, 11:30am ET but no sends showed up",
-  "Plan may be out of date — 0.3 Texts SMS 23 - Nov 26 - 11:30 AM ET (wc-pm26) was due Tue Oct 27, 11:30am ET but no sends showed up",
-  "Plan may be out of date — 0.3 Texts SMS 24 - Nov 27 - 11:30 AM ET (wc-pm27) was due Wed Oct 28, 11:30am ET but no sends showed up",
-  "Plan may be out of date — 0.3 Texts SMS 25 - Nov 28 - 11:30 AM ET (wc-pm28) was due Thu Oct 29, 11:30am ET but no sends showed up",
-  "Plan may be out of date — 0.3 Texts SMS 26 - Nov 29 - 11:30 AM ET (wc-pm29) was due Fri Oct 30, 11:30am ET but no sends showed up",
-  "Plan may be out of date — 0.3 Texts SMS 27 - Nov 30 - 11:30 AM ET (wc-pm30) was due Sat Oct 31, 11:30am ET but no sends showed up",
-  "Plan may be out of date — 0.3 Texts SMS 28 - Dec 1 - 11:30 AM ET (wc-pm01) was due Sun Nov 1, 10:30am ET but no sends showed up"
+  "Email matched only 181 of 23,039 GHL sends (subject may have changed): I'm Not Bringing You Back to Say Goodbye."
  ]
 }

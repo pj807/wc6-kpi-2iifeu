@@ -1,6 +1,6 @@
 {
  "date": "2026-11-20",
- "as_of": "Nov 20, 1:56pm ET",
+ "as_of": "Nov 20, 2:03pm ET",
  "yesterday": "2026-11-19",
  "ticket_holders": {
   "total": 150,
@@ -40,20 +40,20 @@
   },
   "to_date": {
    "email": {
-    "sent": 612841,
+    "sent": 612842,
     "emails": 33,
     "whole": 33,
-    "rated": 612841,
-    "delivered": 610340,
-    "opened": 192124,
+    "rated": 612842,
+    "delivered": 610341,
+    "opened": 192129,
     "clicked": 1812,
     "unsub": 745,
     "bounced": 3111,
-    "ghl_sent": 613526
+    "ghl_sent": 613527
    },
    "sms": {
     "sent": 116297,
-    "delivered": 86933,
+    "delivered": 86934,
     "failed": 29012,
     "optouts": 161,
     "blocked_tx": 16987
