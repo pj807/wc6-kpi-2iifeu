@@ -1,6 +1,6 @@
 {
  "schema": 2,
- "email_watermark": "2026-11-20T18:08:01.795Z",
+ "email_watermark": "2026-11-20T18:46:46.319Z",
  "update_times_et": [
   "01:00",
   "07:00",
@@ -11,8 +11,8 @@
   "date": "2026-11-20",
   "tickets": 0,
   "brothers": 0,
-  "emails": 22575,
-  "texts": 3634
+  "emails": 22576,
+  "texts": 3635
  },
  "ghl_links": {
   "promote": {
@@ -106,8 +106,8 @@
    }
   }
  },
- "generated_at": "2026-11-20T18:43+00:00",
- "as_of": "Nov 20, 1:43pm ET",
+ "generated_at": "2026-11-20T18:56+00:00",
+ "as_of": "Nov 20, 1:56pm ET",
  "today": "2026-11-20",
  "yesterday": "2026-11-19",
  "campaign_start": "2026-10-12",
@@ -177,15 +177,15 @@
     "whole": 33,
     "rated": 612841,
     "delivered": 610340,
-    "opened": 192115,
+    "opened": 192124,
     "clicked": 1812,
     "unsub": 745,
     "bounced": 3111,
     "ghl_sent": 613526
    },
    "sms": {
-    "sent": 116296,
-    "delivered": 86932,
+    "sent": 116297,
+    "delivered": 86933,
     "failed": 29012,
     "optouts": 161,
     "blocked_tx": 16987
@@ -227,30 +227,30 @@
   },
   "watch": {
    "big": "Promote texts not delivered: 24.9%",
-   "sub": "Above the 5% limit: 29,012 of 116,296 texts not delivered to date. Yesterday: 17.0%. Main cause: 16,987 of 29,012 (59%) blocked by GHL's Texas SMS safeguard.",
-   "line": "promote texts not delivered 24.9% to date (29,012 of 116,296 texts not delivered), above 5%. Main cause: 16,987 of 29,012 (59%) blocked by GHL's Texas SMS safeguard."
+   "sub": "Above the 5% limit: 29,012 of 116,297 texts not delivered to date. Yesterday: 17.0%. Main cause: 16,987 of 29,012 (59%) blocked by GHL's Texas SMS safeguard.",
+   "line": "promote texts not delivered 24.9% to date (29,012 of 116,297 texts not delivered), above 5%. Main cause: 16,987 of 29,012 (59%) blocked by GHL's Texas SMS safeguard."
   }
  },
- "report": "WarriorCon 6 — report for Nov 19 (updated Nov 20, 7:12am ET)\n\nSUMMARY\n• 1 new ticket yesterday (150 total, 12 days to go)\n• Win: 73 of 150 paid + comp ticket holders (48.7%) signed up for the Warrior App (free until Dec 4)\n• Watch: promote texts not delivered 24.9% to date (29,012 of 116,296 texts not delivered), above 5%. Main cause: 16,987 of 29,012 (59%) blocked by GHL's Texas SMS safeguard.\n\nLEFT TO SEND (until Dec 2)\nPromote: 2 emails · 2 texts — next: Sat Nov 21, 6:00am ET\nTicket holders: 4 emails · 4 texts — next: Sat Nov 21, 11:30am ET\n\nTICKET HOLDERS: 150 (147 paid + 3 comps) · 1 new yesterday\nRefunds: 0 to date\n$31,653 total sales ($29,253 tickets + $2,400 Business Bible)\n113 of 147 tickets were bought within 48 hrs of an email/text\n\nBRING YOUR BROTHER (free friend tickets)\nYesterday: none yet\nTo date: none yet\n\nPROMOTE (non-ticket holders)\nYesterday — Email: 22,495 sent · 27.3% open · 0.2% click\nYesterday — SMS: 3,550 sent · 81.9% delivered\nTo date — Email: 612,841 sent · 31.5% open · 0.3% click\nTo date — SMS: 116,296 sent · 74.8% delivered\n\nPOST-TICKET SEDUCTION (ticket holders)\nYesterday — Email: 132 sent · 42.0% open\nYesterday — SMS: 102 sent · 85.3% delivered\nTo date — Email: 1,627 sent · 44.8% open\nTo date — SMS: 1,094 sent · 87.4% delivered\n\nUPSELLS\nWarrior App (Power Plan): 73 · 48.7% of paid + comp ticket holders\nBusiness Bible: 22 sales · $2,400 · bought by 21 of 147 paid buyers (14.3%)\n(Texts have no open rate.)",
- "report_as_of": "Nov 20, 1:43pm ET",
+ "report": "WarriorCon 6 — report for Nov 19 (updated Nov 20, 7:12am ET)\n\nSUMMARY\n• 1 new ticket yesterday (150 total, 12 days to go)\n• Win: 73 of 150 paid + comp ticket holders (48.7%) signed up for the Warrior App (free until Dec 4)\n• Watch: promote texts not delivered 24.9% to date (29,012 of 116,297 texts not delivered), above 5%. Main cause: 16,987 of 29,012 (59%) blocked by GHL's Texas SMS safeguard.\n\nLEFT TO SEND (until Dec 2)\nPromote: 11 emails · 10 texts — next: Sat Nov 21, 6:00am ET\nTicket holders: 10 emails · 10 texts — next: Sat Nov 21, 11:30am ET\n\nTICKET HOLDERS: 150 (147 paid + 3 comps) · 1 new yesterday\nRefunds: 0 to date\n$31,653 total sales ($29,253 tickets + $2,400 Business Bible)\n113 of 147 tickets were bought within 48 hrs of an email/text\n\nBRING YOUR BROTHER (free friend tickets)\nYesterday: none yet\nTo date: none yet\n\nPROMOTE (non-ticket holders)\nYesterday — Email: 22,495 sent · 27.3% open · 0.2% click\nYesterday — SMS: 3,550 sent · 81.9% delivered\nTo date — Email: 612,841 sent · 31.5% open · 0.3% click\nTo date — SMS: 116,297 sent · 74.8% delivered\n\nPOST-TICKET SEDUCTION (ticket holders)\nYesterday — Email: 132 sent · 42.0% open\nYesterday — SMS: 102 sent · 85.3% delivered\nTo date — Email: 1,627 sent · 44.8% open\nTo date — SMS: 1,094 sent · 87.4% delivered\n\nUPSELLS\nWarrior App (Power Plan): 73 · 48.7% of paid + comp ticket holders\nBusiness Bible: 22 sales · $2,400 · bought by 21 of 147 paid buyers (14.3%)\n(Texts have no open rate.)",
+ "report_as_of": "Nov 20, 1:56pm ET",
  "left": {
   "until": "2026-12-02",
-  "plan_read_at": "2026-11-16",
+  "plan_read_at": "2026-11-20",
   "audiences": {
    "promote": {
     "email": {
-     "planned": 29,
+     "planned": 38,
      "sent": 27,
-     "left": 2,
+     "left": 11,
      "rolling": 0,
-     "last": "2026-11-22"
+     "last": "2026-12-01"
     },
     "sms": {
-     "planned": 34,
-     "sent": 32,
-     "left": 2,
+     "planned": 43,
+     "sent": 33,
+     "left": 10,
      "rolling": 0,
-     "last": "2026-11-22"
+     "last": "2026-11-23"
     },
     "next": {
      "at": "2026-11-21T11:00:00Z",
@@ -276,23 +276,71 @@
       "ch": "email",
       "step": "0.2 Emails · Email 33",
       "text": "The man who got you here may be holding you back."
+     },
+     {
+      "at": "2026-11-23T11:00:00Z",
+      "label": "Mon Nov 23, 6:00am ET",
+      "approx": false,
+      "ch": "email",
+      "step": "0.2 Emails · Email 34",
+      "text": "Your next breakthrough won't save you."
+     },
+     {
+      "at": "2026-11-24T11:00:00Z",
+      "label": "Tue Nov 24, 6:00am ET",
+      "approx": false,
+      "ch": "email",
+      "step": "0.2 Emails · Email 35",
+      "text": "The day after is where most men lose."
+     },
+     {
+      "at": "2026-11-25T11:00:00Z",
+      "label": "Wed Nov 25, 6:00am ET",
+      "approx": false,
+      "ch": "email",
+      "step": "0.2 Emails · Email 36",
+      "text": "12 weeks from now, where will you be?"
+     },
+     {
+      "at": "2026-11-26T11:00:00Z",
+      "label": "Thu Nov 26, 6:00am ET",
+      "approx": false,
+      "ch": "email",
+      "step": "0.2 Emails · Email 37",
+      "text": "What if you're already holding what you've been praying for?"
+     },
+     {
+      "at": "2026-11-27T11:00:00Z",
+      "label": "Fri Nov 27, 6:00am ET",
+      "approx": false,
+      "ch": "email",
+      "step": "0.2 Emails · Email 38",
+      "text": "Black Friday: What are you really buying?"
+     },
+     {
+      "at": "2026-11-28T11:00:00Z",
+      "label": "Sat Nov 28, 6:00am ET",
+      "approx": false,
+      "ch": "email",
+      "step": "0.2 Emails · Email 39",
+      "text": "You've been reading these emails. Now what?"
      }
     ]
    },
    "post_ticket": {
     "email": {
-     "planned": 17,
+     "planned": 23,
      "sent": 13,
-     "left": 4,
+     "left": 10,
      "rolling": 0,
-     "last": "2026-11-24"
+     "last": "2026-11-30"
     },
     "sms": {
-     "planned": 15,
+     "planned": 21,
      "sent": 11,
-     "left": 4,
+     "left": 10,
      "rolling": 0,
-     "last": "2026-11-24"
+     "last": "2026-11-30"
     },
     "next": {
      "at": "2026-11-21T16:30:00Z",
@@ -334,6 +382,38 @@
       "ch": "email",
       "step": "1.03 Emails · Email - Nov 24 Ticket Holder",
       "text": "(WC6) - The System Is Going Into Your Hands…"
+     },
+     {
+      "at": "2026-11-25T16:30:00Z",
+      "label": "Wed Nov 25, 11:30am ET",
+      "approx": false,
+      "ch": "email",
+      "step": "1.03 Emails · Email - Nov 25 Ticket Holder",
+      "text": "(WC6) - Seven Days Until We Begin…"
+     },
+     {
+      "at": "2026-11-26T16:30:00Z",
+      "label": "Thu Nov 26, 11:30am ET",
+      "approx": false,
+      "ch": "email",
+      "step": "1.03 Emails · Email - Nov 26 Ticket Holder",
+      "text": "(WC6) - Gratitude Is Not Complacency…"
+     },
+     {
+      "at": "2026-11-27T16:30:00Z",
+      "label": "Fri Nov 27, 11:30am ET",
+      "approx": false,
+      "ch": "email",
+      "step": "1.03 Emails · Email - Nov 27 Ticket Holder",
+      "text": "(WC6) - You Can't Buy Your Way Into a Different Life…"
+     },
+     {
+      "at": "2026-11-28T16:30:00Z",
+      "label": "Sat Nov 28, 11:30am ET",
+      "approx": false,
+      "ch": "email",
+      "step": "1.03 Emails · Email - Nov 28 Ticket Holder",
+      "text": "(WC6) - FOUR DAYS. THE COUNTDOWN IS ON."
      }
     ]
    }
@@ -365,18 +445,18 @@
    },
    {
     "wf": "0.2 Emails",
-    "steps": 14,
-    "planned": 14,
+    "steps": 23,
+    "planned": 23,
     "sent": 12,
-    "left": 2,
+    "left": 11,
     "after_until": 0
    },
    {
     "wf": "1.03 Emails",
-    "steps": 17,
-    "planned": 17,
+    "steps": 23,
+    "planned": 23,
     "sent": 13,
-    "left": 4,
+    "left": 10,
     "after_until": 0
    },
    {
@@ -389,61 +469,37 @@
    },
    {
     "wf": "1.04 Texts",
-    "steps": 15,
-    "planned": 15,
+    "steps": 21,
+    "planned": 21,
     "sent": 11,
-    "left": 4,
+    "left": 10,
     "after_until": 0
    },
    {
     "wf": "0.3 Texts",
-    "steps": 12,
-    "planned": 12,
-    "sent": 10,
-    "left": 2,
+    "steps": 21,
+    "planned": 21,
+    "sent": 11,
+    "left": 10,
     "after_until": 0
    }
   ],
-  "notes": []
+  "notes": [
+   "0.3 Texts SMS 21 - Nov 24 - 11:30 AM ET (wc-pm24) was due Sun Oct 25, 11:30am ET but no sends showed up",
+   "0.3 Texts SMS 22 - Nov 25 - 11:30 AM ET (wc-pm25) was due Mon Oct 26, 11:30am ET but no sends showed up",
+   "0.3 Texts SMS 23 - Nov 26 - 11:30 AM ET (wc-pm26) was due Tue Oct 27, 11:30am ET but no sends showed up",
+   "0.3 Texts SMS 24 - Nov 27 - 11:30 AM ET (wc-pm27) was due Wed Oct 28, 11:30am ET but no sends showed up",
+   "0.3 Texts SMS 25 - Nov 28 - 11:30 AM ET (wc-pm28) was due Thu Oct 29, 11:30am ET but no sends showed up",
+   "0.3 Texts SMS 26 - Nov 29 - 11:30 AM ET (wc-pm29) was due Fri Oct 30, 11:30am ET but no sends showed up",
+   "0.3 Texts SMS 27 - Nov 30 - 11:30 AM ET (wc-pm30) was due Sat Oct 31, 11:30am ET but no sends showed up",
+   "0.3 Texts SMS 28 - Dec 1 - 11:30 AM ET (wc-pm01) was due Sun Nov 1, 10:30am ET but no sends showed up"
+  ]
  },
  "plan_check": {
-  "stale": true,
-  "items": [
-   {
-    "kind": "edited",
-    "id": "6980f421-2814-400d-80ba-b6e9ede3fe1b",
-    "name": "0.2 - WC6 Emails Nov 9 - Dec 1",
-    "version": 12,
-    "updated_at": "2026-11-20T18:11:19.858Z",
-    "text": "0.2 - WC6 Emails Nov 9 - Dec 1 was edited on Nov 20, 1:11pm ET after the plan was read"
-   },
-   {
-    "kind": "edited",
-    "id": "87a56fa4-9b20-4e25-82cb-24d353027e89",
-    "name": "1.03 - WC6 Ticket Holder Emails (Nov 7-30)",
-    "version": 9,
-    "updated_at": "2026-11-20T18:30:07.085Z",
-    "text": "1.03 - WC6 Ticket Holder Emails (Nov 7-30) was edited on Nov 20, 1:30pm ET after the plan was read"
-   },
-   {
-    "kind": "edited",
-    "id": "ab0e73fd-f630-4da6-8678-1c00faa50e54",
-    "name": "1.04 - WC6 Ticket Holder Text (Nov 10-30)",
-    "version": 7,
-    "updated_at": "2026-11-20T18:43:28.133Z",
-    "text": "1.04 - WC6 Ticket Holder Text (Nov 10-30) was edited on Nov 20, 1:43pm ET after the plan was read"
-   },
-   {
-    "kind": "edited",
-    "id": "50e67534-dbf1-4628-aff4-1cae09823865",
-    "name": "0.3 - WC6 SMS 8B-19 One-Off (Nov 11-22)",
-    "version": 11,
-    "updated_at": "2026-11-20T18:16:15.376Z",
-    "text": "0.3 - WC6 SMS 8B-19 One-Off (Nov 11-22) was edited on Nov 20, 1:16pm ET after the plan was read"
-   }
-  ],
-  "read_at_utc": "2026-11-17T03:58:14Z",
-  "read_label": "Nov 16, 10:58pm ET",
+  "stale": false,
+  "items": [],
+  "read_at_utc": "2026-11-20T18:56:10Z",
+  "read_label": "Nov 20, 1:56pm ET",
   "fields": [
    "createdAt",
    "id",
@@ -1649,7 +1705,7 @@
      0
     ],
     "2026-11-20": [
-     1,
+     2,
      0,
      0,
      0,
@@ -3009,7 +3065,8 @@
    "camp": "promote",
    "text": "You don't need another breakthrough. You need a game. Here's the diffe",
    "steps": [
-    "0.0 Day 7"
+    "0.0 Day 7",
+    "0.3 SMS 20 - Nov 23 - 11:30 AM ET (wc-pm23)"
    ],
    "day": "2026-10-24",
    "sent": 3693,
@@ -7872,7 +7929,7 @@
     "0.3 SMS 14 - Nov 17 - 11:30 AM ET (wc-day31)"
    ],
    "day": "2026-11-17",
-   "sent": 3565,
+   "sent": 3566,
    "wrong_audience": 0,
    "days": {
     "2026-11-17": [
@@ -7894,9 +7951,9 @@
      1
     ],
     "2026-11-20": [
-     1,
+     2,
      0,
-     1,
+     2,
      0,
      0,
      0,
@@ -7908,7 +7965,7 @@
    "ticket_revenue": 0,
    "no_links": false,
    "main_at": "2026-11-17T16:32:07.307Z",
-   "delivered": 2934,
+   "delivered": 2935,
    "failed": 607,
    "blocked_tx": 529,
    "optouts": 2,
@@ -8156,7 +8213,7 @@
    "main_at": "2026-11-19T11:00:01.679Z",
    "ghl_sent": 22429,
    "delivered": 22291,
-   "opened": 6174,
+   "opened": 6175,
    "clicked": 46,
    "unsub": 13,
    "bounced": 135,
@@ -8330,7 +8387,7 @@
    "main_at": "2026-11-20T11:00:01.982Z",
    "ghl_sent": 22414,
    "delivered": 22269,
-   "opened": 5137,
+   "opened": 5145,
    "clicked": 40,
    "unsub": 5,
    "bounced": 136,
@@ -8382,6 +8439,43 @@
    "bounced": 0,
    "complaints": 0,
    "share_main": 1.0
+  },
+  {
+   "id": "9327d0a2",
+   "key": "e:(wc6) - seven days until we begin…",
+   "ch": "email",
+   "camp": "post_ticket",
+   "text": "(WC6) - Seven Days Until We Begin…",
+   "steps": [
+    "1.03 Email - Nov 25 Ticket Holder"
+   ],
+   "day": "2026-11-20",
+   "sent": 0,
+   "wrong_audience": 1,
+   "days": {
+    "2026-11-20": [
+     0,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": true,
+   "main_at": null,
+   "ghl_sent": 0,
+   "delivered": 0,
+   "opened": 0,
+   "clicked": 0,
+   "unsub": 0,
+   "bounced": 0,
+   "complaints": 0,
+   "share_main": null
   },
   {
    "id": "e3918365",
@@ -8450,6 +8544,384 @@
    "blocked_tx": 528,
    "optouts": 7,
    "replies": 5
+  },
+  {
+   "id": "8f597899",
+   "key": "e:your next breakthrough won't save you.",
+   "ch": "email",
+   "camp": "promote",
+   "text": "Your next breakthrough won't save you.",
+   "steps": [
+    "0.2 Email 34"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "main_at": null,
+   "ghl_sent": 0,
+   "delivered": 0,
+   "opened": 0,
+   "clicked": 0,
+   "unsub": 0,
+   "bounced": 0,
+   "complaints": 0,
+   "share_main": null
+  },
+  {
+   "id": "80bfc43f",
+   "key": "e:the day after is where most men lose.",
+   "ch": "email",
+   "camp": "promote",
+   "text": "The day after is where most men lose.",
+   "steps": [
+    "0.2 Email 35"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "main_at": null,
+   "ghl_sent": 0,
+   "delivered": 0,
+   "opened": 0,
+   "clicked": 0,
+   "unsub": 0,
+   "bounced": 0,
+   "complaints": 0,
+   "share_main": null
+  },
+  {
+   "id": "89073a80",
+   "key": "e:12 weeks from now, where will you be?",
+   "ch": "email",
+   "camp": "promote",
+   "text": "12 weeks from now, where will you be?",
+   "steps": [
+    "0.2 Email 36"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "main_at": null,
+   "ghl_sent": 0,
+   "delivered": 0,
+   "opened": 0,
+   "clicked": 0,
+   "unsub": 0,
+   "bounced": 0,
+   "complaints": 0,
+   "share_main": null
+  },
+  {
+   "id": "a2602e73",
+   "key": "e:what if you're already holding what you'",
+   "ch": "email",
+   "camp": "promote",
+   "text": "What if you're already holding what you've been praying for?",
+   "steps": [
+    "0.2 Email 37"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "main_at": null,
+   "ghl_sent": 0,
+   "delivered": 0,
+   "opened": 0,
+   "clicked": 0,
+   "unsub": 0,
+   "bounced": 0,
+   "complaints": 0,
+   "share_main": null
+  },
+  {
+   "id": "aa7bfef5",
+   "key": "e:black friday: what are you really buying",
+   "ch": "email",
+   "camp": "promote",
+   "text": "Black Friday: What are you really buying?",
+   "steps": [
+    "0.2 Email 38"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "main_at": null,
+   "ghl_sent": 0,
+   "delivered": 0,
+   "opened": 0,
+   "clicked": 0,
+   "unsub": 0,
+   "bounced": 0,
+   "complaints": 0,
+   "share_main": null
+  },
+  {
+   "id": "1cd0b8e0",
+   "key": "e:you've been reading these emails. now wh",
+   "ch": "email",
+   "camp": "promote",
+   "text": "You've been reading these emails. Now what?",
+   "steps": [
+    "0.2 Email 39"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "main_at": null,
+   "ghl_sent": 0,
+   "delivered": 0,
+   "opened": 0,
+   "clicked": 0,
+   "unsub": 0,
+   "bounced": 0,
+   "complaints": 0,
+   "share_main": null
+  },
+  {
+   "id": "05f9c457",
+   "key": "e:the finale is here. the clock is ticking",
+   "ch": "email",
+   "camp": "promote",
+   "text": "The finale is here. The clock is ticking.",
+   "steps": [
+    "0.2 Email 40"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "main_at": null,
+   "ghl_sent": 0,
+   "delivered": 0,
+   "opened": 0,
+   "clicked": 0,
+   "unsub": 0,
+   "bounced": 0,
+   "complaints": 0,
+   "share_main": null
+  },
+  {
+   "id": "601f8392",
+   "key": "e:less than 48 hours. this is your final c",
+   "ch": "email",
+   "camp": "promote",
+   "text": "Less than 48 hours. This is your final call.",
+   "steps": [
+    "0.2 Email 41"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "main_at": null,
+   "ghl_sent": 0,
+   "delivered": 0,
+   "opened": 0,
+   "clicked": 0,
+   "unsub": 0,
+   "bounced": 0,
+   "complaints": 0,
+   "share_main": null
+  },
+  {
+   "id": "8db6748b",
+   "key": "e:tomorrow we begin. this is my final invi",
+   "ch": "email",
+   "camp": "promote",
+   "text": "Tomorrow we begin. This is my final invitation.",
+   "steps": [
+    "0.2 Email 42"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "main_at": null,
+   "ghl_sent": 0,
+   "delivered": 0,
+   "opened": 0,
+   "clicked": 0,
+   "unsub": 0,
+   "bounced": 0,
+   "complaints": 0,
+   "share_main": null
+  },
+  {
+   "id": "d7377ff0",
+   "key": "e:(wc6) - gratitude is not complacency…",
+   "ch": "email",
+   "camp": "post_ticket",
+   "text": "(WC6) - Gratitude Is Not Complacency…",
+   "steps": [
+    "1.03 Email - Nov 26 Ticket Holder"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": true,
+   "main_at": null,
+   "ghl_sent": 0,
+   "delivered": 0,
+   "opened": 0,
+   "clicked": 0,
+   "unsub": 0,
+   "bounced": 0,
+   "complaints": 0,
+   "share_main": null
+  },
+  {
+   "id": "849f031e",
+   "key": "e:(wc6) - you can't buy your way into a di",
+   "ch": "email",
+   "camp": "post_ticket",
+   "text": "(WC6) - You Can't Buy Your Way Into a Different Life…",
+   "steps": [
+    "1.03 Email - Nov 27 Ticket Holder"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": true,
+   "main_at": null,
+   "ghl_sent": 0,
+   "delivered": 0,
+   "opened": 0,
+   "clicked": 0,
+   "unsub": 0,
+   "bounced": 0,
+   "complaints": 0,
+   "share_main": null
+  },
+  {
+   "id": "08ecb801",
+   "key": "e:(wc6) - four days. the countdown is on.",
+   "ch": "email",
+   "camp": "post_ticket",
+   "text": "(WC6) - FOUR DAYS. THE COUNTDOWN IS ON.",
+   "steps": [
+    "1.03 Email - Nov 28 Ticket Holder"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": true,
+   "main_at": null,
+   "ghl_sent": 0,
+   "delivered": 0,
+   "opened": 0,
+   "clicked": 0,
+   "unsub": 0,
+   "bounced": 0,
+   "complaints": 0,
+   "share_main": null
+  },
+  {
+   "id": "9ee7ebc5",
+   "key": "e:(wc6) - three days. prepare your mind an",
+   "ch": "email",
+   "camp": "post_ticket",
+   "text": "(WC6) - THREE DAYS. PREPARE YOUR MIND AND HEART.",
+   "steps": [
+    "1.03 Email - Nov 29 Ticket Holder"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": true,
+   "main_at": null,
+   "ghl_sent": 0,
+   "delivered": 0,
+   "opened": 0,
+   "clicked": 0,
+   "unsub": 0,
+   "bounced": 0,
+   "complaints": 0,
+   "share_main": null
+  },
+  {
+   "id": "7fc825b1",
+   "key": "e:(wc6) - 48 hours. fourteen years. one mo",
+   "ch": "email",
+   "camp": "post_ticket",
+   "text": "(WC6) - 48 HOURS. FOURTEEN YEARS. ONE MOMENT.",
+   "steps": [
+    "1.03 Email - Nov 30 Ticket Holder"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": true,
+   "main_at": null,
+   "ghl_sent": 0,
+   "delivered": 0,
+   "opened": 0,
+   "clicked": 0,
+   "unsub": 0,
+   "bounced": 0,
+   "complaints": 0,
+   "share_main": null
   },
   {
    "id": "4bbbce42",
@@ -8548,6 +9020,150 @@
    "replies": 0
   },
   {
+   "id": "0f8484f8",
+   "key": "s:seven days until we begin. come ready to",
+   "ch": "sms",
+   "camp": "post_ticket",
+   "text": "Seven days until we begin. Come ready to work, not to watch. Read it:",
+   "steps": [
+    "1.04 SMS 16 - Nov 25 (wc-day44)"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "main_at": null,
+   "delivered": 0,
+   "failed": 0,
+   "blocked_tx": 0,
+   "optouts": 0,
+   "replies": 0
+  },
+  {
+   "id": "ec1ba1e5",
+   "key": "s:gratitude is not complacency. be present",
+   "ch": "sms",
+   "camp": "post_ticket",
+   "text": "Gratitude is not complacency. Be present with your family today. Read it:",
+   "steps": [
+    "1.04 SMS 17 - Nov 26 (wc-day45)"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "main_at": null,
+   "delivered": 0,
+   "failed": 0,
+   "blocked_tx": 0,
+   "optouts": 0,
+   "replies": 0
+  },
+  {
+   "id": "3a935e0b",
+   "key": "s:you can't buy your way into a different ",
+   "ch": "sms",
+   "camp": "post_ticket",
+   "text": "You can't buy your way into a different life. But you can decide to build one. Read it:",
+   "steps": [
+    "1.04 SMS 18 - Nov 27 (wc-day46)"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "main_at": null,
+   "delivered": 0,
+   "failed": 0,
+   "blocked_tx": 0,
+   "optouts": 0,
+   "replies": 0
+  },
+  {
+   "id": "dca16cc1",
+   "key": "s:four days. we are not about to host anot",
+   "ch": "sms",
+   "camp": "post_ticket",
+   "text": "Four days. We are not about to host another conference. Read it:",
+   "steps": [
+    "1.04 SMS 19 - Nov 28 (wc-day47)"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "main_at": null,
+   "delivered": 0,
+   "failed": 0,
+   "blocked_tx": 0,
+   "optouts": 0,
+   "replies": 0
+  },
+  {
+   "id": "ac807236",
+   "key": "s:three days. prepare your mind. prepare y",
+   "ch": "sms",
+   "camp": "post_ticket",
+   "text": "Three days. Prepare your mind. Prepare your heart. Prepare to move. Read it:",
+   "steps": [
+    "1.04 SMS 20 - Nov 29 (wc-day48)"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "main_at": null,
+   "delivered": 0,
+   "failed": 0,
+   "blocked_tx": 0,
+   "optouts": 0,
+   "replies": 0
+  },
+  {
+   "id": "4bc4f651",
+   "key": "s:48 hours. fourteen years. one moment. re",
+   "ch": "sms",
+   "camp": "post_ticket",
+   "text": "48 hours. Fourteen years. One moment. Read it:",
+   "steps": [
+    "1.04 SMS 21 - Nov 30 (wc-day49)"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "main_at": null,
+   "delivered": 0,
+   "failed": 0,
+   "blocked_tx": 0,
+   "optouts": 0,
+   "replies": 0
+  },
+  {
    "id": "1ec242ee",
    "key": "s:you cannot build a new life while defend",
    "ch": "sms",
@@ -8594,9 +9210,209 @@
    "blocked_tx": 0,
    "optouts": 0,
    "replies": 0
+  },
+  {
+   "id": "f003d8bb",
+   "key": "s:the day after is where most men lose. no",
+   "ch": "sms",
+   "camp": "promote",
+   "text": "The day after is where most men lose. Not the day they decide. Read why:",
+   "steps": [
+    "0.3 SMS 21 - Nov 24 - 11:30 AM ET (wc-pm24)"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "main_at": null,
+   "delivered": 0,
+   "failed": 0,
+   "blocked_tx": 0,
+   "optouts": 0,
+   "replies": 0
+  },
+  {
+   "id": "a830b97b",
+   "key": "s:12 weeks from now, your life will be dif",
+   "ch": "sms",
+   "camp": "promote",
+   "text": "12 weeks from now, your life will be different. Will you have chosen it? Read it:",
+   "steps": [
+    "0.3 SMS 22 - Nov 25 - 11:30 AM ET (wc-pm25)"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "main_at": null,
+   "delivered": 0,
+   "failed": 0,
+   "blocked_tx": 0,
+   "optouts": 0,
+   "replies": 0
+  },
+  {
+   "id": "898aac47",
+   "key": "s:happy thanksgiving. what if you're alrea",
+   "ch": "sms",
+   "camp": "promote",
+   "text": "Happy Thanksgiving. What if you're already holding what you prayed for? Read it:",
+   "steps": [
+    "0.3 SMS 23 - Nov 26 - 11:30 AM ET (wc-pm26)"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "main_at": null,
+   "delivered": 0,
+   "failed": 0,
+   "blocked_tx": 0,
+   "optouts": 0,
+   "replies": 0
+  },
+  {
+   "id": "0b226b56",
+   "key": "s:black friday. what is the real price of ",
+   "ch": "sms",
+   "camp": "promote",
+   "text": "Black Friday. What is the real price of living the way you're living? Read it:",
+   "steps": [
+    "0.3 SMS 24 - Nov 27 - 11:30 AM ET (wc-pm27)"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "main_at": null,
+   "delivered": 0,
+   "failed": 0,
+   "blocked_tx": 0,
+   "optouts": 0,
+   "replies": 0
+  },
+  {
+   "id": "ad4e173c",
+   "key": "s:you've been reading these emails. now wh",
+   "ch": "sms",
+   "camp": "promote",
+   "text": "You've been reading these emails. Now what? Four days. Read it:",
+   "steps": [
+    "0.3 SMS 25 - Nov 28 - 11:30 AM ET (wc-pm28)"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "main_at": null,
+   "delivered": 0,
+   "failed": 0,
+   "blocked_tx": 0,
+   "optouts": 0,
+   "replies": 0
+  },
+  {
+   "id": "3fb9fa81",
+   "key": "s:the finale is here. warrior con 6 begins",
+   "ch": "sms",
+   "camp": "promote",
+   "text": "The finale is here. Warrior Con 6 begins December 2. The clock is ticking. Read it:",
+   "steps": [
+    "0.3 SMS 26 - Nov 29 - 11:30 AM ET (wc-pm29)"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "main_at": null,
+   "delivered": 0,
+   "failed": 0,
+   "blocked_tx": 0,
+   "optouts": 0,
+   "replies": 0
+  },
+  {
+   "id": "be282635",
+   "key": "s:less than 48 hours. this is your final c",
+   "ch": "sms",
+   "camp": "promote",
+   "text": "Less than 48 hours. This is your final call. Read it:",
+   "steps": [
+    "0.3 SMS 27 - Nov 30 - 11:30 AM ET (wc-pm30)"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "main_at": null,
+   "delivered": 0,
+   "failed": 0,
+   "blocked_tx": 0,
+   "optouts": 0,
+   "replies": 0
+  },
+  {
+   "id": "7f3916f7",
+   "key": "s:tomorrow we begin. 9 am eastern. this is",
+   "ch": "sms",
+   "camp": "promote",
+   "text": "Tomorrow we begin. 9 AM Eastern. This is my final invitation. Read it:",
+   "steps": [
+    "0.3 SMS 28 - Dec 1 - 11:30 AM ET (wc-pm01)"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "main_at": null,
+   "delivered": 0,
+   "failed": 0,
+   "blocked_tx": 0,
+   "optouts": 0,
+   "replies": 0
   }
  ],
  "flags": [
-  "Email matched only 181 of 23,039 GHL sends (subject may have changed): I'm Not Bringing You Back to Say Goodbye."
+  "Email matched only 181 of 23,039 GHL sends (subject may have changed): I'm Not Bringing You Back to Say Goodbye.",
+  "Plan may be out of date — 0.3 Texts SMS 21 - Nov 24 - 11:30 AM ET (wc-pm24) was due Sun Oct 25, 11:30am ET but no sends showed up",
+  "Plan may be out of date — 0.3 Texts SMS 22 - Nov 25 - 11:30 AM ET (wc-pm25) was due Mon Oct 26, 11:30am ET but no sends showed up",
+  "Plan may be out of date — 0.3 Texts SMS 23 - Nov 26 - 11:30 AM ET (wc-pm26) was due Tue Oct 27, 11:30am ET but no sends showed up",
+  "Plan may be out of date — 0.3 Texts SMS 24 - Nov 27 - 11:30 AM ET (wc-pm27) was due Wed Oct 28, 11:30am ET but no sends showed up",
+  "Plan may be out of date — 0.3 Texts SMS 25 - Nov 28 - 11:30 AM ET (wc-pm28) was due Thu Oct 29, 11:30am ET but no sends showed up",
+  "Plan may be out of date — 0.3 Texts SMS 26 - Nov 29 - 11:30 AM ET (wc-pm29) was due Fri Oct 30, 11:30am ET but no sends showed up",
+  "Plan may be out of date — 0.3 Texts SMS 27 - Nov 30 - 11:30 AM ET (wc-pm30) was due Sat Oct 31, 11:30am ET but no sends showed up",
+  "Plan may be out of date — 0.3 Texts SMS 28 - Dec 1 - 11:30 AM ET (wc-pm01) was due Sun Nov 1, 10:30am ET but no sends showed up"
  ]
 }
