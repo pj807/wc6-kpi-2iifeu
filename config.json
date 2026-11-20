@@ -265,7 +265,7 @@
   },
   {
    "id": "6980f421-2814-400d-80ba-b6e9ede3fe1b",
-   "name": "0.2 - WC6 Emails Nov 9 - 22",
+   "name": "0.2 - WC6 Emails Nov 9 - Dec 1",
    "label": "promote",
    "channel": "email",
    "steps": [
@@ -288,7 +288,7 @@
   },
   {
    "id": "87a56fa4-9b20-4e25-82cb-24d353027e89",
-   "name": "1.03 - WC6 Ticket Holder Emails (Nov 7-24)",
+   "name": "1.03 - WC6 Ticket Holder Emails (Nov 7-30)",
    "label": "post_ticket",
    "channel": "email",
    "steps": [
@@ -514,7 +514,7 @@
   },
   {
    "id": "ab0e73fd-f630-4da6-8678-1c00faa50e54",
-   "name": "1.04 - WC6 Ticket Holder Text (Nov 10-24)",
+   "name": "1.04 - WC6 Ticket Holder Text (Nov 10-30)",
    "label": "post_ticket",
    "channel": "sms",
    "steps": [
