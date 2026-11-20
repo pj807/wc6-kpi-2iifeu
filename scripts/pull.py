@@ -351,10 +351,19 @@ def item_amount(i):
 
 # ---------------------------------------------------------------- message matching
 EMAIL_KEYS, SMS_KEYS, STEPS, STEP_KEY = {}, [], {}, {}   # STEP_KEY: GHL step id -> message key
+SMS_CODES = collections.defaultdict(set)                 # tracked link code (wc-day7, wc-pm23) -> message keys
+CODE_RE = re.compile(r"\bwc-(?:day|pm)\d+\b", re.I)
 
 
 def add_step(wf, s):
     key = ("e:" if wf["channel"] == "email" else "s:") + norm(s["text"])[:40]
+    code = (CODE_RE.search(s.get("name") or "") or [None])[0]
+    # Two different texts can start with the same 40 characters (Nov 23 SMS 20 vs the Oct 24 "Day 7" text).
+    # A step from another workflow with its own link code then gets its own key, so the sends never merge.
+    if wf["channel"] == "sms" and key in STEPS and code and all(not n.startswith(wf["name"].split(" - ")[0] + " ") for n in STEPS[key]["names"]):
+        key = f"{key}#{code.lower()}"
+    if wf["channel"] == "sms" and code:
+        SMS_CODES[code.lower()].add(key)
     STEPS.setdefault(key, {"label": wf["label"], "channel": wf["channel"], "text": s["text"], "names": [], "steps": [],
                            "no_links": bool(wf.get("no_links"))})
     short = wf["name"].split(" - ")[0]
@@ -407,8 +416,11 @@ def matcher(channel, text):
     t = norm(text)
     if channel == "Email":
         return EMAIL_KEYS.get(t)
+    m = CODE_RE.search(t)          # the text's own tracked link (go.wakeupwarrior.com/wc-pm23) decides first
+    if m and len(SMS_CODES.get(m.group(0).lower(), ())) == 1:
+        return next(iter(SMS_CODES[m.group(0).lower()]))
     for prefix, key in SMS_KEYS:
-        if t.startswith(prefix):
+        if t.startswith(prefix) and "#" not in key:
             return key
     return None
 
