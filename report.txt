@@ -2,7 +2,7 @@ WarriorCon 6 — report for Nov 19 (updated Nov 20, 7:12am ET)
 
 SUMMARY
 • 1 new ticket yesterday (150 total, 12 days to go)
-• Win: 73 of 150 ticket holders (48.7%) signed up for the Warrior App (free until Dec 4)
+• Win: 73 of 150 paid + comp ticket holders (48.7%) signed up for the Warrior App (free until Dec 4)
 • Watch: promote texts not delivered 24.9% to date (29,012 of 116,296 texts not delivered), above 5%. Main cause: 16,987 of 29,012 (59%) blocked by GHL's Texas SMS safeguard.
 
 LEFT TO SEND (until Dec 2)
@@ -14,19 +14,23 @@ Refunds: 0 to date
 $31,653 total sales ($29,253 tickets + $2,400 Business Bible)
 113 of 147 tickets were bought within 48 hrs of an email/text
 
+BRING YOUR BROTHER (free friend tickets)
+Yesterday: none yet
+To date: none yet
+
 PROMOTE (non-ticket holders)
 Yesterday — Email: 22,495 sent · 27.3% open · 0.2% click
 Yesterday — SMS: 3,550 sent · 81.9% delivered
-To date — Email: 612,838 sent · 31.5% open · 0.3% click
-To date — SMS: 116,296 sent · 74.7% delivered
+To date — Email: 612,841 sent · 31.5% open · 0.3% click
+To date — SMS: 116,296 sent · 74.8% delivered
 
 POST-TICKET SEDUCTION (ticket holders)
 Yesterday — Email: 132 sent · 42.0% open
 Yesterday — SMS: 102 sent · 85.3% delivered
-To date — Email: 1,627 sent · 44.6% open
-To date — SMS: 1,093 sent · 87.4% delivered
+To date — Email: 1,627 sent · 44.8% open
+To date — SMS: 1,094 sent · 87.4% delivered
 
 UPSELLS
-Warrior App (Power Plan): 73 · 48.7% of ticket holders
+Warrior App (Power Plan): 73 · 48.7% of paid + comp ticket holders
 Business Bible: 22 sales · $2,400 · bought by 21 of 147 paid buyers (14.3%)
 (Texts have no open rate.)
