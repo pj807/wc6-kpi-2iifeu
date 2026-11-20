@@ -7,7 +7,7 @@
  "timezone": "America/Los_Angeles",
  "location_id": "BDeGaczWUBVqlvyWoI7l",
  "ticket_holder_rule": {
-  "_how": "Paid (completed/paid) order containing a product whose name starts with ticket_product_name_prefix, order amount >= min_paid_amount (drops $1 tests). Contacts with comp_tag and no paid order count as comps from campaign start. Orders in team_test_orders (team test buys, refunded) are left out the same way, never counted as refunds.",
+  "_how": "Paid (completed/paid) order containing a product whose name starts with ticket_product_name_prefix, order amount >= min_paid_amount (drops $1 tests). Contacts with comp_tag and no paid order count as comps from campaign start. Free Bring Your Brother tickets ($0) are counted under bring_your_brother instead. Orders in team_test_orders (team test buys, refunded) are left out the same way, never counted as refunds.",
   "ticket_product_id": "6acd596ad55fd4b5c60529ea",
   "ticket_product_name_prefix": "WarriorCon6 Virtual Ticket",
   "min_paid_amount": 199,
@@ -22,8 +22,29 @@
     "order_id": "6ae4ec38565ec8275736b9c8",
     "date": "2026-10-30",
     "amount": 199
+   },
+   {
+    "order_id": "6aff4812f0a8182bd5b0ee20",
+    "date": "2026-11-19",
+    "amount": 0
+   },
+   {
+    "order_id": "6b003aac17120007ab38e872",
+    "date": "2026-11-20",
+    "amount": 0
    }
   ]
+ },
+ "bring_your_brother": {
+  "_how": "Free friend tickets (v1.6). A brother = a paid $0 order with the ticket product that came from funnel_id (order sourceId) or used one of coupon_codes. Counted once per person; anyone who also has a paid ticket or is a comp counts as paid or comp. Team test orders (ticket_holder_rule.team_test_orders) are left out. A brother is a ticket holder for messages sent after his claim. Warrior App: Power Plan orders from app_step_id or on a brother's contact are counted only here, never in the Upsells tile. tag is only a cross-check (logged).",
+  "funnel_id": "cLHJgzfPO4NmNgApT3cf",
+  "ticket_step_id": "7cd73a72-b474-485c-b134-f6c47d3fd972",
+  "app_step_id": "9d8ca68e-970a-4470-99ca-34ffbbd357d5",
+  "coupon_codes": [
+   "FREEMAN"
+  ],
+  "tag": "wc6_brother_free",
+  "since": "2026-11-19"
  },
  "upsells": {
   "power_plan": {

@@ -22,6 +22,7 @@ LOC = CFG["location_id"]
 BASE = "https://services.leadconnectorhq.com"
 WINDOW = timedelta(hours=CFG["attribution_window_hours"])
 RULE, UPS, TH, SR = CFG["ticket_holder_rule"], CFG["upsells"], CFG["thresholds"], CFG["summary_rules"]
+BYB = CFG.get("bring_your_brother") or {}            # free friend tickets (v1.6)
 SAFE = CFG.get("safety") or {"texts_drop_ok_count": 10, "texts_drop_ok_pct": 0.1}   # texts-sent margin (v1.4.1)
 STOP_WORDS = {"stop", "stopall", "stop all", "unsubscribe", "cancel", "end", "quit", "optout", "opt out", "revoke"}
 ON_ACTIONS = bool(os.environ.get("GITHUB_ACTIONS"))
@@ -178,17 +179,21 @@ class API:
                             "refunded": float((det.get("paymentSummary") or {}).get("refundedAmount") or 0),
                             "updated": det.get("updatedAt") or o.get("updatedAt") or o.get("createdAt"),
                             "ref": hashlib.sha256(o["_id"].encode()).hexdigest()[:12],   # order key for refund dates; not contact data
+                            # where the order came from (v1.6: Bring Your Brother = funnel + step, or the FREEMAN coupon)
+                            "src": o.get("sourceId") or (det.get("source") or {}).get("id"),
+                            "step": (o.get("sourceMeta") or {}).get("stepId") or ((det.get("source") or {}).get("meta") or {}).get("stepId"),
+                            "coupon": (o.get("couponCode") or (det.get("coupon") or {}).get("code") or "").upper(),
                             "items": [(i.get("name") or "", item_amount(i)) for i in items]})
             if rows[-1].get("createdAt", "") < start:
                 break
             off += 100
         return out
 
-    def comps(self):
+    def comps(self, tag=None):
         ids, page = set(), 1
         while True:
             cs = self.req("POST", "/contacts/search", body={"locationId": LOC, "pageLimit": 500, "page": page,
-                          "filters": [{"field": "tags", "operator": "eq", "value": RULE["comp_tag"]}]}).get("contacts", [])
+                          "filters": [{"field": "tags", "operator": "eq", "value": tag or RULE["comp_tag"]}]}).get("contacts", [])
             ids.update(c["id"] for c in cs)
             if len(cs) < 500:
                 return ids
@@ -562,6 +567,7 @@ def main():
         _get(c)
     log("orders + comps…")
     orders, comps = api.orders(), api.comps()
+    br_tagged = api.comps(BYB["tag"]) if BYB.get("tag") else set()   # cross-check only (v1.6)
     if not orders:
         raise SystemExit(f"Stopped: GoHighLevel returned no orders at all (there were {(prev or {}).get('sales', {}).get('tickets', 0)} paid before). {KEEP}")
     log("email step stats…")
@@ -605,10 +611,34 @@ def main():
                 first_buy[o["contact"]] = o
     comps_only = comps - set(first_buy)
     holder_since = {c: o["created"] for c, o in ever_buy.items()}
-    all_holders = set(first_buy) | comps_only
+    all_holders = set(first_buy) | comps_only     # paid + comps: the base for Warrior App / Business Bible upsells
 
-    def is_holder(contact, when):
-        return contact in comps_only or (contact in holder_since and holder_since[contact] <= when)
+    # Bring Your Brother (v1.6): a free ($0) ticket from the BYB funnel or with a BYB coupon. If GHL ever leaves out the
+    # funnel and coupon on an order, a $0 ticket order on/after BYB "since" on a contact with the BYB tag counts too.
+    def is_brother_order(o):
+        if not BYB or not o["paid"] or not has(o, RULE["ticket_product_name_prefix"]) or (o["amount"] or 0) > 0.005:
+            return False
+        if o.get("src") == BYB["funnel_id"] or (o.get("coupon") and o["coupon"] in BYB["coupon_codes"]):
+            return True
+        return not o.get("src") and not o.get("coupon") and o["contact"] in br_tagged and pt_day(o["created"]) >= BYB["since"]
+
+    br_ever, br_first, br_test = {}, {}, set()     # br_ever includes team tests (message audience only, like ever_buy)
+    br_orders = [o for o in orders if is_brother_order(o)]
+    for o in br_orders:
+        c = o["contact"]
+        if c not in br_ever or o["created"] < br_ever[c]:
+            br_ever[c] = o["created"]
+        if o["id"] in team_tests:
+            br_test.add(c)
+            continue
+        if c not in br_first or o["created"] < br_first[c]["created"]:
+            br_first[c] = o
+    brothers = {c: o for c, o in br_first.items() if c not in first_buy and c not in comps}   # paid or comp wins
+    br_test_only = br_test - set(br_first)
+
+    def is_holder(contact, when):   # brothers hold a ticket for messages sent after their claim, same as buyers
+        return (contact in comps_only or (contact in holder_since and holder_since[contact] <= when)
+                or (contact in br_ever and br_ever[contact] <= when))
 
     # Refunds: counts and amounts only. The refund day is fixed the first time a refund is seen (order's last update).
     seen_before = ((prev or {}).get("refunds") or {}).get("seen") or {}
@@ -619,24 +649,33 @@ def main():
                "yesterday_amount": round(sum(ref_amt[r] for r, d in ref_seen.items() if d == yday), 2),
                "seen": ref_seen}
 
-    days = collections.defaultdict(lambda: {"tk": 0, "tkr": 0.0, "pp": 0, "bb": 0, "bbr": 0.0})
+    days = collections.defaultdict(lambda: {"tk": 0, "tkr": 0.0, "pp": 0, "bb": 0, "bbr": 0.0, "br": 0, "bpp": 0})
     for c, o in first_buy.items():
         d = days[pt_day(o["created"])]
         d["tk"] += 1; d["tkr"] += tick_amt(o)
+    for c, o in brothers.items():
+        days[pt_day(o["created"])]["br"] += 1
 
     full_refund = lambda o: (o.get("refunded", 0) > 0 and o["refunded"] >= (o["amount"] or 0) - 0.005) or o["id"] in team_tests
 
-    # Power Plan: first sign-up per contact, ticket holders only
-    pp_first, pp_non_holders = {}, set()
+    # Power Plan: first sign-up per contact. Paid + comp ticket holders -> Upsells. Brothers (or a sign-up from the
+    # BYB Warrior AI step) -> Bring Your Brother only (v1.6). Team test brothers are left out.
+    pp_first, pp_non_holders, br_pp = {}, set(), {}
     for o in orders:
         if o["paid"] and not full_refund(o) and has(o, UPS["power_plan"]["name_prefix"]):
-            if o["contact"] in all_holders:
-                if o["contact"] not in pp_first or o["created"] < pp_first[o["contact"]]:
-                    pp_first[o["contact"]] = o["created"]
+            c = o["contact"]
+            if c in all_holders:
+                if c not in pp_first or o["created"] < pp_first[c]:
+                    pp_first[c] = o["created"]
+            elif BYB and c not in br_test_only and (c in brothers or (o.get("src") == BYB["funnel_id"] and o.get("step") == BYB["app_step_id"])):
+                if c not in br_pp or o["created"] < br_pp[c]:
+                    br_pp[c] = o["created"]
             else:
-                pp_non_holders.add(o["contact"])
+                pp_non_holders.add(c)
     for c, when in pp_first.items():
         days[pt_day(when)]["pp"] += 1
+    for c, when in br_pp.items():
+        days[pt_day(when)]["bpp"] += 1
 
     # Business Bible: every paid sale, whether added at ticket checkout (bump) or bought on its own
     bb = {"count": 0, "bump": 0, "standalone": 0, "revenue": 0.0}
@@ -802,14 +841,16 @@ def main():
     Y = {c: {ch: totals(c, ch, yday, yday) for ch in ("email", "sms")} for c in ("promote", "post_ticket")}
 
     # ---- headline numbers
-    n_paid, n_comps = len(first_buy), len(comps_only)
-    n_holders = n_paid + n_comps
+    n_paid, n_comps, n_br = len(first_buy), len(comps_only), len(brothers)
+    n_pc = n_paid + n_comps                                     # paid + comps: base for the Warrior App %
+    n_holders = n_pc + n_br                                     # ticket holders = paid + comps + brothers (v1.6)
     revenue = sum(tick_amt(o) for o in ticket_orders)          # ticket line items only
     bb["people"] = len(bb_people)
     total_sales = revenue + bb["revenue"]
     credited_n = sum(m["tickets"] for m in messages)
     credited_rev = sum(m["ticket_revenue"] for m in messages)
-    new_y = days[yday]["tk"]
+    new_y = days[yday]["tk"]                                    # paid tickets yesterday
+    br_y_live, br_app_y_live = days[yday]["br"], days[yday]["bpp"]
     event = Date.fromisoformat(CFG["event_start"])
     days_to_go = max((event - today).days, 0)
     pp_n = len(pp_first)
@@ -817,7 +858,7 @@ def main():
     shown_at = now.astimezone(SHOW_TZ)
     as_of = f"{shown_at.strftime('%b')} {shown_at.day}, {shown_at.strftime('%-I:%M%p').lower()} ET"
     sales_line = f"{money(total_sales)} total sales ({money(revenue)} tickets + {money(bb['revenue'])} Business Bible)"
-    pp_rate = 100 * pp_n / n_holders if n_holders else 0
+    pp_rate = 100 * pp_n / n_pc if n_pc else 0                  # of paid + comp ticket holders (brothers apart)
     bb_rate = 100 * bb["people"] / n_paid if n_paid else 0     # people, not sales
 
     # ---- yesterday + summary picks: set by the first run after midnight Pacific (the 7am ET run), kept by later runs.
@@ -827,6 +868,11 @@ def main():
     Yd = frozen["Y"] if keep else {c: {ch: dict(Y[c][ch]) for ch in Y[c]} for c in Y}
     # Yesterday frozen by a 7am run that predates v1.5.4 has no Texas count: fill it in from the per-text reasons
     # for that day (never more than the frozen "not delivered"), so the Yesterday split always adds up.
+    # Brothers yesterday: same 7am snapshot rule as the rest (an older snapshot without them is filled in once)
+    byb_y = (frozen.get("byb") if keep else None) or {"claimed": br_y_live, "app": br_app_y_live,
+                                                       "to_date": n_br, "to_date_app": len(br_pp)}
+    br_y, br_app_y = byb_y["claimed"], byb_y["app"]
+    new_total = new_y + br_y
     for c in Yd:
         ys = Yd[c].get("sms") or {}
         if ys and "blocked_tx" not in ys:
@@ -901,6 +947,7 @@ def main():
         # "Ready to send" status only ever follows the 7am ET run.
         frozen = {"yesterday": yday, "as_of": as_of, "at": now.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
                   "Y": Yd, "picks": picks, "rules": rules_used}
+    frozen.setdefault("byb", byb_y)
 
     hr = SR["headline"]
     prior = [(today - timedelta(days=i)).isoformat() for i in range(2, 2 + hr["compare_days"])]
@@ -908,11 +955,12 @@ def main():
     tol = hr["in_line_tolerance_pct"] / 100
     word = ("above" if new_y > 0 else "in line") if avg == 0 else \
         "above" if new_y > avg * (1 + tol) else "below" if new_y < avg * (1 - tol) else "in line"
-    tickets_word = f"{new_y} new ticket{'s' if new_y != 1 else ''} yesterday"
-    headline = {"big": tickets_word,
+    tickets_word = f"{new_total} new ticket{'s' if new_total != 1 else ''} yesterday"
+    split = f"{new_y} paid + {br_y} brother{'s' if br_y != 1 else ''}" if br_y else ""   # hidden at 0 brothers
+    headline = {"big": tickets_word + (f" ({split})" if split else ""),
                 "sub": f"{n_holders} ticket holders · {sales_line} · {days_to_go} days to go",
-                "cmp": f"vs {hr['compare_days']}-day average of {avg:.1f}/day: {word}",
-                "line": f"{tickets_word} ({n_holders} total, {days_to_go} days to go)"}
+                "cmp": f"{'paid ' if split else ''}vs {hr['compare_days']}-day average of {avg:.1f}/day: {word}",
+                "line": f"{tickets_word} ({split + '; ' if split else ''}{n_holders} total, {days_to_go} days to go)"}
     rules_used["headline"] = (f"Headline: {new_y} new paid tickets on {short_day(yday)} vs {avg:.1f}/day over the "
                               f"{hr['compare_days']} days before it ({word}; 'in line' = within {hr['in_line_tolerance_pct']}%).")
 
@@ -927,9 +975,9 @@ def main():
                "sub": f"\u201c{m['text']}\u201d got {cr:.1f}% clicks ({fmt(m['clicked'])} of {fmt(m['delivered'])} delivered) vs the {a:.1f}% campaign average.",
                "line": f"\u201c{m['text']}\u201d clicked at {cr:.1f}%, {mult:.1f}x the campaign average"}
     elif wp["rule"] == 2 and wp["which"] == "pp":
-        win = {"big": f"{fraction_word(pp_rate)} of ticket holders signed up for the app",
-               "sub": f"{pp_n} of {n_holders} ({pp_rate:.1f}%) signed up for the Power Plan. It's free until {billing}, then ${pp_cfg['price_per_month']}/month: {money(pp_n * pp_cfg['price_per_month'])}/month if they all stay.",
-               "line": f"{pp_n} of {n_holders} ticket holders ({pp_rate:.1f}%) signed up for the Warrior App (free until {billing})"}
+        win = {"big": f"{fraction_word(pp_rate)} of paid + comp ticket holders signed up for the app",
+               "sub": f"{pp_n} of {n_pc} ({pp_rate:.1f}%) signed up for the Power Plan. It's free until {billing}, then ${pp_cfg['price_per_month']}/month: {money(pp_n * pp_cfg['price_per_month'])}/month if they all stay.",
+               "line": f"{pp_n} of {n_pc} paid + comp ticket holders ({pp_rate:.1f}%) signed up for the Warrior App (free until {billing})"}
     elif wp["rule"] == 2:
         win = {"big": f"{fraction_word(bb_rate)} of paid buyers added the Business Bible",
                "sub": f"{bb['people']} of {n_paid} paid buyers ({bb_rate:.1f}%) · {bb['count']} sales · {money(bb['revenue'])}.",
@@ -982,6 +1030,14 @@ def main():
     left, left_lines, left_notes = compute_left(PLAN, messages, now) if PLAN else (None, [], [])
     for n in left_notes:
         FLAGS.append("Plan may be out of date — " + n)
+    def byb_part(n, app, pct_=False):
+        if not n and not app:
+            return "none yet" if not n_br else "none"
+        return (f"{n} claimed · {app} added the Warrior App"
+                + (f" ({100 * app / n:.0f}%)" if pct_ and n else ""))
+    byb_lines = (["BRING YOUR BROTHER (free friend tickets)",
+                  f"Yesterday: {byb_part(br_y, br_app_y)}",
+                  f"To date: {byb_part(n_br, len(br_pp), True)}", ""] if BYB else [])
     report = "\n".join([
         # first line = the 7am ET run that built this report; later runs keep it until the next 7am run
         f"WarriorCon 6 — report for {short_day(yday)} (updated {frozen['as_of']})",
@@ -992,11 +1048,12 @@ def main():
         f"• Watch: {watch['line']}",
         "",
         *([f"LEFT TO SEND (until {short_day(left['until'])})", *left_lines, ""] if left else []),
-        f"TICKET HOLDERS: {n_holders} ({n_paid} paid + {n_comps} comps) · {new_y} new yesterday",
+        f"TICKET HOLDERS: {n_holders} ({n_paid} paid + {n_comps} comps{f' + {n_br} brothers' if n_br else ''}) · {new_total} new yesterday",
         (f"Refunds: {refunds['count']} ({money(refunds['amount'])}) to date · {refunds['yesterday']} yesterday" if refunds["count"] else "Refunds: 0 to date"),
         sales_line,
         f"{credited_n} of {n_paid} tickets were bought within {CFG['attribution_window_hours']} hrs of an email/text",
         "",
+        *byb_lines,
         "PROMOTE (non-ticket holders)",
         f"Yesterday — Email: {e_line(Yd['promote']['email'])}",
         f"Yesterday — SMS: {s_line(Yd['promote']['sms'])}",
@@ -1010,7 +1067,7 @@ def main():
         f"To date — SMS: {s_line(T['post_ticket']['sms'])}",
         "",
         "UPSELLS",
-        f"Warrior App (Power Plan): {pp_n} · {pp_rate:.1f}% of ticket holders",
+        f"Warrior App (Power Plan): {pp_n} · {pp_rate:.1f}% of paid + comp ticket holders",
         f"Business Bible: {bb['count']} sales · {money(bb['revenue'])} · bought by {bb['people']} of {n_paid} paid buyers ({bb_rate:.1f}%)",
         "(Texts have no open rate.)",
     ])
@@ -1019,8 +1076,9 @@ def main():
     day_list = []
     d = Date.fromisoformat(CFG["campaign_start"])
     while d <= today:
-        x = days.get(d.isoformat(), {"tk": 0, "tkr": 0, "pp": 0, "bb": 0, "bbr": 0})
-        day_list.append({"d": d.isoformat(), "tk": x["tk"], "tkr": round(x["tkr"], 2), "pp": x["pp"], "bb": x["bb"], "bbr": round(x["bbr"], 2)})
+        x = days.get(d.isoformat(), {"tk": 0, "tkr": 0, "pp": 0, "bb": 0, "bbr": 0, "br": 0, "bpp": 0})
+        day_list.append({"d": d.isoformat(), "tk": x["tk"], "tkr": round(x["tkr"], 2), "pp": x["pp"], "bb": x["bb"], "bbr": round(x["bbr"], 2),
+                         "br": x["br"], "bpp": x["bpp"]})
         d += timedelta(days=1)
 
     # Fixed GHL links (from config.json; never created or changed by this script)
@@ -1039,7 +1097,7 @@ def main():
 
     # Today so far (Pacific day), as of this run
     t_day = today.isoformat()
-    today_so_far = {"date": t_day, "tickets": days[t_day]["tk"],
+    today_so_far = {"date": t_day, "tickets": days[t_day]["tk"] + days[t_day]["br"], "brothers": days[t_day]["br"],
                     "emails": sum(m["days"].get(t_day, [0])[0] for m in messages if m["ch"] == "email"),
                     "texts": sum(m["days"].get(t_day, [0])[0] for m in messages if m["ch"] == "sms")}
 
@@ -1055,11 +1113,15 @@ def main():
         "event_start": CFG["event_start"], "days_to_go": days_to_go,
         "attribution_window_hours": CFG["attribution_window_hours"],
         "thresholds": TH, "email_whole_send_share": SR["email_whole_send_share"],
-        "holders": {"total": n_holders, "paid": n_paid, "comps": n_comps, "new_yesterday": new_y},
+        "holders": {"total": n_holders, "paid": n_paid, "comps": n_comps, "brothers": n_br,
+                    "new_yesterday": new_total, "new_paid_yesterday": new_y, "new_brothers_yesterday": br_y},
+        "byb": {"to_date": n_br, "app": len(br_pp), "yesterday": br_y, "app_yesterday": br_app_y,
+                "first_claim": min((pt_day(o["created"]) for o in brothers.values()), default=None),
+                "app_free_until": pp_cfg["billing_start"], "price_per_month": pp_cfg["price_per_month"]},
         "refunds": refunds,
         "sales": {"tickets": n_paid, "revenue": round(revenue, 2), "total": round(total_sales, 2),
                   "credited": credited_n, "credited_revenue": round(credited_rev, 2)},
-        "upsells": {"power_plan": {"count": pp_n, "price_per_month": pp_cfg["price_per_month"], "billing_start": pp_cfg["billing_start"]},
+        "upsells": {"power_plan": {"count": pp_n, "base": n_pc, "price_per_month": pp_cfg["price_per_month"], "billing_start": pp_cfg["billing_start"]},
                     "business_bible": {"count": bb["count"], "people": bb["people"], "bump": bb["bump"], "standalone": bb["standalone"],
                                        "revenue": round(bb["revenue"], 2)}},
         "todate": {c: {ch: dict(T[c][ch]) for ch in T[c]} for c in T},
@@ -1074,7 +1136,7 @@ def main():
                "summary": {k: v["line"] for k, v in data["summary"].items()},
                "promote": {"yesterday": Yd["promote"], "to_date": data["todate"]["promote"]},
                "post_ticket": {"yesterday": Yd["post_ticket"], "to_date": data["todate"]["post_ticket"]},
-               "upsells": data["upsells"]}
+               "upsells": data["upsells"], "bring_your_brother": data["byb"]}
 
     # Safety check against the last good data (see safety_check). On a stop the run fails (red X + GitHub email).
     stop, notes = safety_check(prev, data, Y, yday, morning=not keep)
@@ -1103,6 +1165,13 @@ def main():
         log("  " + rules_used[k])
     if pp_non_holders:
         log(f"Power Plan: {len(pp_non_holders)} sign-up(s) are not ticket holders and were left out.")
+    if BYB:   # counts only; names stay in GHL
+        tag_br = {c for c in br_tagged if c not in br_test}
+        log(f"Bring Your Brother: {len(br_orders)} free ticket order(s) found (funnel {sum(o.get('src') == BYB['funnel_id'] for o in br_orders)}, "
+            f"coupon {sum(o.get('coupon') in BYB['coupon_codes'] for o in br_orders)}); team tests left out: {len(br_test)} contact(s). "
+            f"Brothers counted {n_br} ({len(br_first) - n_br} also paid/comp, counted there). Tag '{BYB['tag']}' (minus team tests): {len(tag_br)}. "
+            f"Order method vs tag: {'agree' if tag_br == set(br_first) else f'{len(set(br_first) - tag_br)} order-only, {len(tag_br - set(br_first))} tag-only'}. "
+            f"Warrior App: {len(br_pp)} brother sign-up(s), counted only in Bring Your Brother.")
     log(f"Business Bible: {bb['count']} paid ({bb['bump']} at ticket checkout, {bb['standalone']} on their own).")
     if left:
         log(f"What's left (plan read {left['plan_read_at']}, until {left['until']}):")

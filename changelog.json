@@ -1,5 +1,19 @@
 [
   {
+    "v": "1.6",
+    "date": "2026-11-21",
+    "title": "Bring Your Brother",
+    "items": [
+      "<b>New: Bring Your Brother.</b> A new tile next to Ticket holders shows how many friends claimed a free WC6 ticket with a ticket holder's code (warriorcon6.com/bring-your-brother), how many joined yesterday, and how many added the Warrior App.",
+      "<b>Ticket holders now include brothers:</b> paid + comps + free brother tickets, for example \"160 (145 paid + 3 comps + 12 brothers)\". The \"+ brothers\" part only shows once there are some. A brother counts as a ticket holder for messages sent after he claims his ticket, the same rule as buyers.",
+      "<b>New \"Bring your brother\" table</b> under the campaign tables. It follows the date filter: brothers who claimed a ticket and how many added the Warrior App (card on file, free until Dec 4, then $95/mo), for the selected dates vs. to date. It shows \"none yet\" until the first real claim.",
+      "<b>Sales stay paid-only.</b> Brother tickets are $0, so total sales, ticket sales, tickets from campaigns, the Business Bible take rate and refunds don't change. There's a new Total sales tile, and the top tiles are now 4 across.",
+      "<b>Warrior App is counted separately for brothers.</b> The Upsells number and % are now \"of paid + comp ticket holders\" (still 73, 48.7%). Brothers' app sign-ups show only in Bring your brother.",
+      "<b>Day by day chart:</b> brother tickets show in a lighter shade on top of the tickets bar (\"Brother (free)\").",
+      "<b>Garrett's report</b> has a new BRING YOUR BROTHER block (yesterday and to date). The TICKET HOLDERS line adds brothers once there are some. Two team test claims (Nov 19 and Nov 20) are left out."
+    ]
+  },
+  {
     "v": "1.5.5",
     "date": "2026-11-17",
     "title": "Yesterday Texas split",

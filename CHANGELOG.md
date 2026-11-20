@@ -4,6 +4,16 @@ The version only changes when the page itself changes. Daily data refreshes keep
 New features go up a minor number (1.1, 1.2). Fixes go up a patch number (1.0.1).
 The "What's new" panel on the page reads `changelog.json`, so update both files together.
 
+## v1.6 · Bring Your Brother · Nov 21, 2026
+
+- **New: Bring Your Brother.** A new tile next to Ticket holders shows how many friends claimed a free WC6 ticket with a ticket holder's code (warriorcon6.com/bring-your-brother), how many joined yesterday, and how many added the Warrior App.
+- **Ticket holders now include brothers:** paid + comps + free brother tickets, for example "160 (145 paid + 3 comps + 12 brothers)". The "+ brothers" part only shows once there are some. A brother counts as a ticket holder for messages sent after he claims his ticket, the same rule as buyers.
+- **New "Bring your brother" table** under the campaign tables. It follows the date filter: brothers who claimed a ticket and how many added the Warrior App (card on file, free until Dec 4, then $95/mo), for the selected dates vs. to date. It shows "none yet" until the first real claim.
+- **Sales stay paid-only.** Brother tickets are $0, so total sales, ticket sales, tickets from campaigns, the Business Bible take rate and refunds don't change. There's a new Total sales tile, and the top tiles are now 4 across.
+- **Warrior App is counted separately for brothers.** The Upsells number and % are now "of paid + comp ticket holders" (still 73, 48.7%). Brothers' app sign-ups show only in Bring your brother.
+- **Day by day chart:** brother tickets show in a lighter shade on top of the tickets bar ("Brother (free)").
+- **Garrett's report** has a new BRING YOUR BROTHER block (yesterday and to date). The TICKET HOLDERS line adds brothers once there are some. Two team test claims (Nov 19 and Nov 20) are left out.
+
 ## v1.5.5 · Yesterday Texas split · Nov 17, 2026
 
 - **Texas split fixed on the "Yesterday" row.** The Yesterday numbers are fixed by the 7am update. Today's was made before v1.5.4, so it had no Texas count, and the row showed "0 blocked · Texas SMS safeguard". The count is now filled in from each text's failure reason for that day, so the two lines add up to "not delivered". From tomorrow's 7am update it's saved with the rest.

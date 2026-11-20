@@ -94,6 +94,12 @@
   .tile .n{font-size:12px;color:var(--muted);margin-top:6px}
   .tile .n.warn{color:var(--red)}
   .tile .n.rf{margin-top:2px}
+  .tile .n b{color:var(--fg);font-weight:600}
+  #tiles{grid-template-columns:repeat(4,1fr)}                       /* v1.6: 4 across, like the preview */
+  @media (max-width:900px){#tiles{grid-template-columns:1fr 1fr}}
+  .byb td .per{display:block;font-size:12px;color:var(--muted);margin-top:4px}
+  .byb td.none{color:var(--muted)}
+  .byb .bnote{font-size:12px;color:var(--muted);line-height:1.5;padding:14px 22px;border-top:1px solid var(--line)}
 
   /* campaign blocks */
   .camp{border:1px solid var(--line);margin-bottom:18px}
@@ -428,6 +434,14 @@
       </table>
     </div>
     <p class="note" id="watchNote"></p>
+    <div class="camp byb" id="bybT" data-for="all th">
+      <header><h3>Bring your <em>brother</em></h3><span id="bybSel"></span></header>
+      <table class="k">
+        <thead><tr><th></th><th class="rl" id="bybRl">Yesterday</th><th>To date</th></tr></thead>
+        <tbody id="bybBody"></tbody>
+      </table>
+      <p class="bnote">Garrett shares the link and code himself — no invite emails or texts yet. Code FREEMAN is shared by everyone, so the page can't tell who invited each brother; totals only. Team test claims are left out.</p>
+    </div>
     <p class="note" id="ghlNote">Lists open in GoHighLevel (login needed) and show contacts for that campaign, not the selected dates. GoHighLevel's workflow stats only go back 30 days.</p>
   </section>
 
@@ -449,9 +463,9 @@
   <section>
     <div class="eyebrow">Day by day</div>
     <h2>Sends, clicks <em>&amp; sales.</em></h2>
-    <p class="sub">Each day's email + text sends, clicks and tickets bought.</p>
+    <p class="sub">Each day's email + text sends, clicks and tickets (paid, plus free brother tickets in a lighter shade).</p>
     <div class="chart" id="chartBox">
-      <div class="legend"><span><i style="background:#3a3d3c"></i>Sends</span><span><i style="background:#cfd4d2"></i>Email clicks</span><span><i style="background:var(--red)"></i>Tickets bought</span></div>
+      <div class="legend"><span><i style="background:#3a3d3c"></i>Sends</span><span><i style="background:#cfd4d2"></i>Email clicks</span><span><i style="background:var(--red)"></i>Tickets bought</span><span><i style="background:#f4a3a3"></i>Brother (free)</span></div>
       <svg id="chart" viewBox="0 0 1000 260" width="100%" role="img" aria-label="Daily sends, email clicks and tickets bought"></svg>
       <div class="ctip" id="ctip" hidden></div>
     </div>
@@ -516,12 +530,12 @@
 
 <script>
 // The version of THIS page. Bump it (and changelog.json) whenever the page changes; daily data refreshes never change it.
-const PAGE_VERSION = '1.5.5';
+const PAGE_VERSION = '1.6';
 
 const $ = id => document.getElementById(id);
 const N = n => n == null ? '—' : Math.round(n).toLocaleString('en-US');
 const P = (a, b) => b ? 100 * a / b : null;
-const PF = v => v == null ? '—' : v.toFixed(1) + '%';
+const PF = (v, d = 1) => v == null ? '—' : v.toFixed(d) + '%';
 const $$ = n => '$' + Math.round(n).toLocaleString('en-US');
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const fmtD = d => new Date(d + 'T12:00:00').toLocaleDateString('en-US', {month: 'short', day: 'numeric'});
@@ -551,10 +565,22 @@ document.querySelectorAll('#seg button').forEach(b => b.onclick = () => {
   document.querySelectorAll('[data-for]').forEach(el => el.hidden = !el.dataset.for.split(' ').includes(a));
   fixSolo();
 });
-function fixSolo() {   // phone: a lone last tile spans the full row
-  const vis = [...document.querySelectorAll('#tiles .tile')].filter(t => !t.hidden);
-  vis.forEach((t, i) => t.classList.toggle('solo', vis.length % 2 === 1 && i === vis.length - 1));
+function fixSolo() {   // a tile at the end of a part-filled row stretches to fill it (no empty grey cells)
+  const grid = $('tiles'), vis = [...grid.querySelectorAll('.tile')].filter(t => !t.hidden);
+  vis.forEach(t => { t.classList.remove('solo'); t.style.gridColumn = ''; });
+  const cols = getComputedStyle(grid).gridTemplateColumns.split(' ').filter(Boolean).length || 1;
+  const phone = matchMedia('(max-width:640px)').matches;
+  let pos = 0, prev = null;
+  for (const t of vis) {
+    if (phone && t.classList.contains('tup')) {   // full width on phones
+      if (pos && prev) prev.style.gridColumn = `span ${cols - pos + 1}`;
+      pos = 0; prev = null; continue;
+    }
+    pos = (pos + 1) % cols; prev = t;
+  }
+  if (pos && prev) prev.style.gridColumn = `span ${cols - pos + 1}`;
 }
+addEventListener('resize', () => { clearTimeout(fixSolo._t); fixSolo._t = setTimeout(fixSolo, 100); });
 
 // tap a percentage to show its count sentence (phones)
 document.addEventListener('click', e => {
@@ -794,11 +820,11 @@ function renderStatic() {
   $('exWB').textContent = S.win.big; $('exWS').textContent = S.win.sub;
   $('exAB').textContent = S.watch.big; $('exAS').textContent = S.watch.sub;
   const T0 = D.today_so_far;
-  if (T0) $('exToday').textContent = `Today so far (as of ${etTime(D.generated_at)}): ${N(T0.tickets)} ticket${T0.tickets === 1 ? '' : 's'} bought · ${N(T0.emails)} emails · ${N(T0.texts)} texts sent`;
+  if (T0) $('exToday').textContent = `Today so far (as of ${etTime(D.generated_at)}): ${N(T0.tickets)} ticket${T0.tickets === 1 ? '' : 's'}${T0.brothers ? ` (${N(T0.tickets - T0.brothers)} bought + ${N(T0.brothers)} free brother${T0.brothers === 1 ? '' : 's'})` : ' bought'} · ${N(T0.emails)} emails · ${N(T0.texts)} texts sent`;
 
   $('reportText').innerHTML = D.report.split('\n').map(l => {
     const e = esc(l);
-    if (/^(WarriorCon 6 —|SUMMARY$|LEFT TO SEND|PROMOTE |POST-TICKET |UPSELLS$)/.test(l)) return `<b>${e}</b>`;
+    if (/^(WarriorCon 6 —|SUMMARY$|LEFT TO SEND|PROMOTE |POST-TICKET |UPSELLS$|BRING YOUR BROTHER)/.test(l)) return `<b>${e}</b>`;
     if (l.startsWith('TICKET HOLDERS:')) return '<b>TICKET HOLDERS:</b>' + e.slice('TICKET HOLDERS:'.length);
     return e;
   }).join('\n');
@@ -811,25 +837,32 @@ function renderStatic() {
   const rf = D.refunds || {count: 0, amount: 0};
   $('tilesIntro').textContent = `Everything since the campaign started on ${fmtD(D.campaign_start)}. Switch audience to see each side on its own.`;
   const bbRate = P(bb.people, h.paid);
+  const pcBase = pp.base != null ? pp.base : h.paid + h.comps;   // Warrior App % = of paid + comp ticket holders (v1.6)
+  const B = D.byb || {to_date: 0, app: 0, yesterday: 0, app_yesterday: 0};
+  const brN = h.brothers || 0, brY = h.new_brothers_yesterday || 0, paidY = h.new_paid_yesterday != null ? h.new_paid_yesterday : h.new_yesterday;
   const ups = `<div class="ups">`
-    + `<div class="up1"><span class="un">${N(pp.count)}</span><span class="ut"><b>Warrior App</b>${PF(P(pp.count, h.total))} of ticket holders · free until ${fmtD(pp.billing_start)}</span></div>`
+    + `<div class="up1"><span class="un">${N(pp.count)}</span><span class="ut"><b>Warrior App</b>${PF(P(pp.count, pcBase))} of paid + comp ticket holders · free until ${fmtD(pp.billing_start)}</span></div>`
     + `<div class="up1"><span class="un">${N(bb.people)}</span><span class="ut"><b>Business Bible</b>${PF(bbRate)} of paid buyers · ${bb.count} sales · ${$$(bb.revenue)}</span></div></div>`;
   const tiles = [
-    ['all th', '', 'Ticket holders', 'Everyone with a WC6 ticket, including comps.', N(h.total), `${h.paid} paid + ${h.comps} comps · +${h.new_yesterday} yesterday`, false, null,
+    ['all th', '', 'Ticket holders', 'Everyone with a WC6 ticket, including comps and free brother tickets.', N(h.total),
+      `${h.paid} paid + ${h.comps} comps${brN ? ` + ${N(brN)} brother${brN === 1 ? '' : 's'} (free)` : ''}<br>+${h.new_yesterday} yesterday${brY ? ` (${paidY} paid + ${brY} brother${brY === 1 ? '' : 's'})` : ''}`, false, null,
       rf.count ? `${N(rf.count)} refunded (${$$(rf.amount)}) · not counted` : ''],
+    ['all th', '', 'Bring your brother', "Friends who claimed a free ticket with a ticket holder's code.", N(B.to_date),
+      B.to_date ? `<b>+${N(B.yesterday)}</b> yesterday<br><b>${N(B.app)}</b> added the Warrior App (${PF(P(B.app, B.to_date), 0)})` : 'none yet'],
+    ['all', '', 'Total sales', 'Tickets + Business Bible. Brother tickets are $0.', $$(s.total), `${$$(s.revenue)} tickets + ${$$(bbRev)} Bible`],
+    ['all th', 'tup', 'Upsells', 'Paid and comp ticket holders who added each one.', null, "Brothers' app sign-ups counted separately", false, ups],
     ['all nth', '', 'Tickets from campaigns', `Tickets bought within ${D.attribution_window_hours} hrs of an email or text.`, N(s.credited), `of ${N(s.tickets)} paid tickets · ${$$(s.credited_revenue)} in sales`],
     ['all nth', '', 'Promote email click', 'Share of sales emails that got a click.', PF(P(pe.clicked, pe.delivered)), `${PF(P(pe.opened, pe.delivered))} open · ${N(pe.sent)} sent`],
     ['all nth', '', 'Promote SMS delivered', 'Share of sales texts that reached a phone.', PF(P(ps.delivered, ps.sent)),
       failed > TH.sms_failed_pct ? `${PF(failed)} not delivered, above the ${TH.sms_failed_pct}% limit · ${N(ps.sent)} sent` : `${N(ps.sent)} sent`, failed > TH.sms_failed_pct],
     ['all th', 'tup', 'Post-ticket email open', 'Share of ticket-holder emails that were opened.', te.sent ? PF(P(te.opened, te.delivered)) : '—', te.sent ? `${N(te.sent)} sent` : 'none sent'],
-    ['all th', 'tup', 'Upsells', 'Ticket holders who added each one.', null, '', false, ups],
   ];
   $('tiles').innerHTML = tiles.map(([f, cls, k, d, v, n, w, inner, x]) => `<div class="tile ${cls}" data-for="${f}"><div class="k">${k}</div><div class="d">${d}</div>${inner || `<div class="v">${v}</div>`}${n ? `<div class="n${w ? ' warn' : ''}">${n}</div>` : ''}${x ? `<div class="n rf">${x}</div>` : ''}</div>`).join('');
   fixSolo();
 
-  const ppRate = P(pp.count, h.total);
+  const ppRate = P(pp.count, pcBase);
   $('upTiles').innerHTML =
-    `<div class="tile"><div class="k">Warrior App · Power Plan</div><div class="v">${N(pp.count)}</div><div class="n">${PF(ppRate)} of ticket holders signed up for the Warrior App (free until ${fmtD(pp.billing_start)})</div></div>`
+    `<div class="tile"><div class="k">Warrior App · Power Plan</div><div class="v">${N(pp.count)}</div><div class="n">${PF(ppRate)} of paid + comp ticket holders signed up for the Warrior App (free until ${fmtD(pp.billing_start)})</div></div>`
   + `<div class="tile"><div class="k">Business Bible add-on</div><div class="v">${N(bb.people)}</div><div class="n">${PF(bbRate)} of paid buyers · ${bb.count} sales · ${$$(bb.revenue)} (${bb.bump} at checkout + ${bb.standalone} on its own)</div></div>`
   + `<div class="tile"><div class="k">App billing from ${fmtD(pp.billing_start)}</div><div class="v">${$$(pp.count * pp.price_per_month)}<span style="font-size:.5em;color:var(--muted)">/mo</span></div><div class="n">If all ${pp.count} stay on at $${pp.price_per_month}/month</div></div>`;
 
@@ -852,6 +885,7 @@ function apply() {
   $('tPromote').innerHTML = campRows('promote', short);
   $('tPost').innerHTML = campRows('post_ticket', short);
   upsellRows(short);
+  bybRows(short);
   drawChart();
   msgTable();
 }
@@ -884,17 +918,35 @@ function initFilter() {
 // ---------- upsells ----------
 function upsellRows(short) {
   const h = D.holders, pp = D.upsells.power_plan, bb = D.upsells.business_bible;
+  const pcB = pp.base != null ? pp.base : h.paid + h.comps;
   const inR = k => range.preset === 'all' ? (k === 'pp' ? pp.count : bb.count) : D.days.filter(d => d.d >= range.from && d.d <= range.to).reduce((a, d) => a + d[k], 0);
   const rl = short === 'Campaign' ? 'Selected range' : short;
   document.querySelectorAll('#upT th.rl').forEach(e => e.textContent = rl);
   const ppR = inR('pp'), bbR = inR('bb'), each = bb.count ? bb.revenue / bb.count : 0;
   $('upBody').innerHTML =
     `<tr><td><span class="ch">APP</span>Power Plan sign-ups</td><td data-l="${esc(rl)}"${ppR ? '' : ' class="dim"'}>${ppR ? `<b>${N(ppR)}</b>` : '0'}</td><td data-l="To date"><b>${N(pp.count)}</b></td>`
-  + `<td data-l="Take rate">${tip(PF(P(pp.count, h.total)), `${pp.count} of ${h.total}`, `${pp.count} of ${h.total} ticket holders took the Power Plan`)}</td>`
+  + `<td data-l="Take rate">${tip(PF(P(pp.count, pcB)), `${pp.count} of ${pcB}`, `${pp.count} of ${pcB} paid + comp ticket holders took the Power Plan (brothers' sign-ups are counted under Bring your brother)`)}</td>`
   + `<td data-l="Revenue">$0 now<span class="per">$${pp.price_per_month}/mo from ${fmtD(pp.billing_start)}</span></td></tr>`
   + `<tr><td><span class="ch">BUMP</span>Business Bible</td><td data-l="${esc(rl)}"${bbR ? '' : ' class="dim"'}>${bbR ? `<b>${N(bbR)}</b>` : '0'}</td><td data-l="To date"><b>${N(bb.count)}</b></td>`
   + `<td data-l="Take rate">${tip(PF(P(bb.people, h.paid)), `${bb.people} of ${h.paid}`, `${bb.people} of ${h.paid} paid ticket buyers bought the Business Bible (${bb.count} sales: ${bb.bump} added at ticket checkout, ${bb.standalone} bought on its own)`)}</td>`
   + `<td data-l="Revenue"><b>${$$(bb.revenue)}</b><span class="per">${bb.bump} at checkout + ${bb.standalone} on its own</span></td></tr>`;
+}
+
+// ---------- bring your brother (follows the date filter; yesterday = the 7am snapshot) ----------
+function bybRows(short) {
+  const B = D.byb || {to_date: 0, app: 0, yesterday: 0, app_yesterday: 0};
+  const rl = short === 'Campaign' ? 'Selected range' : short;
+  $('bybRl').textContent = rl;
+  $('bybSel').textContent = `Selected: ${rl === 'Selected range' ? 'To date' : rl} · Free friend tickets from warriorcon6.com/bring-your-brother`;
+  const sum = k => D.days.filter(d => d.d >= range.from && d.d <= range.to).reduce((a, d) => a + (d[k] || 0), 0);
+  const n = range.preset === 'all' ? B.to_date : range.preset === 'yday' ? B.yesterday : sum('br');
+  const a = range.preset === 'all' ? B.app : range.preset === 'yday' ? B.app_yesterday : sum('bpp');
+  const none = B.to_date ? 'none' : 'none yet';
+  const cell = (l, v, per) => v ? `<td data-l="${esc(l)}"><b>${N(v)}</b>${per ? `<span class="per">${per}</span>` : ''}</td>` : `<td data-l="${esc(l)}" class="none">${none}</td>`;
+  const app = (v, of) => v ? `${PF(P(v, of), 0)} of ${N(of)}` : '';
+  $('bybBody').innerHTML =
+    `<tr><td>Brothers who claimed a free ticket</td>${cell(rl, n)}${cell('To date', B.to_date, B.first_claim ? `first claim ${fmtD(B.first_claim)}` : '')}</tr>`
+  + `<tr><td>Added the Warrior App (card on file)</td>${cell(rl, a, n ? app(a, n) : '')}${cell('To date', B.app, `${app(B.app, B.to_date)} · free until ${fmtD(B.app_free_until || D.upsells.power_plan.billing_start)}, then $${B.price_per_month || D.upsells.power_plan.price_per_month}/mo`)}</tr>`;
 }
 
 // ---------- chart (each series scaled to its own peak; days outside the range dimmed) ----------
@@ -905,7 +957,7 @@ function drawChart() {
     for (const [d, v] of Object.entries(m.days)) sends[d] = (sends[d] || 0) + v[0];
     if (m.ch === 'email' && m.day && m.clicked && !m.no_links) clicks[m.day] = (clicks[m.day] || 0) + m.clicked;
   }
-  chartDays = D.days.map(x => ({d: x.d, s: sends[x.d] || 0, c: clicks[x.d] || 0, t: x.tk}));
+  chartDays = D.days.map(x => ({d: x.d, s: sends[x.d] || 0, c: clicks[x.d] || 0, t: x.tk + (x.br || 0), b: x.br || 0}));
   const mx = k => Math.max(1, ...chartDays.map(x => x[k]));
   const ms = mx('s'), mc = mx('c'), mt = mx('t');
   const svg = $('chart'), W = 1000, H = 260, pl = 10, pb = 30, ch = H - pb - 10, n = chartDays.length, gw = (W - pl * 2) / n, bw = Math.max(2, (gw - 4) / 3 - 1);
@@ -918,6 +970,9 @@ function drawChart() {
       const h = ch * f;
       if (h > 0) g += `<rect x="${x0 + j * (bw + 1)}" y="${10 + ch - h}" width="${bw}" height="${h}" fill="${c}" opacity="${op}"/>`;
     });
+    if (x.b) {   // brother (free) share of the tickets bar, on top in a lighter shade
+      g += `<rect x="${x0 + 2 * (bw + 1)}" y="${10 + ch - ch * x.t / mt}" width="${bw}" height="${ch * x.b / mt}" fill="#f4a3a3" opacity="${op}"/>`;
+    }
     if (i % every === 0) g += `<text x="${x0 + (bw * 3 + 2) / 2}" y="${H - 8}" fill="${inR ? '#fafafa' : '#5d605f'}" font-size="13" text-anchor="middle">${fmtD(x.d)}</text>`;
     g += `<rect x="${pl + i * gw}" y="0" width="${gw}" height="${H}" fill="transparent" data-i="${i}"/>`;
   });
@@ -927,7 +982,7 @@ function chartTip(e) {
   const r = e.target.closest('rect[data-i]'), tipEl = $('ctip');
   if (!r) { tipEl.hidden = true; return; }
   const x = chartDays[+r.dataset.i], box = $('chartBox').getBoundingClientRect();
-  tipEl.innerHTML = `<b>${fmtD(x.d)}</b><br>${N(x.s)} sends · ${N(x.c)} email clicks · ${N(x.t)} tickets`;
+  tipEl.innerHTML = `<b>${fmtD(x.d)}</b><br>${N(x.s)} sends · ${N(x.c)} email clicks · ${N(x.t)} tickets${x.b ? ` (${N(x.t - x.b)} paid + ${N(x.b)} brother${x.b === 1 ? '' : 's'})` : ''}`;
   tipEl.hidden = false;
   const cx = e.clientX - box.left;
   tipEl.style.left = Math.max(8, Math.min(cx - tipEl.offsetWidth / 2, box.width - tipEl.offsetWidth - 8)) + 'px';

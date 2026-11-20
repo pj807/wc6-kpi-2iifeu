@@ -47,7 +47,7 @@ If the page is open when new numbers arrive, a bar says "New data in" with a Sho
 | `summary.json` | Garrett's daily numbers only |
 | `report.txt` | The copy-and-send daily report, the same text as the Copy button |
 | `changelog.json` / `CHANGELOG.md` | Version history. The "What's new" panel reads `changelog.json`. |
-| `config.json` | Settings: workflows, the 48-hour credit window, red-line thresholds, summary rules, product names |
+| `config.json` | Settings: workflows, the 48-hour credit window, red-line thresholds, summary rules, product names, team test orders, Bring Your Brother |
 | `scripts/pull.py` | Reads GHL and builds the data files |
 | `scripts/privacy_scan.py` | The privacy check |
 | `.github/workflows/daily-refresh.yml` | The daily GitHub Action |
@@ -56,9 +56,17 @@ If the page is open when new numbers arrive, a bar says "New data in" with a Sho
 ## How the numbers work
 
 - **Yesterday:** the previous full day, midnight to midnight Pacific. "Last updated" is shown in Eastern time.
-- **Ticket holder:** a paid WC6 ticket order of $199 or more, or the comp tag. A person counts as a ticket holder for a message only if they bought before it was sent. $0 and $1 test orders don't count.
+- **Ticket holder:** a paid WC6 ticket order of $199 or more, the comp tag, or a free Bring Your Brother ticket (below). A person counts as a ticket holder for a message only if they bought or claimed before it was sent. Other $0 and $1 test orders don't count.
 - **Refunds (v1.5.3):** GHL keeps a refunded order "Completed" and shows the refund only as `paymentSummary.refundedAmount` on the order. A ticket whose refund covers the ticket line is left out of ticket holders, sales, credit, Power Plan and Business Bible. It's shown as "X refunded ($Y) · not counted" on the page and as a "Refunds:" line in Garrett's report. GHL gives no refund date, so the order's last update is used, fixed the first time the refund is seen (`data.json` → `refunds.seen`, keyed by a hash of the order ID). Refunded buyers still count as ticket holders for messages sent before the refund, so sent counts don't move.
 - **Team test orders (v1.5.4):** team test buys are listed in `config.json` → `ticket_holder_rule.team_test_orders`, by order ID, date and amount only. They're left out like the $0/$1 tests and never count as refunds. Right now there are 2: Oct 21 and Oct 30, $199 each, both refunded. The refund line counts real customer refunds only. When there are none, the report says "Refunds: 0 to date" and the tile hides the line.
+- **Bring Your Brother (v1.6):** a ticket holder sends a friend to warriorcon6.com/bring-your-brother, and the friend gets a free ($0) WarriorCon6 Virtual Ticket with code FREEMAN. Settings are in `config.json` → `bring_your_brother`.
+  - **How a brother is found:** a paid $0 order with the WarriorCon6 Virtual Ticket where the order's `sourceId` is the "WC6 – Bring a Brother" funnel, or `couponCode` is FREEMAN. These fields come from the orders list (`GET /payments/orders`). If GHL ever leaves both out, the fallback is a $0 ticket order on or after Nov 19 on a contact tagged `wc6_brother_free`. The tag is also checked every run as a cross-check, and the run log prints both counts and whether they agree.
+  - **Counted once, by person:** a brother who also has a paid ticket or the comp tag counts as paid or comp, not as a brother. Team test claims are listed in `ticket_holder_rule.team_test_orders` (order ID, date and amount only) and are left out. So far there are 2 (Nov 19 and Nov 20, $0).
+  - **Ticket holders = paid + comps + brothers.** A brother counts as a ticket holder for messages sent after his claim, the same rule as buyers.
+  - **Stays paid-only:** total sales, ticket sales (brother tickets are $0), tickets from campaigns, the Business Bible take rate and refunds.
+  - **Warrior App:** a Power Plan sign-up on a brother's contact, or one from the BYB Warrior AI step, counts only in Bring Your Brother. The Upsells number and % stay "of paid + comp ticket holders".
+  - **Yesterday:** the same Pacific day and 7am snapshot as the rest. The brother counts are saved in `data.json` → `frozen.byb`.
+  - **No names:** the page, the repo and the report show totals only. Code FREEMAN is shared by everyone, so nobody can tell who invited whom. There are no invite emails or texts; Garrett shares the link himself.
 - **Credited sale:** a ticket purchase is credited to the last Promote email or text the buyer got in the 48 hours before buying. To change the window, edit `attribution_window_hours` in `config.json`.
 - **Email rates:** opens, clicks, unsubscribes and bounces come from GHL **per email, not per day**. For a date range, they count only the emails sent (95%+) inside it. If none fit, the page shows "totals only". Sends, text deliveries, failures and opt-outs are true per-day counts.
 - **Click rates** are out of emails delivered, the same way GHL calculates them. Apple Mail opens emails automatically, which inflates open rates, so clicks are the more reliable signal.
@@ -70,7 +78,7 @@ If the page is open when new numbers arrive, a bar says "New data in" with a Sho
 
 ## Executive summary rules (set in `config.json` → `summary_rules`)
 
-- **Headline:** new paid tickets yesterday compared with the average of the 7 days before it. Within 20% counts as "in line".
+- **Headline:** new tickets yesterday, including brothers (shown as "5 new tickets yesterday (2 paid + 3 brothers)" when there are some). The "in line / above / below" check compares paid tickets with the average of the 7 days before. Within 20% counts as "in line".
 - **Win:** the first rule that applies:
   1. A send from yesterday with a click rate at least 1.5× its campaign's average.
   2. The upsell with the highest take rate.
