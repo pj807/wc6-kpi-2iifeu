@@ -1,6 +1,6 @@
 {
  "date": "2026-11-21",
- "as_of": "Nov 21, 6:57am ET",
+ "as_of": "Nov 21, 12:48pm ET",
  "yesterday": "2026-11-20",
  "ticket_holders": {
   "total": 151,
@@ -14,7 +14,7 @@
  "summary": {
   "headline": "1 new ticket yesterday (151 total, 11 days to go)",
   "win": "73 of 151 paid + comp ticket holders (48.3%) signed up for the Warrior App (free until Dec 4)",
-  "watch": "promote texts not delivered 24.9% to date (29,013 of 116,302 texts not delivered), above 5%. Main cause: 16,987 of 29,013 (59%) blocked by GHL's Texas SMS safeguard."
+  "watch": "promote texts not delivered 24.7% to date (29,619 of 119,819 texts not delivered), above 5%. Main cause: 17,517 of 29,619 (59%) blocked by GHL's Texas SMS safeguard."
  },
  "promote": {
   "yesterday": {
@@ -40,23 +40,23 @@
   },
   "to_date": {
    "email": {
-    "sent": 635291,
+    "sent": 635314,
     "emails": 33,
     "whole": 33,
-    "rated": 635291,
-    "delivered": 632654,
-    "opened": 197260,
-    "clicked": 1850,
-    "unsub": 769,
+    "rated": 635314,
+    "delivered": 632678,
+    "opened": 198577,
+    "clicked": 1857,
+    "unsub": 773,
     "bounced": 3252,
-    "ghl_sent": 635984
+    "ghl_sent": 636007
    },
    "sms": {
-    "sent": 116302,
-    "delivered": 86966,
-    "failed": 29013,
-    "optouts": 165,
-    "blocked_tx": 16987
+    "sent": 119819,
+    "delivered": 89828,
+    "failed": 29619,
+    "optouts": 170,
+    "blocked_tx": 17517
    }
   }
  },
@@ -84,23 +84,23 @@
   },
   "to_date": {
    "email": {
-    "sent": 1627,
-    "emails": 13,
-    "whole": 13,
-    "rated": 1627,
-    "delivered": 1627,
-    "opened": 746,
+    "sent": 1762,
+    "emails": 14,
+    "whole": 14,
+    "rated": 1762,
+    "delivered": 1762,
+    "opened": 784,
     "clicked": 0,
     "unsub": 0,
     "bounced": 0,
-    "ghl_sent": 1628
+    "ghl_sent": 1763
    },
    "sms": {
-    "sent": 1094,
-    "delivered": 957,
-    "failed": 131,
+    "sent": 1198,
+    "delivered": 1045,
+    "failed": 143,
     "optouts": 1,
-    "blocked_tx": 88
+    "blocked_tx": 96
    }
   }
  },
