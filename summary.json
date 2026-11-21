@@ -1,10 +1,10 @@
 {
  "date": "2026-11-20",
- "as_of": "Nov 20, 6:59pm ET",
+ "as_of": "Nov 21, 1:08am ET",
  "yesterday": "2026-11-19",
  "ticket_holders": {
-  "total": 150,
-  "paid": 147,
+  "total": 151,
+  "paid": 148,
   "comps": 3,
   "brothers": 0,
   "new_yesterday": 1,
@@ -12,9 +12,9 @@
   "new_brothers_yesterday": 0
  },
  "summary": {
-  "headline": "1 new ticket yesterday (150 total, 12 days to go)",
-  "win": "73 of 150 paid + comp ticket holders (48.7%) signed up for the Warrior App (free until Dec 4)",
-  "watch": "promote texts not delivered 24.9% to date (29,013 of 116,297 texts not delivered), above 5%. Main cause: 16,987 of 29,013 (59%) blocked by GHL's Texas SMS safeguard."
+  "headline": "1 new ticket yesterday (151 total, 12 days to go)",
+  "win": "73 of 151 paid + comp ticket holders (48.3%) signed up for the Warrior App (free until Dec 4)",
+  "watch": "promote texts not delivered 24.9% to date (29,013 of 116,301 texts not delivered), above 5%. Main cause: 16,987 of 29,013 (59%) blocked by GHL's Texas SMS safeguard."
  },
  "promote": {
   "yesterday": {
@@ -40,22 +40,22 @@
   },
   "to_date": {
    "email": {
-    "sent": 612850,
+    "sent": 612887,
     "emails": 33,
     "whole": 33,
-    "rated": 612850,
-    "delivered": 610347,
-    "opened": 192382,
-    "clicked": 1812,
-    "unsub": 747,
-    "bounced": 3115,
-    "ghl_sent": 613535
+    "rated": 612887,
+    "delivered": 610385,
+    "opened": 193213,
+    "clicked": 1813,
+    "unsub": 760,
+    "bounced": 3116,
+    "ghl_sent": 613575
    },
    "sms": {
-    "sent": 116297,
-    "delivered": 86950,
+    "sent": 116301,
+    "delivered": 86964,
     "failed": 29013,
-    "optouts": 163,
+    "optouts": 165,
     "blocked_tx": 16987
    }
   }
@@ -89,7 +89,7 @@
     "whole": 13,
     "rated": 1627,
     "delivered": 1627,
-    "opened": 739,
+    "opened": 745,
     "clicked": 0,
     "unsub": 0,
     "bounced": 0,
@@ -107,7 +107,7 @@
  "upsells": {
   "power_plan": {
    "count": 73,
-   "base": 150,
+   "base": 151,
    "price_per_month": 95,
    "billing_start": "2026-12-04"
   },
