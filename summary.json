@@ -1,10 +1,10 @@
 {
  "date": "2026-11-22",
- "as_of": "Nov 22, 12:47pm ET",
+ "as_of": "Nov 22, 6:55pm ET",
  "yesterday": "2026-11-21",
  "ticket_holders": {
-  "total": 152,
-  "paid": 149,
+  "total": 153,
+  "paid": 150,
   "comps": 3,
   "brothers": 0,
   "new_yesterday": 0,
@@ -12,9 +12,9 @@
   "new_brothers_yesterday": 0
  },
  "summary": {
-  "headline": "0 new tickets yesterday (152 total, 10 days to go)",
-  "win": "73 of 152 paid + comp ticket holders (48.0%) signed up for the Warrior App (free until Dec 4)",
-  "watch": "promote texts not delivered 24.5% to date (30,224 of 123,335 texts not delivered), above 5%. Main cause: 18,047 of 30,224 (60%) blocked by GHL's Texas SMS safeguard."
+  "headline": "0 new tickets yesterday (153 total, 10 days to go)",
+  "win": "74 of 153 paid + comp ticket holders (48.4%) signed up for the Warrior App (free until Dec 4)",
+  "watch": "promote texts not delivered 24.5% to date (30,225 of 123,338 texts not delivered), above 5%. Main cause: 18,047 of 30,225 (60%) blocked by GHL's Texas SMS safeguard."
  },
  "promote": {
   "yesterday": {
@@ -40,22 +40,22 @@
   },
   "to_date": {
    "email": {
-    "sent": 657770,
+    "sent": 657793,
     "emails": 33,
     "whole": 33,
-    "rated": 657770,
-    "delivered": 654992,
-    "opened": 205246,
+    "rated": 657793,
+    "delivered": 655015,
+    "opened": 206065,
     "clicked": 1898,
-    "unsub": 799,
-    "bounced": 3395,
-    "ghl_sent": 658471
+    "unsub": 804,
+    "bounced": 3402,
+    "ghl_sent": 658495
    },
    "sms": {
-    "sent": 123335,
-    "delivered": 92715,
-    "failed": 30224,
-    "optouts": 175,
+    "sent": 123338,
+    "delivered": 92749,
+    "failed": 30225,
+    "optouts": 176,
     "blocked_tx": 18047
    }
   }
@@ -89,7 +89,7 @@
     "whole": 15,
     "rated": 1898,
     "delivered": 1898,
-    "opened": 835,
+    "opened": 850,
     "clicked": 0,
     "unsub": 0,
     "bounced": 0,
@@ -97,7 +97,7 @@
    },
    "sms": {
     "sent": 1302,
-    "delivered": 1138,
+    "delivered": 1140,
     "failed": 155,
     "optouts": 1,
     "blocked_tx": 104
@@ -106,8 +106,8 @@
  },
  "upsells": {
   "power_plan": {
-   "count": 73,
-   "base": 152,
+   "count": 74,
+   "base": 153,
    "price_per_month": 95,
    "billing_start": "2026-12-04"
   },
