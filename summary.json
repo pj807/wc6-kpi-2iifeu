@@ -1,6 +1,6 @@
 {
  "date": "2026-11-23",
- "as_of": "Nov 23, 7:02pm ET",
+ "as_of": "Nov 24, 1:11am ET",
  "yesterday": "2026-11-22",
  "ticket_holders": {
   "total": 154,
@@ -14,7 +14,7 @@
  "summary": {
   "headline": "2 new tickets yesterday (154 total, 9 days to go)",
   "win": "74 of 154 paid + comp ticket holders (48.1%) signed up for the Warrior App (free until Dec 4)",
-  "watch": "promote texts not delivered 24.3% to date (30,830 of 126,846 texts not delivered), above 5%. Main cause: 18,576 of 30,830 (60%) blocked by GHL's Texas SMS safeguard."
+  "watch": "promote texts not delivered 24.3% to date (30,830 of 126,848 texts not delivered), above 5%. Main cause: 18,576 of 30,830 (60%) blocked by GHL's Texas SMS safeguard."
  },
  "promote": {
   "yesterday": {
@@ -40,22 +40,22 @@
   },
   "to_date": {
    "email": {
-    "sent": 680228,
+    "sent": 680240,
     "emails": 34,
     "whole": 34,
-    "rated": 680228,
-    "delivered": 677283,
-    "opened": 212492,
+    "rated": 680240,
+    "delivered": 677293,
+    "opened": 212944,
     "clicked": 1942,
-    "unsub": 842,
-    "bounced": 3546,
-    "ghl_sent": 680936
+    "unsub": 843,
+    "bounced": 3548,
+    "ghl_sent": 680946
    },
    "sms": {
-    "sent": 126846,
-    "delivered": 95618,
+    "sent": 126848,
+    "delivered": 95631,
     "failed": 30830,
-    "optouts": 182,
+    "optouts": 183,
     "blocked_tx": 18576
    }
   }
@@ -89,18 +89,18 @@
     "whole": 16,
     "rated": 2034,
     "delivered": 2034,
-    "opened": 905,
+    "opened": 918,
     "clicked": 0,
     "unsub": 0,
     "bounced": 0,
     "ghl_sent": 2035
    },
    "sms": {
-    "sent": 1385,
-    "delivered": 1215,
-    "failed": 163,
+    "sent": 1407,
+    "delivered": 1232,
+    "failed": 167,
     "optouts": 1,
-    "blocked_tx": 111
+    "blocked_tx": 113
    }
   }
  },
