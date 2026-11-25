@@ -1,6 +1,6 @@
 {
  "schema": 2,
- "email_watermark": "2026-11-25T11:54:41.298Z",
+ "email_watermark": "2026-11-25T14:28:06.037Z",
  "update_times_et": [
   "01:00",
   "07:00",
@@ -11,8 +11,8 @@
   "date": "2026-11-25",
   "tickets": 1,
   "brothers": 0,
-  "emails": 22329,
-  "texts": 1
+  "emails": 22474,
+  "texts": 3
  },
  "ghl_links": {
   "promote": {
@@ -40,7 +40,7 @@
      "url": "https://app.gohighlevel.com/v2/location/BDeGaczWUBVqlvyWoI7l/automation/workflow/9113e15e-11ed-4cc4-913d-641d92cd8d30"
     },
     {
-     "label": "0.3 Texts",
+     "label": "0.2 Texts",
      "url": "https://app.gohighlevel.com/v2/location/BDeGaczWUBVqlvyWoI7l/automation/workflow/50e67534-dbf1-4628-aff4-1cae09823865"
     }
    ],
@@ -57,6 +57,21 @@
     {
      "label": "1.04 Texts",
      "url": "https://app.gohighlevel.com/v2/location/BDeGaczWUBVqlvyWoI7l/automation/workflow/ab0e73fd-f630-4da6-8678-1c00faa50e54"
+    }
+   ],
+   "optout": []
+  },
+  "byb": {
+   "email": [
+    {
+     "label": "1.05 Emails",
+     "url": "https://app.gohighlevel.com/v2/location/BDeGaczWUBVqlvyWoI7l/automation/workflow/87643c5a-b479-4942-a8e0-70a1aff8634d"
+    }
+   ],
+   "sms": [
+    {
+     "label": "1.06 Texts",
+     "url": "https://app.gohighlevel.com/v2/location/BDeGaczWUBVqlvyWoI7l/automation/workflow/39f1b835-f86e-448e-85d8-0ea35c17daa8"
     }
    ],
    "optout": []
@@ -104,10 +119,31 @@
     "optouts": 0,
     "blocked_tx": 9
    }
+  },
+  "byb": {
+   "email": {
+    "sent": 140,
+    "emails": 1,
+    "whole": 1,
+    "rated": 140,
+    "delivered": 142,
+    "opened": 69,
+    "clicked": 11,
+    "unsub": 0,
+    "bounced": 0,
+    "ghl_sent": 142
+   },
+   "sms": {
+    "sent": 106,
+    "delivered": 92,
+    "failed": 13,
+    "optouts": 0,
+    "blocked_tx": 9
+   }
   }
  },
- "generated_at": "2026-11-25T12:19+00:00",
- "as_of": "Nov 25, 7:19am ET",
+ "generated_at": "2026-11-25T14:32+00:00",
+ "as_of": "Nov 25, 9:32am ET",
  "today": "2026-11-25",
  "yesterday": "2026-11-24",
  "campaign_start": "2026-10-12",
@@ -172,23 +208,23 @@
  "todate": {
   "promote": {
    "email": {
-    "sent": 734450,
+    "sent": 734489,
     "emails": 36,
     "whole": 36,
-    "rated": 734450,
-    "delivered": 724978,
-    "opened": 224050,
-    "clicked": 2024,
-    "unsub": 890,
+    "rated": 734489,
+    "delivered": 725024,
+    "opened": 224653,
+    "clicked": 2028,
+    "unsub": 896,
     "bounced": 3849,
-    "ghl_sent": 735208
+    "ghl_sent": 735247
    },
    "sms": {
-    "sent": 130370,
+    "sent": 130372,
     "delivered": 98514,
-    "failed": 31436,
+    "failed": 31438,
     "optouts": 192,
-    "blocked_tx": 19105
+    "blocked_tx": 19107
    }
   },
   "post_ticket": {
@@ -211,6 +247,27 @@
     "optouts": 1,
     "blocked_tx": 122
    }
+  },
+  "byb": {
+   "email": {
+    "sent": 282,
+    "emails": 2,
+    "whole": 2,
+    "rated": 282,
+    "delivered": 284,
+    "opened": 108,
+    "clicked": 13,
+    "unsub": 0,
+    "bounced": 0,
+    "ghl_sent": 284
+   },
+   "sms": {
+    "sent": 106,
+    "delivered": 92,
+    "failed": 13,
+    "optouts": 0,
+    "blocked_tx": 9
+   }
   }
  },
  "summary": {
@@ -227,15 +284,15 @@
   },
   "watch": {
    "big": "Promote texts not delivered: 24.1%",
-   "sub": "Above the 5% limit: 31,436 of 130,370 texts not delivered to date. Yesterday: 17.2%. Main cause: 19,105 of 31,436 (61%) blocked by GHL's Texas SMS safeguard.",
-   "line": "promote texts not delivered 24.1% to date (31,436 of 130,370 texts not delivered), above 5%. Main cause: 19,105 of 31,436 (61%) blocked by GHL's Texas SMS safeguard."
+   "sub": "Above the 5% limit: 31,438 of 130,372 texts not delivered to date. Yesterday: 17.2%. Main cause: 19,107 of 31,438 (61%) blocked by GHL's Texas SMS safeguard.",
+   "line": "promote texts not delivered 24.1% to date (31,438 of 130,372 texts not delivered), above 5%. Main cause: 19,107 of 31,438 (61%) blocked by GHL's Texas SMS safeguard."
   }
  },
- "report": "WarriorCon 6 — report for Nov 24 (updated Nov 25, 7:19am ET)\n\nSUMMARY\n• 12 new tickets yesterday (3 paid + 9 brothers; 167 total, 7 days to go)\n• Win: 78 of 158 paid + comp ticket holders (49.4%) signed up for the Warrior App (free until Dec 4)\n• Watch: promote texts not delivered 24.1% to date (31,436 of 130,370 texts not delivered), above 5%. Main cause: 19,105 of 31,436 (61%) blocked by GHL's Texas SMS safeguard.\n\nLEFT TO SEND (until Dec 2)\nPromote: 6 emails · 7 texts — next: about Wed Nov 25, 11:32am ET\nTicket holders: 6 emails · 6 texts — next: Wed Nov 25, 11:30am ET\n\nTICKET HOLDERS: 167 (155 paid + 3 comps + 9 brothers) · 12 new yesterday\nRefunds: 0 to date\n$33,560 total sales ($30,845 tickets + $2,715 Business Bible)\n118 of 155 tickets were bought within 48 hrs of an email/text\n\nBRING YOUR BROTHER (free friend tickets)\nYesterday: 9 claimed · 1 added the Warrior App\nTo date: 9 claimed · 1 added the Warrior App (11%)\n\nPROMOTE (non-ticket holders)\nYesterday — Email: 10,033 sent · 20.4% open · 0.1% click\nYesterday — SMS: 3,502 sent · 81.6% delivered\nTo date — Email: 734,450 sent · 30.9% open · 0.3% click\nTo date — SMS: 130,370 sent · 75.6% delivered\n\nPOST-TICKET SEDUCTION (ticket holders)\nYesterday — Email: 138 sent · 37.7% open\nYesterday — SMS: 107 sent · 86.9% delivered\nTo date — Email: 2,180 sent · 45.4% open\nTo date — SMS: 1,514 sent · 87.5% delivered\n\nUPSELLS\nWarrior App (Power Plan): 78 · 49.4% of paid + comp ticket holders\nBusiness Bible: 25 sales · $2,715 · bought by 24 of 155 paid buyers (15.5%)\n(Texts have no open rate.)",
- "report_as_of": "Nov 25, 7:19am ET",
+ "report": "WarriorCon 6 — report for Nov 24 (updated Nov 25, 7:19am ET)\n\nSUMMARY\n• 12 new tickets yesterday (3 paid + 9 brothers; 167 total, 7 days to go)\n• Win: 78 of 158 paid + comp ticket holders (49.4%) signed up for the Warrior App (free until Dec 4)\n• Watch: promote texts not delivered 24.1% to date (31,438 of 130,372 texts not delivered), above 5%. Main cause: 19,107 of 31,438 (61%) blocked by GHL's Texas SMS safeguard.\n\nLEFT TO SEND (until Dec 2)\nPromote: 6 emails · 7 texts — next: about Wed Nov 25, 11:32am ET\nTicket holders: 6 emails · 6 texts — next: Wed Nov 25, 11:30am ET\nBring Your Brother: 4 emails · 5 texts — next: Wed Nov 25, 2:00pm ET\n\nTICKET HOLDERS: 167 (155 paid + 3 comps + 9 brothers) · 12 new yesterday\nRefunds: 0 to date\n$33,560 total sales ($30,845 tickets + $2,715 Business Bible)\n118 of 155 tickets were bought within 48 hrs of an email/text\n\nBRING YOUR BROTHER (free friend tickets)\nYesterday: 9 claimed · 1 added the Warrior App\nTo date: 9 claimed · 1 added the Warrior App (11%)\n\nPROMOTE (non-ticket holders)\nYesterday — Email: 10,033 sent · 20.4% open · 0.1% click\nYesterday — SMS: 3,502 sent · 81.6% delivered\nTo date — Email: 734,489 sent · 31.0% open · 0.3% click\nTo date — SMS: 130,372 sent · 75.6% delivered\n\nPOST-TICKET SEDUCTION (ticket holders)\nYesterday — Email: 138 sent · 37.7% open\nYesterday — SMS: 107 sent · 86.9% delivered\nTo date — Email: 2,180 sent · 45.4% open\nTo date — SMS: 1,514 sent · 87.5% delivered\n\nBRING YOUR BROTHER INVITES (ticket holders)\nYesterday — Email: 140 sent · 48.6% open\nYesterday — SMS: 106 sent · 86.8% delivered\nTo date — Email: 282 sent · 38.0% open\nTo date — SMS: 106 sent · 86.8% delivered\n\nUPSELLS\nWarrior App (Power Plan): 78 · 49.4% of paid + comp ticket holders\nBusiness Bible: 25 sales · $2,715 · bought by 24 of 155 paid buyers (15.5%)\n(Texts have no open rate.)",
+ "report_as_of": "Nov 25, 9:32am ET",
  "left": {
   "until": "2026-12-02",
-  "plan_read_at": "2026-11-20",
+  "plan_read_at": "2026-11-25",
   "audiences": {
    "promote": {
     "email": {
@@ -384,6 +441,64 @@
       "text": "(WC6) - 48 HOURS. FOURTEEN YEARS. ONE MOMENT."
      }
     ]
+   },
+   "byb": {
+    "email": {
+     "planned": 6,
+     "sent": 2,
+     "left": 4,
+     "rolling": 0,
+     "last": "2026-11-29"
+    },
+    "sms": {
+     "planned": 6,
+     "sent": 1,
+     "left": 5,
+     "rolling": 0,
+     "last": "2026-11-29"
+    },
+    "next": {
+     "at": "2026-11-25T19:00:00Z",
+     "label": "Wed Nov 25, 2:00pm ET",
+     "approx": false,
+     "ch": "sms",
+     "step": "1.06 Texts · SMS - Nov 25 Bring a Brother",
+     "text": "Brother, whose face comes to mind when you think of a man who could benefit from WARRIORCo"
+    },
+    "upcoming_emails": [
+     {
+      "at": "2026-11-26T11:00:00Z",
+      "label": "Thu Nov 26, 6:00am ET",
+      "approx": false,
+      "ch": "email",
+      "step": "1.05 Emails · Email - Nov 26 Bring a Brother",
+      "text": "(WC6) - Freely You Have Received. Freely Give."
+     },
+     {
+      "at": "2026-11-27T11:00:00Z",
+      "label": "Fri Nov 27, 6:00am ET",
+      "approx": false,
+      "ch": "email",
+      "step": "1.05 Emails · Email - Nov 27 Bring a Brother",
+      "text": "(WC6) - The Best Black Friday Gift Is FREE."
+     },
+     {
+      "at": "2026-11-28T11:00:00Z",
+      "label": "Sat Nov 28, 6:00am ET",
+      "approx": false,
+      "ch": "email",
+      "step": "1.05 Emails · Email - Nov 28 Bring a Brother",
+      "text": "(WC6) - Don't Play This Game Alone."
+     },
+     {
+      "at": "2026-11-29T11:00:00Z",
+      "label": "Sun Nov 29, 6:00am ET",
+      "approx": false,
+      "ch": "email",
+      "step": "1.05 Emails · Email - Nov 29 Bring a Brother",
+      "text": "(WC6) - Make the Call, Brother."
+     }
+    ]
    }
   },
   "workflows": [
@@ -450,40 +565,31 @@
     "sent": 14,
     "left": 7,
     "after_until": 0
+   },
+   {
+    "wf": "1.05 Emails",
+    "steps": 6,
+    "planned": 6,
+    "sent": 2,
+    "left": 4,
+    "after_until": 0
+   },
+   {
+    "wf": "1.06 Texts",
+    "steps": 6,
+    "planned": 6,
+    "sent": 1,
+    "left": 5,
+    "after_until": 0
    }
   ],
-  "notes": [
-   "an email \"(WC6) - Whose Face Comes to Mind?\" was sent 142 times but isn't in the plan"
-  ]
+  "notes": []
  },
  "plan_check": {
-  "stale": true,
-  "items": [
-   {
-    "kind": "new",
-    "id": "87643c5a-b479-4942-a8e0-70a1aff8634d",
-    "name": "1.05 - WC6 Bring a Brother Emails (Nov 24-29)",
-    "status": "published",
-    "text": "Found a new WC6 workflow not in the plan: 1.05 - WC6 Bring a Brother Emails (Nov 24-29)"
-   },
-   {
-    "kind": "new",
-    "id": "39f1b835-f86e-448e-85d8-0ea35c17daa8",
-    "name": "1.06 - WC6 Bring a Brother Text (Nov 24-29)",
-    "status": "published",
-    "text": "Found a new WC6 workflow not in the plan: 1.06 - WC6 Bring a Brother Text (Nov 24-29)"
-   },
-   {
-    "kind": "edited",
-    "id": "50e67534-dbf1-4628-aff4-1cae09823865",
-    "name": "0.2 - WC6 Text To Dec 1",
-    "version": 14,
-    "updated_at": "2026-11-25T05:30:53.422Z",
-    "text": "0.2 - WC6 Text To Dec 1 was edited on Nov 25, 12:30am ET after the plan was read"
-   }
-  ],
-  "read_at_utc": "2026-11-20T18:56:10Z",
-  "read_label": "Nov 20, 1:56pm ET",
+  "stale": false,
+  "items": [],
+  "read_at_utc": "2026-11-25T14:11:33Z",
+  "read_label": "Nov 25, 9:11am ET",
   "fields": [
    "createdAt",
    "id",
@@ -536,6 +642,27 @@
     "sms": {
      "sent": 107,
      "delivered": 93,
+     "failed": 13,
+     "optouts": 0,
+     "blocked_tx": 9
+    }
+   },
+   "byb": {
+    "email": {
+     "sent": 140,
+     "emails": 1,
+     "whole": 1,
+     "rated": 140,
+     "delivered": 142,
+     "opened": 69,
+     "clicked": 11,
+     "unsub": 0,
+     "bounced": 0,
+     "ghl_sent": 142
+    },
+    "sms": {
+     "sent": 106,
+     "delivered": 92,
      "failed": 13,
      "optouts": 0,
      "blocked_tx": 9
@@ -2951,6 +3078,15 @@
      0,
      0,
      0
+    ],
+    "2026-11-25": [
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
     ]
    },
    "credit": {},
@@ -4002,6 +4138,15 @@
      0,
      0,
      0
+    ],
+    "2026-11-25": [
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
     ]
    },
    "credit": {},
@@ -4404,7 +4549,7 @@
     "0.0 Email 11"
    ],
    "day": "2026-10-28",
-   "sent": 22813,
+   "sent": 22815,
    "wrong_audience": 65,
    "days": {
     "2026-10-27": [
@@ -4679,9 +4824,9 @@
    "ticket_revenue": 995.0,
    "no_links": false,
    "main_at": "2026-10-28T10:03:02.713Z",
-   "ghl_sent": 22878,
-   "delivered": 22770,
-   "opened": 7305,
+   "ghl_sent": 22880,
+   "delivered": 22772,
+   "opened": 7306,
    "clicked": 75,
    "unsub": 32,
    "bounced": 105,
@@ -4737,7 +4882,7 @@
     "0.0 Email 12"
    ],
    "day": "2026-10-29",
-   "sent": 22805,
+   "sent": 22806,
    "wrong_audience": 71,
    "days": {
     "2026-10-27": [
@@ -5012,9 +5157,9 @@
    "ticket_revenue": 199.0,
    "no_links": false,
    "main_at": "2026-10-29T10:05:42.970Z",
-   "ghl_sent": 22876,
-   "delivered": 22768,
-   "opened": 7410,
+   "ghl_sent": 22877,
+   "delivered": 22769,
+   "opened": 7411,
    "clicked": 65,
    "unsub": 31,
    "bounced": 102,
@@ -6020,7 +6165,7 @@
     "0.1 Email 15"
    ],
    "day": "2026-11-03",
-   "sent": 22696,
+   "sent": 22698,
    "wrong_audience": 1,
    "days": {
     "2026-10-28": [
@@ -6130,6 +6275,15 @@
      0,
      0,
      0
+    ],
+    "2026-11-25": [
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
     ]
    },
    "credit": {
@@ -6142,8 +6296,8 @@
    "ticket_revenue": 597.0,
    "no_links": false,
    "main_at": "2026-11-03T12:07:26.739Z",
-   "ghl_sent": 22697,
-   "delivered": 22562,
+   "ghl_sent": 22699,
+   "delivered": 22564,
    "opened": 7115,
    "clicked": 84,
    "unsub": 29,
@@ -6741,7 +6895,7 @@
     "0.2 Email 20"
    ],
    "day": "2026-11-09",
-   "sent": 22605,
+   "sent": 22606,
    "wrong_audience": 0,
    "days": {
     "2026-11-03": [
@@ -6777,9 +6931,9 @@
    "ticket_revenue": 398.0,
    "no_links": false,
    "main_at": "2026-11-09T14:34:43.011Z",
-   "ghl_sent": 22605,
-   "delivered": 22473,
-   "opened": 6519,
+   "ghl_sent": 22606,
+   "delivered": 22474,
+   "opened": 6520,
    "clicked": 68,
    "unsub": 23,
    "bounced": 130,
@@ -6882,7 +7036,7 @@
     "0.2 Email 21"
    ],
    "day": "2026-11-10",
-   "sent": 22586,
+   "sent": 22588,
    "wrong_audience": 4,
    "days": {
     "2026-11-03": [
@@ -6923,9 +7077,9 @@
    "ticket_revenue": 199.0,
    "no_links": false,
    "main_at": "2026-11-10T11:00:01.545Z",
-   "ghl_sent": 22590,
-   "delivered": 22473,
-   "opened": 6979,
+   "ghl_sent": 22592,
+   "delivered": 22475,
+   "opened": 6981,
    "clicked": 68,
    "unsub": 30,
    "bounced": 117,
@@ -7151,7 +7305,7 @@
    "camp": "promote",
    "text": "He was financially free. But he wasn't free. Read his story:",
    "steps": [
-    "0.3 SMS 8B - Nov 11 - 11:30 AM ET (wc-day22)"
+    "0.2 SMS 8B - Nov 11 - 11:30 AM ET (wc-day22)"
    ],
    "day": "2026-11-11",
    "sent": 3601,
@@ -7264,7 +7418,7 @@
     "0.2 Email 23"
    ],
    "day": "2026-11-12",
-   "sent": 22548,
+   "sent": 22549,
    "wrong_audience": 4,
    "days": {
     "2026-11-10": [
@@ -7296,9 +7450,9 @@
    "ticket_revenue": 199.0,
    "no_links": false,
    "main_at": "2026-11-12T11:00:01.769Z",
-   "ghl_sent": 22552,
-   "delivered": 22428,
-   "opened": 7138,
+   "ghl_sent": 22553,
+   "delivered": 22429,
+   "opened": 7139,
    "clicked": 53,
    "unsub": 32,
    "bounced": 124,
@@ -7312,7 +7466,7 @@
    "camp": "promote",
    "text": "He spent his life building other men's empires. Read his story:",
    "steps": [
-    "0.3 SMS 9 - Nov 12 - 11:30 AM ET (wc-day26)"
+    "0.2 SMS 9 - Nov 12 - 11:30 AM ET (wc-day26)"
    ],
    "day": "2026-11-12",
    "sent": 3607,
@@ -7549,7 +7703,7 @@
    "camp": "promote",
    "text": "The world celebrates what a man produces. But nobody sees what he's carrying. Read his story:",
    "steps": [
-    "0.3 SMS 10 - Nov 13 - 11:30 AM ET (wc-day27)"
+    "0.2 SMS 10 - Nov 13 - 11:30 AM ET (wc-day27)"
    ],
    "day": "2026-11-13",
    "sent": 3590,
@@ -7777,7 +7931,7 @@
    "camp": "promote",
    "text": "He had no idea his wife was about to get leukemia. Read his story:",
    "steps": [
-    "0.3 SMS 11 - Nov 14 - 11:30 AM ET (wc-day28)"
+    "0.2 SMS 11 - Nov 14 - 11:30 AM ET (wc-day28)"
    ],
    "day": "2026-11-14",
    "sent": 3586,
@@ -7911,7 +8065,7 @@
     "0.2 Email 26"
    ],
    "day": "2026-11-15",
-   "sent": 22518,
+   "sent": 22519,
    "wrong_audience": 4,
    "days": {
     "2026-11-10": [
@@ -7943,9 +8097,9 @@
    "ticket_revenue": 199.0,
    "no_links": false,
    "main_at": "2026-11-15T11:00:01.615Z",
-   "ghl_sent": 22522,
-   "delivered": 22388,
-   "opened": 6959,
+   "ghl_sent": 22523,
+   "delivered": 22389,
+   "opened": 6960,
    "clicked": 44,
    "unsub": 25,
    "bounced": 134,
@@ -8005,7 +8159,7 @@
    "camp": "promote",
    "text": "You can insure your house. You can insure your business. You can insure your life. Read it:",
    "steps": [
-    "0.3 SMS 12 - Nov 15 - 11:30 AM ET (wc-day29)"
+    "0.2 SMS 12 - Nov 15 - 11:30 AM ET (wc-day29)"
    ],
    "day": "2026-11-15",
    "sent": 3583,
@@ -8144,7 +8298,7 @@
     "0.2 Email 27"
    ],
    "day": "2026-11-16",
-   "sent": 22502,
+   "sent": 22505,
    "wrong_audience": 4,
    "days": {
     "2026-11-10": [
@@ -8176,9 +8330,9 @@
    "ticket_revenue": 199.0,
    "no_links": false,
    "main_at": "2026-11-16T11:00:01.618Z",
-   "ghl_sent": 22506,
-   "delivered": 22364,
-   "opened": 6968,
+   "ghl_sent": 22509,
+   "delivered": 22367,
+   "opened": 6971,
    "clicked": 41,
    "unsub": 31,
    "bounced": 141,
@@ -8238,7 +8392,7 @@
    "camp": "promote",
    "text": "You've heard their stories. What about yours? Read it:",
    "steps": [
-    "0.3 SMS 13 - Nov 16 - 11:30 AM ET (wc-day30)"
+    "0.2 SMS 13 - Nov 16 - 11:30 AM ET (wc-day30)"
    ],
    "day": "2026-11-16",
    "sent": 3577,
@@ -8363,7 +8517,7 @@
     "0.2 Email 28"
    ],
    "day": "2026-11-17",
-   "sent": 22481,
+   "sent": 22483,
    "wrong_audience": 4,
    "days": {
     "2026-11-10": [
@@ -8395,9 +8549,9 @@
    "ticket_revenue": 199.0,
    "no_links": false,
    "main_at": "2026-11-17T11:00:01.627Z",
-   "ghl_sent": 22485,
-   "delivered": 22351,
-   "opened": 6847,
+   "ghl_sent": 22487,
+   "delivered": 22353,
+   "opened": 6849,
    "clicked": 50,
    "unsub": 26,
    "bounced": 133,
@@ -8457,10 +8611,10 @@
    "camp": "promote",
    "text": "Making a decision doesn't change your life. Executing that decision does. Read it:",
    "steps": [
-    "0.3 SMS 14 - Nov 17 - 11:30 AM ET (wc-day31)"
+    "0.2 SMS 14 - Nov 17 - 11:30 AM ET (wc-day31)"
    ],
    "day": "2026-11-17",
-   "sent": 3571,
+   "sent": 3572,
    "wrong_audience": 0,
    "days": {
     "2026-11-17": [
@@ -8516,6 +8670,15 @@
      0,
      0,
      0
+    ],
+    "2026-11-25": [
+     1,
+     0,
+     0,
+     1,
+     0,
+     0,
+     1
     ]
    },
    "credit": {},
@@ -8524,8 +8687,8 @@
    "no_links": false,
    "main_at": "2026-11-17T16:32:07.307Z",
    "delivered": 2940,
-   "failed": 607,
-   "blocked_tx": 529,
+   "failed": 608,
+   "blocked_tx": 530,
    "optouts": 2,
    "replies": 3
   },
@@ -8573,7 +8736,7 @@
     "0.2 Email 29"
    ],
    "day": "2026-11-18",
-   "sent": 22477,
+   "sent": 22478,
    "wrong_audience": 4,
    "days": {
     "2026-11-16": [
@@ -8600,9 +8763,9 @@
    "ticket_revenue": 0,
    "no_links": false,
    "main_at": "2026-11-18T11:00:01.505Z",
-   "ghl_sent": 22481,
-   "delivered": 22307,
-   "opened": 6810,
+   "ghl_sent": 22482,
+   "delivered": 22308,
+   "opened": 6811,
    "clicked": 28,
    "unsub": 26,
    "bounced": 169,
@@ -8696,7 +8859,7 @@
    "camp": "promote",
    "text": "Your calendar is telling the truth about your life. Even when your mouth isn't. Read it:",
    "steps": [
-    "0.3 SMS 15 - Nov 18 - 11:30 AM ET (wc-pm18)"
+    "0.2 SMS 15 - Nov 18 - 11:30 AM ET (wc-pm18)"
    ],
    "day": "2026-11-18",
    "sent": 3570,
@@ -8769,7 +8932,7 @@
     "0.2 Email 30"
    ],
    "day": "2026-11-19",
-   "sent": 22488,
+   "sent": 22490,
    "wrong_audience": 4,
    "days": {
     "2026-11-16": [
@@ -8796,9 +8959,9 @@
    "ticket_revenue": 0,
    "no_links": false,
    "main_at": "2026-11-19T11:00:01.679Z",
-   "ghl_sent": 22492,
-   "delivered": 22354,
-   "opened": 6612,
+   "ghl_sent": 22494,
+   "delivered": 22356,
+   "opened": 6614,
    "clicked": 46,
    "unsub": 23,
    "bounced": 135,
@@ -8892,7 +9055,7 @@
    "camp": "promote",
    "text": "You don't have a goal problem. You have a game problem. Read why:",
    "steps": [
-    "0.3 SMS 16 - Nov 19 - 11:30 AM ET (wc-pm19)"
+    "0.2 SMS 16 - Nov 19 - 11:30 AM ET (wc-pm19)"
    ],
    "day": "2026-11-19",
    "sent": 3548,
@@ -8970,7 +9133,7 @@
     "0.2 Email 31"
    ],
    "day": "2026-11-20",
-   "sent": 22473,
+   "sent": 22475,
    "wrong_audience": 4,
    "days": {
     "2026-11-16": [
@@ -8997,9 +9160,9 @@
    "ticket_revenue": 0,
    "no_links": false,
    "main_at": "2026-11-20T11:00:01.982Z",
-   "ghl_sent": 22477,
-   "delivered": 22331,
-   "opened": 6542,
+   "ghl_sent": 22479,
+   "delivered": 22333,
+   "opened": 6544,
    "clicked": 42,
    "unsub": 18,
    "bounced": 141,
@@ -9130,7 +9293,7 @@
    "camp": "promote",
    "text": "You're already playing a game. Whether you realize it or not. Read it:",
    "steps": [
-    "0.3 SMS 17 - Nov 20 - 11:30 AM ET (wc-pm20)"
+    "0.2 SMS 17 - Nov 20 - 11:30 AM ET (wc-pm20)"
    ],
    "day": "2026-11-20",
    "sent": 3530,
@@ -9190,7 +9353,7 @@
     "0.2 Email 32"
    ],
    "day": "2026-11-21",
-   "sent": 22505,
+   "sent": 22507,
    "wrong_audience": 4,
    "days": {
     "2026-11-16": [
@@ -9217,9 +9380,9 @@
    "ticket_revenue": 0,
    "no_links": false,
    "main_at": "2026-11-21T11:00:01.705Z",
-   "ghl_sent": 22509,
-   "delivered": 22370,
-   "opened": 6424,
+   "ghl_sent": 22511,
+   "delivered": 22372,
+   "opened": 6426,
    "clicked": 45,
    "unsub": 18,
    "bounced": 139,
@@ -9313,7 +9476,7 @@
    "camp": "promote",
    "text": "You cannot build a new life while defending the old one. Read why:",
    "steps": [
-    "0.3 SMS 18 - Nov 21 - 11:30 AM ET (wc-pm21)"
+    "0.2 SMS 18 - Nov 21 - 11:30 AM ET (wc-pm21)"
    ],
    "day": "2026-11-21",
    "sent": 3517,
@@ -9368,7 +9531,7 @@
     "0.2 Email 33"
    ],
    "day": "2026-11-22",
-   "sent": 22565,
+   "sent": 22569,
    "wrong_audience": 4,
    "days": {
     "2026-11-16": [
@@ -9400,9 +9563,9 @@
    "ticket_revenue": 199.0,
    "no_links": false,
    "main_at": "2026-11-22T11:00:01.491Z",
-   "ghl_sent": 22569,
-   "delivered": 22420,
-   "opened": 6612,
+   "ghl_sent": 22573,
+   "delivered": 22424,
+   "opened": 6616,
    "clicked": 39,
    "unsub": 10,
    "bounced": 145,
@@ -9496,7 +9659,7 @@
    "camp": "promote",
    "text": "The man who built your life may not be the man who can build your future. Read it:",
    "steps": [
-    "0.3 SMS 19 - Nov 22 - 11:30 AM ET (wc-pm22)"
+    "0.2 SMS 19 - Nov 22 - 11:30 AM ET (wc-pm22)"
    ],
    "day": "2026-11-22",
    "sent": 3509,
@@ -9547,7 +9710,7 @@
     "0.2 Email 34"
    ],
    "day": "2026-11-23",
-   "sent": 22932,
+   "sent": 22940,
    "wrong_audience": 4,
    "days": {
     "2026-11-23": [
@@ -9565,9 +9728,9 @@
    "ticket_revenue": 0,
    "no_links": false,
    "main_at": "2026-11-23T11:00:01.571Z",
-   "ghl_sent": 22936,
-   "delivered": 22769,
-   "opened": 6461,
+   "ghl_sent": 22944,
+   "delivered": 22777,
+   "opened": 6469,
    "clicked": 43,
    "unsub": 16,
    "bounced": 147,
@@ -9661,7 +9824,7 @@
    "camp": "promote",
    "text": "You don't need another breakthrough. You need a new standard. Read it:",
    "steps": [
-    "0.3 SMS 20 - Nov 23 - 11:30 AM ET (wc-pm23)"
+    "0.2 SMS 20 - Nov 23 - 11:30 AM ET (wc-pm23)"
    ],
    "day": "2026-11-23",
    "sent": 3515,
@@ -9707,7 +9870,7 @@
     "0.2 Email 35"
    ],
    "day": "2026-11-24",
-   "sent": 30439,
+   "sent": 30444,
    "wrong_audience": 1,
    "days": {
     "2026-11-24": [
@@ -9730,9 +9893,9 @@
    "ticket_revenue": 199.0,
    "no_links": false,
    "main_at": "2026-11-24T11:00:01.601Z",
-   "ghl_sent": 30440,
-   "delivered": 24055,
-   "opened": 4914,
+   "ghl_sent": 30445,
+   "delivered": 24067,
+   "opened": 4951,
    "clicked": 35,
    "unsub": 7,
    "bounced": 160,
@@ -9787,6 +9950,52 @@
    "share_main": 1.0
   },
   {
+   "id": "b26b82e9",
+   "key": "e:(wc6) - i've got a gift for you…",
+   "ch": "email",
+   "camp": "byb",
+   "text": "(WC6) - I've Got a Gift for You…",
+   "steps": [
+    "1.05 Email - Nov 24 Bring a Brother"
+   ],
+   "day": "2026-11-24",
+   "sent": 141,
+   "wrong_audience": 1,
+   "days": {
+    "2026-11-24": [
+     140,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-25": [
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "main_at": "2026-11-24T16:53:32.656Z",
+   "ghl_sent": 142,
+   "delivered": 142,
+   "opened": 69,
+   "clicked": 11,
+   "unsub": 0,
+   "bounced": 0,
+   "complaints": 0,
+   "share_main": 0.993
+  },
+  {
    "id": "60b10385",
    "key": "s:you don't have to wait for the next brea",
    "ch": "sms",
@@ -9805,7 +10014,7 @@
      93,
      13,
      0,
-     1,
+     0,
      9
     ]
    },
@@ -9818,7 +10027,7 @@
    "failed": 13,
    "blocked_tx": 9,
    "optouts": 0,
-   "replies": 1
+   "replies": 0
   },
   {
    "id": "f003d8bb",
@@ -9827,10 +10036,10 @@
    "camp": "promote",
    "text": "The day after is where most men lose. Not the day they decide. Read why:",
    "steps": [
-    "0.3 SMS 21 - Nov 24 - 11:30 AM ET (wc-pm24)"
+    "0.2 SMS 21 - Nov 24 - 11:30 AM ET (wc-pm24)"
    ],
    "day": "2026-11-24",
-   "sent": 3490,
+   "sent": 3491,
    "wrong_audience": 0,
    "days": {
     "2026-11-24": [
@@ -9841,6 +10050,15 @@
      8,
      2,
      527
+    ],
+    "2026-11-25": [
+     1,
+     0,
+     0,
+     1,
+     0,
+     0,
+     1
     ]
    },
    "credit": {
@@ -9854,10 +10072,44 @@
    "no_links": false,
    "main_at": "2026-11-24T16:32:58.450Z",
    "delivered": 2848,
-   "failed": 600,
-   "blocked_tx": 527,
+   "failed": 601,
+   "blocked_tx": 528,
    "optouts": 8,
    "replies": 2
+  },
+  {
+   "id": "dba4dc1a",
+   "key": "s:brother, i've got a gift for you. invite",
+   "ch": "sms",
+   "camp": "byb",
+   "text": "Brother, I've got a gift for you. Invite another man to join you at WARRIORCon 6, Dec 2-4,",
+   "steps": [
+    "1.06 SMS - Nov 24 Bring a Brother"
+   ],
+   "day": "2026-11-24",
+   "sent": 106,
+   "wrong_audience": 1,
+   "days": {
+    "2026-11-24": [
+     106,
+     1,
+     92,
+     13,
+     0,
+     1,
+     9
+    ]
+   },
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "main_at": "2026-11-24T19:00:03.035Z",
+   "delivered": 92,
+   "failed": 13,
+   "blocked_tx": 9,
+   "optouts": 0,
+   "replies": 1
   },
   {
    "id": "89073a80",
@@ -9889,10 +10141,47 @@
    "main_at": "2026-11-25T11:00:01.682Z",
    "ghl_sent": 22348,
    "delivered": 22169,
-   "opened": 4026,
-   "clicked": 44,
-   "unsub": 4,
+   "opened": 4561,
+   "clicked": 48,
+   "unsub": 10,
    "bounced": 137,
+   "complaints": 0,
+   "share_main": 1.0
+  },
+  {
+   "id": "6c0197a1",
+   "key": "e:(wc6) - whose face comes to mind?",
+   "ch": "email",
+   "camp": "byb",
+   "text": "(WC6) - Whose Face Comes to Mind?",
+   "steps": [
+    "1.05 Email - Nov 25 Bring a Brother"
+   ],
+   "day": "2026-11-25",
+   "sent": 141,
+   "wrong_audience": 1,
+   "days": {
+    "2026-11-25": [
+     141,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "main_at": "2026-11-25T11:00:04.255Z",
+   "ghl_sent": 142,
+   "delivered": 142,
+   "opened": 39,
+   "clicked": 2,
+   "unsub": 0,
+   "bounced": 0,
    "complaints": 0,
    "share_main": 1.0
   },
@@ -10194,6 +10483,114 @@
    "share_main": null
   },
   {
+   "id": "1248404a",
+   "key": "e:(wc6) - freely you have received. freely",
+   "ch": "email",
+   "camp": "byb",
+   "text": "(WC6) - Freely You Have Received. Freely Give.",
+   "steps": [
+    "1.05 Email - Nov 26 Bring a Brother"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "main_at": null,
+   "ghl_sent": 0,
+   "delivered": 0,
+   "opened": 0,
+   "clicked": 0,
+   "unsub": 0,
+   "bounced": 0,
+   "complaints": 0,
+   "share_main": null
+  },
+  {
+   "id": "5c2b2605",
+   "key": "e:(wc6) - the best black friday gift is fr",
+   "ch": "email",
+   "camp": "byb",
+   "text": "(WC6) - The Best Black Friday Gift Is FREE.",
+   "steps": [
+    "1.05 Email - Nov 27 Bring a Brother"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "main_at": null,
+   "ghl_sent": 0,
+   "delivered": 0,
+   "opened": 0,
+   "clicked": 0,
+   "unsub": 0,
+   "bounced": 0,
+   "complaints": 0,
+   "share_main": null
+  },
+  {
+   "id": "ed8661e7",
+   "key": "e:(wc6) - don't play this game alone.",
+   "ch": "email",
+   "camp": "byb",
+   "text": "(WC6) - Don't Play This Game Alone.",
+   "steps": [
+    "1.05 Email - Nov 28 Bring a Brother"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "main_at": null,
+   "ghl_sent": 0,
+   "delivered": 0,
+   "opened": 0,
+   "clicked": 0,
+   "unsub": 0,
+   "bounced": 0,
+   "complaints": 0,
+   "share_main": null
+  },
+  {
+   "id": "b4b5c250",
+   "key": "e:(wc6) - make the call, brother.",
+   "ch": "email",
+   "camp": "byb",
+   "text": "(WC6) - Make the Call, Brother.",
+   "steps": [
+    "1.05 Email - Nov 29 Bring a Brother"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "main_at": null,
+   "ghl_sent": 0,
+   "delivered": 0,
+   "opened": 0,
+   "clicked": 0,
+   "unsub": 0,
+   "bounced": 0,
+   "complaints": 0,
+   "share_main": null
+  },
+  {
    "id": "0f8484f8",
    "key": "s:seven days until we begin. come ready to",
    "ch": "sms",
@@ -10344,7 +10741,7 @@
    "camp": "promote",
    "text": "12 weeks from now, your life will be different. Will you have chosen it? Read it:",
    "steps": [
-    "0.3 SMS 22 - Nov 25 - 11:30 AM ET (wc-pm25)"
+    "0.2 SMS 22 - Nov 25 - 11:30 AM ET (wc-pm25)"
    ],
    "day": null,
    "sent": 0,
@@ -10368,7 +10765,7 @@
    "camp": "promote",
    "text": "Happy Thanksgiving. What if you're already holding what you prayed for? Read it:",
    "steps": [
-    "0.3 SMS 23 - Nov 26 - 11:30 AM ET (wc-pm26)"
+    "0.2 SMS 23 - Nov 26 - 11:30 AM ET (wc-pm26)"
    ],
    "day": null,
    "sent": 0,
@@ -10392,7 +10789,7 @@
    "camp": "promote",
    "text": "Black Friday. What is the real price of living the way you're living? Read it:",
    "steps": [
-    "0.3 SMS 24 - Nov 27 - 11:30 AM ET (wc-pm27)"
+    "0.2 SMS 24 - Nov 27 - 11:30 AM ET (wc-pm27)"
    ],
    "day": null,
    "sent": 0,
@@ -10416,7 +10813,7 @@
    "camp": "promote",
    "text": "You've been reading these emails. Now what? Four days. Read it:",
    "steps": [
-    "0.3 SMS 25 - Nov 28 - 11:30 AM ET (wc-pm28)"
+    "0.2 SMS 25 - Nov 28 - 11:30 AM ET (wc-pm28)"
    ],
    "day": null,
    "sent": 0,
@@ -10440,7 +10837,7 @@
    "camp": "promote",
    "text": "The finale is here. Warrior Con 6 begins December 2. The clock is ticking. Read it:",
    "steps": [
-    "0.3 SMS 26 - Nov 29 - 11:30 AM ET (wc-pm29)"
+    "0.2 SMS 26 - Nov 29 - 11:30 AM ET (wc-pm29)"
    ],
    "day": null,
    "sent": 0,
@@ -10464,7 +10861,7 @@
    "camp": "promote",
    "text": "Less than 48 hours. This is your final call. Read it:",
    "steps": [
-    "0.3 SMS 27 - Nov 30 - 11:30 AM ET (wc-pm30)"
+    "0.2 SMS 27 - Nov 30 - 11:30 AM ET (wc-pm30)"
    ],
    "day": null,
    "sent": 0,
@@ -10488,7 +10885,127 @@
    "camp": "promote",
    "text": "Tomorrow we begin. 9 AM Eastern. This is my final invitation. Read it:",
    "steps": [
-    "0.3 SMS 28 - Dec 1 - 11:30 AM ET (wc-pm01)"
+    "0.2 SMS 28 - Dec 1 - 11:30 AM ET (wc-pm01)"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "main_at": null,
+   "delivered": 0,
+   "failed": 0,
+   "blocked_tx": 0,
+   "optouts": 0,
+   "replies": 0
+  },
+  {
+   "id": "1214982b",
+   "key": "s:brother, whose face comes to mind when y",
+   "ch": "sms",
+   "camp": "byb",
+   "text": "Brother, whose face comes to mind when you think of a man who could benefit from WARRIORCo",
+   "steps": [
+    "1.06 SMS - Nov 25 Bring a Brother"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "main_at": null,
+   "delivered": 0,
+   "failed": 0,
+   "blocked_tx": 0,
+   "optouts": 0,
+   "replies": 0
+  },
+  {
+   "id": "14117b07",
+   "key": "s:happy thanksgiving, brother. \"freely ye ",
+   "ch": "sms",
+   "camp": "byb",
+   "text": "Happy Thanksgiving, Brother. \"Freely ye have received, freely give.\" - Matthew 10:8 Bless ",
+   "steps": [
+    "1.06 SMS - Nov 26 Bring a Brother"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "main_at": null,
+   "delivered": 0,
+   "failed": 0,
+   "blocked_tx": 0,
+   "optouts": 0,
+   "replies": 0
+  },
+  {
+   "id": "17cf2cf1",
+   "key": "s:brother, the best black friday gift migh",
+   "ch": "sms",
+   "camp": "byb",
+   "text": "Brother, the best Black Friday gift might be the one you don't have to buy. Gift another m",
+   "steps": [
+    "1.06 SMS - Nov 27 Bring a Brother"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "main_at": null,
+   "delivered": 0,
+   "failed": 0,
+   "blocked_tx": 0,
+   "optouts": 0,
+   "replies": 0
+  },
+  {
+   "id": "b9253c1c",
+   "key": "s:brother, imagine playing your next 12-we",
+   "ch": "sms",
+   "camp": "byb",
+   "text": "Brother, imagine playing your next 12-week Impossible Game alongside a man you trust. Four",
+   "steps": [
+    "1.06 SMS - Nov 28 Bring a Brother"
+   ],
+   "day": null,
+   "sent": 0,
+   "wrong_audience": 0,
+   "days": {},
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": false,
+   "main_at": null,
+   "delivered": 0,
+   "failed": 0,
+   "blocked_tx": 0,
+   "optouts": 0,
+   "replies": 0
+  },
+  {
+   "id": "d8da64f8",
+   "key": "s:brother, 3 days until warriorcon 6. my f",
+   "ch": "sms",
+   "camp": "byb",
+   "text": "Brother, 3 days until WARRIORCon 6. My final invitation to BRING A BROTHER. Whose face kee",
+   "steps": [
+    "1.06 SMS - Nov 29 Bring a Brother"
    ],
    "day": null,
    "sent": 0,
@@ -10508,9 +11025,6 @@
  ],
  "flags": [
   "Email matched only 191 of 23,052 GHL sends (subject may have changed): I'm Not Bringing You Back to Say Goodbye.",
-  "Email matched only 9,964 of 30,440 GHL sends (subject may have changed): The day after is where most men lose.",
-  "Plan may be out of date — an email \"(WC6) - Whose Face Comes to Mind?\" was sent 142 times but isn't in the plan",
-  "WC6 workflow that doesn't fit the naming rules, not counted: 1.05 - WC6 Bring a Brother Emails (Nov 24-29)",
-  "WC6 workflow that doesn't fit the naming rules, not counted: 1.06 - WC6 Bring a Brother Text (Nov 24-29)"
+  "Email matched only 9,964 of 30,445 GHL sends (subject may have changed): The day after is where most men lose."
  ]
 }

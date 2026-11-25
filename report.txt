@@ -3,11 +3,12 @@ WarriorCon 6 — report for Nov 24 (updated Nov 25, 7:19am ET)
 SUMMARY
 • 12 new tickets yesterday (3 paid + 9 brothers; 167 total, 7 days to go)
 • Win: 78 of 158 paid + comp ticket holders (49.4%) signed up for the Warrior App (free until Dec 4)
-• Watch: promote texts not delivered 24.1% to date (31,436 of 130,370 texts not delivered), above 5%. Main cause: 19,105 of 31,436 (61%) blocked by GHL's Texas SMS safeguard.
+• Watch: promote texts not delivered 24.1% to date (31,438 of 130,372 texts not delivered), above 5%. Main cause: 19,107 of 31,438 (61%) blocked by GHL's Texas SMS safeguard.
 
 LEFT TO SEND (until Dec 2)
 Promote: 6 emails · 7 texts — next: about Wed Nov 25, 11:32am ET
 Ticket holders: 6 emails · 6 texts — next: Wed Nov 25, 11:30am ET
+Bring Your Brother: 4 emails · 5 texts — next: Wed Nov 25, 2:00pm ET
 
 TICKET HOLDERS: 167 (155 paid + 3 comps + 9 brothers) · 12 new yesterday
 Refunds: 0 to date
@@ -21,14 +22,20 @@ To date: 9 claimed · 1 added the Warrior App (11%)
 PROMOTE (non-ticket holders)
 Yesterday — Email: 10,033 sent · 20.4% open · 0.1% click
 Yesterday — SMS: 3,502 sent · 81.6% delivered
-To date — Email: 734,450 sent · 30.9% open · 0.3% click
-To date — SMS: 130,370 sent · 75.6% delivered
+To date — Email: 734,489 sent · 31.0% open · 0.3% click
+To date — SMS: 130,372 sent · 75.6% delivered
 
 POST-TICKET SEDUCTION (ticket holders)
 Yesterday — Email: 138 sent · 37.7% open
 Yesterday — SMS: 107 sent · 86.9% delivered
 To date — Email: 2,180 sent · 45.4% open
 To date — SMS: 1,514 sent · 87.5% delivered
+
+BRING YOUR BROTHER INVITES (ticket holders)
+Yesterday — Email: 140 sent · 48.6% open
+Yesterday — SMS: 106 sent · 86.8% delivered
+To date — Email: 282 sent · 38.0% open
+To date — SMS: 106 sent · 86.8% delivered
 
 UPSELLS
 Warrior App (Power Plan): 78 · 49.4% of paid + comp ticket holders
