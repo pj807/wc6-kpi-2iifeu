@@ -1,6 +1,6 @@
 {
  "_how": "WC6 send plan, read once from GoHighLevel (read-only GET of each workflow in Chrome). Each run marks a step sent when its sends show up; it never changes this file. Re-read only when PJ asks. when.type: date = GHL 'wait until' date/time (ET) plus plus_hours; after_previous = N hours after the previous step; with_previous = right after it; on_enrollment = when the contact enters the workflow; relative_to_purchase = shown as 'rolling'.",
- "read_at": "2026-11-20",
+ "read_at": "2026-11-25",
  "timezone": "America/New_York",
  "until": "2026-12-02",
  "workflows": [
@@ -69,12 +69,30 @@
   },
   {
    "id": "50e67534-dbf1-4628-aff4-1cae09823865",
-   "name": "0.3 - WC6 SMS 8B-19 One-Off (Nov 11-22)",
+   "name": "0.2 - WC6 Text To Dec 1",
    "wf": "0.3 Texts",
    "audience": "promote",
    "channel": "sms",
-   "version": 11,
-   "updated_at": "2026-11-20T18:16:15.376Z"
+   "version": 14,
+   "updated_at": "2026-11-25T05:30:53.422Z"
+  },
+  {
+   "id": "87643c5a-b479-4942-a8e0-70a1aff8634d",
+   "name": "1.05 - WC6 Bring a Brother Emails (Nov 24-29)",
+   "wf": "1.05 Emails",
+   "audience": "byb",
+   "channel": "email",
+   "version": 6,
+   "updated_at": "2026-11-25T05:28:40.620Z"
+  },
+  {
+   "id": "39f1b835-f86e-448e-85d8-0ea35c17daa8",
+   "name": "1.06 - WC6 Bring a Brother Text (Nov 24-29)",
+   "wf": "1.06 Texts",
+   "audience": "byb",
+   "channel": "sms",
+   "version": 3,
+   "updated_at": "2026-11-25T05:10:26.303Z"
   }
  ],
  "steps": [
@@ -2190,6 +2208,210 @@
     "hours": 24
    },
    "text": "Tomorrow we begin. 9 AM Eastern. This is my final invitation. Read it:"
+  },
+  {
+   "workflow": "87643c5a-b479-4942-a8e0-70a1aff8634d",
+   "wf": "1.05 Emails",
+   "audience": "byb",
+   "channel": "email",
+   "num": 1,
+   "step_id": "cceeb4a1-9959-446a-911e-568a2cc596d2",
+   "name": "Email - Nov 24 Bring a Brother",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-11-24",
+    "time_et": "12:05",
+    "plus_hours": 0
+   },
+   "text": "(WC6) - I've Got a Gift for You…"
+  },
+  {
+   "workflow": "87643c5a-b479-4942-a8e0-70a1aff8634d",
+   "wf": "1.05 Emails",
+   "audience": "byb",
+   "channel": "email",
+   "num": 2,
+   "step_id": "f1051d9c-0b58-4430-9a3e-f4a7e84fc7dd",
+   "name": "Email - Nov 25 Bring a Brother",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-11-25",
+    "time_et": "06:00",
+    "plus_hours": 0
+   },
+   "text": "(WC6) - Whose Face Comes to Mind?"
+  },
+  {
+   "workflow": "87643c5a-b479-4942-a8e0-70a1aff8634d",
+   "wf": "1.05 Emails",
+   "audience": "byb",
+   "channel": "email",
+   "num": 3,
+   "step_id": "46932898-568c-4ce4-a792-6da606426882",
+   "name": "Email - Nov 26 Bring a Brother",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-11-26",
+    "time_et": "06:00",
+    "plus_hours": 0
+   },
+   "text": "(WC6) - Freely You Have Received. Freely Give."
+  },
+  {
+   "workflow": "87643c5a-b479-4942-a8e0-70a1aff8634d",
+   "wf": "1.05 Emails",
+   "audience": "byb",
+   "channel": "email",
+   "num": 4,
+   "step_id": "94c4d209-431e-4b49-a6df-30f5080eecaa",
+   "name": "Email - Nov 27 Bring a Brother",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-11-27",
+    "time_et": "06:00",
+    "plus_hours": 0
+   },
+   "text": "(WC6) - The Best Black Friday Gift Is FREE."
+  },
+  {
+   "workflow": "87643c5a-b479-4942-a8e0-70a1aff8634d",
+   "wf": "1.05 Emails",
+   "audience": "byb",
+   "channel": "email",
+   "num": 5,
+   "step_id": "25adf621-c30d-4b70-ab09-3164f5f58786",
+   "name": "Email - Nov 28 Bring a Brother",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-11-28",
+    "time_et": "06:00",
+    "plus_hours": 0
+   },
+   "text": "(WC6) - Don't Play This Game Alone."
+  },
+  {
+   "workflow": "87643c5a-b479-4942-a8e0-70a1aff8634d",
+   "wf": "1.05 Emails",
+   "audience": "byb",
+   "channel": "email",
+   "num": 6,
+   "step_id": "39966928-d566-4263-9d82-aafd5f805861",
+   "name": "Email - Nov 29 Bring a Brother",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-11-29",
+    "time_et": "06:00",
+    "plus_hours": 0
+   },
+   "text": "(WC6) - Make the Call, Brother."
+  },
+  {
+   "workflow": "39f1b835-f86e-448e-85d8-0ea35c17daa8",
+   "wf": "1.06 Texts",
+   "audience": "byb",
+   "channel": "sms",
+   "num": 1,
+   "step_id": "61c54ef7-4fe3-471d-ac6e-6b544b222823",
+   "name": "SMS - Nov 24 Bring a Brother",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-11-24",
+    "time_et": "14:00",
+    "plus_hours": 0
+   },
+   "text": "Brother, I've got a gift for you. Invite another man to join you at WARRIORCon 6, Dec 2-4,"
+  },
+  {
+   "workflow": "39f1b835-f86e-448e-85d8-0ea35c17daa8",
+   "wf": "1.06 Texts",
+   "audience": "byb",
+   "channel": "sms",
+   "num": 2,
+   "step_id": "1be743f9-2ac7-4c2e-9057-9dd325dd5ba7",
+   "name": "SMS - Nov 25 Bring a Brother",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-11-25",
+    "time_et": "14:00",
+    "plus_hours": 0
+   },
+   "text": "Brother, whose face comes to mind when you think of a man who could benefit from WARRIORCo"
+  },
+  {
+   "workflow": "39f1b835-f86e-448e-85d8-0ea35c17daa8",
+   "wf": "1.06 Texts",
+   "audience": "byb",
+   "channel": "sms",
+   "num": 3,
+   "step_id": "267c03c0-5e0d-42d1-83cf-fe8100754d05",
+   "name": "SMS - Nov 26 Bring a Brother",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-11-26",
+    "time_et": "14:00",
+    "plus_hours": 0
+   },
+   "text": "Happy Thanksgiving, Brother. \"Freely ye have received, freely give.\" - Matthew 10:8 Bless "
+  },
+  {
+   "workflow": "39f1b835-f86e-448e-85d8-0ea35c17daa8",
+   "wf": "1.06 Texts",
+   "audience": "byb",
+   "channel": "sms",
+   "num": 4,
+   "step_id": "b63d08bf-f975-4ac3-8c0d-8b6f61780f10",
+   "name": "SMS - Nov 27 Bring a Brother",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-11-27",
+    "time_et": "14:00",
+    "plus_hours": 0
+   },
+   "text": "Brother, the best Black Friday gift might be the one you don't have to buy. Gift another m"
+  },
+  {
+   "workflow": "39f1b835-f86e-448e-85d8-0ea35c17daa8",
+   "wf": "1.06 Texts",
+   "audience": "byb",
+   "channel": "sms",
+   "num": 5,
+   "step_id": "0ca7934b-d3aa-4ded-808a-033e521dc72d",
+   "name": "SMS - Nov 28 Bring a Brother",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-11-28",
+    "time_et": "14:00",
+    "plus_hours": 0
+   },
+   "text": "Brother, imagine playing your next 12-week Impossible Game alongside a man you trust. Four"
+  },
+  {
+   "workflow": "39f1b835-f86e-448e-85d8-0ea35c17daa8",
+   "wf": "1.06 Texts",
+   "audience": "byb",
+   "channel": "sms",
+   "num": 6,
+   "step_id": "707c5d7d-0019-4463-a016-882d05096082",
+   "name": "SMS - Nov 29 Bring a Brother",
+   "branch": "main",
+   "when": {
+    "type": "date",
+    "date": "2026-11-29",
+    "time_et": "14:00",
+    "plus_hours": 0
+   },
+   "text": "Brother, 3 days until WARRIORCon 6. My final invitation to BRING A BROTHER. Whose face kee"
   }
  ],
  "_read_log": [
@@ -2199,7 +2421,8 @@
   "2026-11-11 re-read 1.04 at PJ's request: now 8 texts, Nov 10-17 at 12:30pm ET (SMS 4-8 added, wc-day32-36)",
   "2026-11-16 2:16pm ET re-read 0.0 Emails, 0.1 Emails, 0.0 Texts, 0.2 Emails, 1.03 Emails, 0.1 Texts, 1.04 Texts, 0.3 Texts: 1.03 Emails + Email - Nov 18 Ticket Holder · (WC6) - Stop Trying to Fix Everything… · {'type': 'date', 'date': '2026-11-18', 'time_et': '11:30', 'plus_hours': 0}; 1.03 Emails + Email - Nov 19 Ticket Holder · (WC6) - What Becomes Possible When a Man Decides?... · {'type': 'date', 'date': '2026-11-19', 'time_et': '11:30', 'plus_hours': 0}; 1.03 Emails + Email - Nov 20 Ticket Holder · (WC6) - Your Next 12 Weeks… · {'type': 'date', 'date': '2026-11-20', 'time_et': '11:30', 'plus_hours': 0}; 1.03 Emails + Email - Nov 21 Ticket Holder · (WC6) - The Future Is Built Before It Arrives… · {'type': 'date",
   "2026-11-16 10:58pm ET re-read 0.2 Emails, 0.3 Texts: 0.2 Emails + Email 29 · Your calendar is exposing you. · {'type': 'date', 'date': '2026-11-18', 'time_et': '06:00', 'plus_hours': 0}; 0.2 Emails + Email 30 · Your goals are not your game. · {'type': 'date', 'date': '2026-11-19', 'time_et': '06:00', 'plus_hours': 0}; 0.2 Emails + Email 31 · You're already playing a game. · {'type': 'date', 'date': '2026-11-20', 'time_et': '06:00', 'plus_hours': 0}; 0.2 Emails + Email 32 · You can't take your old life into your new one. · {'type': 'date', 'date': '2026-11-21', 'time_et': '06:00', 'plus_hours': 0}; 0.2 Emails + Email 33 · The man who got you here",
-  "2026-11-20 1:56pm ET re-read 0.2 Emails, 1.03 Emails, 1.04 Texts, 0.3 Texts: 0.2 Emails + Email 34 · Your next breakthrough won't save you. · {'type': 'date', 'date': '2026-11-23', 'time_et': '06:00', 'plus_hours': 0}; 0.2 Emails + Email 35 · The day after is where most men lose. · {'type': 'date', 'date': '2026-11-24', 'time_et': '06:00', 'plus_hours': 0}; 0.2 Emails + Email 36 · 12 weeks from now, where will you be? · {'type': 'date', 'date': '2026-11-25', 'time_et': '06:00', 'plus_hours': 0}; 0.2 Emails + Email 37 · What if you're already holding what you've been praying for? · {'type': 'date', 'date': '2026-11-26', 'time_et': '06:00', 'plus_hours': 0}; 0.2 Emails +"
+  "2026-11-20 1:56pm ET re-read 0.2 Emails, 1.03 Emails, 1.04 Texts, 0.3 Texts: 0.2 Emails + Email 34 · Your next breakthrough won't save you. · {'type': 'date', 'date': '2026-11-23', 'time_et': '06:00', 'plus_hours': 0}; 0.2 Emails + Email 35 · The day after is where most men lose. · {'type': 'date', 'date': '2026-11-24', 'time_et': '06:00', 'plus_hours': 0}; 0.2 Emails + Email 36 · 12 weeks from now, where will you be? · {'type': 'date', 'date': '2026-11-25', 'time_et': '06:00', 'plus_hours': 0}; 0.2 Emails + Email 37 · What if you're already holding what you've been praying for? · {'type': 'date', 'date': '2026-11-26', 'time_et': '06:00', 'plus_hours': 0}; 0.2 Emails +",
+  "2026-11-25 9:11am ET re-read 0.3 Texts, 1.05 Emails, 1.06 Texts: NEW workflow 1.05 - WC6 Bring a Brother Emails (Nov 24-29) labelled byb (1.05 Emails); 1.05 Emails + Email - Nov 24 Bring a Brother · (WC6) - I've Got a Gift for You… · {'type': 'date', 'date': '2026-11-24', 'time_et': '12:05', 'plus_hours': 0}; 1.05 Emails + Email - Nov 25 Bring a Brother · (WC6) - Whose Face Comes to Mind? · {'type': 'date', 'date': '2026-11-25', 'time_et': '06:00', 'plus_hours': 0}; 1.05 Emails + Email - Nov 26 Bring a Brother · (WC6) - Freely You Have Received. Freely Give. · {'type': 'date', 'date': '2026-11-26', 'time_et': '06:00', 'plus_hours': 0}; 1.05 Emails + Email -"
  ],
- "read_at_utc": "2026-11-20T18:56:10Z"
+ "read_at_utc": "2026-11-25T14:11:33Z"
 }

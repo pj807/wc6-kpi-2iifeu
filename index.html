@@ -176,7 +176,9 @@
   .pwarn b{color:var(--fg);font-weight:600}
   .pwarn .pcopy{background:none;border:0;padding:0;font:inherit;color:var(--amber);text-decoration:underline;text-underline-offset:3px;cursor:pointer;white-space:nowrap}
   .pwarn .pcopy:hover,.pwarn .pcopy:focus-visible{color:#ffc35c;outline:none}
-  @media (max-width:760px){.lgrid{grid-template-columns:1fr}.lbig b{font-size:56px}.lup li{grid-template-columns:1fr;gap:2px}}
+  .lgrid.c3{grid-template-columns:repeat(3,1fr)}
+  @media (max-width:1000px){.lgrid.c3{grid-template-columns:1fr 1fr}.lgrid.c3 .lcard:last-child{grid-column:span 2}}
+  @media (max-width:760px){.lgrid,.lgrid.c3{grid-template-columns:1fr}.lgrid.c3 .lcard:last-child{grid-column:auto}.lbig b{font-size:56px}.lup li{grid-template-columns:1fr;gap:2px}}
 
   /* date filter */
   .filter{position:sticky;top:0;z-index:10;background:rgba(0,0,0,.94);backdrop-filter:blur(6px);
@@ -433,6 +435,14 @@
         <tbody id="tPost"></tbody>
       </table>
     </div>
+
+    <div class="camp" id="tBybC" data-for="all th" hidden>
+      <header><h3>Bring a brother <em>invites</em></h3><span>Ticket holders</span></header>
+      <table class="k">
+        <thead><tr><th></th><th>Sent</th><th>Open / Delivered</th><th>Click</th><th>Unsub / Opt-out</th><th>Bounce / Not delivered</th></tr></thead>
+        <tbody id="tByb"></tbody>
+      </table>
+    </div>
     <p class="note" id="watchNote"></p>
     <div class="camp byb" id="bybT" data-for="all th">
       <header><h3>Bring your <em>brother</em></h3><span id="bybSel"></span></header>
@@ -440,7 +450,7 @@
         <thead><tr><th></th><th class="rl" id="bybRl">Yesterday</th><th>To date</th></tr></thead>
         <tbody id="bybBody"></tbody>
       </table>
-      <p class="bnote">Garrett shares the link and code himself — no invite emails or texts yet. Code FREEMAN is shared by everyone, so the page can't tell who invited each brother; totals only. Team test claims are left out.</p>
+      <p class="bnote">Ticket holders get the invite emails and texts (1.05 / 1.06, Nov 24-29; their numbers are in "Bring a brother invites" above). Code FREEMAN is shared by everyone, so the page can't tell who invited each brother; totals only. Team test claims are left out.</p>
     </div>
     <p class="note" id="ghlNote">Lists open in GoHighLevel (login needed) and show contacts for that campaign, not the selected dates. GoHighLevel's workflow stats only go back 30 days.</p>
   </section>
@@ -530,7 +540,7 @@
 
 <script>
 // The version of THIS page. Bump it (and changelog.json) whenever the page changes; daily data refreshes never change it.
-const PAGE_VERSION = '1.6';
+const PAGE_VERSION = '1.7';
 
 const $ = id => document.getElementById(id);
 const N = n => n == null ? '—' : Math.round(n).toLocaleString('en-US');
@@ -562,7 +572,7 @@ $('rToggle').onclick = () => {
 document.querySelectorAll('#seg button').forEach(b => b.onclick = () => {
   document.querySelectorAll('#seg button').forEach(x => x.classList.toggle('on', x === b));
   const a = b.dataset.a;
-  document.querySelectorAll('[data-for]').forEach(el => el.hidden = !el.dataset.for.split(' ').includes(a));
+  document.querySelectorAll('[data-for]').forEach(el => el.hidden = !el.dataset.for.split(' ').includes(a) || el.dataset.none === '1');
   fixSolo();
 });
 function fixSolo() {   // a tile at the end of a part-filled row stretches to fill it (no empty grey cells)
@@ -777,7 +787,10 @@ function renderLeft() {
     return `<div class="lcard"><div class="lk">${title} <span>· ${who}</span></div>${row('Emails', A.email)}${row('Texts', A.sms)}
       <div class="lnext"><span class="nk">Next send</span>${next}${list ? '<div class="lupk">Upcoming emails</div>' + list : ''}</div></div>`;
   };
-  $('leftGrid').innerHTML = card('promote', 'Promote', 'non-ticket holders') + card('post_ticket', 'Ticket holders', 'post-ticket seduction');
+  const c3 = !!L.audiences.byb;
+  $('leftGrid').classList.toggle('c3', c3);
+  $('leftGrid').innerHTML = card('promote', 'Promote', 'non-ticket holders') + card('post_ticket', 'Ticket holders', 'post-ticket seduction')
+    + (c3 ? card('byb', 'Bring a brother', 'invites to ticket holders') : '');
   $('leftPlan').hidden = !L.notes.length;
   $('leftPlan').textContent = L.notes.map(t => 'Plan may be out of date — ' + t + '.').join(' ');
   const PC = D.plan_check, readAt = (PC && PC.read_label) || fmtD(L.plan_read_at);
@@ -884,6 +897,10 @@ function apply() {
   document.querySelectorAll('.rlh').forEach(e => e.textContent = short);
   $('tPromote').innerHTML = campRows('promote', short);
   $('tPost').innerHTML = campRows('post_ticket', short);
+  const hasByb = !!(D.todate.byb && D.messages.some(m => m.camp === 'byb'));
+  $('tBybC').dataset.none = hasByb ? '' : '1';
+  $('tBybC').hidden = !hasByb || !$('tBybC').dataset.for.split(' ').includes(document.querySelector('#seg button.on').dataset.a);
+  if (hasByb) $('tByb').innerHTML = campRows('byb', short);
   upsellRows(short);
   bybRows(short);
   drawChart();
@@ -933,6 +950,7 @@ function upsellRows(short) {
 }
 
 // ---------- bring your brother (follows the date filter; yesterday = the 7am snapshot) ----------
+const CAMP_LABEL = {promote: 'Promote', post_ticket: 'Post-ticket', byb: 'Bring a brother'};
 function bybRows(short) {
   const B = D.byb || {to_date: 0, app: 0, yesterday: 0, app_yesterday: 0};
   const rl = short === 'Campaign' ? 'Selected range' : short;
@@ -1019,7 +1037,7 @@ function msgTable() {
   $('msgBody').innerHTML = rows.length ? rows.map(m => {
     const e = m.ch === 'email';
     const click = e ? (m.no_links ? '<span class="dim">no links</span>' : PF(mClick(m))) : '<span class="dim">pending</span>';
-    return `<tr class="${m === best ? 'best' : ''}"><td>${fmtD(m.day)}</td><td>${e ? 'Email' : 'SMS'}</td><td>${m.camp === 'promote' ? 'Promote' : 'Post-ticket'}</td>`
+    return `<tr class="${m === best ? 'best' : ''}"><td>${fmtD(m.day)}</td><td>${e ? 'Email' : 'SMS'}</td><td>${CAMP_LABEL[m.camp] || m.camp}</td>`
       + `<td class="s">${esc(m.text)}${m === best ? ' <span class="tag best">Best</span>' : ''}${m.flag ? ` <span class="tag flag">${esc(m.flag)}</span>` : ''}</td>`
       + `<td>${N(m.sent)}</td><td>${e ? PF(mOpen(m)) : tip(PF(mOpen(m)), '', `${N(m.delivered)} of ${N(m.sent)} delivered · ${N(m.failed)} not delivered: ${splitTxt(m)}`)}</td><td>${click}</td><td>${m.camp === 'promote' ? N(m.tickets) : '—'}</td></tr>`;
   }).join('') : `<tr class="empty"><td colspan="8">No emails or texts sent in this date range.</td></tr>`;

@@ -1,5 +1,17 @@
 [
   {
+    "v": "1.7",
+    "date": "2026-11-25",
+    "title": "Bring a Brother invites",
+    "items": [
+      "<b>New audience: Bring a brother invites.</b> The invite emails (1.05, Nov 24-29) and texts (1.06, Nov 24-29) that go to ticket holders now have their own table under By campaign, with the same columns as Promote and Post-ticket. It follows the date filter and shows under All and Ticket holders.",
+      "<b>What's left</b> has a third card for the invites: emails and texts left, the last date and the next send.",
+      "The message list shows \"Bring a brother\" in the Audience column for these sends. They're counted for ticket holders only, the same rule as Post-ticket, and they don't take ticket credit.",
+      "Garrett's report has a new BRING YOUR BROTHER INVITES block (yesterday and to date) once invites have been sent.",
+      "Plan re-read Nov 25: 1.05 and 1.06 were added (12 steps), and the 0.3 texts workflow's new GHL name (\"0.2 - WC6 Text To Dec 1\") was picked up. Its steps didn't change."
+    ]
+  },
+  {
     "v": "1.6",
     "date": "2026-11-21",
     "title": "Bring Your Brother",

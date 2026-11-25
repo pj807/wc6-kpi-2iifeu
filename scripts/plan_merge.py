@@ -3,7 +3,7 @@
 Usage (your Mac, after scripts/plan_read_chrome.js saved the read to data/raw/):
   python3 -I scripts/plan_merge.py data/raw/<read>.json                 # dry run: prints what would change
   python3 -I scripts/plan_merge.py data/raw/<read>.json --write         # updates plan.json
-  python3 -I scripts/plan_merge.py data/raw/<read>.json --write --new <workflow id>=<promote|post_ticket>:<short name>
+  python3 -I scripts/plan_merge.py data/raw/<read>.json --write --new <workflow id>=<promote|post_ticket|byb>:<short name>
       e.g. --new 1234...=post_ticket:"1.05 Emails"   (only after PJ confirmed the label in chat)
 
 What it does, per workflow in the read:
@@ -91,7 +91,7 @@ def main():
         if a == "--new":
             wid, rest = args[i + 1].split("=", 1)
             label, short = rest.split(":", 1)
-            assert label in ("promote", "post_ticket"), "label must be promote or post_ticket"
+            assert label in ("promote", "post_ticket", "byb"), "label must be promote, post_ticket or byb"
             new[wid] = (label, short)
     plan = json.load(open(os.path.join(ROOT, "plan.json"), encoding="utf-8"))
     cfg = json.load(open(os.path.join(ROOT, "config.json"), encoding="utf-8"))
@@ -101,7 +101,7 @@ def main():
         pw = next((x for x in plan["workflows"] if x["id"] == wid), None)
         if pw is None:
             if wid not in new:
-                print(f"SKIPPED {w['name']}: not in the plan. Ask PJ for its label (Promote or Post-ticket), then pass --new.")
+                print(f"SKIPPED {w['name']}: not in the plan. Ask PJ for its label (Promote, Post-ticket or Bring Your Brother), then pass --new.")
                 continue
             label, short = new[wid]
             parsed = parse(w)
@@ -144,7 +144,7 @@ def main():
                 s = {"workflow": wid, "wf": pw["wf"], "audience": pw["audience"], "channel": pw["channel"], "num": 0,
                      "step_id": p["step_id"], "name": p["name"], "branch": p["branch"], "when": p["when"], "text": p["text"]}
                 if p["channel"] == "sms":
-                    m = re.search(r"wc-day\d+", p["name"])
+                    m = re.search(r"wc-(?:day|pm|byb)\d+", p["name"])
                     if m:
                         s["link"] = m.group(0)
                 changes.append(f"{pw['wf']} + {p['name']} · {p['text'][:60]} · {p['when']}")

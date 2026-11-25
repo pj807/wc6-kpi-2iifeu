@@ -4,6 +4,15 @@ The version only changes when the page itself changes. Daily data refreshes keep
 New features go up a minor number (1.1, 1.2). Fixes go up a patch number (1.0.1).
 The "What's new" panel on the page reads `changelog.json`, so update both files together.
 
+## v1.7 · Bring a Brother invites · Nov 25, 2026
+
+- **New audience: Bring a brother invites.** The invite emails (1.05, Nov 24-29) and texts (1.06, Nov 24-29) that go to ticket holders now have their own table under By campaign, with the same columns as Promote and Post-ticket. It follows the date filter and shows under All and Ticket holders.
+- **What's left** has a third card for the invites: emails and texts left, the last date and the next send.
+- The message list shows "Bring a brother" in the Audience column for these sends. They're counted for ticket holders only, the same rule as Post-ticket, and they don't take ticket credit.
+- **Garrett's report** has a new BRING YOUR BROTHER INVITES block (yesterday and to date) once invites have been sent.
+- **Plan re-read Nov 25:** 1.05 and 1.06 were added (12 steps), and the 0.3 texts workflow's new GHL name ("0.2 - WC6 Text To Dec 1") was picked up. Its steps didn't change.
+- Code: audience label `byb` (config.json `workflow_name_rules.byb`, `ghl_links.byb`); `plan_merge.py --new <id>=byb:...`; SMS link codes `wc-bybNN` are recognised.
+
 ## v1.6 · Bring Your Brother · Nov 21, 2026
 
 - **New: Bring Your Brother.** A new tile next to Ticket holders shows how many friends claimed a free WC6 ticket with a ticket holder's code (warriorcon6.com/bring-your-brother), how many joined yesterday, and how many added the Warrior App.

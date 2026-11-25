@@ -91,10 +91,10 @@ def safety_check(prev, data, Y, yday, morning):
     notes = []
     if not prev or not prev.get("todate"):
         return None, notes
-    names = {"promote": "Promote", "post_ticket": "Post-ticket"}
+    names = CAMP_NAMES
     # 1. Emails sent to date never go down. Texts sent may shift by a few when GHL re-counts: allow the larger of
     #    10 texts or 0.1%, note it, and stop on anything bigger.
-    for c in ("promote", "post_ticket"):
+    for c in CAMPS:
         for ch, word in (("email", "emails"), ("sms", "texts")):
             old = ((prev["todate"].get(c) or {}).get(ch) or {}).get("sent", 0) or 0
             new = data["todate"][c][ch].get("sent", 0) or 0
@@ -106,7 +106,7 @@ def safety_check(prev, data, Y, yday, morning):
             return (f"Stopped: {names[c]} {word} sent dropped from {old:,} to {new:,} — GHL may have returned "
                     f"partial data. {KEEP}"), notes
     # 2. Deliveries and failures: allow GHL's small re-count wobble, stop on a real drop.
-    for c in ("promote", "post_ticket"):
+    for c in CAMPS:
         for k in ("delivered", "failed"):
             old = ((prev["todate"].get(c) or {}).get("sms") or {}).get(k, 0) or 0
             new = data["todate"][c]["sms"].get(k, 0) or 0
@@ -238,8 +238,8 @@ class API:
                         out.append([m["id"], m.get("contactId"), m.get("dateAdded"), d, st_, k, False])
                     elif not contact and m.get("source") == "workflow":
                         body = m.get("body") or ""
-                        if channel == "SMS" and "wc-day" in body.lower():
-                            code = (re.search(r"wc-day\d+", body, re.I) or [None])[0]
+                        if channel == "SMS" and CODE_RE.search(body):
+                            code = CODE_RE.search(body).group(0)
                             UNMATCHED[("sms", code or body[:50])] += 1
                         elif channel == "Email" and re.search(r"warriorcon|\bwc6\b", (m.get("subject") or "") + " " + body, re.I):
                             UNMATCHED[("email", (m.get("subject") or "")[:80])] += 1
@@ -305,7 +305,9 @@ def compute_left(plan, messages, now):
             notes.append(f"a WC6 text with link {text} was sent {n:,} times but isn't in the plan" if ch == "sms"
                          else f"an email \"{text}\" was sent {n:,} times but isn't in the plan")
     report = []
-    for aud, label in (("promote", "Promote"), ("post_ticket", "Ticket holders")):
+    for aud, label in (("promote", "Promote"), ("post_ticket", "Ticket holders"), ("byb", "Bring Your Brother")):
+        if not any(s["audience"] == aud for s in plan["steps"]):
+            continue
         A = {}
         for ch in ("email", "sms"):
             rs = [r for r in rows if r["step"]["audience"] == aud and r["step"]["channel"] == ch and r["in_window"]]
@@ -350,9 +352,19 @@ def item_amount(i):
 
 
 # ---------------------------------------------------------------- message matching
+# Audiences (labels in config.json / plan.json). byb = Bring Your Brother invites, sent to ticket holders (v1.7).
+CAMPS = ("promote", "post_ticket", "byb")
+CAMP_NAMES = {"promote": "Promote", "post_ticket": "Post-ticket", "byb": "Bring Your Brother"}
+HOLDER_CAMPS = {"post_ticket", "byb"}          # right audience = ticket holders
+
+
+def right_aud(lab, holder):
+    return (lab in HOLDER_CAMPS) == bool(holder)
+
+
 EMAIL_KEYS, SMS_KEYS, STEPS, STEP_KEY = {}, [], {}, {}   # STEP_KEY: GHL step id -> message key
 SMS_CODES = collections.defaultdict(set)                 # tracked link code (wc-day7, wc-pm23) -> message keys
-CODE_RE = re.compile(r"\bwc-(?:day|pm)\d+\b", re.I)
+CODE_RE = re.compile(r"\bwc-(?:day|pm|byb)\d+\b", re.I)
 
 
 def add_step(wf, s):
@@ -513,6 +525,8 @@ def check_workflows(api):
             FLAGS.append(f"New Promote workflow not in config yet (needs step IDs): {name}")
         elif re.search(rules["post_ticket"], name, re.I):
             FLAGS.append(f"New Post-ticket workflow not in config yet (needs step IDs): {name}")
+        elif rules.get("byb") and re.search(rules["byb"], name, re.I):
+            FLAGS.append(f"New Bring Your Brother workflow not in config yet (needs step IDs): {name}")
         else:
             FLAGS.append(f"WC6 workflow that doesn't fit the naming rules, not counted: {name}")
     by_id = {w["id"]: w for w in wfs}
@@ -561,10 +575,24 @@ def main():
     email_since = prev["email_watermark"] if incremental else pt_midnight_utc(CFG["campaign_start"])
     log(f"Quick refresh: emails since the last run ({email_since[:16]}Z), texts from {cutoff}" if incremental
         else "Full pull from campaign start")
+    # Backfill (v1.7): an email step added to the plan after it started sending (e.g. 1.05 Bring a Brother, added
+    # Nov 25 after its Nov 24 send) has nothing in data.json yet. Quick mode then also reads emails from the day
+    # before its first planned date, but keeps the older records for those new steps only (no double counting).
+    new_email_keys, read_email_from = set(), email_since
+    if incremental and PLAN:
+        seen_keys = {m["key"] for m in prev.get("messages", [])}
+        new_email_keys = {k for k, st in STEPS.items() if st["channel"] == "email" and k not in seen_keys}
+        firsts = [ps["when"]["date"] for ps in PLAN["steps"] if STEP_KEY.get(ps["step_id"]) in new_email_keys
+                  and ps["when"].get("type") == "date" and ps["when"].get("date")]
+        if firsts:
+            back = pt_midnight_utc((Date.fromisoformat(min(firsts)) - timedelta(days=1)).isoformat())
+            if back < email_since:
+                read_email_from = back
+                log(f"Backfill: {len(new_email_keys)} email step(s) new to the plan; emails also read from {back[:10]} for those steps only")
 
     plan_check = check_workflows(api)
     res = {}
-    since_by = {"Email": email_since, "SMS": sms_since}
+    since_by = {"Email": read_email_from, "SMS": sms_since}
     def _get(c):
         if c == "SMS" and incremental:
             first = (Date.fromisoformat(cutoff) - timedelta(days=1)).isoformat()
@@ -594,7 +622,7 @@ def main():
         raise SystemExit("Message pull failed. Nothing written.")
     msgs = res
     if incremental:   # the export's start time can be inclusive: keep only emails after the last one already counted
-        msgs["Email"] = [r for r in msgs["Email"] if r[2] > email_since]
+        msgs["Email"] = [r for r in msgs["Email"] if r[2] > email_since or (r[5] in new_email_keys and r[3] == "outbound")]
     marks = [r[2] for r in msgs["Email"]]
     email_watermark = max(marks) if marks else (email_since if incremental else now.strftime("%Y-%m-%dT%H:%M:%S.000Z"))
 
@@ -713,7 +741,7 @@ def main():
                 continue
             lab = STEPS[key]["label"]
             holder = is_holder(contact, when)
-            right = (lab == "promote" and not holder) or (lab == "post_ticket" and holder)
+            right = right_aud(lab, holder)
             day = pt_day(when)
             sends_by_contact[contact].append((when, key, ch, right))
             if ch == "SMS" and day < cutoff:
@@ -760,7 +788,7 @@ def main():
                     if direction == "outbound" and key and when < bt:
                         lab = STEPS[key]["label"]
                         holder = is_holder(c, when)
-                        sends.append((when, key, ch, (lab == "promote" and not holder) or (lab == "post_ticket" and holder)))
+                        sends.append((when, key, ch, right_aud(lab, holder)))
         else:
             sends = sends_by_contact.get(c, [])
         cands = [(d, k) for d, k, ch, right in sends
@@ -849,8 +877,8 @@ def main():
                         t["blocked_tx"] += v[6] if len(v) > 6 else 0
         return t
 
-    T = {c: {ch: totals(c, ch) for ch in ("email", "sms")} for c in ("promote", "post_ticket")}
-    Y = {c: {ch: totals(c, ch, yday, yday) for ch in ("email", "sms")} for c in ("promote", "post_ticket")}
+    T = {c: {ch: totals(c, ch) for ch in ("email", "sms")} for c in CAMPS}
+    Y = {c: {ch: totals(c, ch, yday, yday) for ch in ("email", "sms")} for c in CAMPS}
 
     # ---- headline numbers
     n_paid, n_comps, n_br = len(first_buy), len(comps_only), len(brothers)
@@ -878,6 +906,9 @@ def main():
     frozen = prev.get("frozen") if prev else None
     keep = bool(frozen and frozen.get("yesterday") == yday and frozen.get("picks") and not os.environ.get("REBUILD_SUMMARY"))
     Yd = frozen["Y"] if keep else {c: {ch: dict(Y[c][ch]) for ch in Y[c]} for c in Y}
+    for c in Y:   # a 7am snapshot from before an audience existed (byb, v1.7): fill it from this run
+        if c not in Yd:
+            Yd[c] = {ch: dict(Y[c][ch]) for ch in Y[c]}
     # Yesterday frozen by a 7am run that predates v1.5.4 has no Texas count: fill it in from the per-text reasons
     # for that day (never more than the frozen "not delivered"), so the Yesterday split always adds up.
     # Brothers yesterday: same 7am snapshot rule as the rest (an older snapshot without them is filled in once)
@@ -931,7 +962,7 @@ def main():
 
     def watch_checks():
         out = []
-        for c, cname in (("promote", "Promote"), ("post_ticket", "Post-ticket")):
+        for c, cname in CAMP_NAMES.items():
             e, s_ = T[c]["email"], T[c]["sms"]
             if e["delivered"]:
                 out.append(dict(camp=c, cname=cname, name="email unsubscribes", v=100 * e["unsub"] / e["delivered"], lim=TH["email_unsub_pct"], n=e["unsub"], what="emails unsubscribed", base=e["delivered"]))
@@ -1078,6 +1109,12 @@ def main():
         f"To date — Email: {e_line(T['post_ticket']['email'], click=False)}",
         f"To date — SMS: {s_line(T['post_ticket']['sms'])}",
         "",
+        *(["BRING YOUR BROTHER INVITES (ticket holders)",
+           f"Yesterday — Email: {e_line(Yd['byb']['email'], click=False)}",
+           f"Yesterday — SMS: {s_line(Yd['byb']['sms'])}",
+           f"To date — Email: {e_line(T['byb']['email'], click=False)}",
+           f"To date — SMS: {s_line(T['byb']['sms'])}",
+           ""] if T["byb"]["email"]["sent"] or T["byb"]["sms"]["sent"] else []),
         "UPSELLS",
         f"Warrior App (Power Plan): {pp_n} · {pp_rate:.1f}% of paid + comp ticket holders",
         f"Business Bible: {bb['count']} sales · {money(bb['revenue'])} · bought by {bb['people']} of {n_paid} paid buyers ({bb_rate:.1f}%)",
@@ -1097,12 +1134,12 @@ def main():
     GL = CFG.get("ghl_links", {})
     names = {w["id"]: w["name"].split(" - ")[0] + " " + ("Emails" if w["channel"] == "email" else "Texts") for w in CFG["workflows"]}
     ghl_links = {}
-    for camp in ("promote", "post_ticket"):
+    for camp in CAMPS:
         g = GL.get(camp, {})
         wl = lambda ids: [{"label": names.get(i, "Workflow"), "url": f"{GL['base']}/automation/workflow/{i}"} for i in ids]
         ghl_links[camp] = {"email": wl(g.get("email_workflows", [])), "sms": wl(g.get("sms_workflows", [])),
                            "optout": [{"label": "Smart List", "url": g["sms_optout_smart_list"]}] if g.get("sms_optout_smart_list") else []}
-    linked = {i for camp in ("promote", "post_ticket") for k in ("email_workflows", "sms_workflows") for i in GL.get(camp, {}).get(k, [])}
+    linked = {i for camp in CAMPS for k in ("email_workflows", "sms_workflows") for i in GL.get(camp, {}).get(k, [])}
     for w in CFG["workflows"]:
         if w["id"] not in linked:
             FLAGS.append(f"No GHL link set up yet for {w['name']} (add it to ghl_links in config.json by hand)")
@@ -1148,6 +1185,7 @@ def main():
                "summary": {k: v["line"] for k, v in data["summary"].items()},
                "promote": {"yesterday": Yd["promote"], "to_date": data["todate"]["promote"]},
                "post_ticket": {"yesterday": Yd["post_ticket"], "to_date": data["todate"]["post_ticket"]},
+               "byb_invites": {"yesterday": Yd["byb"], "to_date": data["todate"]["byb"]},
                "upsells": data["upsells"], "bring_your_brother": data["byb"]}
 
     # Safety check against the last good data (see safety_check). On a stop the run fails (red X + GitHub email).
@@ -1189,7 +1227,7 @@ def main():
         log(f"What's left (plan read {left['plan_read_at']}, until {left['until']}):")
         for w in left["workflows"]:
             log(f"  {w['wf']}: {w['steps']} steps, {w['sent']} sent, {w['left']} left" + (f", {w['after_until']} planned after {left['until']}" if w["after_until"] else ""))
-        for aud in ("promote", "post_ticket"):
+        for aud in left["audiences"]:
             n = left["audiences"][aud]["next"]
             log(f"  Next {aud}: " + (f"{n['label']} · {n['step']} · {n['text'][:60]}" if n else "nothing planned"))
         for n in left["notes"]:

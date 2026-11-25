@@ -116,8 +116,8 @@ When the warning comes on, the run log says so and the "Plan check notice" step 
 Read-only in GHL. Never create or change anything there.
 
 1. `git pull`. In `data.json` → `plan_check.items`, find the flagged workflow IDs. If the page data is old, list them fresh with the API, as `check_workflows` does.
-2. **New workflow?** Tell PJ its name and ask whether it's **Promote** or **Post-ticket seduction**, or whether to exclude it (add its ID to `workflow_name_rules.excluded`). Don't guess.
+2. **New workflow?** Tell PJ its name and ask whether it's **Promote**, **Post-ticket seduction** or **Bring Your Brother**, or whether to exclude it (add its ID to `workflow_name_rules.excluded`). Don't guess.
 3. Start `python3 -I scripts/plan_receive.py data/raw/<YYYY-MM-DD>_plan-read.json` in the background. In Chrome (WUW profile), open `https://app.gohighlevel.com/v2/location/BDeGaczWUBVqlvyWoI7l/automation/workflows`. Check the domain, the location ID and the sub-account name "Wake Up Warrior". Then run `scripts/plan_read_chrome.js` in the javascript tool with `IDS` set to the flagged IDs.
-4. `python3 -I scripts/plan_merge.py data/raw/<read>.json`. This is a dry run, so check the changes first. Then add `--write`, plus `--new <id>=<promote|post_ticket>:"<x.xx Emails|Texts>"` for a workflow PJ labelled. If anything prints CHECK BY HAND, fix those steps by hand.
+4. `python3 -I scripts/plan_merge.py data/raw/<read>.json`. This is a dry run, so check the changes first. Then add `--write`, plus `--new <id>=<promote|post_ticket|byb>:"<x.xx Emails|Texts>"` (byb = Bring Your Brother invites, sent to ticket holders) for a workflow PJ labelled. If anything prints CHECK BY HAND, fix those steps by hand.
 5. `python3 -I scripts/privacy_scan.py plan.json config.json`, then commit and push.
 6. `gh workflow run "Daily refresh" -R pj807/wc6-kpi-2iifeu`. When it's done, confirm that the warning has cleared (`plan_check.stale` is false) and the notice issue has closed. Report the new "X left of Y" per audience, the last date and the next send.

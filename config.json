@@ -58,9 +58,10 @@
   }
  },
  "workflow_name_rules": {
-  "_how": "New WC6 workflows: names matching promote/post_ticket are labelled automatically; any other name containing WC6 is flagged in the refresh output, never guessed.",
+  "_how": "New WC6 workflows: names matching promote/post_ticket/byb are labelled automatically; any other name containing WC6 is flagged in the refresh output, never guessed.",
   "promote": "^0\\.\\d+\\s*[-–]\\s*WC6\\b",
   "post_ticket": "^1\\.(0[3-9]|[1-9]\\d)\\s*[-–]\\s*WC6 Ticket Holder",
+  "byb": "^1\\.\\d+\\s*[-–]\\s*WC6 Bring a Brother",
   "wc6_any": "WC6|WarriorCon ?6|Warrior Con 6",
   "excluded": [
    "b93f198a-648b-4e95-bfef-15fc2d2c0ae4",
@@ -132,6 +133,15 @@
    ],
    "sms_workflows": [
     "ab0e73fd-f630-4da6-8678-1c00faa50e54"
+   ],
+   "sms_optout_smart_list": null
+  },
+  "byb": {
+   "email_workflows": [
+    "87643c5a-b479-4942-a8e0-70a1aff8634d"
+   ],
+   "sms_workflows": [
+    "39f1b835-f86e-448e-85d8-0ea35c17daa8"
    ],
    "sms_optout_smart_list": null
   }
@@ -471,7 +481,7 @@
   },
   {
    "id": "50e67534-dbf1-4628-aff4-1cae09823865",
-   "name": "0.3 - WC6 SMS 8B-19 One-Off (Nov 11-22)",
+   "name": "0.2 - WC6 Text To Dec 1",
    "label": "promote",
    "channel": "sms",
    "steps": [
@@ -537,6 +547,20 @@
      "text": "Your results don't care about your excuses. They are telling a story."
     }
    ]
+  },
+  {
+   "id": "87643c5a-b479-4942-a8e0-70a1aff8634d",
+   "name": "1.05 - WC6 Bring a Brother Emails (Nov 24-29)",
+   "label": "byb",
+   "channel": "email",
+   "steps": []
+  },
+  {
+   "id": "39f1b835-f86e-448e-85d8-0ea35c17daa8",
+   "name": "1.06 - WC6 Bring a Brother Text (Nov 24-29)",
+   "label": "byb",
+   "channel": "sms",
+   "steps": []
   }
  ],
  "safety": {
