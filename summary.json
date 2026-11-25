@@ -1,20 +1,20 @@
 {
  "date": "2026-11-24",
- "as_of": "Nov 24, 7:14am ET",
+ "as_of": "Nov 24, 6:59pm ET",
  "yesterday": "2026-11-23",
  "ticket_holders": {
-  "total": 154,
-  "paid": 151,
+  "total": 165,
+  "paid": 153,
   "comps": 3,
-  "brothers": 0,
+  "brothers": 9,
   "new_yesterday": 1,
   "new_paid_yesterday": 1,
   "new_brothers_yesterday": 0
  },
  "summary": {
-  "headline": "1 new ticket yesterday (154 total, 8 days to go)",
-  "win": "74 of 154 paid + comp ticket holders (48.1%) signed up for the Warrior App (free until Dec 4)",
-  "watch": "promote texts not delivered 24.3% to date (30,830 of 126,851 texts not delivered), above 5%. Main cause: 18,576 of 30,830 (60%) blocked by GHL's Texas SMS safeguard."
+  "headline": "1 new ticket yesterday (165 total, 8 days to go)",
+  "win": "76 of 156 paid + comp ticket holders (48.7%) signed up for the Warrior App (free until Dec 4)",
+  "watch": "promote texts not delivered 24.1% to date (31,433 of 130,363 texts not delivered), above 5%. Main cause: 19,105 of 31,433 (61%) blocked by GHL's Texas SMS safeguard."
  },
  "promote": {
   "yesterday": {
@@ -40,23 +40,23 @@
   },
   "to_date": {
    "email": {
-    "sent": 690216,
+    "sent": 711701,
     "emails": 35,
     "whole": 35,
-    "rated": 690216,
-    "delivered": 682467,
-    "opened": 214033,
-    "clicked": 1946,
-    "unsub": 850,
-    "bounced": 3585,
-    "ghl_sent": 689320
+    "rated": 711701,
+    "delivered": 702343,
+    "opened": 219183,
+    "clicked": 1978,
+    "unsub": 871,
+    "bounced": 3711,
+    "ghl_sent": 712451
    },
    "sms": {
-    "sent": 126851,
-    "delivered": 95634,
-    "failed": 30830,
-    "optouts": 184,
-    "blocked_tx": 18576
+    "sent": 130363,
+    "delivered": 98499,
+    "failed": 31433,
+    "optouts": 192,
+    "blocked_tx": 19105
    }
   }
  },
@@ -84,47 +84,47 @@
   },
   "to_date": {
    "email": {
-    "sent": 2034,
-    "emails": 16,
-    "whole": 16,
-    "rated": 2034,
-    "delivered": 2034,
-    "opened": 926,
+    "sent": 2179,
+    "emails": 17,
+    "whole": 17,
+    "rated": 2179,
+    "delivered": 2184,
+    "opened": 985,
     "clicked": 0,
     "unsub": 0,
     "bounced": 0,
-    "ghl_sent": 2035
+    "ghl_sent": 2185
    },
    "sms": {
-    "sent": 1407,
-    "delivered": 1232,
-    "failed": 167,
+    "sent": 1514,
+    "delivered": 1324,
+    "failed": 180,
     "optouts": 1,
-    "blocked_tx": 113
+    "blocked_tx": 122
    }
   }
  },
  "upsells": {
   "power_plan": {
-   "count": 74,
-   "base": 154,
+   "count": 76,
+   "base": 156,
    "price_per_month": 95,
    "billing_start": "2026-12-04"
   },
   "business_bible": {
-   "count": 22,
-   "people": 21,
-   "bump": 21,
+   "count": 24,
+   "people": 23,
+   "bump": 23,
    "standalone": 1,
-   "revenue": 2400.0
+   "revenue": 2610.0
   }
  },
  "bring_your_brother": {
-  "to_date": 0,
-  "app": 0,
+  "to_date": 9,
+  "app": 1,
   "yesterday": 0,
   "app_yesterday": 0,
-  "first_claim": null,
+  "first_claim": "2026-11-24",
   "app_free_until": "2026-12-04",
   "price_per_month": 95
  }

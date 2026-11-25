@@ -1,6 +1,6 @@
 {
  "schema": 2,
- "email_watermark": "2026-11-24T11:54:38.691Z",
+ "email_watermark": "2026-11-24T23:55:34.639Z",
  "update_times_et": [
   "01:00",
   "07:00",
@@ -9,10 +9,10 @@
  ],
  "today_so_far": {
   "date": "2026-11-24",
-  "tickets": 0,
-  "brothers": 0,
-  "emails": 9965,
-  "texts": 0
+  "tickets": 11,
+  "brothers": 9,
+  "emails": 10150,
+  "texts": 3606
  },
  "ghl_links": {
   "promote": {
@@ -106,8 +106,8 @@
    }
   }
  },
- "generated_at": "2026-11-24T12:14+00:00",
- "as_of": "Nov 24, 7:14am ET",
+ "generated_at": "2026-11-24T23:59+00:00",
+ "as_of": "Nov 24, 6:59pm ET",
  "today": "2026-11-24",
  "yesterday": "2026-11-23",
  "campaign_start": "2026-10-12",
@@ -123,20 +123,20 @@
  },
  "email_whole_send_share": 0.95,
  "holders": {
-  "total": 154,
-  "paid": 151,
+  "total": 165,
+  "paid": 153,
   "comps": 3,
-  "brothers": 0,
+  "brothers": 9,
   "new_yesterday": 1,
   "new_paid_yesterday": 1,
   "new_brothers_yesterday": 0
  },
  "byb": {
-  "to_date": 0,
-  "app": 0,
+  "to_date": 9,
+  "app": 1,
   "yesterday": 0,
   "app_yesterday": 0,
-  "first_claim": null,
+  "first_claim": "2026-11-24",
   "app_free_until": "2026-12-04",
   "price_per_month": 95
  },
@@ -148,91 +148,91 @@
   "seen": {}
  },
  "sales": {
-  "tickets": 151,
-  "revenue": 30049.0,
-  "total": 32449.0,
-  "credited": 116,
-  "credited_revenue": 23084.0
+  "tickets": 153,
+  "revenue": 30447.0,
+  "total": 33057.0,
+  "credited": 118,
+  "credited_revenue": 23482.0
  },
  "upsells": {
   "power_plan": {
-   "count": 74,
-   "base": 154,
+   "count": 76,
+   "base": 156,
    "price_per_month": 95,
    "billing_start": "2026-12-04"
   },
   "business_bible": {
-   "count": 22,
-   "people": 21,
-   "bump": 21,
+   "count": 24,
+   "people": 23,
+   "bump": 23,
    "standalone": 1,
-   "revenue": 2400.0
+   "revenue": 2610.0
   }
  },
  "todate": {
   "promote": {
    "email": {
-    "sent": 690216,
+    "sent": 711701,
     "emails": 35,
     "whole": 35,
-    "rated": 690216,
-    "delivered": 682467,
-    "opened": 214033,
-    "clicked": 1946,
-    "unsub": 850,
-    "bounced": 3585,
-    "ghl_sent": 689320
+    "rated": 711701,
+    "delivered": 702343,
+    "opened": 219183,
+    "clicked": 1978,
+    "unsub": 871,
+    "bounced": 3711,
+    "ghl_sent": 712451
    },
    "sms": {
-    "sent": 126851,
-    "delivered": 95634,
-    "failed": 30830,
-    "optouts": 184,
-    "blocked_tx": 18576
+    "sent": 130363,
+    "delivered": 98499,
+    "failed": 31433,
+    "optouts": 192,
+    "blocked_tx": 19105
    }
   },
   "post_ticket": {
    "email": {
-    "sent": 2034,
-    "emails": 16,
-    "whole": 16,
-    "rated": 2034,
-    "delivered": 2034,
-    "opened": 926,
+    "sent": 2179,
+    "emails": 17,
+    "whole": 17,
+    "rated": 2179,
+    "delivered": 2184,
+    "opened": 985,
     "clicked": 0,
     "unsub": 0,
     "bounced": 0,
-    "ghl_sent": 2035
+    "ghl_sent": 2185
    },
    "sms": {
-    "sent": 1407,
-    "delivered": 1232,
-    "failed": 167,
+    "sent": 1514,
+    "delivered": 1324,
+    "failed": 180,
     "optouts": 1,
-    "blocked_tx": 113
+    "blocked_tx": 122
    }
   }
  },
  "summary": {
   "headline": {
    "big": "1 new ticket yesterday",
-   "sub": "154 ticket holders · $32,449 total sales ($30,049 tickets + $2,400 Business Bible) · 8 days to go",
+   "sub": "165 ticket holders · $33,057 total sales ($30,447 tickets + $2,610 Business Bible) · 8 days to go",
    "cmp": "vs 7-day average of 0.9/day: in line",
-   "line": "1 new ticket yesterday (154 total, 8 days to go)"
+   "line": "1 new ticket yesterday (165 total, 8 days to go)"
   },
   "win": {
    "big": "Half of paid + comp ticket holders signed up for the app",
-   "sub": "74 of 154 (48.1%) signed up for the Power Plan. It's free until Dec 4, then $95/month: $7,030/month if they all stay.",
-   "line": "74 of 154 paid + comp ticket holders (48.1%) signed up for the Warrior App (free until Dec 4)"
+   "sub": "76 of 156 (48.7%) signed up for the Power Plan. It's free until Dec 4, then $95/month: $7,220/month if they all stay.",
+   "line": "76 of 156 paid + comp ticket holders (48.7%) signed up for the Warrior App (free until Dec 4)"
   },
   "watch": {
-   "big": "Promote texts not delivered: 24.3%",
-   "sub": "Above the 5% limit: 30,830 of 126,851 texts not delivered to date. Yesterday: 17.2%. Main cause: 18,576 of 30,830 (60%) blocked by GHL's Texas SMS safeguard.",
-   "line": "promote texts not delivered 24.3% to date (30,830 of 126,851 texts not delivered), above 5%. Main cause: 18,576 of 30,830 (60%) blocked by GHL's Texas SMS safeguard."
+   "big": "Promote texts not delivered: 24.1%",
+   "sub": "Above the 5% limit: 31,433 of 130,363 texts not delivered to date. Yesterday: 17.2%. Main cause: 19,105 of 31,433 (61%) blocked by GHL's Texas SMS safeguard.",
+   "line": "promote texts not delivered 24.1% to date (31,433 of 130,363 texts not delivered), above 5%. Main cause: 19,105 of 31,433 (61%) blocked by GHL's Texas SMS safeguard."
   }
  },
- "report": "WarriorCon 6 — report for Nov 23 (updated Nov 24, 7:14am ET)\n\nSUMMARY\n• 1 new ticket yesterday (154 total, 8 days to go)\n• Win: 74 of 154 paid + comp ticket holders (48.1%) signed up for the Warrior App (free until Dec 4)\n• Watch: promote texts not delivered 24.3% to date (30,830 of 126,851 texts not delivered), above 5%. Main cause: 18,576 of 30,830 (60%) blocked by GHL's Texas SMS safeguard.\n\nLEFT TO SEND (until Dec 2)\nPromote: 7 emails · 8 texts — next: about Tue Nov 24, 11:32am ET\nTicket holders: 7 emails · 7 texts — next: Tue Nov 24, 11:30am ET\n\nTICKET HOLDERS: 154 (151 paid + 3 comps) · 1 new yesterday\nRefunds: 0 to date\n$32,449 total sales ($30,049 tickets + $2,400 Business Bible)\n116 of 151 tickets were bought within 48 hrs of an email/text\n\nBRING YOUR BROTHER (free friend tickets)\nYesterday: none yet\nTo date: none yet\n\nPROMOTE (non-ticket holders)\nYesterday — Email: 22,418 sent · 26.1% open · 0.2% click\nYesterday — SMS: 3,511 sent · 81.9% delivered\nTo date — Email: 690,216 sent · 31.4% open · 0.3% click\nTo date — SMS: 126,851 sent · 75.4% delivered\n\nPOST-TICKET SEDUCTION (ticket holders)\nYesterday — Email: 136 sent · 36.8% open\nYesterday — SMS: 105 sent · 87.6% delivered\nTo date — Email: 2,034 sent · 45.5% open\nTo date — SMS: 1,407 sent · 87.6% delivered\n\nUPSELLS\nWarrior App (Power Plan): 74 · 48.1% of paid + comp ticket holders\nBusiness Bible: 22 sales · $2,400 · bought by 21 of 151 paid buyers (13.9%)\n(Texts have no open rate.)",
- "report_as_of": "Nov 24, 7:14am ET",
+ "report": "WarriorCon 6 — report for Nov 23 (updated Nov 24, 7:14am ET)\n\nSUMMARY\n• 1 new ticket yesterday (165 total, 8 days to go)\n• Win: 76 of 156 paid + comp ticket holders (48.7%) signed up for the Warrior App (free until Dec 4)\n• Watch: promote texts not delivered 24.1% to date (31,433 of 130,363 texts not delivered), above 5%. Main cause: 19,105 of 31,433 (61%) blocked by GHL's Texas SMS safeguard.\n\nLEFT TO SEND (until Dec 2)\nPromote: 7 emails · 7 texts — next: Wed Nov 25, 6:00am ET\nTicket holders: 6 emails · 6 texts — next: Wed Nov 25, 11:30am ET\n\nTICKET HOLDERS: 165 (153 paid + 3 comps + 9 brothers) · 1 new yesterday\nRefunds: 0 to date\n$33,057 total sales ($30,447 tickets + $2,610 Business Bible)\n118 of 153 tickets were bought within 48 hrs of an email/text\n\nBRING YOUR BROTHER (free friend tickets)\nYesterday: none\nTo date: 9 claimed · 1 added the Warrior App (11%)\n\nPROMOTE (non-ticket holders)\nYesterday — Email: 22,418 sent · 26.1% open · 0.2% click\nYesterday — SMS: 3,511 sent · 81.9% delivered\nTo date — Email: 711,701 sent · 31.2% open · 0.3% click\nTo date — SMS: 130,363 sent · 75.6% delivered\n\nPOST-TICKET SEDUCTION (ticket holders)\nYesterday — Email: 136 sent · 36.8% open\nYesterday — SMS: 105 sent · 87.6% delivered\nTo date — Email: 2,179 sent · 45.1% open\nTo date — SMS: 1,514 sent · 87.5% delivered\n\nUPSELLS\nWarrior App (Power Plan): 76 · 48.7% of paid + comp ticket holders\nBusiness Bible: 24 sales · $2,610 · bought by 23 of 153 paid buyers (15.0%)\n(Texts have no open rate.)",
+ "report_as_of": "Nov 24, 6:59pm ET",
  "left": {
   "until": "2026-12-02",
   "plan_read_at": "2026-11-20",
@@ -247,18 +247,18 @@
     },
     "sms": {
      "planned": 43,
-     "sent": 35,
-     "left": 8,
+     "sent": 36,
+     "left": 7,
      "rolling": 0,
      "last": "2026-12-01"
     },
     "next": {
-     "at": "2026-11-24T16:32:55Z",
-     "label": "Tue Nov 24, 11:32am ET",
-     "approx": true,
-     "ch": "sms",
-     "step": "0.3 Texts · SMS 21 - Nov 24 - 11:30 AM ET (wc-pm24)",
-     "text": "The day after is where most men lose. Not the day they decide. Read why:"
+     "at": "2026-11-25T11:00:00Z",
+     "label": "Wed Nov 25, 6:00am ET",
+     "approx": false,
+     "ch": "email",
+     "step": "0.2 Emails · Email 36",
+     "text": "12 weeks from now, where will you be?"
     },
     "upcoming_emails": [
      {
@@ -322,35 +322,27 @@
    "post_ticket": {
     "email": {
      "planned": 23,
-     "sent": 16,
-     "left": 7,
+     "sent": 17,
+     "left": 6,
      "rolling": 0,
      "last": "2026-11-30"
     },
     "sms": {
      "planned": 21,
-     "sent": 14,
-     "left": 7,
+     "sent": 15,
+     "left": 6,
      "rolling": 0,
      "last": "2026-11-30"
     },
     "next": {
-     "at": "2026-11-24T16:30:00Z",
-     "label": "Tue Nov 24, 11:30am ET",
+     "at": "2026-11-25T16:30:00Z",
+     "label": "Wed Nov 25, 11:30am ET",
      "approx": false,
      "ch": "email",
-     "step": "1.03 Emails · Email - Nov 24 Ticket Holder",
-     "text": "(WC6) - The System Is Going Into Your Hands…"
+     "step": "1.03 Emails · Email - Nov 25 Ticket Holder",
+     "text": "(WC6) - Seven Days Until We Begin…"
     },
     "upcoming_emails": [
-     {
-      "at": "2026-11-24T16:30:00Z",
-      "label": "Tue Nov 24, 11:30am ET",
-      "approx": false,
-      "ch": "email",
-      "step": "1.03 Emails · Email - Nov 24 Ticket Holder",
-      "text": "(WC6) - The System Is Going Into Your Hands…"
-     },
      {
       "at": "2026-11-25T16:30:00Z",
       "label": "Wed Nov 25, 11:30am ET",
@@ -439,8 +431,8 @@
     "wf": "1.03 Emails",
     "steps": 23,
     "planned": 23,
-    "sent": 16,
-    "left": 7,
+    "sent": 17,
+    "left": 6,
     "after_until": 0
    },
    {
@@ -455,24 +447,41 @@
     "wf": "1.04 Texts",
     "steps": 21,
     "planned": 21,
-    "sent": 14,
-    "left": 7,
+    "sent": 15,
+    "left": 6,
     "after_until": 0
    },
    {
     "wf": "0.3 Texts",
     "steps": 21,
     "planned": 21,
-    "sent": 13,
-    "left": 8,
+    "sent": 14,
+    "left": 7,
     "after_until": 0
    }
   ],
-  "notes": []
+  "notes": [
+   "an email \"(WC6) - I've Got a Gift for You…\" was sent 141 times but isn't in the plan"
+  ]
  },
  "plan_check": {
-  "stale": false,
-  "items": [],
+  "stale": true,
+  "items": [
+   {
+    "kind": "new",
+    "id": "87643c5a-b479-4942-a8e0-70a1aff8634d",
+    "name": "1.05 - WC6 Bring a Brother Emails (Nov 24-29)",
+    "status": "published",
+    "text": "Found a new WC6 workflow not in the plan: 1.05 - WC6 Bring a Brother Emails (Nov 24-29)"
+   },
+   {
+    "kind": "new",
+    "id": "39f1b835-f86e-448e-85d8-0ea35c17daa8",
+    "name": "1.06 - WC6 Bring a Brother Text (Nov 24-29)",
+    "status": "published",
+    "text": "Found a new WC6 workflow not in the plan: 1.06 - WC6 Bring a Brother Text (Nov 24-29)"
+   }
+  ],
   "read_at_utc": "2026-11-20T18:56:10Z",
   "read_label": "Nov 20, 1:56pm ET",
   "fields": [
@@ -988,13 +997,13 @@
   },
   {
    "d": "2026-11-24",
-   "tk": 0,
-   "tkr": 0,
-   "pp": 0,
-   "bb": 0,
-   "bbr": 0,
-   "br": 0,
-   "bpp": 0
+   "tk": 2,
+   "tkr": 398.0,
+   "pp": 2,
+   "bb": 2,
+   "bbr": 210.0,
+   "br": 9,
+   "bpp": 1
   }
  ],
  "messages": [
@@ -1008,8 +1017,8 @@
     "0.0 Email 1"
    ],
    "day": "2026-10-18",
-   "sent": 23062,
-   "wrong_audience": 21,
+   "sent": 23067,
+   "wrong_audience": 24,
    "days": {
     "2026-10-18": [
      22724,
@@ -1343,6 +1352,15 @@
      0,
      0,
      0
+    ],
+    "2026-11-24": [
+     4,
+     3,
+     0,
+     0,
+     0,
+     0,
+     0
     ]
    },
    "credit": {
@@ -1363,9 +1381,9 @@
    "ticket_revenue": 1990.0,
    "no_links": false,
    "main_at": "2026-10-18T10:00:01.618Z",
-   "ghl_sent": 23083,
-   "delivered": 22982,
-   "opened": 7770,
+   "ghl_sent": 23091,
+   "delivered": 22990,
+   "opened": 7773,
    "clicked": 144,
    "unsub": 28,
    "bounced": 100,
@@ -1464,7 +1482,7 @@
     "0.0 Email 3"
    ],
    "day": "2026-10-20",
-   "sent": 22995,
+   "sent": 22997,
    "wrong_audience": 38,
    "days": {
     "2026-10-20": [
@@ -1781,6 +1799,15 @@
      0,
      0,
      0
+    ],
+    "2026-11-24": [
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
     ]
    },
    "credit": {
@@ -1793,9 +1820,9 @@
    "ticket_revenue": 597.0,
    "no_links": false,
    "main_at": "2026-10-20T10:03:56.417Z",
-   "ghl_sent": 23033,
-   "delivered": 22938,
-   "opened": 7854,
+   "ghl_sent": 23035,
+   "delivered": 22940,
+   "opened": 7855,
    "clicked": 82,
    "unsub": 27,
    "bounced": 94,
@@ -1851,7 +1878,7 @@
     "0.0 Email 4"
    ],
    "day": "2026-10-21",
-   "sent": 22970,
+   "sent": 22976,
    "wrong_audience": 43,
    "days": {
     "2026-10-21": [
@@ -2159,6 +2186,15 @@
      0,
      0,
      0
+    ],
+    "2026-11-24": [
+     2,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
     ]
    },
    "credit": {
@@ -2171,9 +2207,9 @@
    "ticket_revenue": 796.0,
    "no_links": false,
    "main_at": "2026-10-21T10:04:14.763Z",
-   "ghl_sent": 23013,
-   "delivered": 22913,
-   "opened": 7604,
+   "ghl_sent": 23019,
+   "delivered": 22920,
+   "opened": 7607,
    "clicked": 76,
    "unsub": 25,
    "bounced": 95,
@@ -2224,7 +2260,7 @@
     "0.0 Email 5"
    ],
    "day": "2026-10-22",
-   "sent": 22949,
+   "sent": 22953,
    "wrong_audience": 48,
    "days": {
     "2026-10-22": [
@@ -2523,6 +2559,15 @@
      0,
      0,
      0
+    ],
+    "2026-11-24": [
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
     ]
    },
    "credit": {
@@ -2535,9 +2580,9 @@
    "ticket_revenue": 398.0,
    "no_links": false,
    "main_at": "2026-10-22T10:04:17.365Z",
-   "ghl_sent": 22997,
-   "delivered": 22905,
-   "opened": 7676,
+   "ghl_sent": 23001,
+   "delivered": 22908,
+   "opened": 7679,
    "clicked": 68,
    "unsub": 43,
    "bounced": 91,
@@ -2588,7 +2633,7 @@
     "0.0 Email 6"
    ],
    "day": "2026-10-23",
-   "sent": 22921,
+   "sent": 22931,
    "wrong_audience": 50,
    "days": {
     "2026-10-23": [
@@ -2878,6 +2923,15 @@
      0,
      0,
      0
+    ],
+    "2026-11-24": [
+     6,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
     ]
    },
    "credit": {},
@@ -2885,9 +2939,9 @@
    "ticket_revenue": 0,
    "no_links": false,
    "main_at": "2026-10-23T10:04:20.304Z",
-   "ghl_sent": 22971,
-   "delivered": 22878,
-   "opened": 7659,
+   "ghl_sent": 22981,
+   "delivered": 22888,
+   "opened": 7664,
    "clicked": 61,
    "unsub": 41,
    "bounced": 91,
@@ -2938,7 +2992,7 @@
     "0.0 Email 7"
    ],
    "day": "2026-10-24",
-   "sent": 22904,
+   "sent": 22909,
    "wrong_audience": 49,
    "days": {
     "2026-10-24": [
@@ -3219,6 +3273,15 @@
      0,
      0,
      0
+    ],
+    "2026-11-24": [
+     4,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
     ]
    },
    "credit": {
@@ -3235,9 +3298,9 @@
    "ticket_revenue": 398.0,
    "no_links": false,
    "main_at": "2026-10-24T10:04:22.930Z",
-   "ghl_sent": 22953,
-   "delivered": 22865,
-   "opened": 7497,
+   "ghl_sent": 22958,
+   "delivered": 22870,
+   "opened": 7500,
    "clicked": 62,
    "unsub": 41,
    "bounced": 88,
@@ -3293,7 +3356,7 @@
     "0.0 Email 8"
    ],
    "day": "2026-10-25",
-   "sent": 22876,
+   "sent": 22885,
    "wrong_audience": 53,
    "days": {
     "2026-10-25": [
@@ -3565,6 +3628,15 @@
      0,
      0,
      0
+    ],
+    "2026-11-24": [
+     5,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
     ]
    },
    "credit": {
@@ -3581,9 +3653,9 @@
    "ticket_revenue": 398.0,
    "no_links": false,
    "main_at": "2026-10-25T10:04:26.584Z",
-   "ghl_sent": 22929,
-   "delivered": 22825,
-   "opened": 7710,
+   "ghl_sent": 22938,
+   "delivered": 22833,
+   "opened": 7714,
    "clicked": 74,
    "unsub": 35,
    "bounced": 97,
@@ -3639,7 +3711,7 @@
     "0.0 Email 9"
    ],
    "day": "2026-10-26",
-   "sent": 22857,
+   "sent": 22860,
    "wrong_audience": 55,
    "days": {
     "2026-10-26": [
@@ -3909,9 +3981,9 @@
    "ticket_revenue": 0,
    "no_links": false,
    "main_at": "2026-10-26T10:04:29.333Z",
-   "ghl_sent": 22912,
-   "delivered": 22804,
-   "opened": 7603,
+   "ghl_sent": 22915,
+   "delivered": 22807,
+   "opened": 7604,
    "clicked": 56,
    "unsub": 38,
    "bounced": 107,
@@ -3967,7 +4039,7 @@
     "0.0 Email 10"
    ],
    "day": "2026-10-27",
-   "sent": 22834,
+   "sent": 22844,
    "wrong_audience": 56,
    "days": {
     "2026-10-27": [
@@ -4221,6 +4293,15 @@
      0,
      0,
      0
+    ],
+    "2026-11-24": [
+     4,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
     ]
    },
    "credit": {
@@ -4233,9 +4314,9 @@
    "ticket_revenue": 597.0,
    "no_links": false,
    "main_at": "2026-10-27T10:04:35.023Z",
-   "ghl_sent": 22890,
-   "delivered": 22787,
-   "opened": 7256,
+   "ghl_sent": 22900,
+   "delivered": 22797,
+   "opened": 7261,
    "clicked": 78,
    "unsub": 45,
    "bounced": 100,
@@ -4295,7 +4376,7 @@
     "0.0 Email 11"
    ],
    "day": "2026-10-28",
-   "sent": 22804,
+   "sent": 22810,
    "wrong_audience": 64,
    "days": {
     "2026-10-27": [
@@ -4549,6 +4630,15 @@
      0,
      0,
      0
+    ],
+    "2026-11-24": [
+     2,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
     ]
    },
    "credit": {
@@ -4561,9 +4651,9 @@
    "ticket_revenue": 995.0,
    "no_links": false,
    "main_at": "2026-10-28T10:03:02.713Z",
-   "ghl_sent": 22864,
-   "delivered": 22755,
-   "opened": 7294,
+   "ghl_sent": 22874,
+   "delivered": 22766,
+   "opened": 7302,
    "clicked": 75,
    "unsub": 32,
    "bounced": 105,
@@ -4619,7 +4709,7 @@
     "0.0 Email 12"
    ],
    "day": "2026-10-29",
-   "sent": 22780,
+   "sent": 22793,
    "wrong_audience": 71,
    "days": {
     "2026-10-27": [
@@ -4875,7 +4965,7 @@
      0
     ],
     "2026-11-24": [
-     1,
+     3,
      0,
      0,
      0,
@@ -4894,9 +4984,9 @@
    "ticket_revenue": 199.0,
    "no_links": false,
    "main_at": "2026-10-29T10:05:42.970Z",
-   "ghl_sent": 22850,
-   "delivered": 22743,
-   "opened": 7387,
+   "ghl_sent": 22864,
+   "delivered": 22756,
+   "opened": 7400,
    "clicked": 65,
    "unsub": 31,
    "bounced": 102,
@@ -4952,7 +5042,7 @@
     "0.0 Email 13"
    ],
    "day": "2026-10-30",
-   "sent": 22764,
+   "sent": 22777,
    "wrong_audience": 72,
    "days": {
     "2026-10-27": [
@@ -5197,6 +5287,15 @@
      0,
      0,
      0
+    ],
+    "2026-11-24": [
+     3,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
     ]
    },
    "credit": {
@@ -5209,9 +5308,9 @@
    "ticket_revenue": 199.0,
    "no_links": false,
    "main_at": "2026-10-30T10:05:45.572Z",
-   "ghl_sent": 22836,
-   "delivered": 22717,
-   "opened": 7415,
+   "ghl_sent": 22849,
+   "delivered": 22730,
+   "opened": 7424,
    "clicked": 74,
    "unsub": 38,
    "bounced": 111,
@@ -5267,8 +5366,8 @@
     "0.0 Email 14"
    ],
    "day": "2026-10-31",
-   "sent": 22731,
-   "wrong_audience": 75,
+   "sent": 22749,
+   "wrong_audience": 76,
    "days": {
     "2026-10-27": [
      2,
@@ -5503,6 +5602,15 @@
      0,
      0,
      0
+    ],
+    "2026-11-24": [
+     7,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0
     ]
    },
    "credit": {
@@ -5519,14 +5627,14 @@
    "ticket_revenue": 1592.0,
    "no_links": false,
    "main_at": "2026-10-31T10:05:48.064Z",
-   "ghl_sent": 22805,
-   "delivered": 22683,
-   "opened": 7602,
+   "ghl_sent": 22825,
+   "delivered": 22700,
+   "opened": 7610,
    "clicked": 126,
    "unsub": 48,
-   "bounced": 112,
+   "bounced": 113,
    "complaints": 0,
-   "share_main": 0.989
+   "share_main": 0.988
   },
   {
    "id": "5c821217",
@@ -5585,7 +5693,7 @@
     "0.0 Email 2"
    ],
    "day": "2026-11-03",
-   "sent": 23039,
+   "sent": 23043,
    "wrong_audience": 9,
    "days": {
     "2026-10-27": [
@@ -5839,6 +5947,15 @@
      0,
      0,
      0
+    ],
+    "2026-11-24": [
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
     ]
    },
    "credit": {},
@@ -5846,9 +5963,9 @@
    "ticket_revenue": 0,
    "no_links": false,
    "main_at": "2026-11-03T15:09:48.636Z",
-   "ghl_sent": 23048,
-   "delivered": 22949,
-   "opened": 7975,
+   "ghl_sent": 23052,
+   "delivered": 22952,
+   "opened": 7976,
    "clicked": 111,
    "unsub": 22,
    "bounced": 94,
@@ -5866,7 +5983,7 @@
     "0.1 Email 15"
    ],
    "day": "2026-11-03",
-   "sent": 22662,
+   "sent": 22682,
    "wrong_audience": 1,
    "days": {
     "2026-10-28": [
@@ -5969,7 +6086,7 @@
      0
     ],
     "2026-11-24": [
-     1,
+     6,
      0,
      0,
      0,
@@ -5988,12 +6105,12 @@
    "ticket_revenue": 597.0,
    "no_links": false,
    "main_at": "2026-11-03T12:07:26.739Z",
-   "ghl_sent": 22661,
-   "delivered": 22527,
-   "opened": 7087,
+   "ghl_sent": 22683,
+   "delivered": 22548,
+   "opened": 7106,
    "clicked": 84,
    "unsub": 29,
-   "bounced": 126,
+   "bounced": 127,
    "complaints": 2,
    "share_main": 0.998
   },
@@ -6587,7 +6704,7 @@
     "0.2 Email 20"
    ],
    "day": "2026-11-09",
-   "sent": 22589,
+   "sent": 22597,
    "wrong_audience": 0,
    "days": {
     "2026-11-03": [
@@ -6623,9 +6740,9 @@
    "ticket_revenue": 398.0,
    "no_links": false,
    "main_at": "2026-11-09T14:34:43.011Z",
-   "ghl_sent": 22582,
-   "delivered": 22450,
-   "opened": 6491,
+   "ghl_sent": 22597,
+   "delivered": 22465,
+   "opened": 6511,
    "clicked": 68,
    "unsub": 23,
    "bounced": 130,
@@ -6728,7 +6845,7 @@
     "0.2 Email 21"
    ],
    "day": "2026-11-10",
-   "sent": 22571,
+   "sent": 22581,
    "wrong_audience": 4,
    "days": {
     "2026-11-03": [
@@ -6769,11 +6886,11 @@
    "ticket_revenue": 199.0,
    "no_links": false,
    "main_at": "2026-11-10T11:00:01.545Z",
-   "ghl_sent": 22570,
-   "delivered": 22453,
-   "opened": 6959,
+   "ghl_sent": 22585,
+   "delivered": 22468,
+   "opened": 6974,
    "clicked": 68,
-   "unsub": 29,
+   "unsub": 30,
    "bounced": 117,
    "complaints": 0,
    "share_main": 1.0
@@ -6894,7 +7011,7 @@
     "0.2 Email 22"
    ],
    "day": "2026-11-11",
-   "sent": 22554,
+   "sent": 22566,
    "wrong_audience": 4,
    "days": {
     "2026-11-03": [
@@ -6944,11 +7061,11 @@
    "ticket_revenue": 398.0,
    "no_links": false,
    "main_at": "2026-11-11T11:00:01.583Z",
-   "ghl_sent": 22551,
-   "delivered": 22423,
-   "opened": 6979,
+   "ghl_sent": 22570,
+   "delivered": 22442,
+   "opened": 7000,
    "clicked": 53,
-   "unsub": 26,
+   "unsub": 27,
    "bounced": 122,
    "complaints": 0,
    "share_main": 1.0
@@ -7110,7 +7227,7 @@
     "0.2 Email 23"
    ],
    "day": "2026-11-12",
-   "sent": 22528,
+   "sent": 22541,
    "wrong_audience": 4,
    "days": {
     "2026-11-10": [
@@ -7142,11 +7259,11 @@
    "ticket_revenue": 199.0,
    "no_links": false,
    "main_at": "2026-11-12T11:00:01.769Z",
-   "ghl_sent": 22532,
-   "delivered": 22408,
-   "opened": 7115,
+   "ghl_sent": 22545,
+   "delivered": 22421,
+   "opened": 7131,
    "clicked": 53,
-   "unsub": 31,
+   "unsub": 32,
    "bounced": 124,
    "complaints": 0,
    "share_main": 1.0
@@ -7297,7 +7414,7 @@
     "0.2 Email 24"
    ],
    "day": "2026-11-13",
-   "sent": 22507,
+   "sent": 22523,
    "wrong_audience": 4,
    "days": {
     "2026-11-10": [
@@ -7324,11 +7441,11 @@
    "ticket_revenue": 0,
    "no_links": false,
    "main_at": "2026-11-13T11:00:01.673Z",
-   "ghl_sent": 22511,
-   "delivered": 22384,
-   "opened": 6798,
+   "ghl_sent": 22527,
+   "delivered": 22400,
+   "opened": 6816,
    "clicked": 48,
-   "unsub": 20,
+   "unsub": 21,
    "bounced": 127,
    "complaints": 0,
    "share_main": 1.0
@@ -7525,7 +7642,7 @@
     "0.2 Email 25"
    ],
    "day": "2026-11-14",
-   "sent": 22500,
+   "sent": 22516,
    "wrong_audience": 4,
    "days": {
     "2026-11-10": [
@@ -7552,11 +7669,11 @@
    "ticket_revenue": 0,
    "no_links": false,
    "main_at": "2026-11-14T11:00:01.696Z",
-   "ghl_sent": 22503,
-   "delivered": 22368,
-   "opened": 6855,
+   "ghl_sent": 22520,
+   "delivered": 22385,
+   "opened": 6877,
    "clicked": 40,
-   "unsub": 29,
+   "unsub": 30,
    "bounced": 133,
    "complaints": 2,
    "share_main": 1.0
@@ -7748,7 +7865,7 @@
     "0.2 Email 26"
    ],
    "day": "2026-11-15",
-   "sent": 22485,
+   "sent": 22506,
    "wrong_audience": 4,
    "days": {
     "2026-11-10": [
@@ -7780,11 +7897,11 @@
    "ticket_revenue": 199.0,
    "no_links": false,
    "main_at": "2026-11-15T11:00:01.615Z",
-   "ghl_sent": 22488,
-   "delivered": 22354,
-   "opened": 6923,
+   "ghl_sent": 22510,
+   "delivered": 22376,
+   "opened": 6947,
    "clicked": 44,
-   "unsub": 22,
+   "unsub": 23,
    "bounced": 134,
    "complaints": 0,
    "share_main": 1.0
@@ -7845,7 +7962,7 @@
     "0.3 SMS 12 - Nov 15 - 11:30 AM ET (wc-day29)"
    ],
    "day": "2026-11-15",
-   "sent": 3582,
+   "sent": 3583,
    "wrong_audience": 0,
    "days": {
     "2026-11-15": [
@@ -7910,6 +8027,15 @@
      0,
      0,
      1
+    ],
+    "2026-11-24": [
+     1,
+     0,
+     1,
+     0,
+     0,
+     0,
+     0
     ]
    },
    "credit": {
@@ -7922,7 +8048,7 @@
    "ticket_revenue": 199.0,
    "no_links": false,
    "main_at": "2026-11-15T16:31:54.255Z",
-   "delivered": 2967,
+   "delivered": 2968,
    "failed": 606,
    "blocked_tx": 530,
    "optouts": 4,
@@ -7972,7 +8098,7 @@
     "0.2 Email 27"
    ],
    "day": "2026-11-16",
-   "sent": 22469,
+   "sent": 22489,
    "wrong_audience": 4,
    "days": {
     "2026-11-10": [
@@ -8004,9 +8130,9 @@
    "ticket_revenue": 199.0,
    "no_links": false,
    "main_at": "2026-11-16T11:00:01.618Z",
-   "ghl_sent": 22472,
-   "delivered": 22330,
-   "opened": 6931,
+   "ghl_sent": 22493,
+   "delivered": 22351,
+   "opened": 6955,
    "clicked": 41,
    "unsub": 29,
    "bounced": 141,
@@ -8060,43 +8186,6 @@
    "share_main": 1.0
   },
   {
-   "id": "815419ff",
-   "key": "e:(wc6) - the system is going into your ha",
-   "ch": "email",
-   "camp": "post_ticket",
-   "text": "(WC6) - The System Is Going Into Your Hands…",
-   "steps": [
-    "1.03 Email - Nov 24 Ticket Holder"
-   ],
-   "day": "2026-11-16",
-   "sent": 0,
-   "wrong_audience": 2,
-   "days": {
-    "2026-11-16": [
-     0,
-     2,
-     0,
-     0,
-     0,
-     0,
-     0
-    ]
-   },
-   "credit": {},
-   "tickets": 0,
-   "ticket_revenue": 0,
-   "no_links": true,
-   "main_at": null,
-   "ghl_sent": 0,
-   "delivered": 0,
-   "opened": 0,
-   "clicked": 0,
-   "unsub": 0,
-   "bounced": 0,
-   "complaints": 0,
-   "share_main": null
-  },
-  {
    "id": "fbce61ed",
    "key": "s:you've heard their stories. what about y",
    "ch": "sms",
@@ -8106,7 +8195,7 @@
     "0.3 SMS 13 - Nov 16 - 11:30 AM ET (wc-day30)"
    ],
    "day": "2026-11-16",
-   "sent": 3576,
+   "sent": 3577,
    "wrong_audience": 0,
    "days": {
     "2026-11-16": [
@@ -8162,6 +8251,15 @@
      0,
      0,
      0
+    ],
+    "2026-11-24": [
+     1,
+     0,
+     0,
+     1,
+     0,
+     0,
+     1
     ]
    },
    "credit": {},
@@ -8170,8 +8268,8 @@
    "no_links": false,
    "main_at": "2026-11-16T16:32:03.964Z",
    "delivered": 2956,
-   "failed": 606,
-   "blocked_tx": 529,
+   "failed": 607,
+   "blocked_tx": 530,
    "optouts": 4,
    "replies": 0
   },
@@ -8219,7 +8317,7 @@
     "0.2 Email 28"
    ],
    "day": "2026-11-17",
-   "sent": 22452,
+   "sent": 22465,
    "wrong_audience": 4,
    "days": {
     "2026-11-10": [
@@ -8251,11 +8349,11 @@
    "ticket_revenue": 199.0,
    "no_links": false,
    "main_at": "2026-11-17T11:00:01.627Z",
-   "ghl_sent": 22456,
-   "delivered": 22322,
-   "opened": 6815,
+   "ghl_sent": 22469,
+   "delivered": 22335,
+   "opened": 6831,
    "clicked": 50,
-   "unsub": 23,
+   "unsub": 24,
    "bounced": 133,
    "complaints": 2,
    "share_main": 1.0
@@ -8316,7 +8414,7 @@
     "0.3 SMS 14 - Nov 17 - 11:30 AM ET (wc-day31)"
    ],
    "day": "2026-11-17",
-   "sent": 3570,
+   "sent": 3571,
    "wrong_audience": 0,
    "days": {
     "2026-11-17": [
@@ -8363,6 +8461,15 @@
      0,
      0,
      0
+    ],
+    "2026-11-24": [
+     1,
+     0,
+     1,
+     0,
+     0,
+     0,
+     0
     ]
    },
    "credit": {},
@@ -8370,7 +8477,7 @@
    "ticket_revenue": 0,
    "no_links": false,
    "main_at": "2026-11-17T16:32:07.307Z",
-   "delivered": 2939,
+   "delivered": 2940,
    "failed": 607,
    "blocked_tx": 529,
    "optouts": 2,
@@ -8420,7 +8527,7 @@
     "0.2 Email 29"
    ],
    "day": "2026-11-18",
-   "sent": 22438,
+   "sent": 22464,
    "wrong_audience": 4,
    "days": {
     "2026-11-16": [
@@ -8447,9 +8554,9 @@
    "ticket_revenue": 0,
    "no_links": false,
    "main_at": "2026-11-18T11:00:01.505Z",
-   "ghl_sent": 22442,
-   "delivered": 22268,
-   "opened": 6767,
+   "ghl_sent": 22468,
+   "delivered": 22294,
+   "opened": 6797,
    "clicked": 28,
    "unsub": 24,
    "bounced": 169,
@@ -8546,7 +8653,7 @@
     "0.3 SMS 15 - Nov 18 - 11:30 AM ET (wc-pm18)"
    ],
    "day": "2026-11-18",
-   "sent": 3567,
+   "sent": 3570,
    "wrong_audience": 0,
    "days": {
     "2026-11-18": [
@@ -8577,9 +8684,18 @@
      0
     ],
     "2026-11-23": [
-     1,
+     2,
      0,
-     1,
+     2,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-24": [
+     2,
+     0,
+     2,
      0,
      0,
      0,
@@ -8591,7 +8707,7 @@
    "ticket_revenue": 0,
    "no_links": false,
    "main_at": "2026-11-18T16:32:10.063Z",
-   "delivered": 2937,
+   "delivered": 2940,
    "failed": 604,
    "blocked_tx": 529,
    "optouts": 34,
@@ -8607,7 +8723,7 @@
     "0.2 Email 30"
    ],
    "day": "2026-11-19",
-   "sent": 22425,
+   "sent": 22468,
    "wrong_audience": 4,
    "days": {
     "2026-11-16": [
@@ -8634,11 +8750,11 @@
    "ticket_revenue": 0,
    "no_links": false,
    "main_at": "2026-11-19T11:00:01.679Z",
-   "ghl_sent": 22429,
-   "delivered": 22291,
-   "opened": 6546,
+   "ghl_sent": 22472,
+   "delivered": 22334,
+   "opened": 6592,
    "clicked": 46,
-   "unsub": 20,
+   "unsub": 21,
    "bounced": 135,
    "complaints": 0,
    "share_main": 1.0
@@ -8790,7 +8906,7 @@
     "0.2 Email 31"
    ],
    "day": "2026-11-20",
-   "sent": 22411,
+   "sent": 22448,
    "wrong_audience": 4,
    "days": {
     "2026-11-16": [
@@ -8817,11 +8933,11 @@
    "ticket_revenue": 0,
    "no_links": false,
    "main_at": "2026-11-20T11:00:01.982Z",
-   "ghl_sent": 22414,
-   "delivered": 22268,
-   "opened": 6470,
+   "ghl_sent": 22452,
+   "delivered": 22306,
+   "opened": 6517,
    "clicked": 42,
-   "unsub": 15,
+   "unsub": 16,
    "bounced": 141,
    "complaints": 0,
    "share_main": 1.0
@@ -8863,9 +8979,9 @@
    "ticket_revenue": 0,
    "no_links": true,
    "main_at": "2026-11-20T16:30:01.467Z",
-   "ghl_sent": 134,
-   "delivered": 134,
-   "opened": 60,
+   "ghl_sent": 135,
+   "delivered": 135,
+   "opened": 61,
    "clicked": 0,
    "unsub": 0,
    "bounced": 0,
@@ -9010,7 +9126,7 @@
     "0.2 Email 32"
    ],
    "day": "2026-11-21",
-   "sent": 22397,
+   "sent": 22480,
    "wrong_audience": 4,
    "days": {
     "2026-11-16": [
@@ -9037,9 +9153,9 @@
    "ticket_revenue": 0,
    "no_links": false,
    "main_at": "2026-11-21T11:00:01.705Z",
-   "ghl_sent": 22401,
-   "delivered": 22262,
-   "opened": 6301,
+   "ghl_sent": 22484,
+   "delivered": 22345,
+   "opened": 6399,
    "clicked": 45,
    "unsub": 16,
    "bounced": 139,
@@ -9136,7 +9252,7 @@
     "0.3 SMS 18 - Nov 21 - 11:30 AM ET (wc-pm21)"
    ],
    "day": "2026-11-21",
-   "sent": 3514,
+   "sent": 3516,
    "wrong_audience": 0,
    "days": {
     "2026-11-21": [
@@ -9156,6 +9272,15 @@
      0,
      0,
      1
+    ],
+    "2026-11-24": [
+     2,
+     0,
+     2,
+     0,
+     0,
+     0,
+     0
     ]
    },
    "credit": {},
@@ -9163,7 +9288,7 @@
    "ticket_revenue": 0,
    "no_links": false,
    "main_at": "2026-11-21T16:32:48.703Z",
-   "delivered": 2894,
+   "delivered": 2896,
    "failed": 604,
    "blocked_tx": 529,
    "optouts": 7,
@@ -9179,7 +9304,7 @@
     "0.2 Email 33"
    ],
    "day": "2026-11-22",
-   "sent": 22384,
+   "sent": 22523,
    "wrong_audience": 4,
    "days": {
     "2026-11-16": [
@@ -9211,11 +9336,11 @@
    "ticket_revenue": 199.0,
    "no_links": false,
    "main_at": "2026-11-22T11:00:01.491Z",
-   "ghl_sent": 22388,
-   "delivered": 22239,
-   "opened": 6408,
+   "ghl_sent": 22527,
+   "delivered": 22378,
+   "opened": 6570,
    "clicked": 39,
-   "unsub": 6,
+   "unsub": 9,
    "bounced": 145,
    "complaints": 0,
    "share_main": 1.0
@@ -9257,9 +9382,9 @@
    "ticket_revenue": 0,
    "no_links": true,
    "main_at": "2026-11-22T16:30:02.259Z",
-   "ghl_sent": 136,
-   "delivered": 136,
-   "opened": 57,
+   "ghl_sent": 138,
+   "delivered": 138,
+   "opened": 59,
    "clicked": 0,
    "unsub": 0,
    "bounced": 0,
@@ -9316,7 +9441,7 @@
     "2026-11-22": [
      3505,
      0,
-     2877,
+     2878,
      602,
      4,
      4,
@@ -9342,7 +9467,7 @@
    "ticket_revenue": 199.0,
    "no_links": false,
    "main_at": "2026-11-22T16:32:50.839Z",
-   "delivered": 2878,
+   "delivered": 2879,
    "failed": 603,
    "blocked_tx": 529,
    "optouts": 4,
@@ -9358,7 +9483,7 @@
     "0.2 Email 34"
    ],
    "day": "2026-11-23",
-   "sent": 22379,
+   "sent": 22834,
    "wrong_audience": 4,
    "days": {
     "2026-11-23": [
@@ -9376,12 +9501,12 @@
    "ticket_revenue": 0,
    "no_links": false,
    "main_at": "2026-11-23T11:00:01.571Z",
-   "ghl_sent": 22383,
-   "delivered": 22217,
-   "opened": 5796,
+   "ghl_sent": 22838,
+   "delivered": 22671,
+   "opened": 6363,
    "clicked": 42,
-   "unsub": 14,
-   "bounced": 146,
+   "unsub": 16,
+   "bounced": 147,
    "complaints": 0,
    "share_main": 1.0
   },
@@ -9395,7 +9520,7 @@
     "1.03 Email - Nov 23 Ticket Holder"
    ],
    "day": "2026-11-23",
-   "sent": 136,
+   "sent": 143,
    "wrong_audience": 2,
    "days": {
     "2026-11-16": [
@@ -9422,9 +9547,9 @@
    "ticket_revenue": 0,
    "no_links": true,
    "main_at": "2026-11-23T16:30:03.029Z",
-   "ghl_sent": 136,
-   "delivered": 136,
-   "opened": 50,
+   "ghl_sent": 145,
+   "delivered": 145,
+   "opened": 60,
    "clicked": 0,
    "unsub": 0,
    "bounced": 0,
@@ -9475,17 +9600,26 @@
     "0.3 SMS 20 - Nov 23 - 11:30 AM ET (wc-pm23)"
    ],
    "day": "2026-11-23",
-   "sent": 3500,
+   "sent": 3514,
    "wrong_audience": 0,
    "days": {
     "2026-11-23": [
-     3500,
+     3512,
      0,
-     2865,
-     602,
+     2880,
+     604,
      8,
-     2,
+     3,
      527
+    ],
+    "2026-11-24": [
+     2,
+     0,
+     1,
+     1,
+     0,
+     1,
+     1
     ]
    },
    "credit": {},
@@ -9493,11 +9627,11 @@
    "ticket_revenue": 0,
    "no_links": false,
    "main_at": "2026-11-23T16:32:55.672Z",
-   "delivered": 2865,
-   "failed": 602,
-   "blocked_tx": 527,
+   "delivered": 2881,
+   "failed": 605,
+   "blocked_tx": 528,
    "optouts": 8,
-   "replies": 2
+   "replies": 4
   },
   {
    "id": "80bfc43f",
@@ -9509,7 +9643,7 @@
     "0.2 Email 35"
    ],
    "day": "2026-11-24",
-   "sent": 9963,
+   "sent": 30408,
    "wrong_audience": 1,
    "days": {
     "2026-11-24": [
@@ -9522,19 +9656,144 @@
      0
     ]
    },
+   "credit": {
+    "2026-11-24": [
+     1,
+     199.0
+    ]
+   },
+   "tickets": 1,
+   "ticket_revenue": 199.0,
+   "no_links": false,
+   "main_at": "2026-11-24T11:00:01.601Z",
+   "ghl_sent": 30409,
+   "delivered": 23967,
+   "opened": 4428,
+   "clicked": 35,
+   "unsub": 7,
+   "bounced": 159,
+   "complaints": 0,
+   "flag": "Check subject",
+   "share_main": 1.0
+  },
+  {
+   "id": "815419ff",
+   "key": "e:(wc6) - the system is going into your ha",
+   "ch": "email",
+   "camp": "post_ticket",
+   "text": "(WC6) - The System Is Going Into Your Hands…",
+   "steps": [
+    "1.03 Email - Nov 24 Ticket Holder"
+   ],
+   "day": "2026-11-24",
+   "sent": 138,
+   "wrong_audience": 2,
+   "days": {
+    "2026-11-16": [
+     0,
+     2,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "2026-11-24": [
+     138,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "credit": {},
+   "tickets": 0,
+   "ticket_revenue": 0,
+   "no_links": true,
+   "main_at": "2026-11-24T16:30:01.915Z",
+   "ghl_sent": 138,
+   "delivered": 138,
+   "opened": 46,
+   "clicked": 0,
+   "unsub": 0,
+   "bounced": 0,
+   "complaints": 0,
+   "share_main": 1.0
+  },
+  {
+   "id": "60b10385",
+   "key": "s:you don't have to wait for the next brea",
+   "ch": "sms",
+   "camp": "post_ticket",
+   "text": "You don't have to wait for the next breakthrough. Read why:",
+   "steps": [
+    "1.04 SMS 15 - Nov 24 (wc-day43)"
+   ],
+   "day": "2026-11-24",
+   "sent": 107,
+   "wrong_audience": 1,
+   "days": {
+    "2026-11-24": [
+     107,
+     1,
+     92,
+     13,
+     0,
+     1,
+     9
+    ]
+   },
    "credit": {},
    "tickets": 0,
    "ticket_revenue": 0,
    "no_links": false,
-   "main_at": "2026-11-24T11:00:01.601Z",
-   "ghl_sent": 8353,
-   "delivered": 5159,
-   "opened": 490,
-   "clicked": 3,
-   "unsub": 0,
-   "bounced": 36,
-   "complaints": 0,
-   "share_main": 1.0
+   "main_at": "2026-11-24T17:30:04.897Z",
+   "delivered": 92,
+   "failed": 13,
+   "blocked_tx": 9,
+   "optouts": 0,
+   "replies": 1
+  },
+  {
+   "id": "f003d8bb",
+   "key": "s:the day after is where most men lose. no",
+   "ch": "sms",
+   "camp": "promote",
+   "text": "The day after is where most men lose. Not the day they decide. Read why:",
+   "steps": [
+    "0.3 SMS 21 - Nov 24 - 11:30 AM ET (wc-pm24)"
+   ],
+   "day": "2026-11-24",
+   "sent": 3490,
+   "wrong_audience": 0,
+   "days": {
+    "2026-11-24": [
+     3490,
+     0,
+     2841,
+     599,
+     8,
+     2,
+     527
+    ]
+   },
+   "credit": {
+    "2026-11-24": [
+     1,
+     199.0
+    ]
+   },
+   "tickets": 1,
+   "ticket_revenue": 199.0,
+   "no_links": false,
+   "main_at": "2026-11-24T16:32:58.450Z",
+   "delivered": 2841,
+   "failed": 599,
+   "blocked_tx": 527,
+   "optouts": 8,
+   "replies": 2
   },
   {
    "id": "89073a80",
@@ -9861,30 +10120,6 @@
    "share_main": null
   },
   {
-   "id": "60b10385",
-   "key": "s:you don't have to wait for the next brea",
-   "ch": "sms",
-   "camp": "post_ticket",
-   "text": "You don't have to wait for the next breakthrough. Read why:",
-   "steps": [
-    "1.04 SMS 15 - Nov 24 (wc-day43)"
-   ],
-   "day": null,
-   "sent": 0,
-   "wrong_audience": 0,
-   "days": {},
-   "credit": {},
-   "tickets": 0,
-   "ticket_revenue": 0,
-   "no_links": false,
-   "main_at": null,
-   "delivered": 0,
-   "failed": 0,
-   "blocked_tx": 0,
-   "optouts": 0,
-   "replies": 0
-  },
-  {
    "id": "0f8484f8",
    "key": "s:seven days until we begin. come ready to",
    "ch": "sms",
@@ -10012,30 +10247,6 @@
    "text": "48 hours. Fourteen years. One moment. Read it:",
    "steps": [
     "1.04 SMS 21 - Nov 30 (wc-day49)"
-   ],
-   "day": null,
-   "sent": 0,
-   "wrong_audience": 0,
-   "days": {},
-   "credit": {},
-   "tickets": 0,
-   "ticket_revenue": 0,
-   "no_links": false,
-   "main_at": null,
-   "delivered": 0,
-   "failed": 0,
-   "blocked_tx": 0,
-   "optouts": 0,
-   "replies": 0
-  },
-  {
-   "id": "f003d8bb",
-   "key": "s:the day after is where most men lose. no",
-   "ch": "sms",
-   "camp": "promote",
-   "text": "The day after is where most men lose. Not the day they decide. Read why:",
-   "steps": [
-    "0.3 SMS 21 - Nov 24 - 11:30 AM ET (wc-pm24)"
    ],
    "day": null,
    "sent": 0,
@@ -10222,6 +10433,10 @@
   }
  ],
  "flags": [
-  "Email matched only 190 of 23,048 GHL sends (subject may have changed): I'm Not Bringing You Back to Say Goodbye."
+  "Email matched only 191 of 23,052 GHL sends (subject may have changed): I'm Not Bringing You Back to Say Goodbye.",
+  "Email matched only 9,964 of 30,409 GHL sends (subject may have changed): The day after is where most men lose.",
+  "Plan may be out of date — an email \"(WC6) - I've Got a Gift for You…\" was sent 141 times but isn't in the plan",
+  "WC6 workflow that doesn't fit the naming rules, not counted: 1.05 - WC6 Bring a Brother Emails (Nov 24-29)",
+  "WC6 workflow that doesn't fit the naming rules, not counted: 1.06 - WC6 Bring a Brother Text (Nov 24-29)"
  ]
 }
