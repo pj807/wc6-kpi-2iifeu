@@ -1,59 +1,59 @@
 {
- "date": "2026-11-25",
- "as_of": "Nov 26, 1:12am ET",
- "yesterday": "2026-11-24",
+ "date": "2026-11-26",
+ "as_of": "Nov 26, 7:16am ET",
+ "yesterday": "2026-11-25",
  "ticket_holders": {
-  "total": 172,
+  "total": 173,
   "paid": 158,
   "comps": 3,
-  "brothers": 11,
-  "new_yesterday": 12,
-  "new_paid_yesterday": 3,
-  "new_brothers_yesterday": 9
+  "brothers": 12,
+  "new_yesterday": 6,
+  "new_paid_yesterday": 4,
+  "new_brothers_yesterday": 2
  },
  "summary": {
-  "headline": "12 new tickets yesterday (3 paid + 9 brothers; 172 total, 7 days to go)",
+  "headline": "6 new tickets yesterday (4 paid + 2 brothers; 173 total, 6 days to go)",
   "win": "81 of 161 paid + comp ticket holders (50.3%) signed up for the Warrior App (free until Dec 4)",
-  "watch": "promote texts not delivered 23.9% to date (32,039 of 133,863 texts not delivered), above 5%. Main cause: 19,635 of 32,039 (61%) blocked by GHL's Texas SMS safeguard."
+  "watch": "promote texts not delivered 23.9% to date (32,039 of 133,864 texts not delivered), above 5%. Main cause: 19,635 of 32,039 (61%) blocked by GHL's Texas SMS safeguard."
  },
  "promote": {
   "yesterday": {
    "email": {
-    "sent": 10033,
+    "sent": 22389,
     "emails": 16,
     "whole": 1,
-    "rated": 9963,
-    "delivered": 24055,
-    "opened": 4914,
-    "clicked": 35,
-    "unsub": 7,
-    "bounced": 160,
-    "ghl_sent": 30440
+    "rated": 22328,
+    "delivered": 22171,
+    "opened": 5950,
+    "clicked": 56,
+    "unsub": 15,
+    "bounced": 144,
+    "ghl_sent": 22348
    },
    "sms": {
-    "sent": 3502,
-    "delivered": 2857,
-    "failed": 603,
-    "optouts": 8,
+    "sent": 3494,
+    "delivered": 2865,
+    "failed": 601,
+    "optouts": 3,
     "blocked_tx": 530
    }
   },
   "to_date": {
    "email": {
-    "sent": 734907,
-    "emails": 36,
-    "whole": 36,
-    "rated": 734907,
-    "delivered": 725463,
-    "opened": 226409,
-    "clicked": 2036,
-    "unsub": 922,
-    "bounced": 3855,
-    "ghl_sent": 735671
+    "sent": 757353,
+    "emails": 37,
+    "whole": 37,
+    "rated": 757353,
+    "delivered": 747773,
+    "opened": 230697,
+    "clicked": 2078,
+    "unsub": 931,
+    "bounced": 3993,
+    "ghl_sent": 758122
    },
    "sms": {
-    "sent": 133863,
-    "delivered": 101377,
+    "sent": 133864,
+    "delivered": 101381,
     "failed": 32039,
     "optouts": 195,
     "blocked_tx": 19635
@@ -63,23 +63,23 @@
  "post_ticket": {
   "yesterday": {
    "email": {
-    "sent": 138,
+    "sent": 148,
     "emails": 1,
     "whole": 1,
-    "rated": 138,
-    "delivered": 138,
-    "opened": 52,
+    "rated": 148,
+    "delivered": 148,
+    "opened": 55,
     "clicked": 0,
     "unsub": 0,
     "bounced": 0,
-    "ghl_sent": 138
+    "ghl_sent": 148
    },
    "sms": {
-    "sent": 107,
-    "delivered": 93,
-    "failed": 13,
+    "sent": 114,
+    "delivered": 97,
+    "failed": 16,
     "optouts": 0,
-    "blocked_tx": 9
+    "blocked_tx": 10
    }
   },
   "to_date": {
@@ -107,20 +107,20 @@
  "byb_invites": {
   "yesterday": {
    "email": {
-    "sent": 140,
-    "emails": 1,
+    "sent": 145,
+    "emails": 2,
     "whole": 1,
-    "rated": 140,
+    "rated": 141,
     "delivered": 142,
-    "opened": 69,
-    "clicked": 11,
+    "opened": 55,
+    "clicked": 2,
     "unsub": 0,
     "bounced": 0,
     "ghl_sent": 142
    },
    "sms": {
     "sent": 106,
-    "delivered": 92,
+    "delivered": 93,
     "failed": 13,
     "optouts": 0,
     "blocked_tx": 9
@@ -128,16 +128,16 @@
   },
   "to_date": {
    "email": {
-    "sent": 285,
-    "emails": 2,
-    "whole": 2,
-    "rated": 285,
-    "delivered": 287,
-    "opened": 128,
-    "clicked": 14,
+    "sent": 430,
+    "emails": 3,
+    "whole": 3,
+    "rated": 430,
+    "delivered": 433,
+    "opened": 151,
+    "clicked": 15,
     "unsub": 0,
     "bounced": 0,
-    "ghl_sent": 287
+    "ghl_sent": 433
    },
    "sms": {
     "sent": 212,
@@ -164,10 +164,10 @@
   }
  },
  "bring_your_brother": {
-  "to_date": 11,
+  "to_date": 12,
   "app": 1,
-  "yesterday": 9,
-  "app_yesterday": 1,
+  "yesterday": 2,
+  "app_yesterday": 0,
   "first_claim": "2026-11-24",
   "app_free_until": "2026-12-04",
   "price_per_month": 95
