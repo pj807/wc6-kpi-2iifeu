@@ -1,20 +1,20 @@
 {
  "date": "2026-11-27",
- "as_of": "Nov 27, 7:03pm ET",
+ "as_of": "Nov 28, 1:14am ET",
  "yesterday": "2026-11-26",
  "ticket_holders": {
-  "total": 181,
-  "paid": 164,
+  "total": 184,
+  "paid": 166,
   "comps": 3,
-  "brothers": 14,
+  "brothers": 15,
   "new_yesterday": 4,
   "new_paid_yesterday": 2,
   "new_brothers_yesterday": 2
  },
  "summary": {
-  "headline": "4 new tickets yesterday (2 paid + 2 brothers; 181 total, 5 days to go)",
-  "win": "85 of 167 paid + comp ticket holders (50.9%) signed up for the Warrior App (free until Dec 4)",
-  "watch": "promote texts not delivered 23.6% to date (33,241 of 140,833 texts not delivered), above 5%. Main cause: 20,694 of 33,241 (62%) blocked by GHL's Texas SMS safeguard."
+  "headline": "4 new tickets yesterday (2 paid + 2 brothers; 184 total, 5 days to go)",
+  "win": "85 of 169 paid + comp ticket holders (50.3%) signed up for the Warrior App (free until Dec 4)",
+  "watch": "promote texts not delivered 23.6% to date (33,246 of 140,836 texts not delivered), above 5%. Main cause: 20,695 of 33,246 (62%) blocked by GHL's Texas SMS safeguard."
  },
  "promote": {
   "yesterday": {
@@ -40,23 +40,23 @@
   },
   "to_date": {
    "email": {
-    "sent": 780279,
+    "sent": 780357,
     "emails": 38,
     "whole": 38,
-    "rated": 780279,
-    "delivered": 770583,
-    "opened": 238696,
-    "clicked": 2131,
+    "rated": 780357,
+    "delivered": 770664,
+    "opened": 239169,
+    "clicked": 2135,
     "unsub": 957,
     "bounced": 4145,
-    "ghl_sent": 781064
+    "ghl_sent": 781145
    },
    "sms": {
-    "sent": 140833,
-    "delivered": 107115,
-    "failed": 33241,
+    "sent": 140836,
+    "delivered": 107118,
+    "failed": 33246,
     "optouts": 202,
-    "blocked_tx": 20694
+    "blocked_tx": 20695
    }
   }
  },
@@ -89,7 +89,7 @@
     "whole": 20,
     "rated": 2642,
     "delivered": 2647,
-    "opened": 1169,
+    "opened": 1181,
     "clicked": 0,
     "unsub": 0,
     "bounced": 0,
@@ -128,16 +128,16 @@
   },
   "to_date": {
    "email": {
-    "sent": 586,
+    "sent": 587,
     "emails": 4,
     "whole": 4,
-    "rated": 586,
-    "delivered": 590,
-    "opened": 246,
-    "clicked": 26,
+    "rated": 587,
+    "delivered": 591,
+    "opened": 255,
+    "clicked": 28,
     "unsub": 0,
     "bounced": 0,
-    "ghl_sent": 590
+    "ghl_sent": 591
    },
    "sms": {
     "sent": 424,
@@ -151,7 +151,7 @@
  "upsells": {
   "power_plan": {
    "count": 85,
-   "base": 167,
+   "base": 169,
    "price_per_month": 95,
    "billing_start": "2026-12-04"
   },
@@ -164,7 +164,7 @@
   }
  },
  "bring_your_brother": {
-  "to_date": 14,
+  "to_date": 15,
   "app": 1,
   "yesterday": 2,
   "app_yesterday": 0,
