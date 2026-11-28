@@ -3,12 +3,12 @@ WarriorCon 6 — report for Nov 26 (updated Nov 27, 7:13am ET)
 SUMMARY
 • 4 new tickets yesterday (2 paid + 2 brothers; 181 total, 5 days to go)
 • Win: 85 of 167 paid + comp ticket holders (50.9%) signed up for the Warrior App (free until Dec 4)
-• Watch: promote texts not delivered 23.6% to date (33,239 of 140,829 texts not delivered), above 5%. Main cause: 20,693 of 33,239 (62%) blocked by GHL's Texas SMS safeguard.
+• Watch: promote texts not delivered 23.6% to date (33,241 of 140,833 texts not delivered), above 5%. Main cause: 20,694 of 33,241 (62%) blocked by GHL's Texas SMS safeguard.
 
 LEFT TO SEND (until Dec 2)
 Promote: 4 emails · 4 texts — next: Sat Nov 28, 6:00am ET
 Ticket holders: 3 emails · 3 texts — next: Sat Nov 28, 11:30am ET
-Bring Your Brother: 2 emails · 3 texts — next: Fri Nov 27, 2:00pm ET
+Bring Your Brother: 2 emails · 2 texts — next: Sat Nov 28, 6:00am ET
 
 TICKET HOLDERS: 181 (164 paid + 3 comps + 14 brothers) · 4 new yesterday
 Refunds: 0 to date
@@ -22,20 +22,20 @@ To date: 14 claimed · 1 added the Warrior App (7%)
 PROMOTE (non-ticket holders)
 Yesterday — Email: 22,374 sent · 26.0% open · 0.2% click
 Yesterday — SMS: 3,489 sent · 82.4% delivered
-To date — Email: 780,165 sent · 30.9% open · 0.3% click
-To date — SMS: 140,829 sent · 76.0% delivered
+To date — Email: 780,279 sent · 31.0% open · 0.3% click
+To date — SMS: 140,833 sent · 76.1% delivered
 
 POST-TICKET SEDUCTION (ticket holders)
 Yesterday — Email: 152 sent · 32.9% open
 Yesterday — SMS: 120 sent · 85.8% delivered
-To date — Email: 2,642 sent · 43.6% open
-To date — SMS: 1,871 sent · 86.9% delivered
+To date — Email: 2,642 sent · 44.2% open
+To date — SMS: 1,871 sent · 87.2% delivered
 
 BRING YOUR BROTHER INVITES (ticket holders)
 Yesterday — Email: 148 sent · 36.6% open
 Yesterday — SMS: 106 sent · 87.7% delivered
-To date — Email: 585 sent · 41.3% open
-To date — SMS: 318 sent · 87.4% delivered
+To date — Email: 586 sent · 41.7% open
+To date — SMS: 424 sent · 87.3% delivered
 
 UPSELLS
 Warrior App (Power Plan): 85 · 50.9% of paid + comp ticket holders
